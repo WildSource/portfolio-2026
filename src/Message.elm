@@ -1,4 +1,11 @@
 module Message exposing (..)
 
-type Msg = None
+type alias WindowSize =
+    { width : Int
+    , height : Int        
+    }
+
+type Msg
+    = None
+    | WindowResize WindowSize
     

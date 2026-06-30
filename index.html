@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samuel Nguyen-Phok Portfolio 2026</title>
   <script src="main.js"></script>
 </head>
@@ -10,7 +12,11 @@
   <script>
   var app = Elm.Main.init({
       node: document.getElementById('portfolio2026'),
-      flags: navigator.language
+      flags: {
+	  language: navigator.language,
+	  width: window.innerWidth,
+	  height: window.innerHeight
+      }
   });
   </script>
 </body>
