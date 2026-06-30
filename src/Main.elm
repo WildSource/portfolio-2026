@@ -1,29 +1,60 @@
 module Main exposing (..)
 
 import Browser
+import Element
+import Translation exposing (Translation, Language)
+import Theme exposing (Theme)
 import Html exposing (Html)
 
-main : Program () Model Msg
+    
+main : Program String Model Msg
 main =
-    Browser.sandbox
+    Browser.element
        { init = init 
        , view = view
-       , update = update 
+       , update = update
+       , subscriptions = subscriptions
        }
 
-type alias Model = Int
+        
+type alias Model =
+    { locale : Language
+    , theme : Theme 
+    }
 
+    
 type Msg = None    
 
-init : Model
-init = 0
+    
+init : String -> (Model, Cmd Msg)
+init localeFlag =
+    let 
+        locale =
+            if String.startsWith "fr" localeFlag then
+                Translation.FR
+            else
+                Translation.EN                
+    in
+        ( { locale = locale
+          , theme = Theme.Light
+          }
+        , Cmd.none
+        )
 
+            
 view : Model -> Html Msg
-view _ =
-    Html.div
-    []
-    [Html.text "Hello World !"]
+view model =
+    Element.layout
+        []
+        (Element.text (Translation.translate Translation.helloWorld model.locale))
 
-update : Msg -> Model -> Model
-update _ model = model
+        
+update : Msg -> Model -> (Model, Cmd Msg)
+update _ model =
+    (model, Cmd.none)
+
+                 
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Sub.none
                  
