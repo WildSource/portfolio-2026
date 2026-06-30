@@ -2,7 +2,9 @@ module Main exposing (..)
 
 import Browser
 import Element
-import Translation exposing (Translation, Language)
+import Components
+import Message exposing (Msg)
+import Translation exposing (Language)
 import Theme exposing (Theme)
 import Html exposing (Html)
 
@@ -21,9 +23,6 @@ type alias Model =
     { locale : Language
     , theme : Theme 
     }
-
-    
-type Msg = None    
 
     
 init : String -> (Model, Cmd Msg)
@@ -46,7 +45,7 @@ view : Model -> Html Msg
 view model =
     Element.layout
         []
-        (Element.text (Translation.translate Translation.helloWorld model.locale))
+        (Components.heroTitle model.locale)
 
         
 update : Msg -> Model -> (Model, Cmd Msg)
