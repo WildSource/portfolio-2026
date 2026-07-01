@@ -1,3 +1,4 @@
+
 module Main exposing (..)
 
 import Debug
@@ -69,9 +70,9 @@ view model =
     let
         theme =
             if model.theme == Light then
-                GLight.bgColor
+                GLight.bg
             else
-                GDark.bgColor                    
+                GDark.bg
     in
     Element.layout
         [ Background.color theme ]

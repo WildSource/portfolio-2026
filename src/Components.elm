@@ -2,7 +2,7 @@ module Components exposing (..)
 
 import Element exposing
     ( Element
-    , Device
+    , Attribute
     , DeviceClass (..)
     )
 import Element.Font as Font
@@ -10,7 +10,6 @@ import Element.Input as Input
 import Element.Background as Background
 import Element.Border as Border
 
-import Translation exposing (Language)
 import Translation as T
 
 import Message exposing (Msg (..))
@@ -18,59 +17,28 @@ import Message exposing (Msg (..))
 import Model exposing (Model)
 
 import Theme.Types as Type
+import Theme.GruvboxLight as GLight
+import Theme.GruvboxDark as GDark
 
+
+-- Conditional styling
+addIf : Bool -> Attribute msg -> List (Attribute msg) -> List (Attribute msg)
+addIf condition attribute baseAttributes  =
+    if condition then
+        attribute :: baseAttributes
+    else
+        baseAttributes
+    
       
 themeSlider : Model -> Element Msg
 themeSlider model =
     let
-        checked = Type.toBool model.theme
-
-        -- Gruvbox Light
-        sliderOff : Element Msg
-        sliderOff =
-            Element.el
-                [ Border.rounded 15
-                , Element.moveRight 5
-                , Element.width (Element.px 50)
-                , Element.height (Element.px 30)
-                , Background.color (Element.rgb255 146 131 116)
-                , Element.inFront (
-                           Element.el
-                               [ Border.rounded 20
-                               , Element.centerY
-                               , Element.moveRight 5
-                               , Element.width (Element.px 20)
-                               , Element.height (Element.px 20)
-                               , Background.color (Element.rgb255 60 56 54)
-                               ]
-                               (Element.none)
-                          )
-                ]
-                (Element.none)
-
-        -- Gruvbox Dark
-        sliderOn : Element Msg
+        checked =
+            Type.toBool model.theme
         sliderOn =
-            Element.el
-                [ Border.rounded 15
-                , Element.moveRight 5
-                , Element.width (Element.px 50)
-                , Element.height (Element.px 30)
-                , Background.color (Element.rgb255 146 131 116)
-                , Element.inFront (
-                                   Element.el
-                                       [ Border.rounded 20
-                                       , Element.centerY
-                                       , Element.alignRight
-                                       , Element.moveLeft 5
-                                       , Element.width (Element.px 20)
-                                       , Element.height (Element.px 20)
-                                       , Background.color (Element.rgb255 235 219 178)
-                                       ]
-                                       (Element.none)
-                                  )
-                ]
-            (Element.none)
+            slider ({ model | theme = Type.Dark }) True
+        sliderOff =
+            slider ({ model | theme = Type.Light }) False
     in
         Input.checkbox
             []
@@ -79,6 +47,47 @@ themeSlider model =
             , checked = checked
             , label = Input.labelAbove [] (Element.text "Theme")
             }
+
+            
+slider : Model -> Bool -> Element Msg
+slider model isSwitchedOn =
+    let
+        knobColor =
+            if model.theme == Type.Light then
+                GLight.fg
+            else
+                GDark.fg
+                    
+        knobPosition =
+            if isSwitchedOn then
+                Element.moveLeft 5                
+            else
+                Element.moveRight 5
+
+        defaultKnobAttributes =
+            [ Border.rounded 20
+            , Element.centerY
+            , knobPosition
+            , Element.width (Element.px 20)
+            , Element.height (Element.px 20)
+            , Background.color knobColor
+            ]
+
+        knobAttributes =
+            addIf isSwitchedOn Element.alignRight defaultKnobAttributes            
+            
+        knob =
+            Element.el knobAttributes (Element.none)
+    in
+        Element.el
+            [ Border.rounded 15
+            , Element.moveRight 5
+            , Element.width (Element.px 50)
+            , Element.height (Element.px 30)
+            , Background.color GLight.grayLight
+            , Element.inFront knob              
+            ]
+        (Element.none)            
 
         
 heroTitle : Model -> Element Msg

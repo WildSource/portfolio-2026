@@ -5706,8 +5706,8 @@ var $mdgriffith$elm_ui$Element$rgb255 = F3(
 	function (red, green, blue) {
 		return A4($mdgriffith$elm_ui$Internal$Model$Rgba, red / 255, green / 255, blue / 255, 1);
 	});
-var $author$project$Theme$GruvboxDark$bgColor = A3($mdgriffith$elm_ui$Element$rgb255, 40, 40, 40);
-var $author$project$Theme$GruvboxLight$bgColor = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
+var $author$project$Theme$GruvboxDark$bg = A3($mdgriffith$elm_ui$Element$rgb255, 40, 40, 40);
+var $author$project$Theme$GruvboxLight$bg = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
 var $mdgriffith$elm_ui$Internal$Model$Colored = F3(
 	function (a, b, c) {
 		return {$: 'Colored', a: a, b: b, c: c};
@@ -11575,17 +11575,10 @@ var $mdgriffith$elm_ui$Element$layout = $mdgriffith$elm_ui$Element$layoutWith(
 var $author$project$Message$ThemeSwitch = function (a) {
 	return {$: 'ThemeSwitch', a: a};
 };
+var $mdgriffith$elm_ui$Internal$Model$NoAttribute = {$: 'NoAttribute'};
 var $mdgriffith$elm_ui$Internal$Model$AlignX = function (a) {
 	return {$: 'AlignX', a: a};
 };
-var $mdgriffith$elm_ui$Internal$Model$Right = {$: 'Right'};
-var $mdgriffith$elm_ui$Element$alignRight = $mdgriffith$elm_ui$Internal$Model$AlignX($mdgriffith$elm_ui$Internal$Model$Right);
-var $mdgriffith$elm_ui$Internal$Model$AlignY = function (a) {
-	return {$: 'AlignY', a: a};
-};
-var $mdgriffith$elm_ui$Internal$Model$CenterY = {$: 'CenterY'};
-var $mdgriffith$elm_ui$Element$centerY = $mdgriffith$elm_ui$Internal$Model$AlignY($mdgriffith$elm_ui$Internal$Model$CenterY);
-var $mdgriffith$elm_ui$Internal$Model$NoAttribute = {$: 'NoAttribute'};
 var $mdgriffith$elm_ui$Internal$Model$Left = {$: 'Left'};
 var $mdgriffith$elm_ui$Element$alignLeft = $mdgriffith$elm_ui$Internal$Model$AlignX($mdgriffith$elm_ui$Internal$Model$Left);
 var $mdgriffith$elm_ui$Internal$Model$Describe = function (a) {
@@ -11672,6 +11665,11 @@ var $mdgriffith$elm_ui$Element$Input$applyLabel = F3(
 		}
 	});
 var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
+var $mdgriffith$elm_ui$Internal$Model$AlignY = function (a) {
+	return {$: 'AlignY', a: a};
+};
+var $mdgriffith$elm_ui$Internal$Model$CenterY = {$: 'CenterY'};
+var $mdgriffith$elm_ui$Element$centerY = $mdgriffith$elm_ui$Internal$Model$AlignY($mdgriffith$elm_ui$Internal$Model$CenterY);
 var $mdgriffith$elm_ui$Element$Input$enter = 'Enter';
 var $mdgriffith$elm_ui$Internal$Model$Fill = function (a) {
 	return {$: 'Fill', a: a};
@@ -11847,6 +11845,21 @@ var $mdgriffith$elm_ui$Element$Input$checkbox = F2(
 							icon(checked)
 						]))));
 	});
+var $mdgriffith$elm_ui$Element$Input$Above = {$: 'Above'};
+var $mdgriffith$elm_ui$Element$Input$Label = F3(
+	function (a, b, c) {
+		return {$: 'Label', a: a, b: b, c: c};
+	});
+var $mdgriffith$elm_ui$Element$Input$labelAbove = $mdgriffith$elm_ui$Element$Input$Label($mdgriffith$elm_ui$Element$Input$Above);
+var $author$project$Components$addIf = F3(
+	function (condition, attribute, baseAttributes) {
+		return condition ? A2($elm$core$List$cons, attribute, baseAttributes) : baseAttributes;
+	});
+var $mdgriffith$elm_ui$Internal$Model$Right = {$: 'Right'};
+var $mdgriffith$elm_ui$Element$alignRight = $mdgriffith$elm_ui$Internal$Model$AlignX($mdgriffith$elm_ui$Internal$Model$Right);
+var $author$project$Theme$GruvboxDark$fg = A3($mdgriffith$elm_ui$Element$rgb255, 235, 219, 178);
+var $author$project$Theme$GruvboxLight$fg = A3($mdgriffith$elm_ui$Element$rgb255, 60, 56, 54);
+var $author$project$Theme$GruvboxLight$grayLight = A3($mdgriffith$elm_ui$Element$rgb255, 146, 131, 116);
 var $mdgriffith$elm_ui$Internal$Model$InFront = {$: 'InFront'};
 var $mdgriffith$elm_ui$Internal$Model$Nearby = F2(
 	function (a, b) {
@@ -11863,12 +11876,6 @@ var $mdgriffith$elm_ui$Element$createNearby = F2(
 var $mdgriffith$elm_ui$Element$inFront = function (element) {
 	return A2($mdgriffith$elm_ui$Element$createNearby, $mdgriffith$elm_ui$Internal$Model$InFront, element);
 };
-var $mdgriffith$elm_ui$Element$Input$Above = {$: 'Above'};
-var $mdgriffith$elm_ui$Element$Input$Label = F3(
-	function (a, b, c) {
-		return {$: 'Label', a: a, b: b, c: c};
-	});
-var $mdgriffith$elm_ui$Element$Input$labelAbove = $mdgriffith$elm_ui$Element$Input$Label($mdgriffith$elm_ui$Element$Input$Above);
 var $mdgriffith$elm_ui$Internal$Model$MoveX = function (a) {
 	return {$: 'MoveX', a: a};
 };
@@ -11906,71 +11913,54 @@ var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
 			'border-radius',
 			$elm$core$String$fromInt(radius) + 'px'));
 };
+var $author$project$Components$slider = F2(
+	function (model, isSwitchedOn) {
+		var knobPosition = isSwitchedOn ? $mdgriffith$elm_ui$Element$moveLeft(5) : $mdgriffith$elm_ui$Element$moveRight(5);
+		var knobColor = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $author$project$Theme$GruvboxLight$fg : $author$project$Theme$GruvboxDark$fg;
+		var defaultKnobAttributes = _List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$Border$rounded(20),
+				$mdgriffith$elm_ui$Element$centerY,
+				knobPosition,
+				$mdgriffith$elm_ui$Element$width(
+				$mdgriffith$elm_ui$Element$px(20)),
+				$mdgriffith$elm_ui$Element$height(
+				$mdgriffith$elm_ui$Element$px(20)),
+				$mdgriffith$elm_ui$Element$Background$color(knobColor)
+			]);
+		var knobAttributes = A3($author$project$Components$addIf, isSwitchedOn, $mdgriffith$elm_ui$Element$alignRight, defaultKnobAttributes);
+		var knob = A2($mdgriffith$elm_ui$Element$el, knobAttributes, $mdgriffith$elm_ui$Element$none);
+		return A2(
+			$mdgriffith$elm_ui$Element$el,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$Border$rounded(15),
+					$mdgriffith$elm_ui$Element$moveRight(5),
+					$mdgriffith$elm_ui$Element$width(
+					$mdgriffith$elm_ui$Element$px(50)),
+					$mdgriffith$elm_ui$Element$height(
+					$mdgriffith$elm_ui$Element$px(30)),
+					$mdgriffith$elm_ui$Element$Background$color($author$project$Theme$GruvboxLight$grayLight),
+					$mdgriffith$elm_ui$Element$inFront(knob)
+				]),
+			$mdgriffith$elm_ui$Element$none);
+	});
 var $author$project$Theme$Types$toBool = function (theme) {
 	return _Utils_eq(theme, $author$project$Theme$Types$Light) ? false : true;
 };
 var $author$project$Components$themeSlider = function (model) {
 	var sliderOn = A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$Border$rounded(15),
-				$mdgriffith$elm_ui$Element$moveRight(5),
-				$mdgriffith$elm_ui$Element$width(
-				$mdgriffith$elm_ui$Element$px(50)),
-				$mdgriffith$elm_ui$Element$height(
-				$mdgriffith$elm_ui$Element$px(30)),
-				$mdgriffith$elm_ui$Element$Background$color(
-				A3($mdgriffith$elm_ui$Element$rgb255, 146, 131, 116)),
-				$mdgriffith$elm_ui$Element$inFront(
-				A2(
-					$mdgriffith$elm_ui$Element$el,
-					_List_fromArray(
-						[
-							$mdgriffith$elm_ui$Element$Border$rounded(20),
-							$mdgriffith$elm_ui$Element$centerY,
-							$mdgriffith$elm_ui$Element$alignRight,
-							$mdgriffith$elm_ui$Element$moveLeft(5),
-							$mdgriffith$elm_ui$Element$width(
-							$mdgriffith$elm_ui$Element$px(20)),
-							$mdgriffith$elm_ui$Element$height(
-							$mdgriffith$elm_ui$Element$px(20)),
-							$mdgriffith$elm_ui$Element$Background$color(
-							A3($mdgriffith$elm_ui$Element$rgb255, 235, 219, 178))
-						]),
-					$mdgriffith$elm_ui$Element$none))
-			]),
-		$mdgriffith$elm_ui$Element$none);
+		$author$project$Components$slider,
+		_Utils_update(
+			model,
+			{theme: $author$project$Theme$Types$Dark}),
+		true);
 	var sliderOff = A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$Border$rounded(15),
-				$mdgriffith$elm_ui$Element$moveRight(5),
-				$mdgriffith$elm_ui$Element$width(
-				$mdgriffith$elm_ui$Element$px(50)),
-				$mdgriffith$elm_ui$Element$height(
-				$mdgriffith$elm_ui$Element$px(30)),
-				$mdgriffith$elm_ui$Element$Background$color(
-				A3($mdgriffith$elm_ui$Element$rgb255, 146, 131, 116)),
-				$mdgriffith$elm_ui$Element$inFront(
-				A2(
-					$mdgriffith$elm_ui$Element$el,
-					_List_fromArray(
-						[
-							$mdgriffith$elm_ui$Element$Border$rounded(20),
-							$mdgriffith$elm_ui$Element$centerY,
-							$mdgriffith$elm_ui$Element$moveRight(5),
-							$mdgriffith$elm_ui$Element$width(
-							$mdgriffith$elm_ui$Element$px(20)),
-							$mdgriffith$elm_ui$Element$height(
-							$mdgriffith$elm_ui$Element$px(20)),
-							$mdgriffith$elm_ui$Element$Background$color(
-							A3($mdgriffith$elm_ui$Element$rgb255, 60, 56, 54))
-						]),
-					$mdgriffith$elm_ui$Element$none))
-			]),
-		$mdgriffith$elm_ui$Element$none);
+		$author$project$Components$slider,
+		_Utils_update(
+			model,
+			{theme: $author$project$Theme$Types$Light}),
+		false);
 	var checked = $author$project$Theme$Types$toBool(model.theme);
 	return A2(
 		$mdgriffith$elm_ui$Element$Input$checkbox,
@@ -11990,7 +11980,7 @@ var $author$project$Components$themeSlider = function (model) {
 		});
 };
 var $author$project$Main$view = function (model) {
-	var theme = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $author$project$Theme$GruvboxLight$bgColor : $author$project$Theme$GruvboxDark$bgColor;
+	var theme = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $author$project$Theme$GruvboxLight$bg : $author$project$Theme$GruvboxDark$bg;
 	return A2(
 		$mdgriffith$elm_ui$Element$layout,
 		_List_fromArray(
