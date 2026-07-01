@@ -33,10 +33,19 @@ addIf condition attribute baseAttributes  =
 themeSlider : Model -> Element Msg
 themeSlider model =
     let
+        label =
+            { en = "Theme"
+            , fr = "Thème"
+            }
+
+        translatedLabel = Element.text (T.translate label model.locale)
+            
         checked =
             Type.toBool model.theme
+                
         sliderOn =
             slider ({ model | theme = Type.Dark }) True
+                
         sliderOff =
             slider ({ model | theme = Type.Light }) False
     in
@@ -45,7 +54,7 @@ themeSlider model =
             { onChange = (\ isChecked -> ThemeSwitch isChecked)
             , icon = (\ isChecked -> if isChecked then sliderOn else sliderOff)
             , checked = checked
-            , label = Input.labelAbove [] (Element.text "Theme")
+            , label = Input.labelAbove [] translatedLabel
             }
 
             

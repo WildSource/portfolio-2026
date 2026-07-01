@@ -16,12 +16,10 @@ translate translation language =
     if language == FR then
         translation.fr
     else
-        translation.en
+        translation.en           
 
             
-helloWorld : Translation
-helloWorld =
-    { en = "Hello World !"
-    , fr = "Bonjour Monde !"
-    }
+theme : Translation
+theme =
+
     

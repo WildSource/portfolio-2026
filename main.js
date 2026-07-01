@@ -11961,6 +11961,9 @@ var $author$project$Components$themeSlider = function (model) {
 			model,
 			{theme: $author$project$Theme$Types$Light}),
 		false);
+	var label = {en: 'Theme', fr: 'Thème'};
+	var translatedLabel = $mdgriffith$elm_ui$Element$text(
+		A2($author$project$Translation$translate, label, model.locale));
 	var checked = $author$project$Theme$Types$toBool(model.theme);
 	return A2(
 		$mdgriffith$elm_ui$Element$Input$checkbox,
@@ -11970,10 +11973,7 @@ var $author$project$Components$themeSlider = function (model) {
 			icon: function (isChecked) {
 				return isChecked ? sliderOn : sliderOff;
 			},
-			label: A2(
-				$mdgriffith$elm_ui$Element$Input$labelAbove,
-				_List_Nil,
-				$mdgriffith$elm_ui$Element$text('Theme')),
+			label: A2($mdgriffith$elm_ui$Element$Input$labelAbove, _List_Nil, translatedLabel),
 			onChange: function (isChecked) {
 				return $author$project$Message$ThemeSwitch(isChecked);
 			}
