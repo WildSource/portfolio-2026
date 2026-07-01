@@ -8,4 +8,5 @@ type alias WindowSize =
 type Msg
     = None
     | WindowResize WindowSize
+    | ThemeSwitch Bool
     
