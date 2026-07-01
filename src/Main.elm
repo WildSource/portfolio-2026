@@ -78,7 +78,7 @@ view model =
         ( Element.column
               []
               [ Components.themeSlider model
-              , Components.heroTitle model.locale model.device
+              , Components.heroTitle model
               ]
         )
 

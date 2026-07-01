@@ -11290,33 +11290,32 @@ var $author$project$Translation$translate = F2(
 	function (translation, language) {
 		return _Utils_eq(language, $author$project$Translation$FR) ? translation.fr : translation.en;
 	});
-var $author$project$Components$heroTitle = F2(
-	function (language, device) {
-		var deviceStyle = function () {
-			var _v0 = device._class;
-			switch (_v0.$) {
-				case 'Phone':
-					return $mdgriffith$elm_ui$Element$Font$color(
-						A3($mdgriffith$elm_ui$Element$rgb, 1, 0, 0));
-				case 'Tablet':
-					return $mdgriffith$elm_ui$Element$Font$color(
-						A3($mdgriffith$elm_ui$Element$rgb, 0, 1, 0));
-				case 'Desktop':
-					return $mdgriffith$elm_ui$Element$Font$color(
-						A3($mdgriffith$elm_ui$Element$rgb, 0, 0, 1));
-				default:
-					return $mdgriffith$elm_ui$Element$Font$color(
-						A3($mdgriffith$elm_ui$Element$rgb, 0, 0, 0));
-			}
-		}();
-		var content = {en: 'Hi, I\'m Samuel Nguyen-Phok and I make websites', fr: 'Bonjour, je m\'appelle Samuel Nguyen-Phok et je fais des sites webs'};
-		return A2(
-			$mdgriffith$elm_ui$Element$el,
-			_List_fromArray(
-				[deviceStyle]),
-			$mdgriffith$elm_ui$Element$text(
-				A2($author$project$Translation$translate, content, language)));
-	});
+var $author$project$Components$heroTitle = function (model) {
+	var deviceStyle = function () {
+		var _v0 = model.device._class;
+		switch (_v0.$) {
+			case 'Phone':
+				return $mdgriffith$elm_ui$Element$Font$color(
+					A3($mdgriffith$elm_ui$Element$rgb, 1, 0, 0));
+			case 'Tablet':
+				return $mdgriffith$elm_ui$Element$Font$color(
+					A3($mdgriffith$elm_ui$Element$rgb, 0, 1, 0));
+			case 'Desktop':
+				return $mdgriffith$elm_ui$Element$Font$color(
+					A3($mdgriffith$elm_ui$Element$rgb, 0, 0, 1));
+			default:
+				return $mdgriffith$elm_ui$Element$Font$color(
+					A3($mdgriffith$elm_ui$Element$rgb, 0, 0, 0));
+		}
+	}();
+	var content = {en: 'Hi, I\'m Samuel Nguyen-Phok and I make websites', fr: 'Bonjour, je m\'appelle Samuel Nguyen-Phok et je fais des sites webs'};
+	return A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[deviceStyle]),
+		$mdgriffith$elm_ui$Element$text(
+			A2($author$project$Translation$translate, content, model.locale)));
+};
 var $mdgriffith$elm_ui$Internal$Model$OnlyDynamic = F2(
 	function (a, b) {
 		return {$: 'OnlyDynamic', a: a, b: b};
@@ -12004,7 +12003,7 @@ var $author$project$Main$view = function (model) {
 			_List_fromArray(
 				[
 					$author$project$Components$themeSlider(model),
-					A2($author$project$Components$heroTitle, model.locale, model.device)
+					$author$project$Components$heroTitle(model)
 				])));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

@@ -48,6 +48,7 @@ themeSlider model =
                 ]
                 (Element.none)
 
+        -- Gruvbox Dark
         sliderOn : Element Msg
         sliderOn =
             Element.el
@@ -80,15 +81,15 @@ themeSlider model =
             }
 
         
-heroTitle : Language -> Device -> Element Msg
-heroTitle language device =
+heroTitle : Model -> Element Msg
+heroTitle model =
     let
         content =
             { en = "Hi, I'm Samuel Nguyen-Phok and I make websites"
             , fr = "Bonjour, je m'appelle Samuel Nguyen-Phok et je fais des sites webs"
             }
         deviceStyle =
-            case device.class of
+            case model.device.class of
                 Phone ->
                     Font.color (Element.rgb 1 0 0)
 
@@ -102,6 +103,6 @@ heroTitle language device =
                     Font.color (Element.rgb 0 0 0)
     in
         Element.el
-            [deviceStyle]
-            (Element.text (T.translate content language))
+            [ deviceStyle ]
+            ( Element.text (T.translate content model.locale) )
                 
