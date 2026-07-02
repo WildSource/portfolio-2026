@@ -16,10 +16,5 @@ translate translation language =
     if language == FR then
         translation.fr
     else
-        translation.en           
-
-            
-theme : Translation
-theme =
-
+        translation.en                     
     
