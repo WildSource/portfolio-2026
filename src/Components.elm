@@ -20,6 +20,15 @@ import Theme.Types as Type
 import Theme.GruvboxLight as GLight
 import Theme.GruvboxDark as GDark
 
+debugBorder : List (Attribute msg) -> List (Attribute msg)
+debugBorder attributes =
+    let
+        debugBorderStyle =
+            [ Border.width 2
+            , Border.color (Element.rgb 1 0 0)
+            ]
+    in
+        attributes ++ debugBorderStyle
 
 -- Conditional styling
 addIf : Bool -> Attribute msg -> List (Attribute msg) -> List (Attribute msg)
@@ -102,31 +111,57 @@ slider model isSwitchedOn =
 heroTitle : Model -> Element Msg
 heroTitle model =
     let
-        content =
-            { en = "Hi, I'm Samuel Nguyen-Phok \nand I make websites."
-            , fr = "Bonjour, je m'appelle Samuel Nguyen-Phok et je fais des sites webs"
-            }
+        name =
+            let
+                style =
+                    if model.theme == Type.Light then
+                        Font.color GLight.blueDark
+                    else
+                        Font.color GDark.blueLight                    
+            in
+                Element.el [style] (Element.text "Samuel Nguyen-Phok")
 
+        websiteText =
+            let
+                style =
+                    if model.theme == Type.Light then
+                        Font.color GLight.greenDark
+                    else
+                        Font.color GDark.greenLight
+            in
+                Element.el
+                [style]
+                (Element.text (T.translate T.lastThirdHeroTitle model.locale))
+                    
         fontStyle =
-            Font.family [Font.typeface "Josefin Sans"]
+            [ Font.family [Font.typeface "Josefin Sans"]
+            , Font.heavy
+            , Font.center
+            ]
             
         themeStyle =
             if model.theme == Type.Light then
-                Font.color GLight.fg0
+                [Font.color GLight.fg0]
             else
-                Font.color GDark.fg0
+                [Font.color GDark.fg0]
             
         deviceStyle =
             case model.device.class of
                 Phone ->
-                    Font.size 50
+                    [Font.size 30]
                 _ ->
-                    Font.strike
+                    [Font.strike]
+
+        spacingStyle = [Element.padding 20]
+
+        paragraphStyle =
+            fontStyle ++ deviceStyle ++ themeStyle ++ spacingStyle
     in
-        Element.el
-            [ deviceStyle
-            , themeStyle
-            , fontStyle
+        Element.paragraph
+            paragraphStyle
+            [ Element.text (T.translate T.firstThirdHeroTitle model.locale)
+            , name
+            , Element.text (T.translate T.secondThirdHeroTitle model.locale)
+            , websiteText
             ]
-            ( Element.text (T.translate content model.locale) )
                 

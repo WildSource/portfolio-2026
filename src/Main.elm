@@ -9,16 +9,21 @@ import Browser
 import Browser.Events as E
 
 import Element
+import Element.Border as Border
 import Element.Background as Background
 
 import Theme.GruvboxLight as GLight
 import Theme.GruvboxDark as GDark
 
-import Translation exposing (Language (..))
 import Theme.Types exposing (Theme (..))
 import Theme.Types as Types
+
+import Translation exposing (Language (..))
+
 import Model exposing (Model)
+
 import Message exposing (Msg)
+
 import Html exposing (Html)
 
     
@@ -30,7 +35,6 @@ main =
        , update = update
        , subscriptions = subscriptions
        }
-
 
     
 type alias Flags =
