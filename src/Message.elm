@@ -9,4 +9,5 @@ type Msg
     = None
     | WindowResize WindowSize
     | ThemeSwitch Bool
+    | LanguageSwitch Bool
     

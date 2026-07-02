@@ -5,11 +5,12 @@ import Debug
 
 import Components
 
+import Icons
+
 import Browser
 import Browser.Events as E
 
 import Element
-import Element.Border as Border
 import Element.Background as Background
 
 import Theme.GruvboxLight as GLight
@@ -82,8 +83,13 @@ view model =
         [ Background.color theme ]
         ( Element.column
               []
-              [ Components.themeSlider model
+              [ Element.row
+                    []
+                    [ Components.themeSlider model
+                    , Components.languageSlider model
+                    ]
               , Components.heroTitle model
+              , Icons.moon
               ]
         )
 
@@ -93,6 +99,18 @@ update msg model =
     case msg of
         Message.None -> 
             (model, Cmd.none)
+
+        Message.LanguageSwitch isChecked ->
+            let
+                locale =
+                    if isChecked then
+                        FR
+                    else
+                        EN
+            in
+                ( { model | locale = locale }
+                , Cmd.none
+                )
 
         Message.ThemeSwitch isChecked ->
             let

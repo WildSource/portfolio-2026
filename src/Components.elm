@@ -49,9 +49,6 @@ themeSlider model =
 
         translatedLabel = Element.text (T.translate label model.locale)
             
-        checked =
-            Type.toBool model.theme
-                
         sliderOn =
             slider ({ model | theme = Type.Dark }) True
                 
@@ -62,10 +59,39 @@ themeSlider model =
             []
             { onChange = (\ isChecked -> ThemeSwitch isChecked)
             , icon = (\ isChecked -> if isChecked then sliderOn else sliderOff)
-            , checked = checked
+            , checked = Type.toBool model.theme
             , label = Input.labelAbove [] translatedLabel
             }
 
+
+languageSlider : Model -> Element Msg
+languageSlider model =
+    let
+        checked =
+            if model.locale == T.EN then
+                False
+            else
+                True
+
+        sliderOn =
+            slider model True
+
+        sliderOff =
+            slider model False                
+    in
+        Element.row
+            [ Element.spacing 5 ]
+            [ Element.text "EN"
+            , Input.checkbox
+                []
+                { onChange = (\ isChecked -> LanguageSwitch isChecked)
+                , icon = (\ isChecked -> if isChecked then sliderOn else sliderOff)
+                , checked = checked
+                , label = Input.labelHidden "Language switch"
+                }
+            , Element.el [Element.padding 10] (Element.text "FR")
+            ]
+            
             
 slider : Model -> Bool -> Element Msg
 slider model isSwitchedOn =
