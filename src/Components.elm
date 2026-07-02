@@ -103,24 +103,30 @@ heroTitle : Model -> Element Msg
 heroTitle model =
     let
         content =
-            { en = "Hi, I'm Samuel Nguyen-Phok and I make websites"
+            { en = "Hi, I'm Samuel Nguyen-Phok \nand I make websites."
             , fr = "Bonjour, je m'appelle Samuel Nguyen-Phok et je fais des sites webs"
             }
+
+        fontStyle =
+            Font.family [Font.typeface "Josefin Sans"]
+            
+        themeStyle =
+            if model.theme == Type.Light then
+                Font.color GLight.fg0
+            else
+                Font.color GDark.fg0
+            
         deviceStyle =
             case model.device.class of
                 Phone ->
-                    Font.color (Element.rgb 1 0 0)
-
-                Tablet ->
-                    Font.color (Element.rgb 0 1 0)
-
-                Desktop ->
-                    Font.color (Element.rgb 0 0 1)
-
-                BigDesktop ->
-                    Font.color (Element.rgb 0 0 0)
+                    Font.size 50
+                _ ->
+                    Font.strike
     in
         Element.el
-            [ deviceStyle ]
+            [ deviceStyle
+            , themeStyle
+            , fontStyle
+            ]
             ( Element.text (T.translate content model.locale) )
                 
