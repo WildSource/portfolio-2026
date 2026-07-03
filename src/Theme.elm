@@ -1,4 +1,4 @@
-module Theme.Types exposing (..)
+module Theme exposing (..)
 
 
 type Theme

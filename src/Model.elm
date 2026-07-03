@@ -1,7 +1,7 @@
 module Model exposing (..)
 
 import Element
-import Theme.Types exposing (Theme)
+import Theme exposing (Theme)
 import Translation exposing (Language)
 
 type alias Model =

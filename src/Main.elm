@@ -2,13 +2,16 @@
 module Main exposing (..)
 
 import Debug
+import Browser
+import Component
 
+import Translation as T
 import Components.ThemeSlider as ThemeSlider
 import Components.LanguageSlider as LanguageSlider
 import Components.HeroText as HeroText
-
-import Browser
+import Components.Card as Card
 import Browser.Events as E
+
 
 import Element exposing
     ( width
@@ -17,11 +20,10 @@ import Element exposing
     )
 import Element.Background as Background
 
-import Theme.GruvboxLight as GLight
-import Theme.GruvboxDark as GDark
+import Themes.GruvboxLight as GLight
+import Themes.GruvboxDark as GDark
 
-import Theme.Types exposing (Theme (..))
-import Theme.Types as Types
+import Theme exposing (Theme (..))
 
 import Translation exposing (Language (..))
 
@@ -82,8 +84,19 @@ view model =
                 GLight.bg
             else
                 GDark.bg
+        mainContent =
+            Element.column
+                [ Element.centerX
+                , Element.width Element.fill
+                , Element.padding 20
+                , Element.spacing 20
+                ]
+                [ Card.element model T.aboutTitle T.aboutContent
+                , Card.element model T.experiencesTitle T.experiencesContent
+                , Card.element model T.technologyTitle T.technologyContent
+                ]
     in
-    Element.layout
+        Element.layout
         [ Background.color theme ]
         ( Element.column
               []
@@ -93,6 +106,7 @@ view model =
                     , Element.el [alignRight] (LanguageSlider.element model)
                     ]
               , HeroText.element model
+              , mainContent
               ]
         )
 
@@ -117,7 +131,7 @@ update msg model =
 
         Message.ThemeSwitch isChecked ->
             let
-                theme = Types.fromBool isChecked
+                theme = Theme.fromBool isChecked
             in
                 ( { model | theme = theme }
                 , Cmd.none

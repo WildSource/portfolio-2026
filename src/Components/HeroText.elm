@@ -2,15 +2,15 @@ module Components.HeroText exposing (element)
 
 import Model exposing (Model)
 import Message exposing (Msg (..))
+import Theme exposing (Theme (..))
 import Element exposing
     ( Element
     , DeviceClass (..)
     )
 
-import Theme.GruvboxLight as GLight
-import Theme.GruvboxDark as GDark
+import Themes.GruvboxLight as GLight
+import Themes.GruvboxDark as GDark
 import Element.Font as Font
-import Theme.Types as Type
 import Translation as T
 
 
@@ -20,7 +20,7 @@ element model =
         name =
             let
                 style =
-                    if model.theme == Type.Light then
+                    if model.theme == Light then
                         Font.color GLight.blueDark
                     else
                         Font.color GDark.blueLight                    
@@ -30,7 +30,7 @@ element model =
         heroText =
             let
                 style =
-                    if model.theme == Type.Light then
+                    if model.theme == Light then
                         Font.color GLight.greenDark
                     else
                         Font.color GDark.greenLight
@@ -46,7 +46,7 @@ element model =
             ]
             
         themeStyle =
-            if model.theme == Type.Light then
+            if model.theme == Light then
                 [Font.color GLight.fg0]
             else
                 [Font.color GDark.fg0]

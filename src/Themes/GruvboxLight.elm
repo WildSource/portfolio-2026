@@ -1,4 +1,4 @@
-module Theme.GruvboxLight exposing (..)
+module Themes.GruvboxLight exposing (..)
 
 import Element exposing (Color)
 

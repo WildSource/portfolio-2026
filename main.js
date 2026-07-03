@@ -5208,7 +5208,7 @@ var $elm$browser$Browser$element = _Browser_element;
 var $elm$json$Json$Decode$field = _Json_decodeField;
 var $author$project$Translation$EN = {$: 'EN'};
 var $author$project$Translation$FR = {$: 'FR'};
-var $author$project$Theme$Types$Light = {$: 'Light'};
+var $author$project$Theme$Light = {$: 'Light'};
 var $mdgriffith$elm_ui$Element$BigDesktop = {$: 'BigDesktop'};
 var $mdgriffith$elm_ui$Element$Desktop = {$: 'Desktop'};
 var $mdgriffith$elm_ui$Element$Landscape = {$: 'Landscape'};
@@ -5239,7 +5239,7 @@ var $author$project$Main$init = function (flags) {
 	var _v0 = A2($elm$core$Debug$log, 'flags', flags);
 	var _v1 = A2($elm$core$Debug$log, 'device', device);
 	return _Utils_Tuple2(
-		{device: device, locale: locale, theme: $author$project$Theme$Types$Light},
+		{device: device, locale: locale, theme: $author$project$Theme$Light},
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$json$Json$Decode$int = _Json_decodeInt;
@@ -5669,9 +5669,9 @@ var $author$project$Main$subscriptions = function (_v0) {
 					{height: height, width: width});
 			}));
 };
-var $author$project$Theme$Types$Dark = {$: 'Dark'};
-var $author$project$Theme$Types$fromBool = function (bool) {
-	return bool ? $author$project$Theme$Types$Dark : $author$project$Theme$Types$Light;
+var $author$project$Theme$Dark = {$: 'Dark'};
+var $author$project$Theme$fromBool = function (bool) {
+	return bool ? $author$project$Theme$Dark : $author$project$Theme$Light;
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
@@ -5688,7 +5688,7 @@ var $author$project$Main$update = F2(
 					$elm$core$Platform$Cmd$none);
 			case 'ThemeSwitch':
 				var isChecked = msg.a;
-				var theme = $author$project$Theme$Types$fromBool(isChecked);
+				var theme = $author$project$Theme$fromBool(isChecked);
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
@@ -5706,6 +5706,8 @@ var $author$project$Main$update = F2(
 					$elm$core$Platform$Cmd$none);
 		}
 	});
+var $author$project$Translation$aboutContent = {en: 'Content about me', fr: 'Contenu sur moi'};
+var $author$project$Translation$aboutTitle = {en: 'About me', fr: 'À propos de moi'};
 var $mdgriffith$elm_ui$Internal$Model$AlignX = function (a) {
 	return {$: 'AlignX', a: a};
 };
@@ -5719,8 +5721,10 @@ var $mdgriffith$elm_ui$Element$rgb255 = F3(
 	function (red, green, blue) {
 		return A4($mdgriffith$elm_ui$Internal$Model$Rgba, red / 255, green / 255, blue / 255, 1);
 	});
-var $author$project$Theme$GruvboxDark$bg = A3($mdgriffith$elm_ui$Element$rgb255, 40, 40, 40);
-var $author$project$Theme$GruvboxLight$bg = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
+var $author$project$Themes$GruvboxDark$bg = A3($mdgriffith$elm_ui$Element$rgb255, 40, 40, 40);
+var $author$project$Themes$GruvboxLight$bg = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
+var $mdgriffith$elm_ui$Internal$Model$CenterX = {$: 'CenterX'};
+var $mdgriffith$elm_ui$Element$centerX = $mdgriffith$elm_ui$Internal$Model$AlignX($mdgriffith$elm_ui$Internal$Model$CenterX);
 var $mdgriffith$elm_ui$Internal$Model$Colored = F3(
 	function (a, b, c) {
 		return {$: 'Colored', a: a, b: b, c: c};
@@ -11278,8 +11282,124 @@ var $mdgriffith$elm_ui$Element$el = F2(
 				_List_fromArray(
 					[child])));
 	});
-var $author$project$Theme$GruvboxLight$blueDark = A3($mdgriffith$elm_ui$Element$rgb255, 7, 102, 120);
-var $author$project$Theme$GruvboxDark$blueLight = A3($mdgriffith$elm_ui$Element$rgb255, 131, 165, 152);
+var $mdgriffith$elm_ui$Internal$Model$Fill = function (a) {
+	return {$: 'Fill', a: a};
+};
+var $mdgriffith$elm_ui$Element$fill = $mdgriffith$elm_ui$Internal$Model$Fill(1);
+var $mdgriffith$elm_ui$Internal$Model$PaddingStyle = F5(
+	function (a, b, c, d, e) {
+		return {$: 'PaddingStyle', a: a, b: b, c: c, d: d, e: e};
+	});
+var $mdgriffith$elm_ui$Internal$Flag$padding = $mdgriffith$elm_ui$Internal$Flag$flag(2);
+var $mdgriffith$elm_ui$Element$padding = function (x) {
+	var f = x;
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$padding,
+		A5(
+			$mdgriffith$elm_ui$Internal$Model$PaddingStyle,
+			'p-' + $elm$core$String$fromInt(x),
+			f,
+			f,
+			f,
+			f));
+};
+var $mdgriffith$elm_ui$Internal$Model$Describe = function (a) {
+	return {$: 'Describe', a: a};
+};
+var $mdgriffith$elm_ui$Internal$Model$Paragraph = {$: 'Paragraph'};
+var $mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
+	function (a, b, c) {
+		return {$: 'SpacingStyle', a: a, b: b, c: c};
+	});
+var $mdgriffith$elm_ui$Internal$Flag$spacing = $mdgriffith$elm_ui$Internal$Flag$flag(3);
+var $mdgriffith$elm_ui$Internal$Model$spacingName = F2(
+	function (x, y) {
+		return 'spacing-' + ($elm$core$String$fromInt(x) + ('-' + $elm$core$String$fromInt(y)));
+	});
+var $mdgriffith$elm_ui$Element$spacing = function (x) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$spacing,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$SpacingStyle,
+			A2($mdgriffith$elm_ui$Internal$Model$spacingName, x, x),
+			x,
+			x));
+};
+var $mdgriffith$elm_ui$Element$paragraph = F2(
+	function (attrs, children) {
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asParagraph,
+			$mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$Describe($mdgriffith$elm_ui$Internal$Model$Paragraph),
+				A2(
+					$elm$core$List$cons,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+					A2(
+						$elm$core$List$cons,
+						$mdgriffith$elm_ui$Element$spacing(5),
+						attrs))),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
+	});
+var $mdgriffith$elm_ui$Internal$Model$Text = function (a) {
+	return {$: 'Text', a: a};
+};
+var $mdgriffith$elm_ui$Element$text = function (content) {
+	return $mdgriffith$elm_ui$Internal$Model$Text(content);
+};
+var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
+	function (a, b, c, d, e) {
+		return {$: 'BorderWidth', a: a, b: b, c: c, d: d, e: e};
+	});
+var $mdgriffith$elm_ui$Element$Border$width = function (v) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$borderWidth,
+		A5(
+			$mdgriffith$elm_ui$Internal$Model$BorderWidth,
+			'b-' + $elm$core$String$fromInt(v),
+			v,
+			v,
+			v,
+			v));
+};
+var $author$project$Components$Card$element = F3(
+	function (model, title, content) {
+		var titleText = function () {
+			var text = _Utils_eq(model.locale, $author$project$Translation$EN) ? title.en : title.fr;
+			return A2(
+				$mdgriffith$elm_ui$Element$el,
+				_List_Nil,
+				$mdgriffith$elm_ui$Element$text(text));
+		}();
+		var contentText = function () {
+			var text = _Utils_eq(model.locale, $author$project$Translation$EN) ? content.en : content.fr;
+			return A2(
+				$mdgriffith$elm_ui$Element$paragraph,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$text(text)
+					]));
+		}();
+		return A2(
+			$mdgriffith$elm_ui$Element$column,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$Border$width(1),
+					$mdgriffith$elm_ui$Element$padding(20),
+					$mdgriffith$elm_ui$Element$spacing(10),
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[titleText, contentText]));
+	});
+var $author$project$Themes$GruvboxLight$blueDark = A3($mdgriffith$elm_ui$Element$rgb255, 7, 102, 120);
+var $author$project$Themes$GruvboxDark$blueLight = A3($mdgriffith$elm_ui$Element$rgb255, 131, 165, 152);
 var $mdgriffith$elm_ui$Internal$Model$Class = F2(
 	function (a, b) {
 		return {$: 'Class', a: a, b: b};
@@ -11350,19 +11470,14 @@ var $mdgriffith$elm_ui$Element$Font$family = function (families) {
 			A3($elm$core$List$foldl, $mdgriffith$elm_ui$Internal$Model$renderFontClassName, 'ff-', families),
 			families));
 };
-var $author$project$Theme$GruvboxDark$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
-var $author$project$Theme$GruvboxLight$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 40, 40, 40);
+var $author$project$Themes$GruvboxDark$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
+var $author$project$Themes$GruvboxLight$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 40, 40, 40);
 var $author$project$Translation$firstThirdHeroTitle = {en: 'Hi, I\'m ', fr: 'Bonjour, je m\'appelle '};
-var $author$project$Theme$GruvboxLight$greenDark = A3($mdgriffith$elm_ui$Element$rgb255, 121, 116, 14);
-var $author$project$Theme$GruvboxDark$greenLight = A3($mdgriffith$elm_ui$Element$rgb255, 184, 187, 38);
+var $author$project$Themes$GruvboxLight$greenDark = A3($mdgriffith$elm_ui$Element$rgb255, 121, 116, 14);
+var $author$project$Themes$GruvboxDark$greenLight = A3($mdgriffith$elm_ui$Element$rgb255, 184, 187, 38);
 var $mdgriffith$elm_ui$Internal$Flag$fontWeight = $mdgriffith$elm_ui$Internal$Flag$flag(13);
 var $mdgriffith$elm_ui$Element$Font$heavy = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.textHeavy);
 var $author$project$Translation$lastThirdHeroTitle = {en: 'websites\n', fr: 'sites webs\n'};
-var $mdgriffith$elm_ui$Internal$Model$PaddingStyle = F5(
-	function (a, b, c, d, e) {
-		return {$: 'PaddingStyle', a: a, b: b, c: c, d: d, e: e};
-	});
-var $mdgriffith$elm_ui$Internal$Flag$padding = $mdgriffith$elm_ui$Internal$Flag$flag(2);
 var $mdgriffith$elm_ui$Element$paddingXY = F2(
 	function (x, y) {
 		if (_Utils_eq(x, y)) {
@@ -11392,51 +11507,6 @@ var $mdgriffith$elm_ui$Element$paddingXY = F2(
 					xFloat));
 		}
 	});
-var $mdgriffith$elm_ui$Internal$Model$Describe = function (a) {
-	return {$: 'Describe', a: a};
-};
-var $mdgriffith$elm_ui$Internal$Model$Paragraph = {$: 'Paragraph'};
-var $mdgriffith$elm_ui$Internal$Model$Fill = function (a) {
-	return {$: 'Fill', a: a};
-};
-var $mdgriffith$elm_ui$Element$fill = $mdgriffith$elm_ui$Internal$Model$Fill(1);
-var $mdgriffith$elm_ui$Internal$Model$SpacingStyle = F3(
-	function (a, b, c) {
-		return {$: 'SpacingStyle', a: a, b: b, c: c};
-	});
-var $mdgriffith$elm_ui$Internal$Flag$spacing = $mdgriffith$elm_ui$Internal$Flag$flag(3);
-var $mdgriffith$elm_ui$Internal$Model$spacingName = F2(
-	function (x, y) {
-		return 'spacing-' + ($elm$core$String$fromInt(x) + ('-' + $elm$core$String$fromInt(y)));
-	});
-var $mdgriffith$elm_ui$Element$spacing = function (x) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$spacing,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$SpacingStyle,
-			A2($mdgriffith$elm_ui$Internal$Model$spacingName, x, x),
-			x,
-			x));
-};
-var $mdgriffith$elm_ui$Element$paragraph = F2(
-	function (attrs, children) {
-		return A4(
-			$mdgriffith$elm_ui$Internal$Model$element,
-			$mdgriffith$elm_ui$Internal$Model$asParagraph,
-			$mdgriffith$elm_ui$Internal$Model$div,
-			A2(
-				$elm$core$List$cons,
-				$mdgriffith$elm_ui$Internal$Model$Describe($mdgriffith$elm_ui$Internal$Model$Paragraph),
-				A2(
-					$elm$core$List$cons,
-					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-					A2(
-						$elm$core$List$cons,
-						$mdgriffith$elm_ui$Element$spacing(5),
-						attrs))),
-			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
-	});
 var $author$project$Translation$secondThirdHeroTitle = {en: ' and I make ', fr: ' et je fais des '};
 var $mdgriffith$elm_ui$Internal$Model$FontSize = function (a) {
 	return {$: 'FontSize', a: a};
@@ -11449,25 +11519,17 @@ var $mdgriffith$elm_ui$Element$Font$size = function (i) {
 		$mdgriffith$elm_ui$Internal$Model$FontSize(i));
 };
 var $mdgriffith$elm_ui$Element$Font$strike = $mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.strike);
-var $mdgriffith$elm_ui$Internal$Model$CenterX = {$: 'CenterX'};
-var $mdgriffith$elm_ui$Element$centerX = $mdgriffith$elm_ui$Internal$Model$AlignX($mdgriffith$elm_ui$Internal$Model$CenterX);
 var $mdgriffith$elm_ui$Element$Font$semiBold = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.textSemiBold);
 var $mdgriffith$elm_ui$Internal$Model$Serif = {$: 'Serif'};
 var $mdgriffith$elm_ui$Element$Font$serif = $mdgriffith$elm_ui$Internal$Model$Serif;
 var $author$project$Translation$subHeroTitle1 = {en: 'I\'m a fullstack developer', fr: 'Je suis un dévelopeur fullstack'};
 var $author$project$Translation$subHeroTitle2 = {en: ' a.k.a. ', fr: ' c\'est-à-dire '};
 var $author$project$Translation$subHeroTitle3 = {en: 'backend dev that can do frontend dev', fr: 'un dev backend qui peut faire du frontend'};
-var $mdgriffith$elm_ui$Internal$Model$Text = function (a) {
-	return {$: 'Text', a: a};
-};
-var $mdgriffith$elm_ui$Element$text = function (content) {
-	return $mdgriffith$elm_ui$Internal$Model$Text(content);
-};
 var $author$project$Translation$translate = F2(
 	function (translation, language) {
 		return _Utils_eq(language, $author$project$Translation$FR) ? translation.fr : translation.en;
 	});
-var $author$project$Theme$GruvboxLight$yellowDark = A3($mdgriffith$elm_ui$Element$rgb255, 181, 118, 20);
+var $author$project$Themes$GruvboxLight$yellowDark = A3($mdgriffith$elm_ui$Element$rgb255, 181, 118, 20);
 var $author$project$Components$HeroText$subHeroTitle = function (model) {
 	var text3 = A2(
 		$mdgriffith$elm_ui$Element$el,
@@ -11495,7 +11557,7 @@ var $author$project$Components$HeroText$subHeroTitle = function (model) {
 				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
 				$mdgriffith$elm_ui$Element$Font$size(15),
 				$mdgriffith$elm_ui$Element$Font$center,
-				$mdgriffith$elm_ui$Element$Font$color($author$project$Theme$GruvboxLight$yellowDark),
+				$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$yellowDark),
 				$mdgriffith$elm_ui$Element$Font$semiBold,
 				$mdgriffith$elm_ui$Element$Font$family(
 				_List_fromArray(
@@ -11509,12 +11571,12 @@ var $mdgriffith$elm_ui$Internal$Model$Typeface = function (a) {
 };
 var $mdgriffith$elm_ui$Element$Font$typeface = $mdgriffith$elm_ui$Internal$Model$Typeface;
 var $author$project$Components$HeroText$element = function (model) {
-	var themeStyle = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? _List_fromArray(
+	var themeStyle = _Utils_eq(model.theme, $author$project$Theme$Light) ? _List_fromArray(
 		[
-			$mdgriffith$elm_ui$Element$Font$color($author$project$Theme$GruvboxLight$fg0)
+			$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$fg0)
 		]) : _List_fromArray(
 		[
-			$mdgriffith$elm_ui$Element$Font$color($author$project$Theme$GruvboxDark$fg0)
+			$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$fg0)
 		]);
 	var spacingStyle = _List_fromArray(
 		[
@@ -11522,7 +11584,7 @@ var $author$project$Components$HeroText$element = function (model) {
 			$mdgriffith$elm_ui$Element$spacing(20)
 		]);
 	var name = function () {
-		var style = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $mdgriffith$elm_ui$Element$Font$color($author$project$Theme$GruvboxLight$blueDark) : $mdgriffith$elm_ui$Element$Font$color($author$project$Theme$GruvboxDark$blueLight);
+		var style = _Utils_eq(model.theme, $author$project$Theme$Light) ? $mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$blueDark) : $mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$blueLight);
 		return A2(
 			$mdgriffith$elm_ui$Element$el,
 			_List_fromArray(
@@ -11530,7 +11592,7 @@ var $author$project$Components$HeroText$element = function (model) {
 			$mdgriffith$elm_ui$Element$text('Samuel Nguyen-Phok'));
 	}();
 	var heroText = function () {
-		var style = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $mdgriffith$elm_ui$Element$Font$color($author$project$Theme$GruvboxLight$greenDark) : $mdgriffith$elm_ui$Element$Font$color($author$project$Theme$GruvboxDark$greenLight);
+		var style = _Utils_eq(model.theme, $author$project$Theme$Light) ? $mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$greenDark) : $mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$greenLight);
 		return A2(
 			$mdgriffith$elm_ui$Element$el,
 			_List_fromArray(
@@ -11827,19 +11889,6 @@ var $mdgriffith$elm_ui$Element$Input$HiddenLabel = function (a) {
 	return {$: 'HiddenLabel', a: a};
 };
 var $mdgriffith$elm_ui$Element$Input$labelHidden = $mdgriffith$elm_ui$Element$Input$HiddenLabel;
-var $mdgriffith$elm_ui$Element$padding = function (x) {
-	var f = x;
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$padding,
-		A5(
-			$mdgriffith$elm_ui$Internal$Model$PaddingStyle,
-			'p-' + $elm$core$String$fromInt(x),
-			f,
-			f,
-			f,
-			f));
-};
 var $mdgriffith$elm_ui$Element$row = F2(
 	function (attrs, children) {
 		return A4(
@@ -11862,9 +11911,9 @@ var $author$project$Component$addIf = F3(
 	function (condition, attribute, baseAttributes) {
 		return condition ? A2($elm$core$List$cons, attribute, baseAttributes) : baseAttributes;
 	});
-var $author$project$Theme$GruvboxDark$fg = A3($mdgriffith$elm_ui$Element$rgb255, 235, 219, 178);
-var $author$project$Theme$GruvboxLight$fg = A3($mdgriffith$elm_ui$Element$rgb255, 60, 56, 54);
-var $author$project$Theme$GruvboxLight$grayLight = A3($mdgriffith$elm_ui$Element$rgb255, 146, 131, 116);
+var $author$project$Themes$GruvboxDark$fg = A3($mdgriffith$elm_ui$Element$rgb255, 235, 219, 178);
+var $author$project$Themes$GruvboxLight$fg = A3($mdgriffith$elm_ui$Element$rgb255, 60, 56, 54);
+var $author$project$Themes$GruvboxLight$grayLight = A3($mdgriffith$elm_ui$Element$rgb255, 146, 131, 116);
 var $mdgriffith$elm_ui$Internal$Model$InFront = {$: 'InFront'};
 var $mdgriffith$elm_ui$Internal$Model$Nearby = F2(
 	function (a, b) {
@@ -11921,7 +11970,7 @@ var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
 var $author$project$Component$slider = F2(
 	function (model, isSwitchedOn) {
 		var knobPosition = isSwitchedOn ? $mdgriffith$elm_ui$Element$moveLeft(5) : $mdgriffith$elm_ui$Element$moveRight(5);
-		var knobColor = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $author$project$Theme$GruvboxLight$fg : $author$project$Theme$GruvboxDark$fg;
+		var knobColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg : $author$project$Themes$GruvboxDark$fg;
 		var defaultKnobAttributes = _List_fromArray(
 			[
 				$mdgriffith$elm_ui$Element$Border$rounded(20),
@@ -11945,7 +11994,7 @@ var $author$project$Component$slider = F2(
 					$mdgriffith$elm_ui$Element$px(50)),
 					$mdgriffith$elm_ui$Element$height(
 					$mdgriffith$elm_ui$Element$px(30)),
-					$mdgriffith$elm_ui$Element$Background$color($author$project$Theme$GruvboxLight$grayLight),
+					$mdgriffith$elm_ui$Element$Background$color($author$project$Themes$GruvboxLight$grayLight),
 					$mdgriffith$elm_ui$Element$inFront(knob)
 				]),
 			$mdgriffith$elm_ui$Element$none);
@@ -12004,7 +12053,7 @@ var $elm$svg$Svg$Attributes$r = _VirtualDom_attribute('r');
 var $elm$svg$Svg$svg = $elm$svg$Svg$trustedNode('svg');
 var $elm$svg$Svg$Attributes$width = _VirtualDom_attribute('width');
 var $author$project$Icons$moon = function (model) {
-	var illusionColor = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $elm$svg$Svg$Attributes$fill('rgb(251, 241, 199)') : $elm$svg$Svg$Attributes$fill('rgb(40, 40, 40)');
+	var illusionColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $elm$svg$Svg$Attributes$fill('rgb(251, 241, 199)') : $elm$svg$Svg$Attributes$fill('rgb(40, 40, 40)');
 	var svg = A2(
 		$elm$svg$Svg$svg,
 		_List_fromArray(
@@ -12171,21 +12220,21 @@ var $author$project$Icons$sun = function () {
 			]));
 	return $mdgriffith$elm_ui$Element$html(svg);
 }();
-var $author$project$Theme$Types$toBool = function (theme) {
-	return _Utils_eq(theme, $author$project$Theme$Types$Light) ? false : true;
+var $author$project$Theme$toBool = function (theme) {
+	return _Utils_eq(theme, $author$project$Theme$Light) ? false : true;
 };
 var $author$project$Components$ThemeSlider$element = function (model) {
 	var sliderOn = A2(
 		$author$project$Component$slider,
 		_Utils_update(
 			model,
-			{theme: $author$project$Theme$Types$Dark}),
+			{theme: $author$project$Theme$Dark}),
 		true);
 	var sliderOff = A2(
 		$author$project$Component$slider,
 		_Utils_update(
 			model,
-			{theme: $author$project$Theme$Types$Light}),
+			{theme: $author$project$Theme$Light}),
 		false);
 	return A2(
 		$mdgriffith$elm_ui$Element$row,
@@ -12197,7 +12246,7 @@ var $author$project$Components$ThemeSlider$element = function (model) {
 				$mdgriffith$elm_ui$Element$Input$checkbox,
 				_List_Nil,
 				{
-					checked: $author$project$Theme$Types$toBool(model.theme),
+					checked: $author$project$Theme$toBool(model.theme),
 					icon: function (isChecked) {
 						return isChecked ? sliderOn : sliderOff;
 					},
@@ -12215,6 +12264,8 @@ var $author$project$Components$ThemeSlider$element = function (model) {
 				$author$project$Icons$moon(model))
 			]));
 };
+var $author$project$Translation$experiencesContent = {en: 'Content on my experiences', fr: 'Contenu sur mes expériences'};
+var $author$project$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
 var $mdgriffith$elm_ui$Internal$Model$OnlyDynamic = F2(
 	function (a, b) {
 		return {$: 'OnlyDynamic', a: a, b: b};
@@ -12420,8 +12471,25 @@ var $mdgriffith$elm_ui$Element$layoutWith = F3(
 	});
 var $mdgriffith$elm_ui$Element$layout = $mdgriffith$elm_ui$Element$layoutWith(
 	{options: _List_Nil});
+var $author$project$Translation$technologyContent = {en: 'Content on technologies', fr: 'Contenu sur les technologies'};
+var $author$project$Translation$technologyTitle = {en: 'Technologies', fr: 'Technologies'};
 var $author$project$Main$view = function (model) {
-	var theme = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $author$project$Theme$GruvboxLight$bg : $author$project$Theme$GruvboxDark$bg;
+	var theme = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg : $author$project$Themes$GruvboxDark$bg;
+	var mainContent = A2(
+		$mdgriffith$elm_ui$Element$column,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$centerX,
+				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+				$mdgriffith$elm_ui$Element$padding(20),
+				$mdgriffith$elm_ui$Element$spacing(20)
+			]),
+		_List_fromArray(
+			[
+				A3($author$project$Components$Card$element, model, $author$project$Translation$aboutTitle, $author$project$Translation$aboutContent),
+				A3($author$project$Components$Card$element, model, $author$project$Translation$experiencesTitle, $author$project$Translation$experiencesContent),
+				A3($author$project$Components$Card$element, model, $author$project$Translation$technologyTitle, $author$project$Translation$technologyContent)
+			]));
 	return A2(
 		$mdgriffith$elm_ui$Element$layout,
 		_List_fromArray(
@@ -12448,7 +12516,8 @@ var $author$project$Main$view = function (model) {
 								[$mdgriffith$elm_ui$Element$alignRight]),
 							$author$project$Components$LanguageSlider$element(model))
 						])),
-					$author$project$Components$HeroText$element(model)
+					$author$project$Components$HeroText$element(model),
+					mainContent
 				])));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

@@ -23,7 +23,7 @@ import Message exposing (Msg)
 
 import Element exposing (Element)
 
-import Theme.Types exposing (Theme (..))
+import Theme exposing (Theme (..))
 
 import Model exposing (Model)
 

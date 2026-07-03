@@ -1,6 +1,7 @@
 module Component exposing (..)
 
 import Message exposing (Msg (..))
+import Theme exposing (Theme (..))
 import Model exposing (Model)
 import Element exposing
     ( Element
@@ -8,9 +9,8 @@ import Element exposing
     , DeviceClass (..)
     )
 
-import Theme.Types as Type
-import Theme.GruvboxLight as GLight
-import Theme.GruvboxDark as GDark
+import Themes.GruvboxLight as GLight
+import Themes.GruvboxDark as GDark
 import Element.Background as Background
 import Element.Border as Border
 
@@ -39,7 +39,7 @@ slider : Model -> Bool -> Element Msg
 slider model isSwitchedOn =
     let
         knobColor =
-            if model.theme == Type.Light then
+            if model.theme == Light then
                 GLight.fg
             else
                 GDark.fg

@@ -66,10 +66,45 @@ subHeroTitle3 =
     }        
     
 
-about : Translation
-about =
-    { en = "I'm based in Quebec, Canada."
-    , fr = "Je suis basé au Québec dans le Canada."
+aboutTitle : Translation
+aboutTitle =
+    { en = "About me"
+    , fr = "À propos de moi"
+    }
+
+    
+aboutContent : Translation
+aboutContent =
+    { en = "Content about me"
+    , fr = "Contenu sur moi"
+    }
+
+    
+experiencesTitle : Translation
+experiencesTitle =
+    { en = "My experiences"
+    , fr = "Mes expériences"
+    }
+
+    
+experiencesContent : Translation
+experiencesContent =
+    { en = "Content on my experiences"
+    , fr = "Contenu sur mes expériences"
+    }
+
+    
+technologyTitle : Translation
+technologyTitle =
+    { en = "Technologies"
+    , fr = "Technologies"
+    }
+
+    
+technologyContent : Translation
+technologyContent =
+    { en = "Content on technologies"
+    , fr = "Contenu sur les technologies"
     }
 
     
