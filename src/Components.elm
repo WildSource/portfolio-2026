@@ -20,6 +20,8 @@ import Theme.Types as Type
 import Theme.GruvboxLight as GLight
 import Theme.GruvboxDark as GDark
 
+import Icons
+
 debugBorder : List (Attribute msg) -> List (Attribute msg)
 debugBorder attributes =
     let
@@ -41,27 +43,25 @@ addIf condition attribute baseAttributes  =
       
 themeSlider : Model -> Element Msg
 themeSlider model =
-    let
-        label =
-            { en = "Theme"
-            , fr = "Thème"
-            }
-
-        translatedLabel = Element.text (T.translate label model.locale)
-            
+    let            
         sliderOn =
             slider ({ model | theme = Type.Dark }) True
                 
         sliderOff =
             slider ({ model | theme = Type.Light }) False
     in
-        Input.checkbox
+        Element.row
             []
-            { onChange = (\ isChecked -> ThemeSwitch isChecked)
-            , icon = (\ isChecked -> if isChecked then sliderOn else sliderOff)
-            , checked = Type.toBool model.theme
-            , label = Input.labelAbove [] translatedLabel
-            }
+            [ Icons.sun 
+            , Input.checkbox
+                  []
+                  { onChange = (\ isChecked -> ThemeSwitch isChecked)
+                  , icon = (\ isChecked -> if isChecked then sliderOn else sliderOff)
+                  , checked = Type.toBool model.theme
+                  , label = Input.labelHidden "Theme switch"
+                  }
+            , Element.el [Element.padding 5] (Icons.moon model)
+            ]
 
 
 languageSlider : Model -> Element Msg

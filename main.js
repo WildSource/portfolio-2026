@@ -12110,6 +12110,9 @@ var $mdgriffith$elm_ui$Element$layoutWith = F3(
 	});
 var $mdgriffith$elm_ui$Element$layout = $mdgriffith$elm_ui$Element$layoutWith(
 	{options: _List_Nil});
+var $author$project$Message$ThemeSwitch = function (a) {
+	return {$: 'ThemeSwitch', a: a};
+};
 var $elm$svg$Svg$trustedNode = _VirtualDom_nodeNS('http://www.w3.org/2000/svg');
 var $elm$svg$Svg$circle = $elm$svg$Svg$trustedNode('circle');
 var $elm$svg$Svg$Attributes$cx = _VirtualDom_attribute('cx');
@@ -12125,7 +12128,8 @@ var $mdgriffith$elm_ui$Element$html = $mdgriffith$elm_ui$Internal$Model$unstyled
 var $elm$svg$Svg$Attributes$r = _VirtualDom_attribute('r');
 var $elm$svg$Svg$svg = $elm$svg$Svg$trustedNode('svg');
 var $elm$svg$Svg$Attributes$width = _VirtualDom_attribute('width');
-var $author$project$Icons$moon = function () {
+var $author$project$Icons$moon = function (model) {
+	var illusionColor = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $elm$svg$Svg$Attributes$fill('rgb(251, 241, 199)') : $elm$svg$Svg$Attributes$fill('rgb(40, 40, 40)');
 	var svg = A2(
 		$elm$svg$Svg$svg,
 		_List_fromArray(
@@ -12152,21 +12156,146 @@ var $author$project$Icons$moon = function () {
 						$elm$svg$Svg$Attributes$cx('5'),
 						$elm$svg$Svg$Attributes$cy('15'),
 						$elm$svg$Svg$Attributes$r('10'),
-						$elm$svg$Svg$Attributes$fill('rgb(251, 241, 199)')
+						illusionColor
 					]),
 				_List_Nil)
 			]));
 	return $mdgriffith$elm_ui$Element$html(svg);
-}();
-var $author$project$Message$ThemeSwitch = function (a) {
-	return {$: 'ThemeSwitch', a: a};
 };
-var $mdgriffith$elm_ui$Element$Input$Above = {$: 'Above'};
-var $mdgriffith$elm_ui$Element$Input$Label = F3(
-	function (a, b, c) {
-		return {$: 'Label', a: a, b: b, c: c};
-	});
-var $mdgriffith$elm_ui$Element$Input$labelAbove = $mdgriffith$elm_ui$Element$Input$Label($mdgriffith$elm_ui$Element$Input$Above);
+var $elm$svg$Svg$line = $elm$svg$Svg$trustedNode('line');
+var $elm$svg$Svg$Attributes$stroke = _VirtualDom_attribute('stroke');
+var $elm$svg$Svg$Attributes$strokeWidth = _VirtualDom_attribute('stroke-width');
+var $elm$svg$Svg$Attributes$x1 = _VirtualDom_attribute('x1');
+var $elm$svg$Svg$Attributes$x2 = _VirtualDom_attribute('x2');
+var $elm$svg$Svg$Attributes$y1 = _VirtualDom_attribute('y1');
+var $elm$svg$Svg$Attributes$y2 = _VirtualDom_attribute('y2');
+var $author$project$Icons$sun = function () {
+	var rayTopRight = A2(
+		$elm$svg$Svg$line,
+		_List_fromArray(
+			[
+				$elm$svg$Svg$Attributes$x1('27'),
+				$elm$svg$Svg$Attributes$x2('32'),
+				$elm$svg$Svg$Attributes$y1('12'),
+				$elm$svg$Svg$Attributes$y2('8'),
+				$elm$svg$Svg$Attributes$stroke('rgb(215, 153, 33)'),
+				$elm$svg$Svg$Attributes$strokeWidth('2')
+			]),
+		_List_Nil);
+	var rayTopLeft = A2(
+		$elm$svg$Svg$line,
+		_List_fromArray(
+			[
+				$elm$svg$Svg$Attributes$x1('13'),
+				$elm$svg$Svg$Attributes$x2('8'),
+				$elm$svg$Svg$Attributes$y1('12'),
+				$elm$svg$Svg$Attributes$y2('8'),
+				$elm$svg$Svg$Attributes$stroke('rgb(215, 153, 33)'),
+				$elm$svg$Svg$Attributes$strokeWidth('2')
+			]),
+		_List_Nil);
+	var rayTop = A2(
+		$elm$svg$Svg$line,
+		_List_fromArray(
+			[
+				$elm$svg$Svg$Attributes$x1('20'),
+				$elm$svg$Svg$Attributes$x2('20'),
+				$elm$svg$Svg$Attributes$y1('10'),
+				$elm$svg$Svg$Attributes$y2('5'),
+				$elm$svg$Svg$Attributes$stroke('rgb(215, 153, 33)'),
+				$elm$svg$Svg$Attributes$strokeWidth('2')
+			]),
+		_List_Nil);
+	var rayRight = A2(
+		$elm$svg$Svg$line,
+		_List_fromArray(
+			[
+				$elm$svg$Svg$Attributes$x1('30'),
+				$elm$svg$Svg$Attributes$x2('35'),
+				$elm$svg$Svg$Attributes$y1('20'),
+				$elm$svg$Svg$Attributes$y2('20'),
+				$elm$svg$Svg$Attributes$stroke('rgb(215, 153, 33)'),
+				$elm$svg$Svg$Attributes$strokeWidth('2')
+			]),
+		_List_Nil);
+	var rayLeft = A2(
+		$elm$svg$Svg$line,
+		_List_fromArray(
+			[
+				$elm$svg$Svg$Attributes$x1('10'),
+				$elm$svg$Svg$Attributes$x2('5'),
+				$elm$svg$Svg$Attributes$y1('20'),
+				$elm$svg$Svg$Attributes$y2('20'),
+				$elm$svg$Svg$Attributes$stroke('rgb(215, 153, 33)'),
+				$elm$svg$Svg$Attributes$strokeWidth('2')
+			]),
+		_List_Nil);
+	var rayBottomRight = A2(
+		$elm$svg$Svg$line,
+		_List_fromArray(
+			[
+				$elm$svg$Svg$Attributes$x1('27'),
+				$elm$svg$Svg$Attributes$x2('32'),
+				$elm$svg$Svg$Attributes$y1('28'),
+				$elm$svg$Svg$Attributes$y2('33'),
+				$elm$svg$Svg$Attributes$stroke('rgb(215, 153, 33)'),
+				$elm$svg$Svg$Attributes$strokeWidth('2')
+			]),
+		_List_Nil);
+	var rayBottomLeft = A2(
+		$elm$svg$Svg$line,
+		_List_fromArray(
+			[
+				$elm$svg$Svg$Attributes$x1('13'),
+				$elm$svg$Svg$Attributes$x2('8'),
+				$elm$svg$Svg$Attributes$y1('28'),
+				$elm$svg$Svg$Attributes$y2('33'),
+				$elm$svg$Svg$Attributes$stroke('rgb(215, 153, 33)'),
+				$elm$svg$Svg$Attributes$strokeWidth('2')
+			]),
+		_List_Nil);
+	var rayBottom = A2(
+		$elm$svg$Svg$line,
+		_List_fromArray(
+			[
+				$elm$svg$Svg$Attributes$x1('20'),
+				$elm$svg$Svg$Attributes$x2('20'),
+				$elm$svg$Svg$Attributes$y1('30'),
+				$elm$svg$Svg$Attributes$y2('35'),
+				$elm$svg$Svg$Attributes$stroke('rgb(215, 153, 33)'),
+				$elm$svg$Svg$Attributes$strokeWidth('2')
+			]),
+		_List_Nil);
+	var svg = A2(
+		$elm$svg$Svg$svg,
+		_List_fromArray(
+			[
+				$elm$svg$Svg$Attributes$width('40'),
+				$elm$svg$Svg$Attributes$height('40')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$svg$Svg$circle,
+				_List_fromArray(
+					[
+						$elm$svg$Svg$Attributes$cx('20'),
+						$elm$svg$Svg$Attributes$cy('20'),
+						$elm$svg$Svg$Attributes$r('8'),
+						$elm$svg$Svg$Attributes$fill('rgb(181, 118, 20)')
+					]),
+				_List_Nil),
+				rayTop,
+				rayTopLeft,
+				rayTopRight,
+				rayBottom,
+				rayBottomLeft,
+				rayBottomRight,
+				rayLeft,
+				rayRight
+			]));
+	return $mdgriffith$elm_ui$Element$html(svg);
+}();
 var $author$project$Theme$Types$toBool = function (theme) {
 	return _Utils_eq(theme, $author$project$Theme$Types$Light) ? false : true;
 };
@@ -12183,22 +12312,33 @@ var $author$project$Components$themeSlider = function (model) {
 			model,
 			{theme: $author$project$Theme$Types$Light}),
 		false);
-	var label = {en: 'Theme', fr: 'Thème'};
-	var translatedLabel = $mdgriffith$elm_ui$Element$text(
-		A2($author$project$Translation$translate, label, model.locale));
 	return A2(
-		$mdgriffith$elm_ui$Element$Input$checkbox,
+		$mdgriffith$elm_ui$Element$row,
 		_List_Nil,
-		{
-			checked: $author$project$Theme$Types$toBool(model.theme),
-			icon: function (isChecked) {
-				return isChecked ? sliderOn : sliderOff;
-			},
-			label: A2($mdgriffith$elm_ui$Element$Input$labelAbove, _List_Nil, translatedLabel),
-			onChange: function (isChecked) {
-				return $author$project$Message$ThemeSwitch(isChecked);
-			}
-		});
+		_List_fromArray(
+			[
+				$author$project$Icons$sun,
+				A2(
+				$mdgriffith$elm_ui$Element$Input$checkbox,
+				_List_Nil,
+				{
+					checked: $author$project$Theme$Types$toBool(model.theme),
+					icon: function (isChecked) {
+						return isChecked ? sliderOn : sliderOff;
+					},
+					label: $mdgriffith$elm_ui$Element$Input$labelHidden('Theme switch'),
+					onChange: function (isChecked) {
+						return $author$project$Message$ThemeSwitch(isChecked);
+					}
+				}),
+				A2(
+				$mdgriffith$elm_ui$Element$el,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$padding(5)
+					]),
+				$author$project$Icons$moon(model))
+			]));
 };
 var $author$project$Main$view = function (model) {
 	var theme = _Utils_eq(model.theme, $author$project$Theme$Types$Light) ? $author$project$Theme$GruvboxLight$bg : $author$project$Theme$GruvboxDark$bg;
@@ -12221,8 +12361,7 @@ var $author$project$Main$view = function (model) {
 							$author$project$Components$themeSlider(model),
 							$author$project$Components$languageSlider(model)
 						])),
-					$author$project$Components$heroTitle(model),
-					$author$project$Icons$moon
+					$author$project$Components$heroTitle(model)
 				])));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

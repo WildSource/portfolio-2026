@@ -89,7 +89,6 @@ view model =
                     , Components.languageSlider model
                     ]
               , Components.heroTitle model
-              , Icons.moon
               ]
         )
 
