@@ -5,12 +5,14 @@ import Debug
 
 import Components
 
-import Icons
-
 import Browser
 import Browser.Events as E
 
-import Element
+import Element exposing
+    ( width
+    , fill
+    , alignRight
+    )
 import Element.Background as Background
 
 import Theme.GruvboxLight as GLight
@@ -84,9 +86,9 @@ view model =
         ( Element.column
               []
               [ Element.row
-                    []
+                    [ width fill]
                     [ Components.themeSlider model
-                    , Components.languageSlider model
+                    , Element.el [alignRight] (Components.languageSlider model)
                     ]
               , Components.heroTitle model
               ]

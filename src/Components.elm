@@ -147,7 +147,7 @@ heroTitle model =
             in
                 Element.el [style] (Element.text "Samuel Nguyen-Phok")
 
-        websiteText =
+        heroText =
             let
                 style =
                     if model.theme == Type.Light then
@@ -178,16 +178,56 @@ heroTitle model =
                 _ ->
                     [Font.strike]
 
-        spacingStyle = [Element.padding 20]
+        spacingStyle =
+            [ Element.paddingXY 0 40
+            , Element.spacing 20
+            ]
 
         paragraphStyle =
-            fontStyle ++ deviceStyle ++ themeStyle ++ spacingStyle
+            fontStyle ++ deviceStyle ++ themeStyle
     in
-        Element.paragraph
-            paragraphStyle
-            [ Element.text (T.translate T.firstThirdHeroTitle model.locale)
-            , name
-            , Element.text (T.translate T.secondThirdHeroTitle model.locale)
-            , websiteText
+        Element.column
+            spacingStyle
+            [ Element.paragraph
+                          paragraphStyle
+                          [ Element.text (T.translate T.firstThirdHeroTitle model.locale)
+                          , name
+                          , Element.text (T.translate T.secondThirdHeroTitle model.locale)
+                          , heroText
+                          ]
+            , subHeroTitle model
             ]
-                
+
+
+subHeroTitle : Model -> Element Msg
+subHeroTitle model =
+    let
+        text1 =
+            Element.el
+                [Element.centerX]
+                (Element.text (T.translate T.subHeroTitle1 model.locale))
+        text2 =
+            Element.el
+                [Element.centerX]
+                (Element.text (T.translate T.subHeroTitle2 model.locale))
+        text3 =
+            Element.el
+                [Element.centerX]
+                (Element.text (T.translate T.subHeroTitle3 model.locale))
+    in
+        Element.column
+            [ Element.paddingXY 10 0
+            , Element.width Element.fill
+            , Font.size 15
+            , Font.center
+            , Font.color (GLight.yellowDark)
+            , Font.semiBold
+            , Font.family
+                [ Font.serif]
+            ]
+        [ text1
+        , text2
+        , text3
+        ]
+    
+    

@@ -41,7 +41,27 @@ secondThirdHeroTitle =
     
 lastThirdHeroTitle : Translation
 lastThirdHeroTitle =
-    { en = "websites."
-    , fr = "sites webs."
+    { en = "websites\n"
+    , fr = "sites webs\n"
     }
+
+    
+subHeroTitle1 : Translation
+subHeroTitle1 =
+    { en = "I'm a fullstack developer"
+    , fr = "Je suis un dévelopeur fullstack"
+    }
+
+    
+subHeroTitle2 : Translation
+subHeroTitle2 =
+    { en = " a.k.a. "
+    , fr = " c'est-à-dire "
+    }
+
+subHeroTitle3 : Translation
+subHeroTitle3 =
+    { en = "backend dev that can do frontend dev"
+    , fr = "un dev backend qui peut faire du frontend"
+    }        
     
