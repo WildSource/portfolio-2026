@@ -65,3 +65,11 @@ subHeroTitle3 =
     , fr = "un dev backend qui peut faire du frontend"
     }        
     
+
+about : Translation
+about =
+    { en = "I'm based in Quebec, Canada."
+    , fr = "Je suis basé au Québec dans le Canada."
+    }
+
+    

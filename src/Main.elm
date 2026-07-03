@@ -3,7 +3,9 @@ module Main exposing (..)
 
 import Debug
 
-import Components
+import Components.ThemeSlider as ThemeSlider
+import Components.LanguageSlider as LanguageSlider
+import Components.HeroText as HeroText
 
 import Browser
 import Browser.Events as E
@@ -87,10 +89,10 @@ view model =
               []
               [ Element.row
                     [ width fill]
-                    [ Components.themeSlider model
-                    , Element.el [alignRight] (Components.languageSlider model)
+                    [ ThemeSlider.element model
+                    , Element.el [alignRight] (LanguageSlider.element model)
                     ]
-              , Components.heroTitle model
+              , HeroText.element model
               ]
         )
 
