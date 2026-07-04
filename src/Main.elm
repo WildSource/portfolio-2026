@@ -1,9 +1,8 @@
-
 module Main exposing (..)
 
-import Debug
-import Browser
-import Component
+import Browser exposing (Document)
+
+import Component exposing (debugBorder)
 
 import Translation as T
 import Components.ThemeSlider as ThemeSlider
@@ -11,6 +10,7 @@ import Components.LanguageSlider as LanguageSlider
 import Components.HeroText as HeroText
 import Components.Card as Card
 import Components.Socials as Socials
+import Components.Footer as Footer
 import Browser.Events as E
 
 
@@ -37,7 +37,7 @@ import Html exposing (Html)
     
 main : Program Flags Model Msg
 main =
-    Browser.element
+    Browser.document
        { init = init 
        , view = view
        , update = update
@@ -77,7 +77,7 @@ init flags =
         )
 
             
-view : Model -> Html Msg
+view : Model -> Document Msg
 view model =
     let
         theme =
@@ -85,32 +85,45 @@ view model =
                 GLight.bg
             else
                 GDark.bg
+
+        sliders =
+            Element.row
+                [ width fill
+                , Element.padding 10
+                ]
+                [ ThemeSlider.element model
+                , Element.el [alignRight] (LanguageSlider.element model)
+                ]
+                
         mainContent =
             Element.column
                 [ Element.centerX
                 , Element.width Element.fill
-                , Element.padding 20
+                , Element.height Element.fill
                 , Element.spacing 20
+                , Element.paddingXY 0 20
                 ]
                 [ Card.element model T.aboutTitle T.aboutContent
                 , Card.element model T.experiencesTitle T.experiencesContent
                 , Card.element model T.technologyTitle T.technologyContent
+                , Card.element model T.projectsTitle T.projectsContent
                 ]
     in
-        Element.layout
-        [ Background.color theme ]
-        ( Element.column
-              []
-              [ Element.row
-                    [ width fill]
-                    [ ThemeSlider.element model
-                    , Element.el [alignRight] (LanguageSlider.element model)
-                    ]
-              , HeroText.element model
-              , Socials.element
-              , mainContent
+        { title = "Samuel Nguyen-Phok"
+        , body =
+              [ Element.layout
+                    [ Background.color theme ]
+                    ( Element.column
+                          []
+                          [ sliders
+                          , HeroText.element model
+                          , Socials.element 
+                          , mainContent
+                          , Footer.element model
+                          ]
+                    )             
               ]
-        )
+        }
 
         
 update : Msg -> Model -> (Model, Cmd Msg)

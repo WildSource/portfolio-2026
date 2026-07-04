@@ -82,6 +82,12 @@ element model =
 subHeroTitle : Model -> Element Msg
 subHeroTitle model =
     let
+        fontColor =
+            if model.theme == Light then
+                GLight.yellowDark
+            else
+                GDark.yellowLight
+                    
         text1 =
             Element.el
                 [Element.centerX]
@@ -100,7 +106,7 @@ subHeroTitle model =
             , Element.width Element.fill
             , Font.size 15
             , Font.center
-            , Font.color (GLight.yellowDark)
+            , Font.color fontColor
             , Font.semiBold
             , Font.family
                 [ Font.serif]

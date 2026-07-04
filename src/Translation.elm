@@ -107,4 +107,15 @@ technologyContent =
     , fr = "Contenu sur les technologies"
     }
 
-    
+projectsTitle : Translation
+projectsTitle =
+    { en = "Projects"
+    , fr = "Projets"
+    }
+
+projectsContent : Translation
+projectsContent =
+    { en = "Content about my projects"
+    , fr = "Contenu sur mes projets"
+    }
+                
