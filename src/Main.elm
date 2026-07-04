@@ -10,6 +10,7 @@ import Components.ThemeSlider as ThemeSlider
 import Components.LanguageSlider as LanguageSlider
 import Components.HeroText as HeroText
 import Components.Card as Card
+import Components.Socials as Socials
 import Browser.Events as E
 
 
@@ -106,6 +107,7 @@ view model =
                     , Element.el [alignRight] (LanguageSlider.element model)
                     ]
               , HeroText.element model
+              , Socials.element
               , mainContent
               ]
         )
