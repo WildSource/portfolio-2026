@@ -5204,7 +5204,7 @@ var $elm$core$Task$perform = F2(
 			$elm$core$Task$Perform(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
-var $elm$browser$Browser$element = _Browser_element;
+var $elm$browser$Browser$document = _Browser_document;
 var $elm$json$Json$Decode$field = _Json_decodeField;
 var $author$project$Translation$EN = {$: 'EN'};
 var $author$project$Translation$FR = {$: 'FR'};
@@ -11283,6 +11283,7 @@ var $mdgriffith$elm_ui$Element$el = F2(
 					[child])));
 	});
 var $author$project$Themes$GruvboxLight$blueDark = A3($mdgriffith$elm_ui$Element$rgb255, 7, 102, 120);
+var $author$project$Themes$GruvboxDark$blueLight = A3($mdgriffith$elm_ui$Element$rgb255, 131, 165, 152);
 var $mdgriffith$elm_ui$Internal$Model$Class = F2(
 	function (a, b) {
 		return {$: 'Class', a: a, b: b};
@@ -11353,6 +11354,7 @@ var $mdgriffith$elm_ui$Element$Font$family = function (families) {
 			A3($elm$core$List$foldl, $mdgriffith$elm_ui$Internal$Model$renderFontClassName, 'ff-', families),
 			families));
 };
+var $author$project$Themes$GruvboxDark$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
 var $author$project$Themes$GruvboxLight$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 40, 40, 40);
 var $mdgriffith$elm_ui$Internal$Model$Fill = function (a) {
 	return {$: 'Fill', a: a};
@@ -11433,11 +11435,12 @@ var $author$project$Components$Card$element = F3(
 	function (model, title, content) {
 		var titleText = function () {
 			var text = _Utils_eq(model.locale, $author$project$Translation$EN) ? title.en : title.fr;
+			var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$blueDark : $author$project$Themes$GruvboxDark$blueLight;
 			return A2(
 				$mdgriffith$elm_ui$Element$el,
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$blueDark),
+						$mdgriffith$elm_ui$Element$Font$color(fontColor),
 						$mdgriffith$elm_ui$Element$Font$bold,
 						$mdgriffith$elm_ui$Element$Font$family(
 						_List_fromArray(
@@ -11449,11 +11452,12 @@ var $author$project$Components$Card$element = F3(
 		}();
 		var contentText = function () {
 			var text = _Utils_eq(model.locale, $author$project$Translation$EN) ? content.en : content.fr;
+			var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
 			return A2(
 				$mdgriffith$elm_ui$Element$paragraph,
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$fg0),
+						$mdgriffith$elm_ui$Element$Font$color(fontColor),
 						$mdgriffith$elm_ui$Element$Font$family(
 						_List_fromArray(
 							[$mdgriffith$elm_ui$Element$Font$serif]))
@@ -11479,6 +11483,7 @@ var $mdgriffith$elm_ui$Internal$Model$AlignY = function (a) {
 };
 var $mdgriffith$elm_ui$Internal$Model$Bottom = {$: 'Bottom'};
 var $mdgriffith$elm_ui$Element$alignBottom = $mdgriffith$elm_ui$Internal$Model$AlignY($mdgriffith$elm_ui$Internal$Model$Bottom);
+var $author$project$Themes$GruvboxDark$bg1 = A3($mdgriffith$elm_ui$Element$rgb255, 60, 56, 54);
 var $author$project$Themes$GruvboxLight$bg1 = A3($mdgriffith$elm_ui$Element$rgb255, 235, 219, 178);
 var $mdgriffith$elm_ui$Internal$Model$FontSize = function (a) {
 	return {$: 'FontSize', a: a};
@@ -11490,29 +11495,29 @@ var $mdgriffith$elm_ui$Element$Font$size = function (i) {
 		$mdgriffith$elm_ui$Internal$Flag$fontSize,
 		$mdgriffith$elm_ui$Internal$Model$FontSize(i));
 };
-var $author$project$Components$Footer$element = function () {
+var $author$project$Components$Footer$element = function (model) {
+	var footerColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg1 : $author$project$Themes$GruvboxDark$bg1;
 	var style = _List_fromArray(
 		[
 			$mdgriffith$elm_ui$Element$padding(20),
 			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
 			$mdgriffith$elm_ui$Element$alignBottom,
-			$mdgriffith$elm_ui$Element$Background$color($author$project$Themes$GruvboxLight$bg1)
+			$mdgriffith$elm_ui$Element$Background$color(footerColor)
 		]);
+	var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
 	var copyright = A2(
 		$mdgriffith$elm_ui$Element$el,
 		_List_fromArray(
 			[
 				$mdgriffith$elm_ui$Element$centerX,
-				$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$fg0),
+				$mdgriffith$elm_ui$Element$Font$color(fontColor),
 				$mdgriffith$elm_ui$Element$Font$size(15)
 			]),
 		$mdgriffith$elm_ui$Element$text('© 2026 Samuel Nguyen-Phok. All rights reserved.'));
 	return A2($mdgriffith$elm_ui$Element$el, style, copyright);
-}();
-var $author$project$Themes$GruvboxDark$blueLight = A3($mdgriffith$elm_ui$Element$rgb255, 131, 165, 152);
+};
 var $mdgriffith$elm_ui$Internal$Flag$fontAlignment = $mdgriffith$elm_ui$Internal$Flag$flag(12);
 var $mdgriffith$elm_ui$Element$Font$center = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontAlignment, $mdgriffith$elm_ui$Internal$Style$classes.textCenter);
-var $author$project$Themes$GruvboxDark$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
 var $author$project$Translation$firstThirdHeroTitle = {en: 'Hi, I\'m ', fr: 'Bonjour, je m\'appelle '};
 var $author$project$Themes$GruvboxLight$greenDark = A3($mdgriffith$elm_ui$Element$rgb255, 121, 116, 14);
 var $author$project$Themes$GruvboxDark$greenLight = A3($mdgriffith$elm_ui$Element$rgb255, 184, 187, 38);
@@ -11558,6 +11563,7 @@ var $author$project$Translation$translate = F2(
 		return _Utils_eq(language, $author$project$Translation$FR) ? translation.fr : translation.en;
 	});
 var $author$project$Themes$GruvboxLight$yellowDark = A3($mdgriffith$elm_ui$Element$rgb255, 181, 118, 20);
+var $author$project$Themes$GruvboxDark$yellowLight = A3($mdgriffith$elm_ui$Element$rgb255, 250, 189, 47);
 var $author$project$Components$HeroText$subHeroTitle = function (model) {
 	var text3 = A2(
 		$mdgriffith$elm_ui$Element$el,
@@ -11577,6 +11583,7 @@ var $author$project$Components$HeroText$subHeroTitle = function (model) {
 			[$mdgriffith$elm_ui$Element$centerX]),
 		$mdgriffith$elm_ui$Element$text(
 			A2($author$project$Translation$translate, $author$project$Translation$subHeroTitle1, model.locale)));
+	var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$yellowDark : $author$project$Themes$GruvboxDark$yellowLight;
 	return A2(
 		$mdgriffith$elm_ui$Element$column,
 		_List_fromArray(
@@ -11585,7 +11592,7 @@ var $author$project$Components$HeroText$subHeroTitle = function (model) {
 				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
 				$mdgriffith$elm_ui$Element$Font$size(15),
 				$mdgriffith$elm_ui$Element$Font$center,
-				$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$yellowDark),
+				$mdgriffith$elm_ui$Element$Font$color(fontColor),
 				$mdgriffith$elm_ui$Element$Font$semiBold,
 				$mdgriffith$elm_ui$Element$Font$family(
 				_List_fromArray(
@@ -12023,6 +12030,7 @@ var $author$project$Component$slider = F2(
 var $author$project$Components$LanguageSlider$element = function (model) {
 	var sliderOn = A2($author$project$Component$slider, model, true);
 	var sliderOff = A2($author$project$Component$slider, model, false);
+	var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
 	var checked = _Utils_eq(model.locale, $author$project$Translation$EN) ? false : true;
 	return A2(
 		$mdgriffith$elm_ui$Element$row,
@@ -12032,7 +12040,13 @@ var $author$project$Components$LanguageSlider$element = function (model) {
 			]),
 		_List_fromArray(
 			[
-				$mdgriffith$elm_ui$Element$text('EN'),
+				A2(
+				$mdgriffith$elm_ui$Element$el,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Font$color(fontColor)
+					]),
+				$mdgriffith$elm_ui$Element$text('EN')),
 				A2(
 				$mdgriffith$elm_ui$Element$Input$checkbox,
 				_List_Nil,
@@ -12050,7 +12064,8 @@ var $author$project$Components$LanguageSlider$element = function (model) {
 				$mdgriffith$elm_ui$Element$el,
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$padding(10)
+						$mdgriffith$elm_ui$Element$padding(10),
+						$mdgriffith$elm_ui$Element$Font$color(fontColor)
 					]),
 				$mdgriffith$elm_ui$Element$text('FR'))
 			]));
@@ -12531,24 +12546,30 @@ var $author$project$Main$view = function (model) {
 				A3($author$project$Components$Card$element, model, $author$project$Translation$technologyTitle, $author$project$Translation$technologyContent),
 				A3($author$project$Components$Card$element, model, $author$project$Translation$projectsTitle, $author$project$Translation$projectsContent)
 			]));
-	return A2(
-		$mdgriffith$elm_ui$Element$layout,
-		_List_fromArray(
+	return {
+		body: _List_fromArray(
 			[
-				$mdgriffith$elm_ui$Element$Background$color(theme)
+				A2(
+				$mdgriffith$elm_ui$Element$layout,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Background$color(theme)
+					]),
+				A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_Nil,
+					_List_fromArray(
+						[
+							sliders,
+							$author$project$Components$HeroText$element(model),
+							mainContent,
+							$author$project$Components$Footer$element(model)
+						])))
 			]),
-		A2(
-			$mdgriffith$elm_ui$Element$column,
-			_List_Nil,
-			_List_fromArray(
-				[
-					sliders,
-					$author$project$Components$HeroText$element(model),
-					mainContent,
-					$author$project$Components$Footer$element
-				])));
+		title: 'Samuel Nguyen-Phok'
+	};
 };
-var $author$project$Main$main = $elm$browser$Browser$element(
+var $author$project$Main$main = $elm$browser$Browser$document(
 	{init: $author$project$Main$init, subscriptions: $author$project$Main$subscriptions, update: $author$project$Main$update, view: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	A2(

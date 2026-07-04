@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Browser
+import Browser exposing (Document)
 
 import Component exposing (debugBorder)
 
@@ -36,7 +36,7 @@ import Html exposing (Html)
     
 main : Program Flags Model Msg
 main =
-    Browser.element
+    Browser.document
        { init = init 
        , view = view
        , update = update
@@ -76,7 +76,7 @@ init flags =
         )
 
             
-view : Model -> Html Msg
+view : Model -> Document Msg
 view model =
     let
         theme =
@@ -108,16 +108,21 @@ view model =
                 , Card.element model T.projectsTitle T.projectsContent
                 ]
     in
-        Element.layout
-        [ Background.color theme ]
-        ( Element.column
-              []
-              [ sliders
-              , HeroText.element model
-              , mainContent
-              , Footer.element
-              ]
-        )
+        { title = "Samuel Nguyen-Phok"
+        , body =
+            [ Element.layout
+                  [ Background.color theme ]
+                  ( Element.column
+                        []
+                        [ sliders
+                        , HeroText.element model
+                        , mainContent
+                        , Footer.element model
+                        ]
+                  )             
+            ]
+        }
+
 
         
 update : Msg -> Model -> (Model, Cmd Msg)

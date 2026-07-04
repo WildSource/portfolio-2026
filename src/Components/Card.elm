@@ -2,6 +2,7 @@ module Components.Card exposing (element)
 
 import Message exposing (Msg)
 import Model exposing (Model)
+import Theme exposing (Theme (..))
 import Translation exposing
     ( Translation
     , Language (..)
@@ -11,12 +12,12 @@ import Element exposing
     , fill
     )
 
-import Element.Border as Border
 import Element.Font as Font
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
 type alias Title = Translation
+    
 type alias Content = Translation
     
 
@@ -30,9 +31,15 @@ element model title content =
                         title.en
                     else
                         title.fr
+                            
+                fontColor =
+                    if model.theme == Light then
+                        GLight.blueDark
+                    else
+                        GDark.blueLight
             in
                 Element.el
-                    [ Font.color GLight.blueDark
+                    [ Font.color fontColor
                     , Font.bold
                     , Font.family
                           [Font.typeface "Josefin Sans"]
@@ -46,9 +53,14 @@ element model title content =
                         content.en
                     else
                         content.fr
+                fontColor =
+                    if model.theme == Light then
+                        GLight.fg0
+                    else
+                        GDark.fg0
             in
                 Element.paragraph
-                    [ Font.color GLight.fg0
+                    [ Font.color fontColor
                     , Font.family
                           [Font.serif]
                     ]
