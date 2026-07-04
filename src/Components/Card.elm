@@ -12,6 +12,9 @@ import Element exposing
     )
 
 import Element.Border as Border
+import Element.Font as Font
+import Themes.GruvboxLight as GLight
+import Themes.GruvboxDark as GDark
 
 type alias Title = Translation
 type alias Content = Translation
@@ -28,7 +31,13 @@ element model title content =
                     else
                         title.fr
             in
-                Element.el [] (Element.text text)
+                Element.el
+                    [ Font.color GLight.blueDark
+                    , Font.bold
+                    , Font.family
+                          [Font.typeface "Josefin Sans"]
+                    ]
+                    (Element.text text)
 
         contentText =
             let
@@ -39,12 +48,14 @@ element model title content =
                         content.fr
             in
                 Element.paragraph
-                    []
+                    [ Font.color GLight.fg0
+                    , Font.family
+                          [Font.serif]
+                    ]
                     [Element.text text]
     in
         Element.column
-            [ Border.width 1
-            , Element.padding 20
+            [ Element.padding 20
             , Element.spacing 10
             , Element.width fill
             ]
