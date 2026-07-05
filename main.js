@@ -12070,46 +12070,6 @@ var $author$project$Components$LanguageSlider$element = function (model) {
 				$mdgriffith$elm_ui$Element$text('FR'))
 			]));
 };
-var $mdgriffith$elm_ui$Internal$Flag$borderColor = $mdgriffith$elm_ui$Internal$Flag$flag(28);
-var $mdgriffith$elm_ui$Element$Border$color = function (clr) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$borderColor,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$Colored,
-			'bc-' + $mdgriffith$elm_ui$Internal$Model$formatColorClass(clr),
-			'border-color',
-			clr));
-};
-var $mdgriffith$elm_ui$Element$rgb = F3(
-	function (r, g, b) {
-		return A4($mdgriffith$elm_ui$Internal$Model$Rgba, r, g, b, 1);
-	});
-var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
-	function (a, b, c, d, e) {
-		return {$: 'BorderWidth', a: a, b: b, c: c, d: d, e: e};
-	});
-var $mdgriffith$elm_ui$Element$Border$width = function (v) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$borderWidth,
-		A5(
-			$mdgriffith$elm_ui$Internal$Model$BorderWidth,
-			'b-' + $elm$core$String$fromInt(v),
-			v,
-			v,
-			v,
-			v));
-};
-var $author$project$Component$debugBorder = function (attributes) {
-	var debugBorderStyle = _List_fromArray(
-		[
-			$mdgriffith$elm_ui$Element$Border$width(2),
-			$mdgriffith$elm_ui$Element$Border$color(
-			A3($mdgriffith$elm_ui$Element$rgb, 1, 0, 0))
-		]);
-	return _Utils_ap(attributes, debugBorderStyle);
-};
 var $author$project$Components$Socials$iconsPath = '/assets/icons/';
 var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
 var $elm$html$Html$Attributes$src = function (url) {
@@ -12207,23 +12167,29 @@ var $author$project$Components$Socials$social = F3(
 			{
 				label: A2(
 					$mdgriffith$elm_ui$Element$image,
-					_List_Nil,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$width(
+							$mdgriffith$elm_ui$Element$px(60)),
+							$mdgriffith$elm_ui$Element$height(
+							$mdgriffith$elm_ui$Element$px(60))
+						]),
 					{description: imgDesc, src: imgSrc}),
 				url: url
 			});
 	});
 var $author$project$Components$Socials$element = A2(
 	$mdgriffith$elm_ui$Element$row,
-	$author$project$Component$debugBorder(
-		_List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-				$mdgriffith$elm_ui$Element$spacing(10),
-				$mdgriffith$elm_ui$Element$padding(20)
-			])),
 	_List_fromArray(
 		[
-			A3($author$project$Components$Socials$social, 'https://github.com/WildSource', $author$project$Components$Socials$iconsPath + 'GitHub_Invertocat_Black.svg', 'GitHub Invertocat Black Logo')
+			$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+			$mdgriffith$elm_ui$Element$spacing(40),
+			A2($mdgriffith$elm_ui$Element$paddingXY, 30, 10)
+		]),
+	_List_fromArray(
+		[
+			A3($author$project$Components$Socials$social, 'https://github.com/WildSource', $author$project$Components$Socials$iconsPath + 'GitHub_Invertocat_Black.svg', 'Clickable GitHub Invertocat Black Logo'),
+			A3($author$project$Components$Socials$social, 'mailto:samuelnguyenphok@gmail.com', $author$project$Components$Socials$iconsPath + 'google_mail_gmail_logo_icon.svg', 'Clickable Gmail Logo')
 		]));
 var $author$project$Message$ThemeSwitch = function (a) {
 	return {$: 'ThemeSwitch', a: a};
