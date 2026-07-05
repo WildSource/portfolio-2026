@@ -73,24 +73,10 @@ aboutTitle =
     }
 
     
-aboutContent : Translation
-aboutContent =
-    { en = "Content about me"
-    , fr = "Contenu sur moi"
-    }
-
-    
 experiencesTitle : Translation
 experiencesTitle =
     { en = "My experiences"
     , fr = "Mes expériences"
-    }
-
-    
-experiencesContent : Translation
-experiencesContent =
-    { en = "Content on my experiences"
-    , fr = "Contenu sur mes expériences"
     }
 
     
@@ -101,21 +87,10 @@ technologyTitle =
     }
 
     
-technologyContent : Translation
-technologyContent =
-    { en = "Content on technologies"
-    , fr = "Contenu sur les technologies"
-    }
-
 projectsTitle : Translation
 projectsTitle =
     { en = "Projects"
     , fr = "Projets"
     }
 
-projectsContent : Translation
-projectsContent =
-    { en = "Content about my projects"
-    , fr = "Contenu sur mes projets"
-    }
-                
+    

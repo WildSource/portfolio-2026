@@ -4,13 +4,12 @@ import Browser exposing (Document)
 
 import Component exposing (debugBorder)
 
-import Translation as T
 import Components.ThemeSlider as ThemeSlider
 import Components.LanguageSlider as LanguageSlider
 import Components.HeroText as HeroText
-import Components.Card as Card
 import Components.Socials as Socials
 import Components.Footer as Footer
+import Components.MainContent as MainContent
 import Browser.Events as E
 
 
@@ -94,20 +93,6 @@ view model =
                 [ ThemeSlider.element model
                 , Element.el [alignRight] (LanguageSlider.element model)
                 ]
-                
-        mainContent =
-            Element.column
-                [ Element.centerX
-                , Element.width Element.fill
-                , Element.height Element.fill
-                , Element.spacing 20
-                , Element.paddingXY 0 20
-                ]
-                [ Card.element model T.aboutTitle T.aboutContent
-                , Card.element model T.experiencesTitle T.experiencesContent
-                , Card.element model T.technologyTitle T.technologyContent
-                , Card.element model T.projectsTitle T.projectsContent
-                ]
     in
         { title = "Samuel Nguyen-Phok"
         , body =
@@ -117,8 +102,8 @@ view model =
                           []
                           [ sliders
                           , HeroText.element model
-                          , Socials.element 
-                          , mainContent
+                          , Socials.element model
+                          , MainContent.element model
                           , Footer.element model
                           ]
                     )             

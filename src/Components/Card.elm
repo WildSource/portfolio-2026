@@ -16,12 +16,8 @@ import Element.Font as Font
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
-type alias Title = Translation
-    
-type alias Content = Translation
-    
 
-element : Model -> Title -> Content -> Element Msg    
+element : Model -> Translation -> Element Msg -> Element Msg    
 element model title content =
     let
         titleText =
@@ -45,26 +41,6 @@ element model title content =
                           [Font.typeface "Josefin Sans"]
                     ]
                     (Element.text text)
-
-        contentText =
-            let
-                text =
-                    if model.locale == EN then
-                        content.en
-                    else
-                        content.fr
-                fontColor =
-                    if model.theme == Light then
-                        GLight.fg0
-                    else
-                        GDark.fg0
-            in
-                Element.paragraph
-                    [ Font.color fontColor
-                    , Font.family
-                          [Font.serif]
-                    ]
-                    [Element.text text]
     in
         Element.column
             [ Element.padding 20
@@ -72,6 +48,6 @@ element model title content =
             , Element.width fill
             ]
             [ titleText
-            , contentText
+            , content
             ]
     
