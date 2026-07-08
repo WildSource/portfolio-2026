@@ -12054,38 +12054,39 @@ var $author$project$Components$Card$element = F3(
 	});
 var $author$project$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
 var $author$project$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
-var $author$project$Translation$technologyTitle = {en: 'Technologies', fr: 'Technologies'};
-var $author$project$Components$MainContent$element = function (model) {
-	var technologyContent = A2(
-		$mdgriffith$elm_ui$Element$paragraph,
+var $author$project$Components$MainContent$technologyContent = function (model) {
+	var libraryFrameworkSection = A2(
+		$mdgriffith$elm_ui$Element$column,
 		_List_Nil,
 		_List_fromArray(
 			[
-				A2(
-				$mdgriffith$elm_ui$Element$column,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$text('Haskell'),
-						$mdgriffith$elm_ui$Element$text('Java'),
-						$mdgriffith$elm_ui$Element$text('Elm'),
-						$mdgriffith$elm_ui$Element$text('Javascript'),
-						$mdgriffith$elm_ui$Element$text('Typescript'),
-						$mdgriffith$elm_ui$Element$text('Php')
-					])),
-				A2(
-				$mdgriffith$elm_ui$Element$column,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$text('Spring Boot'),
-						$mdgriffith$elm_ui$Element$text('React'),
-						$mdgriffith$elm_ui$Element$text('Angular'),
-						$mdgriffith$elm_ui$Element$text('Elm'),
-						$mdgriffith$elm_ui$Element$text('Scotty'),
-						$mdgriffith$elm_ui$Element$text('Servant')
-					]))
+				$mdgriffith$elm_ui$Element$text('Spring Boot'),
+				$mdgriffith$elm_ui$Element$text('React'),
+				$mdgriffith$elm_ui$Element$text('Angular'),
+				$mdgriffith$elm_ui$Element$text('Elm'),
+				$mdgriffith$elm_ui$Element$text('Scotty'),
+				$mdgriffith$elm_ui$Element$text('Servant')
 			]));
+	var languageSection = A2(
+		$mdgriffith$elm_ui$Element$column,
+		_List_Nil,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$text('Haskell'),
+				$mdgriffith$elm_ui$Element$text('Java'),
+				$mdgriffith$elm_ui$Element$text('Elm'),
+				$mdgriffith$elm_ui$Element$text('Javascript'),
+				$mdgriffith$elm_ui$Element$text('Typescript'),
+				$mdgriffith$elm_ui$Element$text('Php')
+			]));
+	return A2(
+		$mdgriffith$elm_ui$Element$paragraph,
+		_List_Nil,
+		_List_fromArray(
+			[languageSection, libraryFrameworkSection]));
+};
+var $author$project$Translation$technologyTitle = {en: 'Technologies', fr: 'Technologies'};
+var $author$project$Components$MainContent$element = function (model) {
 	var projectsContent = A2(
 		$mdgriffith$elm_ui$Element$paragraph,
 		_List_Nil,
@@ -12097,9 +12098,11 @@ var $author$project$Components$MainContent$element = function (model) {
 				_List_fromArray(
 					[
 						$mdgriffith$elm_ui$Element$text('Adult Webcomic Website'),
-						$mdgriffith$elm_ui$Element$text('Portfolio (2023)')
+						$mdgriffith$elm_ui$Element$text('Portfolio (2023)'),
+						$mdgriffith$elm_ui$Element$text('La Voûte - ')
 					]))
 			]));
+	var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
 	var experiencesContent = function () {
 		var titleTranslation = {en: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)', fr: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)'};
 		var titleText = _Utils_eq(model.locale, $author$project$Translation$EN) ? titleTranslation.en : titleTranslation.fr;
@@ -12130,13 +12133,22 @@ var $author$project$Components$MainContent$element = function (model) {
 				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
 				$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
 				$mdgriffith$elm_ui$Element$spacing(20),
-				A2($mdgriffith$elm_ui$Element$paddingXY, 0, 20)
+				A2($mdgriffith$elm_ui$Element$paddingXY, 0, 20),
+				$mdgriffith$elm_ui$Element$Font$size(15),
+				$mdgriffith$elm_ui$Element$Font$color(fontColor),
+				$mdgriffith$elm_ui$Element$Font$family(
+				_List_fromArray(
+					[$mdgriffith$elm_ui$Element$Font$serif]))
 			]),
 		_List_fromArray(
 			[
 				A3($author$project$Components$Card$element, model, $author$project$Translation$aboutTitle, aboutContent),
 				A3($author$project$Components$Card$element, model, $author$project$Translation$experiencesTitle, experiencesContent),
-				A3($author$project$Components$Card$element, model, $author$project$Translation$technologyTitle, technologyContent),
+				A3(
+				$author$project$Components$Card$element,
+				model,
+				$author$project$Translation$technologyTitle,
+				$author$project$Components$MainContent$technologyContent(model)),
 				A3($author$project$Components$Card$element, model, $author$project$Translation$projectsTitle, projectsContent)
 			]));
 };
