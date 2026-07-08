@@ -12020,6 +12020,36 @@ var $author$project$Components$LanguageSlider$element = function (model) {
 				$mdgriffith$elm_ui$Element$text('FR'))
 			]));
 };
+var $author$project$Translation$aboutContent1 = {en: 'Based in Quebec Canada, I have experience in web development in various programming languages and technologies.', fr: 'Basé au Québec, j\'ai de l\'expérience en développement d\'application web dans de nombreux language de programmation et technologies diverses.'};
+var $author$project$Translation$aboutContent2 = {en: 'I specialize and prefer to work on the backend but I am fully capable to do fullstack development.', fr: 'Je suis spécialisé et préfère le développement backend cependant, j\'ai les aptitudes pour concevoir une application fullstack complète.'};
+var $author$project$Translation$aboutContent3 = {en: 'I am bilingual and able to speak both french and english fluently.', fr: 'Je suis bilingue et je suis capable de parler le français et l\'anglais couramment.'};
+var $author$project$Translation$aboutContent4 = {en: 'I am open to work remotely.', fr: 'Ma localisation géographique ne m\'empêche pas de travailler à distance, donc je suis ouvert au télétravail.'};
+var $author$project$Components$MainContent$aboutContent = function (model) {
+	var translations = _List_fromArray(
+		[$author$project$Translation$aboutContent1, $author$project$Translation$aboutContent2, $author$project$Translation$aboutContent3, $author$project$Translation$aboutContent4]);
+	var content = A2(
+		$elm$core$List$map,
+		$mdgriffith$elm_ui$Element$text,
+		A2(
+			$elm$core$List$map,
+			function (translation) {
+				return _Utils_eq(model.locale, $author$project$Translation$EN) ? translation.en : translation.fr;
+			},
+			translations));
+	return A2(
+		$mdgriffith$elm_ui$Element$paragraph,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$mdgriffith$elm_ui$Element$column,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$spacing(10)
+					]),
+				content)
+			]));
+};
 var $author$project$Translation$aboutTitle = {en: 'About me', fr: 'À propos de moi'};
 var $mdgriffith$elm_ui$Element$Font$bold = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.bold);
 var $author$project$Components$Card$element = F3(
@@ -12033,6 +12063,7 @@ var $author$project$Components$Card$element = F3(
 					[
 						$mdgriffith$elm_ui$Element$Font$color(fontColor),
 						$mdgriffith$elm_ui$Element$Font$bold,
+						$mdgriffith$elm_ui$Element$Font$size(20),
 						$mdgriffith$elm_ui$Element$Font$family(
 						_List_fromArray(
 							[
@@ -12052,32 +12083,138 @@ var $author$project$Components$Card$element = F3(
 			_List_fromArray(
 				[titleText, content]));
 	});
-var $author$project$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
-var $author$project$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
-var $author$project$Components$MainContent$technologyContent = function (model) {
-	var libraryFrameworkSection = A2(
-		$mdgriffith$elm_ui$Element$column,
+var $author$project$Translation$experienceContentP1 = {en: 'During my internship at RMAAQ, I developed fullstack internal web applications in PHP using the Laravel framework, used daily by Board Members and administrative staff.', fr: ''};
+var $author$project$Translation$experienceContentP2 = {en: 'I designed and implemented a document synchronization system that transferred legal documents from NextCloud to the server\'s file system and website database, later adapting it to integrate with Microsoft SharePoint via the Microsoft Graph API.', fr: ''};
+var $author$project$Translation$experienceContentP3 = {en: 'I implemented automated PDF generation using the DomPDF library, enabling documents to be emailed directly to relevant parties.', fr: ''};
+var $author$project$Translation$experienceContentP4 = {en: 'I also built the intake system for legal requests submitted through RMAAQ\'s public website, allowing agricultural workers to file requests on various regulatory matters, and synchronized the incoming data across NextCloud, SharePoint, and the internal database.', fr: ''};
+var $author$project$Translation$experienceContentP5 = {en: 'Originally planned as a standard 3–4 month internship, I was retained for a full year due to strong performance and ongoing project needs.', fr: ''};
+var $author$project$Components$MainContent$experiencesContent = function (model) {
+	var titleTranslation = {en: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\n', fr: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\n'};
+	var titleText = _Utils_eq(model.locale, $author$project$Translation$EN) ? titleTranslation.en : titleTranslation.fr;
+	var titleColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$greenDark : $author$project$Themes$GruvboxDark$greenLight;
+	var p5Translated = _Utils_eq(model.locale, $author$project$Translation$EN) ? $author$project$Translation$experienceContentP5.en : $author$project$Translation$experienceContentP5.fr;
+	var p4Translated = _Utils_eq(model.locale, $author$project$Translation$EN) ? $author$project$Translation$experienceContentP4.en : $author$project$Translation$experienceContentP4.fr;
+	var p3Translated = _Utils_eq(model.locale, $author$project$Translation$EN) ? $author$project$Translation$experienceContentP3.en : $author$project$Translation$experienceContentP3.fr;
+	var p2Translated = _Utils_eq(model.locale, $author$project$Translation$EN) ? $author$project$Translation$experienceContentP2.en : $author$project$Translation$experienceContentP2.fr;
+	var p1Translated = _Utils_eq(model.locale, $author$project$Translation$EN) ? $author$project$Translation$experienceContentP1.en : $author$project$Translation$experienceContentP1.fr;
+	return A2(
+		$mdgriffith$elm_ui$Element$paragraph,
 		_List_Nil,
 		_List_fromArray(
 			[
+				A2(
+				$mdgriffith$elm_ui$Element$column,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$spacing(10)
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$mdgriffith$elm_ui$Element$el,
+						_List_fromArray(
+							[
+								$mdgriffith$elm_ui$Element$Font$semiBold,
+								$mdgriffith$elm_ui$Element$Font$color(titleColor)
+							]),
+						$mdgriffith$elm_ui$Element$text(titleText)),
+						$mdgriffith$elm_ui$Element$text(p1Translated),
+						$mdgriffith$elm_ui$Element$text(p2Translated),
+						$mdgriffith$elm_ui$Element$text(p3Translated),
+						$mdgriffith$elm_ui$Element$text(p4Translated),
+						$mdgriffith$elm_ui$Element$text(p5Translated)
+					]))
+			]));
+};
+var $author$project$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
+var $author$project$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
+var $author$project$Themes$GruvboxLight$aquaDark = A3($mdgriffith$elm_ui$Element$rgb255, 66, 123, 88);
+var $author$project$Themes$GruvboxDark$aquaLight = A3($mdgriffith$elm_ui$Element$rgb255, 142, 192, 124);
+var $mdgriffith$elm_ui$Internal$Flag$borderColor = $mdgriffith$elm_ui$Internal$Flag$flag(28);
+var $mdgriffith$elm_ui$Element$Border$color = function (clr) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$borderColor,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$Colored,
+			'bc-' + $mdgriffith$elm_ui$Internal$Model$formatColorClass(clr),
+			'border-color',
+			clr));
+};
+var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
+	function (a, b, c, d, e) {
+		return {$: 'BorderWidth', a: a, b: b, c: c, d: d, e: e};
+	});
+var $mdgriffith$elm_ui$Element$Border$width = function (v) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$borderWidth,
+		A5(
+			$mdgriffith$elm_ui$Internal$Model$BorderWidth,
+			'b-' + $elm$core$String$fromInt(v),
+			v,
+			v,
+			v,
+			v));
+};
+var $author$project$Components$MainContent$dropdown = F4(
+	function (model, title, content, toggled) {
+		var borderColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$aquaDark : $author$project$Themes$GruvboxDark$aquaLight;
+		return A2(
+			$mdgriffith$elm_ui$Element$el,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$padding(10),
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+					$mdgriffith$elm_ui$Element$Border$width(1),
+					$mdgriffith$elm_ui$Element$Border$color(borderColor)
+				]),
+			$mdgriffith$elm_ui$Element$text(title));
+	});
+var $author$project$Components$MainContent$technologyContent = function (model) {
+	var subTitleColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$greenDark : $author$project$Themes$GruvboxDark$greenLight;
+	var subTitleStyle = _List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$padding(10),
+			$mdgriffith$elm_ui$Element$Font$size(20),
+			$mdgriffith$elm_ui$Element$Font$color(subTitleColor)
+		]);
+	var sectionStyle = _List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$spacing(10),
+			A2($mdgriffith$elm_ui$Element$paddingXY, 0, 10)
+		]);
+	var libraryFrameworkSection = A2(
+		$mdgriffith$elm_ui$Element$column,
+		sectionStyle,
+		_List_fromArray(
+			[
+				A2(
+				$mdgriffith$elm_ui$Element$el,
+				subTitleStyle,
+				$mdgriffith$elm_ui$Element$text('Libraries and/or Frameworks')),
 				$mdgriffith$elm_ui$Element$text('Spring Boot'),
-				$mdgriffith$elm_ui$Element$text('React'),
-				$mdgriffith$elm_ui$Element$text('Angular'),
 				$mdgriffith$elm_ui$Element$text('Elm'),
 				$mdgriffith$elm_ui$Element$text('Scotty'),
-				$mdgriffith$elm_ui$Element$text('Servant')
+				$mdgriffith$elm_ui$Element$text('Servant'),
+				$mdgriffith$elm_ui$Element$text('React'),
+				$mdgriffith$elm_ui$Element$text('Angular')
 			]));
 	var languageSection = A2(
 		$mdgriffith$elm_ui$Element$column,
-		_List_Nil,
+		sectionStyle,
 		_List_fromArray(
 			[
-				$mdgriffith$elm_ui$Element$text('Haskell'),
+				A2(
+				$mdgriffith$elm_ui$Element$el,
+				subTitleStyle,
+				$mdgriffith$elm_ui$Element$text('Programming Languages')),
+				A4($author$project$Components$MainContent$dropdown, model, 'Haskell', 'This content for Haskell', false),
 				$mdgriffith$elm_ui$Element$text('Java'),
 				$mdgriffith$elm_ui$Element$text('Elm'),
+				$mdgriffith$elm_ui$Element$text('Php'),
 				$mdgriffith$elm_ui$Element$text('Javascript'),
-				$mdgriffith$elm_ui$Element$text('Typescript'),
-				$mdgriffith$elm_ui$Element$text('Php')
+				$mdgriffith$elm_ui$Element$text('Typescript')
 			]));
 	return A2(
 		$mdgriffith$elm_ui$Element$paragraph,
@@ -12103,28 +12240,6 @@ var $author$project$Components$MainContent$element = function (model) {
 					]))
 			]));
 	var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
-	var experiencesContent = function () {
-		var titleTranslation = {en: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)', fr: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)'};
-		var titleText = _Utils_eq(model.locale, $author$project$Translation$EN) ? titleTranslation.en : titleTranslation.fr;
-		return A2(
-			$mdgriffith$elm_ui$Element$paragraph,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$text(titleText)
-				]));
-	}();
-	var aboutContent = function () {
-		var translation = {en: 'Based in Quebec Canada, I have experience in web development', fr: ''};
-		var contentText = _Utils_eq(model.locale, $author$project$Translation$EN) ? translation.en : translation.fr;
-		return A2(
-			$mdgriffith$elm_ui$Element$paragraph,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$text(contentText)
-				]));
-	}();
 	return A2(
 		$mdgriffith$elm_ui$Element$column,
 		_List_fromArray(
@@ -12142,8 +12257,16 @@ var $author$project$Components$MainContent$element = function (model) {
 			]),
 		_List_fromArray(
 			[
-				A3($author$project$Components$Card$element, model, $author$project$Translation$aboutTitle, aboutContent),
-				A3($author$project$Components$Card$element, model, $author$project$Translation$experiencesTitle, experiencesContent),
+				A3(
+				$author$project$Components$Card$element,
+				model,
+				$author$project$Translation$aboutTitle,
+				$author$project$Components$MainContent$aboutContent(model)),
+				A3(
+				$author$project$Components$Card$element,
+				model,
+				$author$project$Translation$experiencesTitle,
+				$author$project$Components$MainContent$experiencesContent(model)),
 				A3(
 				$author$project$Components$Card$element,
 				model,

@@ -1,6 +1,9 @@
 module Components.MainContent exposing (element)
 
-import Element exposing (Element)
+import Element exposing
+    ( Element
+    , fill
+    )
 import Message exposing (Msg)
 import Model exposing (Model)
 import Translation exposing (Language (..))
@@ -9,6 +12,7 @@ import Theme exposing (Theme (..))
 import Components.Card as Card
 import Translation as T
 import Element.Font as Font
+import Element.Border as Border
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
@@ -19,43 +23,8 @@ element model =
             if model.theme == Light then
                 GLight.fg0
             else
-                GDark.fg0
-                    
-        aboutContent =
-            let
-                translation =
-                    { en = "Based in Quebec Canada, I have experience in web development"
-                    , fr = ""
-                    }
-                
-                contentText =
-                    if model.locale == EN then
-                        translation.en
-                    else
-                        translation.fr
-            in
-                Element.paragraph
-                    []
-                    [Element.text contentText]
+                GDark.fg0                    
 
-        experiencesContent =
-            let
-                titleTranslation =
-                    { en = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)"
-                    , fr = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)"
-                    }
-                    
-                titleText =
-                    if model.locale == EN then
-                        titleTranslation.en
-                    else
-                        titleTranslation.fr
-            in
-                Element.paragraph
-                    []
-                    [ Element.text titleText
-                    ]                     
-                
         projectsContent =
             Element.paragraph
                 []
@@ -79,37 +48,178 @@ element model =
                 [ Font.serif                 
                 ]                
             ]
-            [ Card.element model T.aboutTitle aboutContent
-            , Card.element model T.experiencesTitle experiencesContent
+            [ Card.element model T.aboutTitle (aboutContent model)
+            , Card.element model T.experiencesTitle (experiencesContent model)
             , Card.element model T.technologyTitle (technologyContent model)
             , Card.element model T.projectsTitle projectsContent
             ]
-        
+
+aboutContent : Model -> Element Msg
+aboutContent model =
+    let
+        translations =
+            [ T.aboutContent1
+            , T.aboutContent2
+            , T.aboutContent3
+            , T.aboutContent4
+            ]
+
+        content =
+            translations
+            |> List.map
+               ( \ translation ->
+                     if model.locale == EN then
+                         translation.en
+                     else
+                         translation.fr
+               )
+            |> List.map Element.text
+    in
+        Element.paragraph
+            []
+            [ Element.column
+                  [Element.spacing 10]
+                  content
+            ]
+
+                
 technologyContent : Model -> Element Msg
 technologyContent model =
     let
-        languageSection =
-            Element.column []
-              [ Element.text "Haskell"
-              , Element.text "Java"
-              , Element.text "Elm"
-              , Element.text "Javascript"
-              , Element.text "Typescript"
-              , Element.text "Php"
-              ]
-        libraryFrameworkSection =
-            Element.column []
-            [ Element.text "Spring Boot"
-            , Element.text "React"
-            , Element.text "Angular"
-            , Element.text "Elm"
-            , Element.text "Scotty"
-            , Element.text "Servant"
+        subTitleColor =
+            if model.theme == Light then
+                GLight.greenDark
+            else
+                GDark.greenLight
+            
+        subTitleStyle =
+            [ Element.padding 10
+            , Font.size 20
+            , Font.color subTitleColor
+            ]            
+            
+        sectionStyle =
+            [ Element.spacing 10
+            , Element.paddingXY 0 10
             ]
+            
+        languageSection =
+            Element.column
+                sectionStyle
+                [ Element.el
+                      subTitleStyle
+                      (Element.text "Programming Languages")
+                , dropdown model "Haskell" "This content for Haskell" False
+                , Element.text "Java"
+                , Element.text "Elm"
+                , Element.text "Php"
+                , Element.text "Javascript"
+                , Element.text "Typescript"
+                ]
+                
+        libraryFrameworkSection =
+            Element.column
+                sectionStyle
+                [ Element.el
+                      subTitleStyle
+                      (Element.text "Libraries and/or Frameworks")
+                , Element.text "Spring Boot"
+                , Element.text "Elm"
+                , Element.text "Scotty"
+                , Element.text "Servant"
+                , Element.text "React"
+                , Element.text "Angular"
+                ]
     in
         Element.paragraph
             []
         [ languageSection
         , libraryFrameworkSection
-        ]    
+        ]
+
+dropdown : Model -> String -> String -> Bool -> Element Msg
+dropdown model title content toggled =
+    let
+        borderColor =
+            if model.theme == Light then
+                GLight.aquaDark
+            else
+                GDark.aquaLight
+    in
+        Element.el
+            [ Element.padding 10
+            , Element.width fill
+            , Border.width 1
+            , Border.color borderColor
+            ]
+        (Element.text (title))
         
+
+experiencesContent : Model -> Element Msg
+experiencesContent model =
+    let
+        titleTranslation =
+            { en = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\n"
+            , fr = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\n"
+            }
+            
+        titleText =
+            if model.locale == EN then
+                titleTranslation.en
+            else
+                titleTranslation.fr
+
+        titleColor =
+            if model.theme == Light then
+                GLight.greenDark
+            else
+                GDark.greenLight
+
+        p1Translated =
+            if model.locale == EN then
+                T.experienceContentP1.en
+            else
+                T.experienceContentP1.fr
+
+        p2Translated =
+            if model.locale == EN then
+                T.experienceContentP2.en
+            else
+                T.experienceContentP2.fr
+
+        p3Translated =
+            if model.locale == EN then
+                T.experienceContentP3.en
+            else
+                T.experienceContentP3.fr
+
+        p4Translated =
+            if model.locale == EN then
+                T.experienceContentP4.en
+            else
+                T.experienceContentP4.fr
+
+        p5Translated =
+            if model.locale == EN then
+                T.experienceContentP5.en
+            else
+                T.experienceContentP5.fr                                                            
+    in
+        Element.paragraph
+            []
+            [ Element.column
+                  [ Element.spacing 10 ]
+                  [ Element.el
+                        [ Font.semiBold
+                        , Font.color titleColor
+                        ]
+                        (Element.text titleText)
+                  , Element.text p1Translated
+                  , Element.text p2Translated
+                  , Element.text p3Translated
+                  , Element.text p4Translated
+                  , Element.text p5Translated
+                  ]
+            ]                     
+            
+            

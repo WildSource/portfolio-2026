@@ -37,6 +37,7 @@ element model title content =
                 Element.el
                     [ Font.color fontColor
                     , Font.bold
+                    , Font.size 20
                     , Font.family
                           [Font.typeface "Josefin Sans"]
                     ]
