@@ -1,18 +1,15 @@
 module Components.MainContent exposing (element)
 
-import Element exposing
-    ( Element
-    , fill
-    )
+import Element exposing (Element)
 import Message exposing (Msg)
 import Model exposing (Model)
 import Translation exposing (Language (..))
 import Theme exposing (Theme (..))
 
 import Components.Card as Card
+import Components.Dropdown as Dropdown
 import Translation as T
 import Element.Font as Font
-import Element.Border as Border
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
@@ -109,7 +106,7 @@ technologyContent model =
                 [ Element.el
                       subTitleStyle
                       (Element.text "Programming Languages")
-                , dropdown model "Haskell" "This content for Haskell" False
+                , Dropdown.element model "Haskell" "This content for Haskell" False
                 , Element.text "Java"
                 , Element.text "Elm"
                 , Element.text "Php"
@@ -136,23 +133,6 @@ technologyContent model =
         [ languageSection
         , libraryFrameworkSection
         ]
-
-dropdown : Model -> String -> String -> Bool -> Element Msg
-dropdown model title content toggled =
-    let
-        borderColor =
-            if model.theme == Light then
-                GLight.aquaDark
-            else
-                GDark.aquaLight
-    in
-        Element.el
-            [ Element.padding 10
-            , Element.width fill
-            , Border.width 1
-            , Border.color borderColor
-            ]
-        (Element.text (title))
         
 
 experiencesContent : Model -> Element Msg
