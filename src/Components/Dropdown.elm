@@ -2,6 +2,7 @@ module Components.Dropdown exposing (element)
 
 import Element exposing
     ( Element
+    , Attribute
     , fill
     , px
     )
@@ -10,6 +11,7 @@ import Model exposing (Model)
 import Theme exposing (Theme (..))
 
 import Element.Border as Border
+import Element.Background as Background
 import Element.Input as Input
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
@@ -19,10 +21,13 @@ iconsPath : String
 iconsPath =
     "/assets/icons/"
 
-
+        
 element : Model -> String -> Element Msg
 element model skillName =
     let
+        isToggled =
+            List.member skillName model.toggledDropdowns
+            
         borderColor =
             if model.theme == Light then
                 GLight.aquaDark
@@ -30,7 +35,7 @@ element model skillName =
                 GDark.aquaLight
 
         chevron =
-            if List.member skillName model.toggledDropdowns then
+            if isToggled then
                 { src = iconsPath ++ "chevron-down-svgrepo-com.svg"
                 , description = "chevron down"
                 }
@@ -38,13 +43,41 @@ element model skillName =
                 { src = iconsPath ++ "chevron-up-svgrepo-com.svg"
                 , description = "chevron up"
                 }
+
+        buttonColor =
+            let
+                bgColor =
+                    if model.theme == Light then
+                        GLight.bg2
+                    else
+                        GDark.bg0Hard
+                            
+                shadowColor =
+                    if model.theme == Light then
+                        GLight.bg4
+                    else
+                        Element.rgb255 20 20 20
+            in
+                if isToggled then
+                    [ Background.color bgColor
+                    , Border.innerShadow
+                          { offset = (0, 0)
+                          , size = 4
+                          , blur = 3
+                          , color = shadowColor
+                          }
+                    ]
+                else
+                    []
     in
         Element.el
-            [ Element.padding 10
-            , Element.width fill
-            , Border.width 1
-            , Border.color borderColor
-            ]
+            ( [ Element.padding 10
+              , Element.width fill
+              , Border.width 2
+              , Border.color borderColor
+              ] ++ buttonColor             
+            )
+
             (Input.button
                  []
                  { onPress =

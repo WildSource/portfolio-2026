@@ -12234,6 +12234,9 @@ var $author$project$Message$ToggleDropdown = function (a) {
 };
 var $author$project$Themes$GruvboxLight$aquaDark = A3($mdgriffith$elm_ui$Element$rgb255, 66, 123, 88);
 var $author$project$Themes$GruvboxDark$aquaLight = A3($mdgriffith$elm_ui$Element$rgb255, 142, 192, 124);
+var $author$project$Themes$GruvboxDark$bg0Hard = A3($mdgriffith$elm_ui$Element$rgb255, 29, 32, 33);
+var $author$project$Themes$GruvboxLight$bg2 = A3($mdgriffith$elm_ui$Element$rgb255, 213, 196, 161);
+var $author$project$Themes$GruvboxLight$bg4 = A3($mdgriffith$elm_ui$Element$rgb255, 168, 153, 132);
 var $mdgriffith$elm_ui$Internal$Model$Button = {$: 'Button'};
 var $elm$json$Json$Encode$bool = _Json_wrap;
 var $elm$html$Html$Attributes$boolProperty = F2(
@@ -12375,6 +12378,30 @@ var $mdgriffith$elm_ui$Element$image = F2(
 						$mdgriffith$elm_ui$Internal$Model$Unkeyed(_List_Nil))
 					])));
 	});
+var $mdgriffith$elm_ui$Internal$Model$boxShadowClass = function (shadow) {
+	return $elm$core$String$concat(
+		_List_fromArray(
+			[
+				shadow.inset ? 'box-inset' : 'box-',
+				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.offset.a) + 'px',
+				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.offset.b) + 'px',
+				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.blur) + 'px',
+				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.size) + 'px',
+				$mdgriffith$elm_ui$Internal$Model$formatColorClass(shadow.color)
+			]));
+};
+var $mdgriffith$elm_ui$Internal$Flag$shadows = $mdgriffith$elm_ui$Internal$Flag$flag(19);
+var $mdgriffith$elm_ui$Element$Border$innerShadow = function (almostShade) {
+	var shade = {blur: almostShade.blur, color: almostShade.color, inset: true, offset: almostShade.offset, size: almostShade.size};
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$shadows,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$Single,
+			$mdgriffith$elm_ui$Internal$Model$boxShadowClass(shade),
+			'box-shadow',
+			$mdgriffith$elm_ui$Internal$Model$formatBoxShadow(shade)));
+};
 var $mdgriffith$elm_ui$Element$spaceEvenly = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$spacing, $mdgriffith$elm_ui$Internal$Style$classes.spaceEvenly);
 var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
 	function (a, b, c, d, e) {
@@ -12394,17 +12421,35 @@ var $mdgriffith$elm_ui$Element$Border$width = function (v) {
 };
 var $author$project$Components$Dropdown$element = F2(
 	function (model, skillName) {
-		var chevron = A2($elm$core$List$member, skillName, model.toggledDropdowns) ? {description: 'chevron down', src: $author$project$Components$Dropdown$iconsPath + 'chevron-down-svgrepo-com.svg'} : {description: 'chevron up', src: $author$project$Components$Dropdown$iconsPath + 'chevron-up-svgrepo-com.svg'};
+		var isToggled = A2($elm$core$List$member, skillName, model.toggledDropdowns);
+		var chevron = isToggled ? {description: 'chevron down', src: $author$project$Components$Dropdown$iconsPath + 'chevron-down-svgrepo-com.svg'} : {description: 'chevron up', src: $author$project$Components$Dropdown$iconsPath + 'chevron-up-svgrepo-com.svg'};
+		var buttonColor = function () {
+			var shadowColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg4 : A3($mdgriffith$elm_ui$Element$rgb255, 20, 20, 20);
+			var bgColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg2 : $author$project$Themes$GruvboxDark$bg0Hard;
+			return isToggled ? _List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$Background$color(bgColor),
+					$mdgriffith$elm_ui$Element$Border$innerShadow(
+					{
+						blur: 3,
+						color: shadowColor,
+						offset: _Utils_Tuple2(0, 0),
+						size: 4
+					})
+				]) : _List_Nil;
+		}();
 		var borderColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$aquaDark : $author$project$Themes$GruvboxDark$aquaLight;
 		return A2(
 			$mdgriffith$elm_ui$Element$el,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$padding(10),
-					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-					$mdgriffith$elm_ui$Element$Border$width(1),
-					$mdgriffith$elm_ui$Element$Border$color(borderColor)
-				]),
+			_Utils_ap(
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$padding(10),
+						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+						$mdgriffith$elm_ui$Element$Border$width(2),
+						$mdgriffith$elm_ui$Element$Border$color(borderColor)
+					]),
+				buttonColor),
 			A2(
 				$mdgriffith$elm_ui$Element$Input$button,
 				_List_Nil,
