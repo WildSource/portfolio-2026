@@ -12939,6 +12939,10 @@ var $author$project$Components$ThemeSlider$element = function (model) {
 				$author$project$Icons$moon(model))
 			]));
 };
+var $mdgriffith$elm_ui$Internal$Model$FocusStyleOption = function (a) {
+	return {$: 'FocusStyleOption', a: a};
+};
+var $mdgriffith$elm_ui$Element$focusStyle = $mdgriffith$elm_ui$Internal$Model$FocusStyleOption;
 var $mdgriffith$elm_ui$Internal$Model$OnlyDynamic = F2(
 	function (a, b) {
 		return {$: 'OnlyDynamic', a: a, b: b};
@@ -13142,8 +13146,6 @@ var $mdgriffith$elm_ui$Element$layoutWith = F3(
 				_Utils_ap($mdgriffith$elm_ui$Internal$Model$rootStyle, attrs)),
 			child);
 	});
-var $mdgriffith$elm_ui$Element$layout = $mdgriffith$elm_ui$Element$layoutWith(
-	{options: _List_Nil});
 var $author$project$Main$view = function (model) {
 	var theme = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg : $author$project$Themes$GruvboxDark$bg;
 	var sliders = A2(
@@ -13165,8 +13167,15 @@ var $author$project$Main$view = function (model) {
 	return {
 		body: _List_fromArray(
 			[
-				A2(
-				$mdgriffith$elm_ui$Element$layout,
+				A3(
+				$mdgriffith$elm_ui$Element$layoutWith,
+				{
+					options: _List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$focusStyle(
+							{backgroundColor: $elm$core$Maybe$Nothing, borderColor: $elm$core$Maybe$Nothing, shadow: $elm$core$Maybe$Nothing})
+						])
+				},
 				_List_fromArray(
 					[
 						$mdgriffith$elm_ui$Element$Background$color(theme)

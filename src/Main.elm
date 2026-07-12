@@ -154,7 +154,15 @@ view model =
     in
         { title = "Samuel Nguyen-Phok"
         , body =
-              [ Element.layout
+              [ Element.layoutWith
+                    { options =
+                          [ Element.focusStyle
+                                { borderColor = Nothing
+                                , backgroundColor = Nothing 
+                                , shadow = Nothing
+                                }                           
+                          ]
+                    }
                     [ Background.color theme ]
                     ( Element.column
                           []
