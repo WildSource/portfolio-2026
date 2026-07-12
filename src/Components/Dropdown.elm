@@ -11,6 +11,7 @@ import Model exposing (Model)
 import Theme exposing (Theme (..))
 
 import Element.Border as Border
+import Element.Font as Font
 import Element.Background as Background
 import Element.Input as Input
 import Themes.GruvboxLight as GLight
@@ -69,31 +70,48 @@ element model skillName =
                     ]
                 else
                     []
-    in
-        Element.el
-            ( [ Element.padding 10
-              , Element.width fill
-              , Border.width 2
-              , Border.color borderColor
-              ] ++ buttonColor             
-            )
 
-            (Input.button
-                 []
-                 { onPress =
-                       Just (Message.ToggleDropdown skillName)
-                 , label =
-                     Element.row
-                         [ Element.padding 5
-                         , Element.spaceEvenly
-                         ]
-                     [ Element.text (skillName)
-                     , Element.image
-                           [ Element.width (px 15)
-                           , Element.height (px 15)
-                           ]
-                         chevron
-                     ]
-                 }
-            )
+        content =
+            if isToggled then                
+                [Element.el
+                    [ Element.width fill
+                    , Border.color borderColor
+                    , Border.width 1
+                    , Element.padding 10
+                    , Font.size 12
+                    ]
+                (Element.paragraph
+                     []
+                     [Element.text "Hello Content !"]
+                )]
+            else
+                []
+    in
+        Element.column
+            [ Element.width fill ]
+            ( Input.button
+                  ( [ Element.padding 10
+                    , Element.width fill
+                    , Border.width 2
+                    , Border.color borderColor
+                    ] ++ buttonColor             
+                  )
+                  { onPress =
+                        Just (Message.ToggleDropdown skillName)
+                  , label =
+                      Element.row
+                          [ Element.padding 5
+                          , Element.spaceEvenly
+                          ]
+                      [ Element.text (skillName)
+                      , Element.image
+                            [ Element.width (px 15)
+                            , Element.height (px 15)
+                            ]
+                          chevron
+                      ]
+                  }
+            :: content 
+           )
+            
             

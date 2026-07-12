@@ -12439,45 +12439,71 @@ var $author$project$Components$Dropdown$element = F2(
 				]) : _List_Nil;
 		}();
 		var borderColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$aquaDark : $author$project$Themes$GruvboxDark$aquaLight;
-		return A2(
-			$mdgriffith$elm_ui$Element$el,
-			_Utils_ap(
+		var content = isToggled ? _List_fromArray(
+			[
+				A2(
+				$mdgriffith$elm_ui$Element$el,
 				_List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$padding(10),
 						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-						$mdgriffith$elm_ui$Element$Border$width(2),
-						$mdgriffith$elm_ui$Element$Border$color(borderColor)
+						$mdgriffith$elm_ui$Element$Border$color(borderColor),
+						$mdgriffith$elm_ui$Element$Border$width(1),
+						$mdgriffith$elm_ui$Element$padding(10),
+						$mdgriffith$elm_ui$Element$Font$size(12)
 					]),
-				buttonColor),
+				A2(
+					$mdgriffith$elm_ui$Element$paragraph,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$text('Hello Content !')
+						])))
+			]) : _List_Nil;
+		return A2(
+			$mdgriffith$elm_ui$Element$column,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
 			A2(
-				$mdgriffith$elm_ui$Element$Input$button,
-				_List_Nil,
-				{
-					label: A2(
-						$mdgriffith$elm_ui$Element$row,
+				$elm$core$List$cons,
+				A2(
+					$mdgriffith$elm_ui$Element$Input$button,
+					_Utils_ap(
 						_List_fromArray(
 							[
-								$mdgriffith$elm_ui$Element$padding(5),
-								$mdgriffith$elm_ui$Element$spaceEvenly
+								$mdgriffith$elm_ui$Element$padding(10),
+								$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+								$mdgriffith$elm_ui$Element$Border$width(2),
+								$mdgriffith$elm_ui$Element$Border$color(borderColor)
 							]),
-						_List_fromArray(
-							[
-								$mdgriffith$elm_ui$Element$text(skillName),
-								A2(
-								$mdgriffith$elm_ui$Element$image,
-								_List_fromArray(
-									[
-										$mdgriffith$elm_ui$Element$width(
-										$mdgriffith$elm_ui$Element$px(15)),
-										$mdgriffith$elm_ui$Element$height(
-										$mdgriffith$elm_ui$Element$px(15))
-									]),
-								chevron)
-							])),
-					onPress: $elm$core$Maybe$Just(
-						$author$project$Message$ToggleDropdown(skillName))
-				}));
+						buttonColor),
+					{
+						label: A2(
+							$mdgriffith$elm_ui$Element$row,
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$padding(5),
+									$mdgriffith$elm_ui$Element$spaceEvenly
+								]),
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Element$text(skillName),
+									A2(
+									$mdgriffith$elm_ui$Element$image,
+									_List_fromArray(
+										[
+											$mdgriffith$elm_ui$Element$width(
+											$mdgriffith$elm_ui$Element$px(15)),
+											$mdgriffith$elm_ui$Element$height(
+											$mdgriffith$elm_ui$Element$px(15))
+										]),
+									chevron)
+								])),
+						onPress: $elm$core$Maybe$Just(
+							$author$project$Message$ToggleDropdown(skillName))
+					}),
+				content));
 	});
 var $author$project$Components$MainContent$technologyContent = function (model) {
 	var subTitleColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$greenDark : $author$project$Themes$GruvboxDark$greenLight;
