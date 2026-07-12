@@ -27,7 +27,10 @@ import Theme exposing (Theme (..))
 
 import Translation exposing (Language (..))
 
-import Model exposing (Model)
+import Model exposing
+    ( Model
+    , SkillCategory (..)
+    )
 
 import Message exposing (Msg)
 
@@ -71,6 +74,61 @@ init flags =
         ( { locale = locale
           , theme = Light
           , device = device
+          , skills =              
+                [ { title = "Haskell"
+                  , content = { en = "", fr = "" }
+                  , category = Language
+                  }
+                , { title = "Java"
+                  , content = { en = "", fr = "" }
+                  , category = Language
+                  }
+                , { title = "Elm"
+                  , content = { en = "", fr = "" }
+                  , category = Language
+                  }
+                , { title = "Php"
+                  , content = { en = "", fr = "" }
+                  , category = Language
+                  }
+                , { title = "Javascript"
+                  , content = { en = "", fr = "" }
+                  , category = Language
+                  }
+                , { title = "Typescript"
+                  , content = { en = "", fr = "" }
+                  , category = Language
+                  }
+                , { title = "Html"
+                  , content = { en = "", fr = "" }
+                  , category = Language
+                  }
+                , { title = "CSS"
+                  , content = { en = "", fr = "" }
+                  , category = Language
+                  }
+                , { title = "SpringBoot"
+                  , content = { en = "", fr = "" }
+                  , category = LibraryFramework
+                  }
+                , { title = "Scotty"
+                  , content = { en = "", fr = "" }
+                  , category = LibraryFramework
+                  }
+                , { title = "Servant"
+                  , content = { en = "", fr = "" }
+                  , category = LibraryFramework
+                  }
+                , { title = "React"
+                  , content = { en = "", fr = "" }
+                  , category = LibraryFramework
+                  }
+                , { title = "Angular"
+                  , content = { en = "", fr = "" }
+                  , category = LibraryFramework
+                  } 
+                ]
+          , toggledDropdowns = []
           }
         , Cmd.none
         )
@@ -116,6 +174,22 @@ update msg model =
     case msg of
         Message.None -> 
             (model, Cmd.none)
+
+        Message.ToggleDropdown skillName ->
+            ({ model |
+                   toggledDropdowns =
+                   let
+                       dropdowns = model.toggledDropdowns
+                   in
+                       if List.member skillName dropdowns then
+                           List.filter
+                               (\ dropdown -> dropdown /= skillName)
+                               dropdowns
+                       else
+                           skillName :: dropdowns
+             }
+            , Cmd.none
+            )
 
         Message.LanguageSwitch isChecked ->
             let

@@ -1,10 +1,15 @@
 module Components.MainContent exposing (element)
 
+import Debug
+
 import Element exposing (Element)
 import Message exposing (Msg)
-import Model exposing (Model)
+import Model exposing
+    ( Model
+    , SkillCategory (..)
+    )
 import Translation exposing (Language (..))
-import Theme exposing (Theme (..))
+import Theme exposing (Theme (..)) 
 
 import Components.Card as Card
 import Components.Dropdown as Dropdown
@@ -98,35 +103,50 @@ technologyContent model =
         sectionStyle =
             [ Element.spacing 10
             , Element.paddingXY 0 10
+            , Element.centerX
             ]
-            
+
+        programmingLanguages : List (Element Msg)
+        programmingLanguages =
+            List.map
+                (Dropdown.element model)
+                (List.filter
+                     (\ skill -> skill.category == Language)
+                     model.skills
+                |> List.map
+                     (\ skill -> skill.title)
+                )
+
+        librariesAndFrameworks : List (Element Msg)
+        librariesAndFrameworks =
+            List.map
+                (Dropdown.element model)
+                (List.filter
+                     (\ skill -> skill.category == LibraryFramework)
+                     model.skills
+                |> List.map
+                     (\ skill -> skill.title)                         
+                )   
+                
+                
         languageSection =
             Element.column
                 sectionStyle
-                [ Element.el
+                ( Element.el
                       subTitleStyle
                       (Element.text "Programming Languages")
-                , Dropdown.element model "Haskell" "This content for Haskell" False
-                , Element.text "Java"
-                , Element.text "Elm"
-                , Element.text "Php"
-                , Element.text "Javascript"
-                , Element.text "Typescript"
-                ]
+                :: programmingLanguages
+                )
+                
                 
         libraryFrameworkSection =
             Element.column
                 sectionStyle
-                [ Element.el
+                ( Element.el
                       subTitleStyle
                       (Element.text "Libraries and/or Frameworks")
-                , Element.text "Spring Boot"
-                , Element.text "Elm"
-                , Element.text "Scotty"
-                , Element.text "Servant"
-                , Element.text "React"
-                , Element.text "Angular"
-                ]
+                :: librariesAndFrameworks
+                )
     in
         Element.paragraph
             []

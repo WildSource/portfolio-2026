@@ -5208,6 +5208,8 @@ var $elm$browser$Browser$document = _Browser_document;
 var $elm$json$Json$Decode$field = _Json_decodeField;
 var $author$project$Translation$EN = {$: 'EN'};
 var $author$project$Translation$FR = {$: 'FR'};
+var $author$project$Model$Language = {$: 'Language'};
+var $author$project$Model$LibraryFramework = {$: 'LibraryFramework'};
 var $author$project$Theme$Light = {$: 'Light'};
 var $mdgriffith$elm_ui$Element$BigDesktop = {$: 'BigDesktop'};
 var $mdgriffith$elm_ui$Element$Desktop = {$: 'Desktop'};
@@ -5239,7 +5241,80 @@ var $author$project$Main$init = function (flags) {
 	var _v0 = A2($elm$core$Debug$log, 'flags', flags);
 	var _v1 = A2($elm$core$Debug$log, 'device', device);
 	return _Utils_Tuple2(
-		{device: device, locale: locale, theme: $author$project$Theme$Light},
+		{
+			device: device,
+			locale: locale,
+			skills: _List_fromArray(
+				[
+					{
+					category: $author$project$Model$Language,
+					content: {en: '', fr: ''},
+					title: 'Haskell'
+				},
+					{
+					category: $author$project$Model$Language,
+					content: {en: '', fr: ''},
+					title: 'Java'
+				},
+					{
+					category: $author$project$Model$Language,
+					content: {en: '', fr: ''},
+					title: 'Elm'
+				},
+					{
+					category: $author$project$Model$Language,
+					content: {en: '', fr: ''},
+					title: 'Php'
+				},
+					{
+					category: $author$project$Model$Language,
+					content: {en: '', fr: ''},
+					title: 'Javascript'
+				},
+					{
+					category: $author$project$Model$Language,
+					content: {en: '', fr: ''},
+					title: 'Typescript'
+				},
+					{
+					category: $author$project$Model$Language,
+					content: {en: '', fr: ''},
+					title: 'Html'
+				},
+					{
+					category: $author$project$Model$Language,
+					content: {en: '', fr: ''},
+					title: 'CSS'
+				},
+					{
+					category: $author$project$Model$LibraryFramework,
+					content: {en: '', fr: ''},
+					title: 'SpringBoot'
+				},
+					{
+					category: $author$project$Model$LibraryFramework,
+					content: {en: '', fr: ''},
+					title: 'Scotty'
+				},
+					{
+					category: $author$project$Model$LibraryFramework,
+					content: {en: '', fr: ''},
+					title: 'Servant'
+				},
+					{
+					category: $author$project$Model$LibraryFramework,
+					content: {en: '', fr: ''},
+					title: 'React'
+				},
+					{
+					category: $author$project$Model$LibraryFramework,
+					content: {en: '', fr: ''},
+					title: 'Angular'
+				}
+				]),
+			theme: $author$project$Theme$Light,
+			toggledDropdowns: _List_Nil
+		},
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$json$Json$Decode$int = _Json_decodeInt;
@@ -5669,15 +5744,74 @@ var $author$project$Main$subscriptions = function (_v0) {
 					{height: height, width: width});
 			}));
 };
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
 var $author$project$Theme$Dark = {$: 'Dark'};
 var $author$project$Theme$fromBool = function (bool) {
 	return bool ? $author$project$Theme$Dark : $author$project$Theme$Light;
 };
+var $elm$core$List$any = F2(
+	function (isOkay, list) {
+		any:
+		while (true) {
+			if (!list.b) {
+				return false;
+			} else {
+				var x = list.a;
+				var xs = list.b;
+				if (isOkay(x)) {
+					return true;
+				} else {
+					var $temp$isOkay = isOkay,
+						$temp$list = xs;
+					isOkay = $temp$isOkay;
+					list = $temp$list;
+					continue any;
+				}
+			}
+		}
+	});
+var $elm$core$List$member = F2(
+	function (x, xs) {
+		return A2(
+			$elm$core$List$any,
+			function (a) {
+				return _Utils_eq(a, x);
+			},
+			xs);
+	});
+var $elm$core$Basics$neq = _Utils_notEqual;
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
 			case 'None':
 				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+			case 'ToggleDropdown':
+				var skillName = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							toggledDropdowns: function () {
+								var dropdowns = model.toggledDropdowns;
+								return A2($elm$core$List$member, skillName, dropdowns) ? A2(
+									$elm$core$List$filter,
+									function (dropdown) {
+										return !_Utils_eq(dropdown, skillName);
+									},
+									dropdowns) : A2($elm$core$List$cons, skillName, dropdowns);
+							}()
+						}),
+					$elm$core$Platform$Cmd$none);
 			case 'LanguageSwitch':
 				var isChecked = msg.a;
 				var locale = isChecked ? $author$project$Translation$FR : $author$project$Translation$EN;
@@ -8376,27 +8510,6 @@ var $elm$json$Json$Encode$object = function (pairs) {
 			_Json_emptyObject(_Utils_Tuple0),
 			pairs));
 };
-var $elm$core$List$any = F2(
-	function (isOkay, list) {
-		any:
-		while (true) {
-			if (!list.b) {
-				return false;
-			} else {
-				var x = list.a;
-				var xs = list.b;
-				if (isOkay(x)) {
-					return true;
-				} else {
-					var $temp$isOkay = isOkay,
-						$temp$list = xs;
-					isOkay = $temp$isOkay;
-					list = $temp$list;
-					continue any;
-				}
-			}
-		}
-	});
 var $mdgriffith$elm_ui$Internal$Model$fontName = function (font) {
 	switch (font.$) {
 		case 'Serif':
@@ -9126,17 +9239,6 @@ var $mdgriffith$elm_ui$Internal$Model$adjust = F3(
 	function (size, height, vertical) {
 		return {height: height / size, size: size, vertical: vertical};
 	});
-var $elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
-	});
 var $elm$core$List$maximum = function (list) {
 	if (list.b) {
 		var x = list.a;
@@ -9157,7 +9259,6 @@ var $elm$core$List$minimum = function (list) {
 		return $elm$core$Maybe$Nothing;
 	}
 };
-var $elm$core$Basics$neq = _Utils_notEqual;
 var $mdgriffith$elm_ui$Internal$Model$convertAdjustment = function (adjustment) {
 	var lines = _List_fromArray(
 		[adjustment.capital, adjustment.baseline, adjustment.descender, adjustment.lowercase]);
@@ -12128,8 +12229,89 @@ var $author$project$Components$MainContent$experiencesContent = function (model)
 };
 var $author$project$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
 var $author$project$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
+var $author$project$Message$ToggleDropdown = function (a) {
+	return {$: 'ToggleDropdown', a: a};
+};
 var $author$project$Themes$GruvboxLight$aquaDark = A3($mdgriffith$elm_ui$Element$rgb255, 66, 123, 88);
 var $author$project$Themes$GruvboxDark$aquaLight = A3($mdgriffith$elm_ui$Element$rgb255, 142, 192, 124);
+var $mdgriffith$elm_ui$Internal$Model$Button = {$: 'Button'};
+var $elm$json$Json$Encode$bool = _Json_wrap;
+var $elm$html$Html$Attributes$boolProperty = F2(
+	function (key, bool) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$bool(bool));
+	});
+var $elm$html$Html$Attributes$disabled = $elm$html$Html$Attributes$boolProperty('disabled');
+var $mdgriffith$elm_ui$Element$Input$hasFocusStyle = function (attr) {
+	if (((attr.$ === 'StyleClass') && (attr.b.$ === 'PseudoSelector')) && (attr.b.a.$ === 'Focus')) {
+		var _v1 = attr.b;
+		var _v2 = _v1.a;
+		return true;
+	} else {
+		return false;
+	}
+};
+var $mdgriffith$elm_ui$Element$Input$focusDefault = function (attrs) {
+	return A2($elm$core$List$any, $mdgriffith$elm_ui$Element$Input$hasFocusStyle, attrs) ? $mdgriffith$elm_ui$Internal$Model$NoAttribute : $mdgriffith$elm_ui$Internal$Model$htmlClass('focusable');
+};
+var $mdgriffith$elm_ui$Element$Events$onClick = A2($elm$core$Basics$composeL, $mdgriffith$elm_ui$Internal$Model$Attr, $elm$html$Html$Events$onClick);
+var $mdgriffith$elm_ui$Element$Input$button = F2(
+	function (attrs, _v0) {
+		var onPress = _v0.onPress;
+		var label = _v0.label;
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asEl,
+			$mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink),
+				A2(
+					$elm$core$List$cons,
+					$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink),
+					A2(
+						$elm$core$List$cons,
+						$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.contentCenterX + (' ' + ($mdgriffith$elm_ui$Internal$Style$classes.contentCenterY + (' ' + ($mdgriffith$elm_ui$Internal$Style$classes.seButton + (' ' + $mdgriffith$elm_ui$Internal$Style$classes.noTextSelection)))))),
+						A2(
+							$elm$core$List$cons,
+							$mdgriffith$elm_ui$Element$pointer,
+							A2(
+								$elm$core$List$cons,
+								$mdgriffith$elm_ui$Element$Input$focusDefault(attrs),
+								A2(
+									$elm$core$List$cons,
+									$mdgriffith$elm_ui$Internal$Model$Describe($mdgriffith$elm_ui$Internal$Model$Button),
+									A2(
+										$elm$core$List$cons,
+										$mdgriffith$elm_ui$Internal$Model$Attr(
+											$elm$html$Html$Attributes$tabindex(0)),
+										function () {
+											if (onPress.$ === 'Nothing') {
+												return A2(
+													$elm$core$List$cons,
+													$mdgriffith$elm_ui$Internal$Model$Attr(
+														$elm$html$Html$Attributes$disabled(true)),
+													attrs);
+											} else {
+												var msg = onPress.a;
+												return A2(
+													$elm$core$List$cons,
+													$mdgriffith$elm_ui$Element$Events$onClick(msg),
+													A2(
+														$elm$core$List$cons,
+														$mdgriffith$elm_ui$Element$Input$onKeyLookup(
+															function (code) {
+																return _Utils_eq(code, $mdgriffith$elm_ui$Element$Input$enter) ? $elm$core$Maybe$Just(msg) : (_Utils_eq(code, $mdgriffith$elm_ui$Element$Input$space) ? $elm$core$Maybe$Just(msg) : $elm$core$Maybe$Nothing);
+															}),
+														attrs));
+											}
+										}()))))))),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
+				_List_fromArray(
+					[label])));
+	});
 var $mdgriffith$elm_ui$Internal$Flag$borderColor = $mdgriffith$elm_ui$Internal$Flag$flag(28);
 var $mdgriffith$elm_ui$Element$Border$color = function (clr) {
 	return A2(
@@ -12210,9 +12392,9 @@ var $mdgriffith$elm_ui$Element$Border$width = function (v) {
 			v,
 			v));
 };
-var $author$project$Components$Dropdown$element = F4(
-	function (model, title, content, toggled) {
-		var chevron = toggled ? {description: 'chevron down', src: $author$project$Components$Dropdown$iconsPath + 'chevron-down-svgrepo-com.svg'} : {description: 'chevron up', src: $author$project$Components$Dropdown$iconsPath + 'chevron-up-svgrepo-com.svg'};
+var $author$project$Components$Dropdown$element = F2(
+	function (model, skillName) {
+		var chevron = A2($elm$core$List$member, skillName, model.toggledDropdowns) ? {description: 'chevron down', src: $author$project$Components$Dropdown$iconsPath + 'chevron-down-svgrepo-com.svg'} : {description: 'chevron up', src: $author$project$Components$Dropdown$iconsPath + 'chevron-up-svgrepo-com.svg'};
 		var borderColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$aquaDark : $author$project$Themes$GruvboxDark$aquaLight;
 		return A2(
 			$mdgriffith$elm_ui$Element$el,
@@ -12224,26 +12406,33 @@ var $author$project$Components$Dropdown$element = F4(
 					$mdgriffith$elm_ui$Element$Border$color(borderColor)
 				]),
 			A2(
-				$mdgriffith$elm_ui$Element$row,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$padding(5),
-						$mdgriffith$elm_ui$Element$spaceEvenly
-					]),
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$text(title),
-						A2(
-						$mdgriffith$elm_ui$Element$image,
+				$mdgriffith$elm_ui$Element$Input$button,
+				_List_Nil,
+				{
+					label: A2(
+						$mdgriffith$elm_ui$Element$row,
 						_List_fromArray(
 							[
-								$mdgriffith$elm_ui$Element$width(
-								$mdgriffith$elm_ui$Element$px(15)),
-								$mdgriffith$elm_ui$Element$height(
-								$mdgriffith$elm_ui$Element$px(15))
+								$mdgriffith$elm_ui$Element$padding(5),
+								$mdgriffith$elm_ui$Element$spaceEvenly
 							]),
-						chevron)
-					])));
+						_List_fromArray(
+							[
+								$mdgriffith$elm_ui$Element$text(skillName),
+								A2(
+								$mdgriffith$elm_ui$Element$image,
+								_List_fromArray(
+									[
+										$mdgriffith$elm_ui$Element$width(
+										$mdgriffith$elm_ui$Element$px(15)),
+										$mdgriffith$elm_ui$Element$height(
+										$mdgriffith$elm_ui$Element$px(15))
+									]),
+								chevron)
+							])),
+					onPress: $elm$core$Maybe$Just(
+						$author$project$Message$ToggleDropdown(skillName))
+				}));
 	});
 var $author$project$Components$MainContent$technologyContent = function (model) {
 	var subTitleColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$greenDark : $author$project$Themes$GruvboxDark$greenLight;
@@ -12256,40 +12445,57 @@ var $author$project$Components$MainContent$technologyContent = function (model) 
 	var sectionStyle = _List_fromArray(
 		[
 			$mdgriffith$elm_ui$Element$spacing(10),
-			A2($mdgriffith$elm_ui$Element$paddingXY, 0, 10)
+			A2($mdgriffith$elm_ui$Element$paddingXY, 0, 10),
+			$mdgriffith$elm_ui$Element$centerX
 		]);
+	var programmingLanguages = A2(
+		$elm$core$List$map,
+		$author$project$Components$Dropdown$element(model),
+		A2(
+			$elm$core$List$map,
+			function (skill) {
+				return skill.title;
+			},
+			A2(
+				$elm$core$List$filter,
+				function (skill) {
+					return _Utils_eq(skill.category, $author$project$Model$Language);
+				},
+				model.skills)));
+	var librariesAndFrameworks = A2(
+		$elm$core$List$map,
+		$author$project$Components$Dropdown$element(model),
+		A2(
+			$elm$core$List$map,
+			function (skill) {
+				return skill.title;
+			},
+			A2(
+				$elm$core$List$filter,
+				function (skill) {
+					return _Utils_eq(skill.category, $author$project$Model$LibraryFramework);
+				},
+				model.skills)));
 	var libraryFrameworkSection = A2(
 		$mdgriffith$elm_ui$Element$column,
 		sectionStyle,
-		_List_fromArray(
-			[
-				A2(
+		A2(
+			$elm$core$List$cons,
+			A2(
 				$mdgriffith$elm_ui$Element$el,
 				subTitleStyle,
 				$mdgriffith$elm_ui$Element$text('Libraries and/or Frameworks')),
-				$mdgriffith$elm_ui$Element$text('Spring Boot'),
-				$mdgriffith$elm_ui$Element$text('Elm'),
-				$mdgriffith$elm_ui$Element$text('Scotty'),
-				$mdgriffith$elm_ui$Element$text('Servant'),
-				$mdgriffith$elm_ui$Element$text('React'),
-				$mdgriffith$elm_ui$Element$text('Angular')
-			]));
+			librariesAndFrameworks));
 	var languageSection = A2(
 		$mdgriffith$elm_ui$Element$column,
 		sectionStyle,
-		_List_fromArray(
-			[
-				A2(
+		A2(
+			$elm$core$List$cons,
+			A2(
 				$mdgriffith$elm_ui$Element$el,
 				subTitleStyle,
 				$mdgriffith$elm_ui$Element$text('Programming Languages')),
-				A4($author$project$Components$Dropdown$element, model, 'Haskell', 'This content for Haskell', false),
-				$mdgriffith$elm_ui$Element$text('Java'),
-				$mdgriffith$elm_ui$Element$text('Elm'),
-				$mdgriffith$elm_ui$Element$text('Php'),
-				$mdgriffith$elm_ui$Element$text('Javascript'),
-				$mdgriffith$elm_ui$Element$text('Typescript')
-			]));
+			programmingLanguages));
 	return A2(
 		$mdgriffith$elm_ui$Element$paragraph,
 		_List_Nil,

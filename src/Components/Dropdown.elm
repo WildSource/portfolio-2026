@@ -10,6 +10,7 @@ import Model exposing (Model)
 import Theme exposing (Theme (..))
 
 import Element.Border as Border
+import Element.Input as Input
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
@@ -19,8 +20,8 @@ iconsPath =
     "/assets/icons/"
 
 
-element : Model -> String -> String -> Bool -> Element Msg
-element model title content toggled =
+element : Model -> String -> Element Msg
+element model skillName =
     let
         borderColor =
             if model.theme == Light then
@@ -29,7 +30,7 @@ element model title content toggled =
                 GDark.aquaLight
 
         chevron =
-            if toggled then
+            if List.member skillName model.toggledDropdowns then
                 { src = iconsPath ++ "chevron-down-svgrepo-com.svg"
                 , description = "chevron down"
                 }
@@ -44,16 +45,22 @@ element model title content toggled =
             , Border.width 1
             , Border.color borderColor
             ]
-            (Element.row
-                 [ Element.padding 5
-                 , Element.spaceEvenly
-                 ]
-                 [ Element.text (title)
-                 , Element.image
-                       [ Element.width (px 15)
-                       , Element.height (px 15)
-                       ]
-                       chevron
-                 ]
+            (Input.button
+                 []
+                 { onPress =
+                       Just (Message.ToggleDropdown skillName)
+                 , label =
+                     Element.row
+                         [ Element.padding 5
+                         , Element.spaceEvenly
+                         ]
+                     [ Element.text (skillName)
+                     , Element.image
+                           [ Element.width (px 15)
+                           , Element.height (px 15)
+                           ]
+                         chevron
+                     ]
+                 }
             )
             

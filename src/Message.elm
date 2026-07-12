@@ -10,4 +10,5 @@ type Msg
     | WindowResize WindowSize
     | ThemeSwitch Bool
     | LanguageSwitch Bool
-    
+    | ToggleDropdown String
+      
