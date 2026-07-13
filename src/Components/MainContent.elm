@@ -34,7 +34,7 @@ element model =
                       []
                       [ Element.text "Adult Webcomic Website"
                       , Element.text "Portfolio (2023)"
-                      , Element.text "La Voûte - "
+                      , Element.text "La Voûte"
                       ]
                 ]      
     in

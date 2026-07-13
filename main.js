@@ -12611,7 +12611,7 @@ var $author$project$Components$MainContent$element = function (model) {
 					[
 						$mdgriffith$elm_ui$Element$text('Adult Webcomic Website'),
 						$mdgriffith$elm_ui$Element$text('Portfolio (2023)'),
-						$mdgriffith$elm_ui$Element$text('La Voûte - ')
+						$mdgriffith$elm_ui$Element$text('La Voûte')
 					]))
 			]));
 	var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
