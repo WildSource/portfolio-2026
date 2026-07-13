@@ -2,7 +2,6 @@ module Components.Dropdown exposing (element)
 
 import Element exposing
     ( Element
-    , Attribute
     , fill
     , px
     )
@@ -36,13 +35,22 @@ element model skillName =
                 GDark.aquaLight
 
         chevron =
-            if isToggled then
-                { src = iconsPath ++ "chevron-down-svgrepo-com.svg"
-                , description = "chevron down"
-                }
-            else
-                { src = iconsPath ++ "chevron-up-svgrepo-com.svg"
-                , description = "chevron up"
+            let
+                (direction, theme) =
+                    case (isToggled, model.theme) of
+                        (True, Light) ->
+                            ("up", "")
+                        (True, Dark) ->
+                            ("up", "-dark")
+                        (False, Light) ->
+                            ("down", "")
+                        (False, Dark) ->                        
+                            ("down", "-dark")
+            in
+                { src =
+                      iconsPath ++ "chevron-" ++ direction ++ theme ++ "-svgrepo-com.svg"
+                , description =
+                      "chevron " ++ direction
                 }
 
         buttonColor =

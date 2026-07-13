@@ -12422,7 +12422,31 @@ var $mdgriffith$elm_ui$Element$Border$width = function (v) {
 var $author$project$Components$Dropdown$element = F2(
 	function (model, skillName) {
 		var isToggled = A2($elm$core$List$member, skillName, model.toggledDropdowns);
-		var chevron = isToggled ? {description: 'chevron down', src: $author$project$Components$Dropdown$iconsPath + 'chevron-down-svgrepo-com.svg'} : {description: 'chevron up', src: $author$project$Components$Dropdown$iconsPath + 'chevron-up-svgrepo-com.svg'};
+		var chevron = function () {
+			var _v0 = function () {
+				var _v1 = _Utils_Tuple2(isToggled, model.theme);
+				if (_v1.a) {
+					if (_v1.b.$ === 'Light') {
+						var _v2 = _v1.b;
+						return _Utils_Tuple2('up', '');
+					} else {
+						var _v3 = _v1.b;
+						return _Utils_Tuple2('up', '-dark');
+					}
+				} else {
+					if (_v1.b.$ === 'Light') {
+						var _v4 = _v1.b;
+						return _Utils_Tuple2('down', '');
+					} else {
+						var _v5 = _v1.b;
+						return _Utils_Tuple2('down', '-dark');
+					}
+				}
+			}();
+			var direction = _v0.a;
+			var theme = _v0.b;
+			return {description: 'chevron ' + direction, src: $author$project$Components$Dropdown$iconsPath + ('chevron-' + (direction + (theme + '-svgrepo-com.svg')))};
+		}();
 		var buttonColor = function () {
 			var shadowColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg4 : A3($mdgriffith$elm_ui$Element$rgb255, 20, 20, 20);
 			var bgColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg2 : $author$project$Themes$GruvboxDark$bg0Hard;
