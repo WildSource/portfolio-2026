@@ -109,25 +109,26 @@ technologyContent model =
         programmingLanguages : List (Element Msg)
         programmingLanguages =
             List.map
-                (Dropdown.element model)
+                (Element.text) 
                 (List.filter
                      (\ skill -> skill.category == Language)
                      model.skills
-                |> List.map
+                |>
+                  List.map
                      (\ skill -> skill.title)
                 )
 
         librariesAndFrameworks : List (Element Msg)
         librariesAndFrameworks =
             List.map
-                (Dropdown.element model)
+                (Element.text)
                 (List.filter
                      (\ skill -> skill.category == LibraryFramework)
                      model.skills
-                |> List.map
-                     (\ skill -> skill.title)                         
-                )   
-                
+                |>
+                  List.map
+                     (\ skill -> skill.title)
+                )
                 
         languageSection =
             Element.column

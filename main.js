@@ -12229,306 +12229,6 @@ var $author$project$Components$MainContent$experiencesContent = function (model)
 };
 var $author$project$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
 var $author$project$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
-var $author$project$Message$ToggleDropdown = function (a) {
-	return {$: 'ToggleDropdown', a: a};
-};
-var $author$project$Themes$GruvboxLight$aquaDark = A3($mdgriffith$elm_ui$Element$rgb255, 66, 123, 88);
-var $author$project$Themes$GruvboxDark$aquaLight = A3($mdgriffith$elm_ui$Element$rgb255, 142, 192, 124);
-var $author$project$Themes$GruvboxDark$bg0Hard = A3($mdgriffith$elm_ui$Element$rgb255, 29, 32, 33);
-var $author$project$Themes$GruvboxLight$bg2 = A3($mdgriffith$elm_ui$Element$rgb255, 213, 196, 161);
-var $author$project$Themes$GruvboxLight$bg4 = A3($mdgriffith$elm_ui$Element$rgb255, 168, 153, 132);
-var $mdgriffith$elm_ui$Internal$Model$Button = {$: 'Button'};
-var $elm$json$Json$Encode$bool = _Json_wrap;
-var $elm$html$Html$Attributes$boolProperty = F2(
-	function (key, bool) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$bool(bool));
-	});
-var $elm$html$Html$Attributes$disabled = $elm$html$Html$Attributes$boolProperty('disabled');
-var $mdgriffith$elm_ui$Element$Input$hasFocusStyle = function (attr) {
-	if (((attr.$ === 'StyleClass') && (attr.b.$ === 'PseudoSelector')) && (attr.b.a.$ === 'Focus')) {
-		var _v1 = attr.b;
-		var _v2 = _v1.a;
-		return true;
-	} else {
-		return false;
-	}
-};
-var $mdgriffith$elm_ui$Element$Input$focusDefault = function (attrs) {
-	return A2($elm$core$List$any, $mdgriffith$elm_ui$Element$Input$hasFocusStyle, attrs) ? $mdgriffith$elm_ui$Internal$Model$NoAttribute : $mdgriffith$elm_ui$Internal$Model$htmlClass('focusable');
-};
-var $mdgriffith$elm_ui$Element$Events$onClick = A2($elm$core$Basics$composeL, $mdgriffith$elm_ui$Internal$Model$Attr, $elm$html$Html$Events$onClick);
-var $mdgriffith$elm_ui$Element$Input$button = F2(
-	function (attrs, _v0) {
-		var onPress = _v0.onPress;
-		var label = _v0.label;
-		return A4(
-			$mdgriffith$elm_ui$Internal$Model$element,
-			$mdgriffith$elm_ui$Internal$Model$asEl,
-			$mdgriffith$elm_ui$Internal$Model$div,
-			A2(
-				$elm$core$List$cons,
-				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink),
-				A2(
-					$elm$core$List$cons,
-					$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink),
-					A2(
-						$elm$core$List$cons,
-						$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.contentCenterX + (' ' + ($mdgriffith$elm_ui$Internal$Style$classes.contentCenterY + (' ' + ($mdgriffith$elm_ui$Internal$Style$classes.seButton + (' ' + $mdgriffith$elm_ui$Internal$Style$classes.noTextSelection)))))),
-						A2(
-							$elm$core$List$cons,
-							$mdgriffith$elm_ui$Element$pointer,
-							A2(
-								$elm$core$List$cons,
-								$mdgriffith$elm_ui$Element$Input$focusDefault(attrs),
-								A2(
-									$elm$core$List$cons,
-									$mdgriffith$elm_ui$Internal$Model$Describe($mdgriffith$elm_ui$Internal$Model$Button),
-									A2(
-										$elm$core$List$cons,
-										$mdgriffith$elm_ui$Internal$Model$Attr(
-											$elm$html$Html$Attributes$tabindex(0)),
-										function () {
-											if (onPress.$ === 'Nothing') {
-												return A2(
-													$elm$core$List$cons,
-													$mdgriffith$elm_ui$Internal$Model$Attr(
-														$elm$html$Html$Attributes$disabled(true)),
-													attrs);
-											} else {
-												var msg = onPress.a;
-												return A2(
-													$elm$core$List$cons,
-													$mdgriffith$elm_ui$Element$Events$onClick(msg),
-													A2(
-														$elm$core$List$cons,
-														$mdgriffith$elm_ui$Element$Input$onKeyLookup(
-															function (code) {
-																return _Utils_eq(code, $mdgriffith$elm_ui$Element$Input$enter) ? $elm$core$Maybe$Just(msg) : (_Utils_eq(code, $mdgriffith$elm_ui$Element$Input$space) ? $elm$core$Maybe$Just(msg) : $elm$core$Maybe$Nothing);
-															}),
-														attrs));
-											}
-										}()))))))),
-			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
-				_List_fromArray(
-					[label])));
-	});
-var $mdgriffith$elm_ui$Internal$Flag$borderColor = $mdgriffith$elm_ui$Internal$Flag$flag(28);
-var $mdgriffith$elm_ui$Element$Border$color = function (clr) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$borderColor,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$Colored,
-			'bc-' + $mdgriffith$elm_ui$Internal$Model$formatColorClass(clr),
-			'border-color',
-			clr));
-};
-var $author$project$Components$Dropdown$iconsPath = '/assets/icons/';
-var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
-var $elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
-var $mdgriffith$elm_ui$Element$image = F2(
-	function (attrs, _v0) {
-		var src = _v0.src;
-		var description = _v0.description;
-		var imageAttributes = A2(
-			$elm$core$List$filter,
-			function (a) {
-				switch (a.$) {
-					case 'Width':
-						return true;
-					case 'Height':
-						return true;
-					default:
-						return false;
-				}
-			},
-			attrs);
-		return A4(
-			$mdgriffith$elm_ui$Internal$Model$element,
-			$mdgriffith$elm_ui$Internal$Model$asEl,
-			$mdgriffith$elm_ui$Internal$Model$div,
-			A2(
-				$elm$core$List$cons,
-				$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.imageContainer),
-				attrs),
-			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
-				_List_fromArray(
-					[
-						A4(
-						$mdgriffith$elm_ui$Internal$Model$element,
-						$mdgriffith$elm_ui$Internal$Model$asEl,
-						$mdgriffith$elm_ui$Internal$Model$NodeName('img'),
-						_Utils_ap(
-							_List_fromArray(
-								[
-									$mdgriffith$elm_ui$Internal$Model$Attr(
-									$elm$html$Html$Attributes$src(src)),
-									$mdgriffith$elm_ui$Internal$Model$Attr(
-									$elm$html$Html$Attributes$alt(description))
-								]),
-							imageAttributes),
-						$mdgriffith$elm_ui$Internal$Model$Unkeyed(_List_Nil))
-					])));
-	});
-var $mdgriffith$elm_ui$Internal$Model$boxShadowClass = function (shadow) {
-	return $elm$core$String$concat(
-		_List_fromArray(
-			[
-				shadow.inset ? 'box-inset' : 'box-',
-				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.offset.a) + 'px',
-				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.offset.b) + 'px',
-				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.blur) + 'px',
-				$mdgriffith$elm_ui$Internal$Model$floatClass(shadow.size) + 'px',
-				$mdgriffith$elm_ui$Internal$Model$formatColorClass(shadow.color)
-			]));
-};
-var $mdgriffith$elm_ui$Internal$Flag$shadows = $mdgriffith$elm_ui$Internal$Flag$flag(19);
-var $mdgriffith$elm_ui$Element$Border$innerShadow = function (almostShade) {
-	var shade = {blur: almostShade.blur, color: almostShade.color, inset: true, offset: almostShade.offset, size: almostShade.size};
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$shadows,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$Single,
-			$mdgriffith$elm_ui$Internal$Model$boxShadowClass(shade),
-			'box-shadow',
-			$mdgriffith$elm_ui$Internal$Model$formatBoxShadow(shade)));
-};
-var $mdgriffith$elm_ui$Element$spaceEvenly = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$spacing, $mdgriffith$elm_ui$Internal$Style$classes.spaceEvenly);
-var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
-	function (a, b, c, d, e) {
-		return {$: 'BorderWidth', a: a, b: b, c: c, d: d, e: e};
-	});
-var $mdgriffith$elm_ui$Element$Border$width = function (v) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$borderWidth,
-		A5(
-			$mdgriffith$elm_ui$Internal$Model$BorderWidth,
-			'b-' + $elm$core$String$fromInt(v),
-			v,
-			v,
-			v,
-			v));
-};
-var $author$project$Components$Dropdown$element = F2(
-	function (model, skillName) {
-		var isToggled = A2($elm$core$List$member, skillName, model.toggledDropdowns);
-		var chevron = function () {
-			var _v0 = function () {
-				var _v1 = _Utils_Tuple2(isToggled, model.theme);
-				if (_v1.a) {
-					if (_v1.b.$ === 'Light') {
-						var _v2 = _v1.b;
-						return _Utils_Tuple2('up', '');
-					} else {
-						var _v3 = _v1.b;
-						return _Utils_Tuple2('up', '-dark');
-					}
-				} else {
-					if (_v1.b.$ === 'Light') {
-						var _v4 = _v1.b;
-						return _Utils_Tuple2('down', '');
-					} else {
-						var _v5 = _v1.b;
-						return _Utils_Tuple2('down', '-dark');
-					}
-				}
-			}();
-			var direction = _v0.a;
-			var theme = _v0.b;
-			return {description: 'chevron ' + direction, src: $author$project$Components$Dropdown$iconsPath + ('chevron-' + (direction + (theme + '-svgrepo-com.svg')))};
-		}();
-		var buttonColor = function () {
-			var shadowColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg4 : A3($mdgriffith$elm_ui$Element$rgb255, 20, 20, 20);
-			var bgColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg2 : $author$project$Themes$GruvboxDark$bg0Hard;
-			return isToggled ? _List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$Background$color(bgColor),
-					$mdgriffith$elm_ui$Element$Border$innerShadow(
-					{
-						blur: 3,
-						color: shadowColor,
-						offset: _Utils_Tuple2(0, 0),
-						size: 4
-					})
-				]) : _List_Nil;
-		}();
-		var borderColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$aquaDark : $author$project$Themes$GruvboxDark$aquaLight;
-		var content = isToggled ? _List_fromArray(
-			[
-				A2(
-				$mdgriffith$elm_ui$Element$el,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-						$mdgriffith$elm_ui$Element$Border$color(borderColor),
-						$mdgriffith$elm_ui$Element$Border$width(1),
-						$mdgriffith$elm_ui$Element$padding(10),
-						$mdgriffith$elm_ui$Element$Font$size(12)
-					]),
-				A2(
-					$mdgriffith$elm_ui$Element$paragraph,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$mdgriffith$elm_ui$Element$text('Hello Content !')
-						])))
-			]) : _List_Nil;
-		return A2(
-			$mdgriffith$elm_ui$Element$column,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
-				]),
-			A2(
-				$elm$core$List$cons,
-				A2(
-					$mdgriffith$elm_ui$Element$Input$button,
-					_Utils_ap(
-						_List_fromArray(
-							[
-								$mdgriffith$elm_ui$Element$padding(10),
-								$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-								$mdgriffith$elm_ui$Element$Border$width(2),
-								$mdgriffith$elm_ui$Element$Border$color(borderColor)
-							]),
-						buttonColor),
-					{
-						label: A2(
-							$mdgriffith$elm_ui$Element$row,
-							_List_fromArray(
-								[
-									$mdgriffith$elm_ui$Element$padding(5),
-									$mdgriffith$elm_ui$Element$spaceEvenly
-								]),
-							_List_fromArray(
-								[
-									$mdgriffith$elm_ui$Element$text(skillName),
-									A2(
-									$mdgriffith$elm_ui$Element$image,
-									_List_fromArray(
-										[
-											$mdgriffith$elm_ui$Element$width(
-											$mdgriffith$elm_ui$Element$px(15)),
-											$mdgriffith$elm_ui$Element$height(
-											$mdgriffith$elm_ui$Element$px(15))
-										]),
-									chevron)
-								])),
-						onPress: $elm$core$Maybe$Just(
-							$author$project$Message$ToggleDropdown(skillName))
-					}),
-				content));
-	});
 var $author$project$Components$MainContent$technologyContent = function (model) {
 	var subTitleColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$greenDark : $author$project$Themes$GruvboxDark$greenLight;
 	var subTitleStyle = _List_fromArray(
@@ -12545,7 +12245,7 @@ var $author$project$Components$MainContent$technologyContent = function (model) 
 		]);
 	var programmingLanguages = A2(
 		$elm$core$List$map,
-		$author$project$Components$Dropdown$element(model),
+		$mdgriffith$elm_ui$Element$text,
 		A2(
 			$elm$core$List$map,
 			function (skill) {
@@ -12559,7 +12259,7 @@ var $author$project$Components$MainContent$technologyContent = function (model) 
 				model.skills)));
 	var librariesAndFrameworks = A2(
 		$elm$core$List$map,
-		$author$project$Components$Dropdown$element(model),
+		$mdgriffith$elm_ui$Element$text,
 		A2(
 			$elm$core$List$map,
 			function (skill) {
@@ -12651,6 +12351,57 @@ var $author$project$Components$MainContent$element = function (model) {
 			]));
 };
 var $author$project$Components$Socials$iconsPath = '/assets/icons/';
+var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $mdgriffith$elm_ui$Element$image = F2(
+	function (attrs, _v0) {
+		var src = _v0.src;
+		var description = _v0.description;
+		var imageAttributes = A2(
+			$elm$core$List$filter,
+			function (a) {
+				switch (a.$) {
+					case 'Width':
+						return true;
+					case 'Height':
+						return true;
+					default:
+						return false;
+				}
+			},
+			attrs);
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asEl,
+			$mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.imageContainer),
+				attrs),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(
+				_List_fromArray(
+					[
+						A4(
+						$mdgriffith$elm_ui$Internal$Model$element,
+						$mdgriffith$elm_ui$Internal$Model$asEl,
+						$mdgriffith$elm_ui$Internal$Model$NodeName('img'),
+						_Utils_ap(
+							_List_fromArray(
+								[
+									$mdgriffith$elm_ui$Internal$Model$Attr(
+									$elm$html$Html$Attributes$src(src)),
+									$mdgriffith$elm_ui$Internal$Model$Attr(
+									$elm$html$Html$Attributes$alt(description))
+								]),
+							imageAttributes),
+						$mdgriffith$elm_ui$Internal$Model$Unkeyed(_List_Nil))
+					])));
+	});
 var $elm$html$Html$Attributes$href = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,
