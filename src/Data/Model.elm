@@ -1,8 +1,8 @@
-module Model exposing (..)
+module Data.Model exposing (..)
 
 import Element
 import Theme exposing (Theme)
-import Translation exposing
+import Data.Translation exposing
     ( Language
     , Translation
     )
@@ -24,3 +24,4 @@ type alias Skill =
 type SkillCategory
     = Language
     | LibraryFramework
+      

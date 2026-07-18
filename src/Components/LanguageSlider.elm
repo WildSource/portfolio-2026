@@ -1,14 +1,14 @@
 module Components.LanguageSlider exposing (element)
 
 import Component
-import Model exposing (Model)
-import Message exposing (Msg (..))
+import Data.Model exposing (Model)
+import Data.Message exposing (Msg (..))
 import Element exposing (Element)
 import Theme exposing (Theme (..))
 
 import Element.Input as Input
 import Element.Font as Font
-import Translation as T
+import Data.Translation as T
 
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark

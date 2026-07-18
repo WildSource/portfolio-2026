@@ -1,9 +1,9 @@
 module Components.Card exposing (element)
 
-import Message exposing (Msg)
-import Model exposing (Model)
+import Data.Message exposing (Msg)
+import Data.Model exposing (Model)
 import Theme exposing (Theme (..))
-import Translation exposing
+import Data.Translation exposing
     ( Translation
     , Language (..)
     )

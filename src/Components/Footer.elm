@@ -4,9 +4,9 @@ import Element exposing
     ( Element
     , fill
     )
-import Message exposing (Msg)
+import Data.Message exposing (Msg)
 import Component exposing (debugBorder)
-import Model exposing (Model)
+import Data.Model exposing (Model)
 import Theme exposing (Theme (..))
 
 import Element.Background as Background

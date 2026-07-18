@@ -1,4 +1,4 @@
-module Message exposing (..)
+module Data.Message exposing (..)
 
 type alias WindowSize =
     { width : Int

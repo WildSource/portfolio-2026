@@ -5,10 +5,11 @@ import Element exposing
     , fill
     , px
     )
-import Message exposing (Msg)
-import Model exposing (Model)
+import Data.Message exposing (Msg)
+import Data.Model exposing (Model)
 import Theme exposing (Theme (..))
 
+import Data.Message as Message
 import Element.Border as Border
 import Element.Font as Font
 import Element.Background as Background

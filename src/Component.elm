@@ -1,8 +1,8 @@
 module Component exposing (..)
 
-import Message exposing (Msg (..))
+import Data.Message exposing (Msg (..))
 import Theme exposing (Theme (..))
-import Model exposing (Model)
+import Data.Model exposing (Model)
 import Element exposing
     ( Element
     , Attribute

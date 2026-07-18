@@ -6,8 +6,8 @@ import Element exposing
     ( Element
     , fill
     )
-import Message exposing (Msg)
-import Model exposing (Model)
+import Data.Message exposing (Msg)
+import Data.Model exposing (Model)
 import Theme exposing (Theme (..))
 
 iconsPath : String

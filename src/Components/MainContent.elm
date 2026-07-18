@@ -4,17 +4,17 @@ import Element exposing
     ( Element
     , fill
     )
-import Message exposing (Msg)
-import Model exposing
+import Data.Message exposing (Msg)
+import Data.Model exposing
     ( Model
     , SkillCategory (..)
     )
-import Translation exposing (Language (..))
+import Data.Translation exposing (Language (..))
 import Theme exposing (Theme (..)) 
 
 import Components.Card as Card
 import Components.Dropdown as Dropdown
-import Translation as T
+import Data.Translation as T
 import Element.Font as Font
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark

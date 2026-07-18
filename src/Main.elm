@@ -2,8 +2,6 @@ module Main exposing (..)
 
 import Browser exposing (Document)
 
-import Component exposing (debugBorder)
-
 import Components.ThemeSlider as ThemeSlider
 import Components.LanguageSlider as LanguageSlider
 import Components.HeroText as HeroText
@@ -11,7 +9,8 @@ import Components.Socials as Socials
 import Components.Footer as Footer
 import Components.MainContent as MainContent
 import Browser.Events as E
-
+import Data.Translation as Translation
+import Data.Message as Message
 
 import Element exposing
     ( width
@@ -25,16 +24,14 @@ import Themes.GruvboxDark as GDark
 
 import Theme exposing (Theme (..))
 
-import Translation exposing (Language (..))
+import Data.Translation exposing (Language (..))
 
-import Model exposing
+import Data.Model exposing
     ( Model
     , SkillCategory (..)
     )
 
-import Message exposing (Msg)
-
-import Html exposing (Html)
+import Data.Message exposing (Msg)
 
     
 main : Program Flags Model Msg

@@ -4,8 +4,8 @@ import Icons
 
 import Component
 import Theme exposing (Theme (..))
-import Model exposing (Model)
-import Message exposing (Msg (..))
+import Data.Model exposing (Model)
+import Data.Message exposing (Msg (..))
 import Element exposing (Element)
 
 import Element.Input as Input

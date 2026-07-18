@@ -19,13 +19,13 @@ import Svg.Attributes exposing
     , strokeWidth
     )
 
-import Message exposing (Msg)
+import Data.Message exposing (Msg)
 
 import Element exposing (Element)
 
 import Theme exposing (Theme (..))
 
-import Model exposing (Model)
+import Data.Model exposing (Model)
 
 
 moon : Model -> Element Msg

@@ -1,4 +1,4 @@
-module Translation exposing (..)
+module Data.Translation exposing (..)
 
 type Language
     = EN
