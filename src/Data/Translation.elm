@@ -155,3 +155,15 @@ projectsTitle =
     }
 
     
+projectAdultComicTitle : Translation
+projectAdultComicTitle =
+    { en = "Webcomic Website"
+    , fr = "Site Web de Webcomique"
+    }
+
+projectAdultComicContent : Translation    
+projectAdultComicContent =
+    { en = ""
+    , fr = ""
+    }
+    

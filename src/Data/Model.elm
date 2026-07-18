@@ -12,6 +12,7 @@ type alias Model =
     , theme : Theme
     , device : Element.Device
     , skills : List Skill
+    , projects : List Project
     , toggledDropdowns : List String
     }
 
@@ -19,6 +20,12 @@ type alias Skill =
     { title : String
     , content : Translation
     , category : SkillCategory
+    }
+
+type alias Project =
+    { title : Translation
+    , content : Translation
+        
     }
 
 type SkillCategory

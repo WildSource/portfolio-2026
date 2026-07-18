@@ -71,6 +71,23 @@ init flags =
         ( { locale = locale
           , theme = Light
           , device = device
+          , projects =
+                [ { title =
+                        { simpleText = ""
+                        , translatedText =
+                              { en = ""
+                              , fr = ""
+                              }                            
+                        }
+                  , content =
+                        { simpleText = ""
+                        , translatedText =
+                              { en = ""
+                              , fr = ""
+                              }                            
+                        }
+                  }
+                ]
           , skills =              
                 [ { title = "Haskell"
                   , content = { en = "", fr = "" }
