@@ -1,8 +1,9 @@
 module Components.MainContent exposing (element)
 
-import Debug
-
-import Element exposing (Element)
+import Element exposing
+    ( Element
+    , fill
+    )
 import Message exposing (Msg)
 import Model exposing
     ( Model
@@ -28,22 +29,26 @@ element model =
                 GDark.fg0                    
 
         projectsContent =
-            Element.paragraph
-                []
-                [ Element.column
-                      []
-                      [ Element.text "Adult Webcomic Website"
-                      , Element.text "Portfolio (2023)"
-                      , Element.text "La Voûte"
-                      ]
-                ]      
+            Element.column
+                [ Element.width fill
+                , Element.spacing 10
+                ]
+                [ Dropdown.element
+                      model
+                      "Adult Webcomic Website"
+                , Dropdown.element
+                      model
+                      "Portfolio (2023)"
+                , Dropdown.element
+                      model
+                      "La Voûte"
+                ]
     in
         Element.column
             [ Element.centerX
             , Element.width Element.fill
             , Element.height Element.fill
-            , Element.spacing 20
-            , Element.paddingXY 0 20
+            , Element.paddingXY 0 5
             , Font.size 15
             , Font.color fontColor
             , Font.family

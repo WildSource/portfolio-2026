@@ -108,15 +108,16 @@ element model skillName =
                         Just (Message.ToggleDropdown skillName)
                   , label =
                       Element.row
-                          [ Element.padding 5
-                          , Element.spaceEvenly
-                          ]
-                      [ Element.text (skillName)
-                      , Element.image
-                            [ Element.width (px 15)
-                            , Element.height (px 15)
-                            ]
-                          chevron
+                        [ Element.padding 5
+                        , Element.width fill
+                        , Element.spaceEvenly
+                        ]
+                        [ Element.text (skillName)
+                        , Element.image
+                              [ Element.width (px 15)
+                              , Element.height (px 15)
+                              ]
+                            chevron
                       ]
                   }
             :: content 
