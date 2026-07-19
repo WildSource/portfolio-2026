@@ -5247,14 +5247,8 @@ var $author$project$Main$init = function (flags) {
 			projects: _List_fromArray(
 				[
 					{
-					content: {
-						simpleText: '',
-						translatedText: {en: '', fr: ''}
-					},
-					title: {
-						simpleText: '',
-						translatedText: {en: '', fr: ''}
-					}
+					content: {en: '', fr: ''},
+					title: {en: '', fr: ''}
 				}
 				]),
 			skills: _List_fromArray(

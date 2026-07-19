@@ -73,19 +73,13 @@ init flags =
           , device = device
           , projects =
                 [ { title =
-                        { simpleText = ""
-                        , translatedText =
-                              { en = ""
-                              , fr = ""
-                              }                            
-                        }
+                        { en = ""
+                        , fr = ""
+                        }                            
                   , content =
-                        { simpleText = ""
-                        , translatedText =
-                              { en = ""
-                              , fr = ""
-                              }                            
-                        }
+                        { en = ""
+                        , fr = ""
+                        }                            
                   }
                 ]
           , skills =              
