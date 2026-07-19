@@ -1,10 +1,11 @@
 module Components.HeroText exposing (element)
 
-import Data.Model exposing (Model)
 import Data.Message exposing (Msg (..))
 import Theme exposing (Theme (..))
+import Data.Translation exposing (Language)
 import Element exposing
     ( Element
+    , Device
     , DeviceClass (..)
     )
 
@@ -14,30 +15,32 @@ import Element.Font as Font
 import Data.Translation as T
 
 
-element : Model -> Element Msg
-element model =
+element : Theme -> Language -> Device -> Element Msg
+element theme language device =
     let
         name =
             let
                 style =
-                    if model.theme == Light then
-                        Font.color GLight.blueDark
-                    else
-                        Font.color GDark.blueLight                    
+                    Theme.evalTheme
+                        (Font.color GDark.blueLight)
+                        (Light, Font.color GLight.blueDark)
+                        theme
             in
                 Element.el [style] (Element.text "Samuel Nguyen-Phok")
 
         heroText =
             let
                 style =
-                    if model.theme == Light then
-                        Font.color GLight.greenDark
-                    else
-                        Font.color GDark.greenLight
+                    Theme.evalTheme
+                        (Font.color GDark.greenLight)
+                        (Light, Font.color GLight.greenDark)
+                        theme
             in
                 Element.el
-                [style]
-                (Element.text (T.translate T.lastThirdHeroTitle model.locale))
+                [ style ]
+                ( Element.text
+                      (T.translate T.lastThirdHeroTitle language)
+                )
                     
         fontStyle =
             [ Font.family [Font.typeface "Josefin Sans"]
@@ -46,13 +49,13 @@ element model =
             ]
             
         themeStyle =
-            if model.theme == Light then
-                [Font.color GLight.fg0]
-            else
+            Theme.evalTheme
                 [Font.color GDark.fg0]
+                (Light, [Font.color GLight.fg0])
+                theme
             
         deviceStyle =
-            case model.device.class of
+            case device.class of
                 Phone ->
                     [Font.size 30]
                 _ ->
@@ -69,37 +72,41 @@ element model =
         Element.column
             spacingStyle
             [ Element.paragraph
-                          paragraphStyle
-                          [ Element.text (T.translate T.firstThirdHeroTitle model.locale)
-                          , name
-                          , Element.text (T.translate T.secondThirdHeroTitle model.locale)
-                          , heroText
-                          ]
-            , subHeroTitle model
+                  paragraphStyle
+                  [ Element.text
+                        (T.translate T.firstThirdHeroTitle language)
+                  , name
+                  , Element.text
+                        (T.translate T.secondThirdHeroTitle language)
+                  , heroText
+                  ]
+            , subHeroTitle theme language
             ]
 
 
-subHeroTitle : Model -> Element Msg
-subHeroTitle model =
+subHeroTitle : Theme -> Language -> Element Msg
+subHeroTitle theme language=
     let
         fontColor =
-            if model.theme == Light then
-                GLight.yellowDark
-            else
+            Theme.evalTheme
                 GDark.yellowLight
+                (Light, GLight.yellowDark)
+                theme                
                     
         text1 =
             Element.el
                 [Element.centerX]
-                (Element.text (T.translate T.subHeroTitle1 model.locale))
+                (Element.text (T.translate T.subHeroTitle1 language))
+                    
         text2 =
             Element.el
                 [Element.centerX]
-                (Element.text (T.translate T.subHeroTitle2 model.locale))
+                (Element.text (T.translate T.subHeroTitle2 language))
+                    
         text3 =
             Element.el
                 [Element.centerX]
-                (Element.text (T.translate T.subHeroTitle3 model.locale))
+                (Element.text (T.translate T.subHeroTitle3 language))
     in
         Element.column
             [ Element.paddingXY 10 0
@@ -109,7 +116,7 @@ subHeroTitle model =
             , Font.color fontColor
             , Font.semiBold
             , Font.family
-                [ Font.serif]
+                [Font.serif]
             ]
         [ text1
         , text2

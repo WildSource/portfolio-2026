@@ -1,6 +1,13 @@
-module Data.Model exposing (..)
+module Data.Model exposing
+    ( Model
+    , Skill
+    , SkillCategory
+    , skills
+    , Project
+    , projects
+    )
 
-import Element
+import Element exposing (Device)
 import Theme exposing (Theme)
 import Data.Translation exposing
     ( Language
@@ -8,9 +15,9 @@ import Data.Translation exposing
     )
 
 type alias Model =
-    { locale : Language
+    { language : Language
     , theme : Theme
-    , device : Element.Device
+    , device : Device
     , skills : List Skill
     , projects : List Project
     , toggledDropdowns : List String
@@ -18,20 +25,137 @@ type alias Model =
 
 type alias Skill =
     { title : String
-    , content : Translation
     , category : SkillCategory
     }
 
+type SkillCategory
+    = Language
+    | LibraryFramework    
+
+skills : List Skill
+skills =
+    [ haskell
+    , java
+    , elm
+    , php
+    , javascript
+    , typescript
+    , html
+    , css
+    , springBoot
+    , scotty
+    , servant
+    , react
+    , angular
+    ]
+
+haskell : Skill
+haskell =    
+    { title = "Haskell"
+    , category = Language
+    }
+
+
+java : Skill
+java =        
+    { title = "Java"
+    , category = Language
+    }
+
+    
+elm : Skill
+elm =       
+    { title = "Elm"
+    , category = Language
+    }
+
+
+php : Skill
+php =
+    { title = "Php"
+    , category = Language
+    }
+
+    
+javascript : Skill
+javascript =
+    { title = "Javascript"
+    , category = Language
+    }
+
+
+typescript : Skill
+typescript = 
+    { title = "Typescript"
+    , category = Language
+    }
+
+
+html : Skill
+html = 
+    { title = "Html"
+    , category = Language
+    }
+    
+    
+css : Skill
+css = 
+    { title = "CSS"
+    , category = Language
+    }
+    
+
+springBoot : Skill
+springBoot =             
+    { title = "SpringBoot"
+    , category = LibraryFramework
+    }
+
+
+scotty : Skill
+scotty =         
+    { title = "Scotty"          
+    , category = LibraryFramework
+    }
+
+
+
+servant : Skill
+servant =          
+    { title = "Servant"
+    , category = LibraryFramework
+    }
+
+
+react : Skill
+react =         
+    { title = "React"
+    , category = LibraryFramework
+    }
+
+    
+angular : Skill
+angular =           
+    { title = "Angular"
+    , category = LibraryFramework
+    } 
+
+    
 type alias Project =
     { title : Translation
     , content : Translation
         
     }
 
-type SkillCategory
-    = Language
-    | LibraryFramework
-
+    
+projects : List Project
+projects =
+    [ adultWebcomicWebsite
+    , portfolio2023
+    , laVoute
+    ]
+    
+    
 adultWebcomicWebsite : Project
 adultWebcomicWebsite =
     { title =
@@ -60,6 +184,7 @@ adultWebcomicWebsite =
           }
     }
 
+    
 portfolio2023 : Project
 portfolio2023 =
     { title =
@@ -86,6 +211,7 @@ portfolio2023 =
           }
     }
 
+    
 laVoute : Project
 laVoute =
     { title =

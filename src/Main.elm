@@ -29,11 +29,21 @@ import Data.Translation exposing (Language (..))
 import Data.Model exposing
     ( Model
     , SkillCategory (..)
+    , skills
+    , projects
     )
 
 import Data.Message exposing (Msg)
 
-    
+{-
+Notes on what to refactor.
++ pass either data as arguments to component if 2-3 arguments or less
+otherwise switch to a record instead of passing whole model.
+
++ refactor model to include the static text as data in the model instead of hardcoded string literals
+ -}
+
+
 main : Program Flags Model Msg
 main =
     Browser.document
@@ -62,80 +72,17 @@ init flags =
             { width = flags.width
             , height = flags.height                
             }
-        locale =
+        language =
             if String.startsWith "fr" flags.language then
                 Translation.FR
             else
                 Translation.EN                
     in
-        ( { locale = locale
+        ( { language = language
           , theme = Light
           , device = device
-          , projects =
-                [ { title =
-                        { en = ""
-                        , fr = ""
-                        }                            
-                  , content =
-                        { en = ""
-                        , fr = ""
-                        }                            
-                  }
-                ]
-          , skills =              
-                [ { title = "Haskell"
-                  , content = { en = "", fr = "" }
-                  , category = Language
-                  }
-                , { title = "Java"
-                  , content = { en = "", fr = "" }
-                  , category = Language
-                  }
-                , { title = "Elm"
-                  , content = { en = "", fr = "" }
-                  , category = Language
-                  }
-                , { title = "Php"
-                  , content = { en = "", fr = "" }
-                  , category = Language
-                  }
-                , { title = "Javascript"
-                  , content = { en = "", fr = "" }
-                  , category = Language
-                  }
-                , { title = "Typescript"
-                  , content = { en = "", fr = "" }
-                  , category = Language
-                  }
-                , { title = "Html"
-                  , content = { en = "", fr = "" }
-                  , category = Language
-                  }
-                , { title = "CSS"
-                  , content = { en = "", fr = "" }
-                  , category = Language
-                  }
-                , { title = "SpringBoot"
-                  , content = { en = "", fr = "" }
-                  , category = LibraryFramework
-                  }
-                , { title = "Scotty"
-                  , content = { en = "", fr = "" }
-                  , category = LibraryFramework
-                  }
-                , { title = "Servant"
-                  , content = { en = "", fr = "" }
-                  , category = LibraryFramework
-                  }
-                , { title = "React"
-                  , content = { en = "", fr = "" }
-                  , category = LibraryFramework
-                  }
-                , { title = "Angular"
-                  , content = { en = "", fr = "" }
-                  , category = LibraryFramework
-                  } 
-                ]
+          , projects = projects
+          , skills = skills
           , toggledDropdowns = []
           }
         , Cmd.none
@@ -146,10 +93,10 @@ view : Model -> Document Msg
 view model =
     let
         theme =
-            if model.theme == Light then
-                GLight.bg
-            else
+            Theme.evalTheme
                 GDark.bg
+                (Light, GLight.bg)
+                model.theme
 
         sliders =
             Element.row
@@ -159,6 +106,7 @@ view model =
                 [ ThemeSlider.element model
                 , Element.el [alignRight] (LanguageSlider.element model)
                 ]
+                
     in
         { title = "Samuel Nguyen-Phok"
         , body =
@@ -175,7 +123,10 @@ view model =
                     ( Element.column
                           []
                           [ sliders
-                          , HeroText.element model
+                          , HeroText.element
+                              model.theme
+                              model.language
+                              model.device
                           , Socials.element model
                           , MainContent.element model
                           , Footer.element model
