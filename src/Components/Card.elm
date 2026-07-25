@@ -17,19 +17,24 @@ import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
 
-element : Model -> Translation -> Element Msg -> Element Msg    
-element model title content =
+element
+    :  Theme
+    -> Language
+    -> Translation
+    -> Element Msg
+    -> Element Msg    
+element theme language title content =
     let
         titleText =
             let
                 text =
-                    if model.locale == EN then
+                    if language == EN then
                         title.en
                     else
                         title.fr
                             
                 fontColor =
-                    if model.theme == Light then
+                    if theme == Light then
                         GLight.blueDark
                     else
                         GDark.blueLight

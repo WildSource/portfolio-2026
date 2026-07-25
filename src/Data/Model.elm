@@ -1,7 +1,7 @@
 module Data.Model exposing
     ( Model
     , Skill
-    , SkillCategory
+    , SkillCategory (..)
     , skills
     , Project
     , projects

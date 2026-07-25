@@ -128,7 +128,11 @@ view model =
                               model.language
                               model.device
                           , Socials.element model
-                          , MainContent.element model
+                          , MainContent.element
+                              model.theme
+                              model.language
+                              model.skills
+                              model.toggledDropdowns
                           , Footer.element model
                           ]
                     )             
@@ -160,13 +164,13 @@ update msg model =
 
         Message.LanguageSwitch isChecked ->
             let
-                locale =
+                language =
                     if isChecked then
                         FR
                     else
                         EN
             in
-                ( { model | locale = locale }
+                ( { model | language = language }
                 , Cmd.none
                 )
 

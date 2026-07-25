@@ -24,7 +24,7 @@ element model =
                 GDark.fg0
         
         checked =
-            if model.locale == T.EN then
+            if model.language == T.EN then
                 False
             else
                 True

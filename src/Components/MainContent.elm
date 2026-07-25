@@ -7,23 +7,25 @@ import Element exposing
 import Data.Message exposing (Msg)
 import Data.Model exposing
     ( Model
-    , SkillCategory (..)
+    , Skill
     )
-import Data.Translation exposing (Language (..))
+
 import Theme exposing (Theme (..)) 
 
 import Components.Card as Card
 import Components.Dropdown as Dropdown
+import Components.Highlight as Highlight
 import Data.Translation as T
 import Element.Font as Font
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
+import Data.Model as M
 
-element : Model -> Element Msg
-element model =
+element : Theme -> T.Language -> List Skill -> List String -> Element Msg
+element theme language skills dropdowns =
     let
         fontColor =
-            if model.theme == Light then
+            if theme == Light then
                 GLight.fg0
             else
                 GDark.fg0                    
@@ -34,14 +36,17 @@ element model =
                 , Element.spacing 10
                 ]
                 [ Dropdown.element
-                      model
-                      "Adult Webcomic Website"
+                    theme
+                    dropdowns                      
+                    "Adult Webcomic Website"
                 , Dropdown.element
-                      model
-                      "Portfolio (2023)"
+                    theme
+                    dropdowns
+                    "Portfolio (2023)"
                 , Dropdown.element
-                      model
-                      "La Voûte"
+                    theme
+                    dropdowns
+                    "La Voûte"
                 ]
     in
         Element.column
@@ -55,14 +60,26 @@ element model =
                 [ Font.serif                 
                 ]                
             ]
-            [ Card.element model T.aboutTitle (aboutContent model)
-            , Card.element model T.experiencesTitle (experiencesContent model)
-            , Card.element model T.technologyTitle (technologyContent model)
-            , Card.element model T.projectsTitle projectsContent
+            [ Card.element
+                  theme
+                  language
+                  T.aboutTitle (aboutContent language)
+            , Card.element
+                  theme
+                  language
+                  T.experiencesTitle (experiencesContent theme language)
+            , Card.element
+                  theme
+                  language
+                  T.technologyTitle (technologyContent theme skills)
+            , Card.element
+                  theme
+                  language
+                  T.projectsTitle projectsContent
             ]
 
-aboutContent : Model -> Element Msg
-aboutContent model =
+aboutContent : T.Language -> Element Msg
+aboutContent language =
     let
         translations =
             [ T.aboutContent1
@@ -75,7 +92,7 @@ aboutContent model =
             translations
             |> List.map
                ( \ translation ->
-                     if model.locale == EN then
+                     if language == T.EN then
                          translation.en
                      else
                          translation.fr
@@ -90,11 +107,11 @@ aboutContent model =
             ]
 
                 
-technologyContent : Model -> Element Msg
-technologyContent model =
+technologyContent : Theme -> List Skill -> Element Msg
+technologyContent theme skills =
     let
         subTitleColor =
-            if model.theme == Light then
+            if theme == Light then
                 GLight.greenDark
             else
                 GDark.greenLight
@@ -114,10 +131,10 @@ technologyContent model =
         programmingLanguages : List (Element Msg)
         programmingLanguages =
             List.map
-                (Element.text) 
+                (Highlight.element theme) 
                 (List.filter
-                     (\ skill -> skill.category == Language)
-                     model.skills
+                     (\ skill -> skill.category == M.Language)
+                     skills
                 |>
                   List.map
                      (\ skill -> skill.title)
@@ -126,10 +143,10 @@ technologyContent model =
         librariesAndFrameworks : List (Element Msg)
         librariesAndFrameworks =
             List.map
-                (Element.text)
+                (Highlight.element theme)
                 (List.filter
-                     (\ skill -> skill.category == LibraryFramework)
-                     model.skills
+                     (\ skill -> skill.category == M.LibraryFramework)
+                     skills
                 |>
                   List.map
                      (\ skill -> skill.title)
@@ -161,8 +178,8 @@ technologyContent model =
         ]
         
 
-experiencesContent : Model -> Element Msg
-experiencesContent model =
+experiencesContent : Theme -> T.Language -> Element Msg
+experiencesContent theme language  =   
     let
         titleTranslation =
             { en = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\n"
@@ -170,43 +187,43 @@ experiencesContent model =
             }
             
         titleText =
-            if model.locale == EN then
+            if language == T.EN then
                 titleTranslation.en
             else
                 titleTranslation.fr
 
         titleColor =
-            if model.theme == Light then
+            if theme == Light then
                 GLight.greenDark
             else
                 GDark.greenLight
 
         p1Translated =
-            if model.locale == EN then
+            if language == T.EN then
                 T.experienceContentP1.en
             else
                 T.experienceContentP1.fr
 
         p2Translated =
-            if model.locale == EN then
+            if language == T.EN then
                 T.experienceContentP2.en
             else
                 T.experienceContentP2.fr
 
         p3Translated =
-            if model.locale == EN then
+            if language == T.EN then
                 T.experienceContentP3.en
             else
                 T.experienceContentP3.fr
 
         p4Translated =
-            if model.locale == EN then
+            if language == T.EN then
                 T.experienceContentP4.en
             else
                 T.experienceContentP4.fr
 
         p5Translated =
-            if model.locale == EN then
+            if language == T.EN then
                 T.experienceContentP5.en
             else
                 T.experienceContentP5.fr                                                            

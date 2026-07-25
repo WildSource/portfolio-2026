@@ -23,22 +23,22 @@ iconsPath =
     "/assets/icons/"
 
         
-element : Model -> String -> Element Msg
-element model skillName =
+element : Theme -> List String -> String -> Element Msg
+element theme toggledDropdowns skillName =
     let
         isToggled =
-            List.member skillName model.toggledDropdowns
+            List.member skillName toggledDropdowns
             
         borderColor =
-            if model.theme == Light then
+            if theme == Light then
                 GLight.aquaDark
             else
                 GDark.aquaLight
 
         chevron =
             let
-                (direction, theme) =
-                    case (isToggled, model.theme) of
+                (direction, chevronTheme) =
+                    case (isToggled, theme) of
                         (True, Light) ->
                             ("up", "")
                         (True, Dark) ->
@@ -49,7 +49,7 @@ element model skillName =
                             ("down", "-dark")
             in
                 { src =
-                      iconsPath ++ "chevron-" ++ direction ++ theme ++ "-svgrepo-com.svg"
+                      iconsPath ++ "chevron-" ++ direction ++ chevronTheme ++ "-svgrepo-com.svg"
                 , description =
                       "chevron " ++ direction
                 }
@@ -57,13 +57,13 @@ element model skillName =
         buttonColor =
             let
                 bgColor =
-                    if model.theme == Light then
+                    if theme == Light then
                         GLight.bg2
                     else
                         GDark.bg0Hard
                             
                 shadowColor =
-                    if model.theme == Light then
+                    if theme == Light then
                         GLight.bg4
                     else
                         Element.rgb255 20 20 20
