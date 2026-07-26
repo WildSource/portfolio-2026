@@ -5,12 +5,12 @@ import Element exposing
     , fill
     )
 import Data.Message exposing (Msg)
-import Data.Model exposing
-    ( Model
-    , Skill
-    )
-
-import Theme exposing (Theme (..)) 
+import Data.Model exposing (Skill)
+import Utils exposing (debugBorder)
+import Theme exposing
+    ( Theme (..)
+    , evalTheme
+    ) 
 
 import Components.Card as Card
 import Components.Dropdown as Dropdown
@@ -110,22 +110,28 @@ aboutContent language =
 technologyContent : Theme -> List Skill -> Element Msg
 technologyContent theme skills =
     let
-        subTitleColor =
-            if theme == Light then
-                GLight.greenDark
-            else
-                GDark.greenLight
-            
         subTitleStyle =
             [ Element.padding 10
             , Font.size 20
-            , Font.color subTitleColor
+            , Font.color
+                  ( evalTheme
+                       GDark.greenLight
+                       (Light, GLight.greenDark)
+                       theme
+                  )
             ]            
             
         sectionStyle =
             [ Element.spacing 10
             , Element.paddingXY 0 10
             , Element.centerX
+            , Element.width fill
+            ]
+
+        contentStyle =
+            [ Element.padding 10
+            , Element.spacing 10
+            , Element.width fill
             ]
 
         programmingLanguages : List (Element Msg)
@@ -155,27 +161,32 @@ technologyContent theme skills =
         languageSection =
             Element.column
                 sectionStyle
-                ( Element.el
+                [ Element.el
                       subTitleStyle
                       (Element.text "Programming Languages")
-                :: programmingLanguages
-                )
+
+                , Element.paragraph
+                    (debugBorder contentStyle)
+                    programmingLanguages                        
+                ]
                 
                 
         libraryFrameworkSection =
             Element.column
                 sectionStyle
-                ( Element.el
+                [ Element.el
                       subTitleStyle
                       (Element.text "Libraries and/or Frameworks")
-                :: librariesAndFrameworks
-                )
+                , Element.paragraph
+                      (debugBorder contentStyle)
+                      librariesAndFrameworks
+                ]
     in
         Element.paragraph
-            []
-        [ languageSection
-        , libraryFrameworkSection
-        ]
+            (debugBorder [Element.width fill])
+            [ languageSection
+            , libraryFrameworkSection
+            ]
         
 
 experiencesContent : Theme -> T.Language -> Element Msg
@@ -245,4 +256,4 @@ experiencesContent theme language  =
                   ]
             ]                     
             
-            
+

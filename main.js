@@ -12517,6 +12517,19 @@ var $author$project$Components$MainContent$experiencesContent = F2(
 	});
 var $author$project$Data$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
 var $author$project$Data$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
+var $mdgriffith$elm_ui$Element$rgb = F3(
+	function (r, g, b) {
+		return A4($mdgriffith$elm_ui$Internal$Model$Rgba, r, g, b, 1);
+	});
+var $author$project$Utils$debugBorder = function (attributes) {
+	var debugBorderStyle = _List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$Border$width(2),
+			$mdgriffith$elm_ui$Element$Border$color(
+			A3($mdgriffith$elm_ui$Element$rgb, 1, 0, 0))
+		]);
+	return _Utils_ap(attributes, debugBorderStyle);
+};
 var $author$project$Themes$GruvboxDark$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 254, 128, 25);
 var $author$project$Themes$GruvboxLight$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 214, 93, 14);
 var $author$project$Components$Highlight$element = F2(
@@ -12545,18 +12558,23 @@ var $author$project$Components$Highlight$element = F2(
 	});
 var $author$project$Components$MainContent$technologyContent = F2(
 	function (theme, skills) {
-		var subTitleColor = _Utils_eq(theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$greenDark : $author$project$Themes$GruvboxDark$greenLight;
 		var subTitleStyle = _List_fromArray(
 			[
 				$mdgriffith$elm_ui$Element$padding(10),
 				$mdgriffith$elm_ui$Element$Font$size(20),
-				$mdgriffith$elm_ui$Element$Font$color(subTitleColor)
+				$mdgriffith$elm_ui$Element$Font$color(
+				A3(
+					$author$project$Theme$evalTheme,
+					$author$project$Themes$GruvboxDark$greenLight,
+					_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$greenDark),
+					theme))
 			]);
 		var sectionStyle = _List_fromArray(
 			[
 				$mdgriffith$elm_ui$Element$spacing(10),
 				A2($mdgriffith$elm_ui$Element$paddingXY, 0, 10),
-				$mdgriffith$elm_ui$Element$centerX
+				$mdgriffith$elm_ui$Element$centerX,
+				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
 			]);
 		var programmingLanguages = A2(
 			$elm$core$List$map,
@@ -12586,29 +12604,47 @@ var $author$project$Components$MainContent$technologyContent = F2(
 						return _Utils_eq(skill.category, $author$project$Data$Model$LibraryFramework);
 					},
 					skills)));
-		var libraryFrameworkSection = A2(
-			$mdgriffith$elm_ui$Element$column,
-			sectionStyle,
-			A2(
-				$elm$core$List$cons,
-				A2(
-					$mdgriffith$elm_ui$Element$el,
-					subTitleStyle,
-					$mdgriffith$elm_ui$Element$text('Libraries and/or Frameworks')),
-				librariesAndFrameworks));
+		var contentStyle = _List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$padding(10),
+				$mdgriffith$elm_ui$Element$spacing(10),
+				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+			]);
 		var languageSection = A2(
 			$mdgriffith$elm_ui$Element$column,
 			sectionStyle,
-			A2(
-				$elm$core$List$cons,
-				A2(
+			_List_fromArray(
+				[
+					A2(
 					$mdgriffith$elm_ui$Element$el,
 					subTitleStyle,
 					$mdgriffith$elm_ui$Element$text('Programming Languages')),
-				programmingLanguages));
+					A2(
+					$mdgriffith$elm_ui$Element$paragraph,
+					$author$project$Utils$debugBorder(contentStyle),
+					programmingLanguages)
+				]));
+		var libraryFrameworkSection = A2(
+			$mdgriffith$elm_ui$Element$column,
+			sectionStyle,
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$el,
+					subTitleStyle,
+					$mdgriffith$elm_ui$Element$text('Libraries and/or Frameworks')),
+					A2(
+					$mdgriffith$elm_ui$Element$paragraph,
+					$author$project$Utils$debugBorder(contentStyle),
+					librariesAndFrameworks)
+				]));
 		return A2(
 			$mdgriffith$elm_ui$Element$paragraph,
-			_List_Nil,
+			$author$project$Utils$debugBorder(
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+					])),
 			_List_fromArray(
 				[languageSection, libraryFrameworkSection]));
 	});

@@ -1,5 +1,8 @@
 module Utils exposing (..)
 
+import Element exposing (Attribute)
+import Element.Border as Border
+
 debugBorder : List (Attribute msg) -> List (Attribute msg)
 debugBorder attributes =
     let
