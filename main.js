@@ -12517,11 +12517,30 @@ var $author$project$Components$MainContent$experiencesContent = F2(
 	});
 var $author$project$Data$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
 var $author$project$Data$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
+var $author$project$Themes$GruvboxDark$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 254, 128, 25);
+var $author$project$Themes$GruvboxLight$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 214, 93, 14);
 var $author$project$Components$Highlight$element = F2(
 	function (theme, content) {
+		var borderColor = A3(
+			$author$project$Theme$evalTheme,
+			$author$project$Themes$GruvboxDark$orangeLight,
+			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$orangeLight),
+			theme);
+		var backgroundColor = A3(
+			$author$project$Theme$evalTheme,
+			$author$project$Themes$GruvboxDark$bg1,
+			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$bg1),
+			theme);
 		return A2(
 			$mdgriffith$elm_ui$Element$el,
-			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$Border$width(3),
+					$mdgriffith$elm_ui$Element$Border$color(borderColor),
+					$mdgriffith$elm_ui$Element$Border$rounded(15),
+					$mdgriffith$elm_ui$Element$Background$color(backgroundColor),
+					$mdgriffith$elm_ui$Element$padding(10)
+				]),
 			$mdgriffith$elm_ui$Element$text(content));
 	});
 var $author$project$Components$MainContent$technologyContent = F2(
