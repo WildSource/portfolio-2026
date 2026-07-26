@@ -11318,6 +11318,46 @@ var $mdgriffith$elm_ui$Element$column = F2(
 						attrs))),
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
+var $mdgriffith$elm_ui$Internal$Flag$borderColor = $mdgriffith$elm_ui$Internal$Flag$flag(28);
+var $mdgriffith$elm_ui$Element$Border$color = function (clr) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$borderColor,
+		A3(
+			$mdgriffith$elm_ui$Internal$Model$Colored,
+			'bc-' + $mdgriffith$elm_ui$Internal$Model$formatColorClass(clr),
+			'border-color',
+			clr));
+};
+var $mdgriffith$elm_ui$Element$rgb = F3(
+	function (r, g, b) {
+		return A4($mdgriffith$elm_ui$Internal$Model$Rgba, r, g, b, 1);
+	});
+var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
+	function (a, b, c, d, e) {
+		return {$: 'BorderWidth', a: a, b: b, c: c, d: d, e: e};
+	});
+var $mdgriffith$elm_ui$Element$Border$width = function (v) {
+	return A2(
+		$mdgriffith$elm_ui$Internal$Model$StyleClass,
+		$mdgriffith$elm_ui$Internal$Flag$borderWidth,
+		A5(
+			$mdgriffith$elm_ui$Internal$Model$BorderWidth,
+			'b-' + $elm$core$String$fromInt(v),
+			v,
+			v,
+			v,
+			v));
+};
+var $author$project$Utils$debugBorder = function (attributes) {
+	var debugBorderStyle = _List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$Border$width(2),
+			$mdgriffith$elm_ui$Element$Border$color(
+			A3($mdgriffith$elm_ui$Element$rgb, 1, 0, 0))
+		]);
+	return _Utils_ap(attributes, debugBorderStyle);
+};
 var $mdgriffith$elm_ui$Element$el = F2(
 	function (attrs, child) {
 		return A4(
@@ -12125,7 +12165,10 @@ var $author$project$Components$MainContent$aboutContent = function (language) {
 			translations));
 	return A2(
 		$mdgriffith$elm_ui$Element$paragraph,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+			]),
 		_List_fromArray(
 			[
 				A2(
@@ -12256,17 +12299,6 @@ var $mdgriffith$elm_ui$Element$Input$button = F2(
 				_List_fromArray(
 					[label])));
 	});
-var $mdgriffith$elm_ui$Internal$Flag$borderColor = $mdgriffith$elm_ui$Internal$Flag$flag(28);
-var $mdgriffith$elm_ui$Element$Border$color = function (clr) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$borderColor,
-		A3(
-			$mdgriffith$elm_ui$Internal$Model$Colored,
-			'bc-' + $mdgriffith$elm_ui$Internal$Model$formatColorClass(clr),
-			'border-color',
-			clr));
-};
 var $author$project$Components$Dropdown$iconsPath = '/assets/icons/';
 var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
 var $elm$html$Html$Attributes$src = function (url) {
@@ -12344,22 +12376,6 @@ var $mdgriffith$elm_ui$Element$Border$innerShadow = function (almostShade) {
 			$mdgriffith$elm_ui$Internal$Model$formatBoxShadow(shade)));
 };
 var $mdgriffith$elm_ui$Element$spaceEvenly = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$spacing, $mdgriffith$elm_ui$Internal$Style$classes.spaceEvenly);
-var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
-	function (a, b, c, d, e) {
-		return {$: 'BorderWidth', a: a, b: b, c: c, d: d, e: e};
-	});
-var $mdgriffith$elm_ui$Element$Border$width = function (v) {
-	return A2(
-		$mdgriffith$elm_ui$Internal$Model$StyleClass,
-		$mdgriffith$elm_ui$Internal$Flag$borderWidth,
-		A5(
-			$mdgriffith$elm_ui$Internal$Model$BorderWidth,
-			'b-' + $elm$core$String$fromInt(v),
-			v,
-			v,
-			v,
-			v));
-};
 var $author$project$Components$Dropdown$element = F3(
 	function (theme, toggledDropdowns, skillName) {
 		var isToggled = A2($elm$core$List$member, skillName, toggledDropdowns);
@@ -12476,19 +12492,21 @@ var $author$project$Data$Translation$experienceContentP2 = {en: 'I designed and 
 var $author$project$Data$Translation$experienceContentP3 = {en: 'I implemented automated PDF generation using the DomPDF library, enabling documents to be emailed directly to relevant parties.', fr: ''};
 var $author$project$Data$Translation$experienceContentP4 = {en: 'I also built the intake system for legal requests submitted through RMAAQ\u0027s public website, allowing agricultural workers to file requests on various regulatory matters, and synchronized the incoming data across NextCloud, SharePoint, and the internal database.', fr: ''};
 var $author$project$Data$Translation$experienceContentP5 = {en: 'Originally planned as a standard 3–4 month internship, I was retained for a full year due to strong performance and ongoing project needs.', fr: ''};
+var $author$project$Data$Translation$experienceJobTitle = {en: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\u000A', fr: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\u000A'};
 var $author$project$Components$MainContent$experiencesContent = F2(
 	function (theme, language) {
-		var titleTranslation = {en: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\u000A', fr: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\u000A'};
-		var titleText = _Utils_eq(language, $author$project$Data$Translation$EN) ? titleTranslation.en : titleTranslation.fr;
-		var titleColor = _Utils_eq(theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$greenDark : $author$project$Themes$GruvboxDark$greenLight;
-		var p5Translated = _Utils_eq(language, $author$project$Data$Translation$EN) ? $author$project$Data$Translation$experienceContentP5.en : $author$project$Data$Translation$experienceContentP5.fr;
-		var p4Translated = _Utils_eq(language, $author$project$Data$Translation$EN) ? $author$project$Data$Translation$experienceContentP4.en : $author$project$Data$Translation$experienceContentP4.fr;
-		var p3Translated = _Utils_eq(language, $author$project$Data$Translation$EN) ? $author$project$Data$Translation$experienceContentP3.en : $author$project$Data$Translation$experienceContentP3.fr;
-		var p2Translated = _Utils_eq(language, $author$project$Data$Translation$EN) ? $author$project$Data$Translation$experienceContentP2.en : $author$project$Data$Translation$experienceContentP2.fr;
-		var p1Translated = _Utils_eq(language, $author$project$Data$Translation$EN) ? $author$project$Data$Translation$experienceContentP1.en : $author$project$Data$Translation$experienceContentP1.fr;
+		var titleText = A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceJobTitle, language);
+		var titleColor = A3(
+			$author$project$Theme$evalTheme,
+			$author$project$Themes$GruvboxDark$greenLight,
+			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$greenDark),
+			theme);
 		return A2(
 			$mdgriffith$elm_ui$Element$paragraph,
-			_List_Nil,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
 			_List_fromArray(
 				[
 					A2(
@@ -12507,29 +12525,21 @@ var $author$project$Components$MainContent$experiencesContent = F2(
 									$mdgriffith$elm_ui$Element$Font$color(titleColor)
 								]),
 							$mdgriffith$elm_ui$Element$text(titleText)),
-							$mdgriffith$elm_ui$Element$text(p1Translated),
-							$mdgriffith$elm_ui$Element$text(p2Translated),
-							$mdgriffith$elm_ui$Element$text(p3Translated),
-							$mdgriffith$elm_ui$Element$text(p4Translated),
-							$mdgriffith$elm_ui$Element$text(p5Translated)
+							$mdgriffith$elm_ui$Element$text(
+							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP1, language)),
+							$mdgriffith$elm_ui$Element$text(
+							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP2, language)),
+							$mdgriffith$elm_ui$Element$text(
+							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP3, language)),
+							$mdgriffith$elm_ui$Element$text(
+							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP4, language)),
+							$mdgriffith$elm_ui$Element$text(
+							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP5, language))
 						]))
 				]));
 	});
 var $author$project$Data$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
 var $author$project$Data$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
-var $mdgriffith$elm_ui$Element$rgb = F3(
-	function (r, g, b) {
-		return A4($mdgriffith$elm_ui$Internal$Model$Rgba, r, g, b, 1);
-	});
-var $author$project$Utils$debugBorder = function (attributes) {
-	var debugBorderStyle = _List_fromArray(
-		[
-			$mdgriffith$elm_ui$Element$Border$width(2),
-			$mdgriffith$elm_ui$Element$Border$color(
-			A3($mdgriffith$elm_ui$Element$rgb, 1, 0, 0))
-		]);
-	return _Utils_ap(attributes, debugBorderStyle);
-};
 var $author$project$Themes$GruvboxDark$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 254, 128, 25);
 var $author$project$Themes$GruvboxLight$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 214, 93, 14);
 var $author$project$Components$Highlight$element = F2(
@@ -12667,18 +12677,19 @@ var $author$project$Components$MainContent$element = F4(
 		var fontColor = _Utils_eq(theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
 		return A2(
 			$mdgriffith$elm_ui$Element$column,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$centerX,
-					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-					$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
-					A2($mdgriffith$elm_ui$Element$paddingXY, 0, 5),
-					$mdgriffith$elm_ui$Element$Font$size(15),
-					$mdgriffith$elm_ui$Element$Font$color(fontColor),
-					$mdgriffith$elm_ui$Element$Font$family(
-					_List_fromArray(
-						[$mdgriffith$elm_ui$Element$Font$serif]))
-				]),
+			$author$project$Utils$debugBorder(
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$centerX,
+						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+						$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
+						A2($mdgriffith$elm_ui$Element$paddingXY, 0, 5),
+						$mdgriffith$elm_ui$Element$Font$size(15),
+						$mdgriffith$elm_ui$Element$Font$color(fontColor),
+						$mdgriffith$elm_ui$Element$Font$family(
+						_List_fromArray(
+							[$mdgriffith$elm_ui$Element$Font$serif]))
+					])),
 			_List_fromArray(
 				[
 					A4(
@@ -13262,7 +13273,7 @@ var $author$project$Main$view = function (model) {
 					]),
 				A2(
 					$mdgriffith$elm_ui$Element$column,
-					_List_Nil,
+					$author$project$Utils$debugBorder(_List_Nil),
 					_List_fromArray(
 						[
 							sliders,

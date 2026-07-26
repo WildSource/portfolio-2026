@@ -106,6 +106,11 @@ experiencesTitle =
     , fr = "Mes expériences"
     }
 
+experienceJobTitle : Translation
+experienceJobTitle =                     
+    { en = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\n"
+    , fr = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\n"
+    }                     
     
 experienceContentP1 : Translation
 experienceContentP1 =

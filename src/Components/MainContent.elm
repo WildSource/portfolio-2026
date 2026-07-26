@@ -6,6 +6,7 @@ import Element exposing
     )
 import Data.Message exposing (Msg)
 import Data.Model exposing (Skill)
+import Data.Translation exposing (translate)
 import Utils exposing (debugBorder)
 import Theme exposing
     ( Theme (..)
@@ -50,7 +51,7 @@ element theme language skills dropdowns =
                 ]
     in
         Element.column
-            [ Element.centerX
+            (debugBorder [ Element.centerX
             , Element.width Element.fill
             , Element.height Element.fill
             , Element.paddingXY 0 5
@@ -60,6 +61,7 @@ element theme language skills dropdowns =
                 [ Font.serif                 
                 ]                
             ]
+                 )
             [ Card.element
                   theme
                   language
@@ -100,7 +102,7 @@ aboutContent language =
             |> List.map Element.text
     in
         Element.paragraph
-            []
+            [ Element.width fill ]
             [ Element.column
                   [Element.spacing 10]
                   content
@@ -192,55 +194,19 @@ technologyContent theme skills =
 experiencesContent : Theme -> T.Language -> Element Msg
 experiencesContent theme language  =   
     let
-        titleTranslation =
-            { en = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\n"
-            , fr = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\n"
-            }
-            
         titleText =
-            if language == T.EN then
-                titleTranslation.en
-            else
-                titleTranslation.fr
+            translate
+                T.experienceJobTitle
+                language
 
         titleColor =
-            if theme == Light then
-                GLight.greenDark
-            else
+            evalTheme
                 GDark.greenLight
-
-        p1Translated =
-            if language == T.EN then
-                T.experienceContentP1.en
-            else
-                T.experienceContentP1.fr
-
-        p2Translated =
-            if language == T.EN then
-                T.experienceContentP2.en
-            else
-                T.experienceContentP2.fr
-
-        p3Translated =
-            if language == T.EN then
-                T.experienceContentP3.en
-            else
-                T.experienceContentP3.fr
-
-        p4Translated =
-            if language == T.EN then
-                T.experienceContentP4.en
-            else
-                T.experienceContentP4.fr
-
-        p5Translated =
-            if language == T.EN then
-                T.experienceContentP5.en
-            else
-                T.experienceContentP5.fr                                                            
+                (Light, GLight.greenDark)
+                theme
     in
         Element.paragraph
-            []
+            [ Element.width fill ]
             [ Element.column
                   [ Element.spacing 10 ]
                   [ Element.el
@@ -248,11 +214,31 @@ experiencesContent theme language  =
                         , Font.color titleColor
                         ]
                         (Element.text titleText)
-                  , Element.text p1Translated
-                  , Element.text p2Translated
-                  , Element.text p3Translated
-                  , Element.text p4Translated
-                  , Element.text p5Translated
+                  , Element.text
+                      (translate
+                           T.experienceContentP1
+                           language
+                      )
+                  , Element.text
+                        (translate
+                           T.experienceContentP2
+                           language
+                        )
+                  , Element.text
+                        (translate
+                             T.experienceContentP3
+                             language
+                        )
+                  , Element.text
+                        (translate
+                             T.experienceContentP4
+                             language
+                        )
+                  , Element.text
+                        (translate
+                             T.experienceContentP5
+                             language
+                        )
                   ]
             ]                     
             

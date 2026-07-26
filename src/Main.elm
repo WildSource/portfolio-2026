@@ -12,6 +12,7 @@ import Browser.Events as E
 import Data.Translation as Translation
 import Data.Message as Message
 
+import Utils exposing (debugBorder)
 import Element exposing
     ( width
     , fill
@@ -121,7 +122,7 @@ view model =
                     }
                     [ Background.color theme ]
                     ( Element.column
-                          []
+                          (debugBorder [])
                           [ sliders
                           , HeroText.element
                               model.theme
