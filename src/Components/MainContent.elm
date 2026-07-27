@@ -54,7 +54,7 @@ element theme language skills dropdowns =
             [ Element.centerX
             , Element.width Element.fill
             , Element.height Element.fill
-            , Element.padding 5
+            , Element.padding 10
             , Element.spacing 20
             , Font.size 15
             , Font.color fontColor
@@ -70,10 +70,10 @@ element theme language skills dropdowns =
                   theme
                   language
                   T.experiencesTitle (experiencesContent theme language)
-{-            , Card.element
+            , Card.element
                   theme
                   language
-                  T.technologyTitle (technologyContent theme skills) -}
+                  T.technologyTitle (technologyContent theme skills)
             , Card.element
                   theme
                   language
@@ -113,29 +113,22 @@ technologyContent : Theme -> List Skill -> Element Msg
 technologyContent theme skills =
     let
         subTitleStyle =
-            [ Element.padding 10
-            , Font.size 20
+            [ Font.size 20
+            , Element.padding 10
             , Font.color
                   ( evalTheme
                        GDark.greenLight
                        (Light, GLight.greenDark)
                        theme
                   )
-            ]            
-            
-        sectionStyle =
-            [ Element.spacing 10
-            , Element.paddingXY 0 10
-            , Element.centerX
-            , Element.width fill
-            ]
+            ]                       
 
         contentStyle =
-            [ Element.padding 10
-            , Element.spacing 10
-            , Element.width fill
+            [ Element.width fill
+            , Element.padding 5
+            , Element.spacing 5
             ]
-
+            
         programmingLanguages : List (Element Msg)
         programmingLanguages =
             List.map
@@ -162,30 +155,31 @@ technologyContent theme skills =
                 
         languageSection =
             Element.column
-                sectionStyle
+                []
                 [ Element.el
                       subTitleStyle
                       (Element.text "Programming Languages")
 
-                , Element.paragraph
-                    (debugBorder contentStyle)
+                , Element.wrappedRow
+                    contentStyle
                     programmingLanguages                        
                 ]
                 
-                
         libraryFrameworkSection =
             Element.column
-                sectionStyle
+                []
                 [ Element.el
                       subTitleStyle
                       (Element.text "Libraries and/or Frameworks")
-                , Element.paragraph
-                      (debugBorder contentStyle)
+                , Element.wrappedRow
+                      contentStyle
                       librariesAndFrameworks
                 ]
     in
-        Element.paragraph
-            (debugBorder [Element.width fill])
+        Element.column
+            [ Element.padding 5
+            , Element.spacing 5
+            ]
             [ languageSection
             , libraryFrameworkSection
             ]

@@ -63,7 +63,7 @@ element theme language device =
                     [Font.strike]
 
         spacingStyle =
-            [ Element.paddingXY 0 40
+            [ Element.padding 10
             , Element.spacing 20
             ]
 
