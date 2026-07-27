@@ -122,7 +122,12 @@ view model =
                     }
                     [ Background.color theme ]
                     ( Element.column
-                          (debugBorder [])
+                          ( debugBorder
+                               [ Element.width fill
+                               , Element.height fill
+                               , Element.spacing 10
+                               ]
+                          )
                           [ sliders
                           , HeroText.element
                               model.theme

@@ -1,10 +1,14 @@
 module Components.Card exposing (element)
 
 import Data.Message exposing (Msg)
-import Data.Model exposing (Model)
-import Theme exposing (Theme (..))
+import Utils exposing (debugBorder)
+import Theme exposing
+    ( Theme (..)
+    , evalTheme
+    )
 import Data.Translation exposing
     ( Translation
+    , translate
     , Language (..)
     )
 import Element exposing
@@ -24,36 +28,38 @@ element
     -> Element Msg
     -> Element Msg    
 element theme language title content =
-    let
-        titleText =
-            let
-                text =
-                    if language == EN then
-                        title.en
-                    else
-                        title.fr
-                            
-                fontColor =
-                    if theme == Light then
-                        GLight.blueDark
-                    else
-                        GDark.blueLight
-            in
-                Element.el
-                    [ Font.color fontColor
-                    , Font.bold
-                    , Font.size 20
-                    , Font.family
-                          [Font.typeface "Josefin Sans"]
-                    ]
-                    (Element.text text)
-    in
-        Element.column
-            [ Element.padding 20
-            , Element.spacing 10
-            , Element.width fill
-            ]
-            [ titleText
-            , content
-            ]
+    Element.column
+        [ Element.spacing 10
+        , Element.width fill
+        ]
+        
+    [ titleText theme language title
+    , content
+    ]
     
+titleText
+    :  Theme
+    -> Language
+    -> Translation
+    -> Element Msg
+titleText theme language title =
+    let
+        text =
+            translate
+                title
+                language
+                        
+        fontColor =
+            evalTheme
+                GDark.blueLight
+                (Light, GLight.blueDark)
+                theme                                
+    in
+        Element.el
+            [ Font.color fontColor
+            , Font.bold
+            , Font.size 20
+            , Font.family
+                  [Font.typeface "Josefin Sans"]
+            ]
+        (Element.text text)    

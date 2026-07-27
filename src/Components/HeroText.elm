@@ -1,5 +1,6 @@
 module Components.HeroText exposing (element)
 
+import Utils exposing (debugBorder)
 import Data.Message exposing (Msg (..))
 import Theme exposing (Theme (..))
 import Data.Translation exposing (Language)
@@ -57,7 +58,7 @@ element theme language device =
         deviceStyle =
             case device.class of
                 Phone ->
-                    [Font.size 30]
+                    [Font.size 20]
                 _ ->
                     [Font.strike]
 

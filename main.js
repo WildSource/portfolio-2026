@@ -11723,7 +11723,7 @@ var $author$project$Components$HeroText$element = F3(
 			if (_v0.$ === 'Phone') {
 				return _List_fromArray(
 					[
-						$mdgriffith$elm_ui$Element$Font$size(30)
+						$mdgriffith$elm_ui$Element$Font$size(20)
 					]);
 			} else {
 				return _List_fromArray(
@@ -12182,36 +12182,43 @@ var $author$project$Components$MainContent$aboutContent = function (language) {
 };
 var $author$project$Data$Translation$aboutTitle = {en: 'About me', fr: 'À propos de moi'};
 var $mdgriffith$elm_ui$Element$Font$bold = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.bold);
+var $author$project$Components$Card$titleText = F3(
+	function (theme, language, title) {
+		var text = A2($author$project$Data$Translation$translate, title, language);
+		var fontColor = A3(
+			$author$project$Theme$evalTheme,
+			$author$project$Themes$GruvboxDark$blueLight,
+			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$blueDark),
+			theme);
+		return A2(
+			$mdgriffith$elm_ui$Element$el,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$Font$color(fontColor),
+					$mdgriffith$elm_ui$Element$Font$bold,
+					$mdgriffith$elm_ui$Element$Font$size(20),
+					$mdgriffith$elm_ui$Element$Font$family(
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$Font$typeface('Josefin Sans')
+						]))
+				]),
+			$mdgriffith$elm_ui$Element$text(text));
+	});
 var $author$project$Components$Card$element = F4(
 	function (theme, language, title, content) {
-		var titleText = function () {
-			var text = _Utils_eq(language, $author$project$Data$Translation$EN) ? title.en : title.fr;
-			var fontColor = _Utils_eq(theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$blueDark : $author$project$Themes$GruvboxDark$blueLight;
-			return A2(
-				$mdgriffith$elm_ui$Element$el,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$Font$color(fontColor),
-						$mdgriffith$elm_ui$Element$Font$bold,
-						$mdgriffith$elm_ui$Element$Font$size(20),
-						$mdgriffith$elm_ui$Element$Font$family(
-						_List_fromArray(
-							[
-								$mdgriffith$elm_ui$Element$Font$typeface('Josefin Sans')
-							]))
-					]),
-				$mdgriffith$elm_ui$Element$text(text));
-		}();
 		return A2(
 			$mdgriffith$elm_ui$Element$column,
 			_List_fromArray(
 				[
-					$mdgriffith$elm_ui$Element$padding(20),
 					$mdgriffith$elm_ui$Element$spacing(10),
 					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
 				]),
 			_List_fromArray(
-				[titleText, content]));
+				[
+					A3($author$project$Components$Card$titleText, theme, language, title),
+					content
+				]));
 	});
 var $author$project$Data$Message$ToggleDropdown = function (a) {
 	return {$: 'ToggleDropdown', a: a};
@@ -12540,125 +12547,6 @@ var $author$project$Components$MainContent$experiencesContent = F2(
 	});
 var $author$project$Data$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
 var $author$project$Data$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
-var $author$project$Themes$GruvboxDark$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 254, 128, 25);
-var $author$project$Themes$GruvboxLight$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 214, 93, 14);
-var $author$project$Components$Highlight$element = F2(
-	function (theme, content) {
-		var borderColor = A3(
-			$author$project$Theme$evalTheme,
-			$author$project$Themes$GruvboxDark$orangeLight,
-			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$orangeLight),
-			theme);
-		var backgroundColor = A3(
-			$author$project$Theme$evalTheme,
-			$author$project$Themes$GruvboxDark$bg1,
-			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$bg1),
-			theme);
-		return A2(
-			$mdgriffith$elm_ui$Element$el,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$Border$width(3),
-					$mdgriffith$elm_ui$Element$Border$color(borderColor),
-					$mdgriffith$elm_ui$Element$Border$rounded(15),
-					$mdgriffith$elm_ui$Element$Background$color(backgroundColor),
-					$mdgriffith$elm_ui$Element$padding(10)
-				]),
-			$mdgriffith$elm_ui$Element$text(content));
-	});
-var $author$project$Components$MainContent$technologyContent = F2(
-	function (theme, skills) {
-		var subTitleStyle = _List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$padding(10),
-				$mdgriffith$elm_ui$Element$Font$size(20),
-				$mdgriffith$elm_ui$Element$Font$color(
-				A3(
-					$author$project$Theme$evalTheme,
-					$author$project$Themes$GruvboxDark$greenLight,
-					_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$greenDark),
-					theme))
-			]);
-		var sectionStyle = _List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$spacing(10),
-				A2($mdgriffith$elm_ui$Element$paddingXY, 0, 10),
-				$mdgriffith$elm_ui$Element$centerX,
-				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
-			]);
-		var programmingLanguages = A2(
-			$elm$core$List$map,
-			$author$project$Components$Highlight$element(theme),
-			A2(
-				$elm$core$List$map,
-				function (skill) {
-					return skill.title;
-				},
-				A2(
-					$elm$core$List$filter,
-					function (skill) {
-						return _Utils_eq(skill.category, $author$project$Data$Model$Language);
-					},
-					skills)));
-		var librariesAndFrameworks = A2(
-			$elm$core$List$map,
-			$author$project$Components$Highlight$element(theme),
-			A2(
-				$elm$core$List$map,
-				function (skill) {
-					return skill.title;
-				},
-				A2(
-					$elm$core$List$filter,
-					function (skill) {
-						return _Utils_eq(skill.category, $author$project$Data$Model$LibraryFramework);
-					},
-					skills)));
-		var contentStyle = _List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$padding(10),
-				$mdgriffith$elm_ui$Element$spacing(10),
-				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
-			]);
-		var languageSection = A2(
-			$mdgriffith$elm_ui$Element$column,
-			sectionStyle,
-			_List_fromArray(
-				[
-					A2(
-					$mdgriffith$elm_ui$Element$el,
-					subTitleStyle,
-					$mdgriffith$elm_ui$Element$text('Programming Languages')),
-					A2(
-					$mdgriffith$elm_ui$Element$paragraph,
-					$author$project$Utils$debugBorder(contentStyle),
-					programmingLanguages)
-				]));
-		var libraryFrameworkSection = A2(
-			$mdgriffith$elm_ui$Element$column,
-			sectionStyle,
-			_List_fromArray(
-				[
-					A2(
-					$mdgriffith$elm_ui$Element$el,
-					subTitleStyle,
-					$mdgriffith$elm_ui$Element$text('Libraries and/or Frameworks')),
-					A2(
-					$mdgriffith$elm_ui$Element$paragraph,
-					$author$project$Utils$debugBorder(contentStyle),
-					librariesAndFrameworks)
-				]));
-		return A2(
-			$mdgriffith$elm_ui$Element$paragraph,
-			$author$project$Utils$debugBorder(
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
-					])),
-			_List_fromArray(
-				[languageSection, libraryFrameworkSection]));
-	});
-var $author$project$Data$Translation$technologyTitle = {en: 'Technologies', fr: 'Technologies'};
 var $author$project$Components$MainContent$element = F4(
 	function (theme, language, skills, dropdowns) {
 		var projectsContent = A2(
@@ -12674,22 +12562,26 @@ var $author$project$Components$MainContent$element = F4(
 					A3($author$project$Components$Dropdown$element, theme, dropdowns, 'Portfolio (2023)'),
 					A3($author$project$Components$Dropdown$element, theme, dropdowns, 'La Voûte')
 				]));
-		var fontColor = _Utils_eq(theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
+		var fontColor = A3(
+			$author$project$Theme$evalTheme,
+			$author$project$Themes$GruvboxDark$fg0,
+			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$fg0),
+			theme);
 		return A2(
 			$mdgriffith$elm_ui$Element$column,
-			$author$project$Utils$debugBorder(
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$centerX,
-						$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-						$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
-						A2($mdgriffith$elm_ui$Element$paddingXY, 0, 5),
-						$mdgriffith$elm_ui$Element$Font$size(15),
-						$mdgriffith$elm_ui$Element$Font$color(fontColor),
-						$mdgriffith$elm_ui$Element$Font$family(
-						_List_fromArray(
-							[$mdgriffith$elm_ui$Element$Font$serif]))
-					])),
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$centerX,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+					$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
+					$mdgriffith$elm_ui$Element$padding(5),
+					$mdgriffith$elm_ui$Element$spacing(20),
+					$mdgriffith$elm_ui$Element$Font$size(15),
+					$mdgriffith$elm_ui$Element$Font$color(fontColor),
+					$mdgriffith$elm_ui$Element$Font$family(
+					_List_fromArray(
+						[$mdgriffith$elm_ui$Element$Font$serif]))
+				]),
 			_List_fromArray(
 				[
 					A4(
@@ -12704,12 +12596,6 @@ var $author$project$Components$MainContent$element = F4(
 					language,
 					$author$project$Data$Translation$experiencesTitle,
 					A2($author$project$Components$MainContent$experiencesContent, theme, language)),
-					A4(
-					$author$project$Components$Card$element,
-					theme,
-					language,
-					$author$project$Data$Translation$technologyTitle,
-					A2($author$project$Components$MainContent$technologyContent, theme, skills)),
 					A4($author$project$Components$Card$element, theme, language, $author$project$Data$Translation$projectsTitle, projectsContent)
 				]));
 	});
@@ -13273,7 +13159,13 @@ var $author$project$Main$view = function (model) {
 					]),
 				A2(
 					$mdgriffith$elm_ui$Element$column,
-					$author$project$Utils$debugBorder(_List_Nil),
+					$author$project$Utils$debugBorder(
+						_List_fromArray(
+							[
+								$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+								$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$fill),
+								$mdgriffith$elm_ui$Element$spacing(10)
+							])),
 					_List_fromArray(
 						[
 							sliders,

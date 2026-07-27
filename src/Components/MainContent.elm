@@ -26,10 +26,10 @@ element : Theme -> T.Language -> List Skill -> List String -> Element Msg
 element theme language skills dropdowns =
     let
         fontColor =
-            if theme == Light then
-                GLight.fg0
-            else
-                GDark.fg0                    
+            evalTheme
+                GDark.fg0
+                (Light, GLight.fg0)
+                theme
 
         projectsContent =
             Element.column
@@ -51,17 +51,17 @@ element theme language skills dropdowns =
                 ]
     in
         Element.column
-            (debugBorder [ Element.centerX
+            [ Element.centerX
             , Element.width Element.fill
             , Element.height Element.fill
-            , Element.paddingXY 0 5
+            , Element.padding 5
+            , Element.spacing 20
             , Font.size 15
             , Font.color fontColor
             , Font.family
                 [ Font.serif                 
                 ]                
             ]
-                 )
             [ Card.element
                   theme
                   language
@@ -70,10 +70,10 @@ element theme language skills dropdowns =
                   theme
                   language
                   T.experiencesTitle (experiencesContent theme language)
-            , Card.element
+{-            , Card.element
                   theme
                   language
-                  T.technologyTitle (technologyContent theme skills)
+                  T.technologyTitle (technologyContent theme skills) -}
             , Card.element
                   theme
                   language
