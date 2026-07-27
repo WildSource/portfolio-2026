@@ -5232,45 +5232,52 @@ var $mdgriffith$elm_ui$Element$classifyDevice = function (window) {
 var $elm$core$Debug$log = _Debug_log;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$Data$Model$adultWebcomicWebsite = {
-	content: {en: '\u000A                 waifuwebcomics.com was a website to publish some erotic work of fiction.\u000A                 The website was written in Javascript using Angular for its frontend and in Java with Spring Boot for its backend.\u000A                 It had a full content management system enabling the admin (me) to publish, modify and delete the displayed comics.\u000A                 It also had a login system using the standard username/password authentication method.\u000A                 The website was hosted on a DigitalOcean dropplet and configured manually by me.\u000A                 The webserver was Nginx and was configured with tls encryption also known as https.\u000A                ', fr: '\u000A                 waifuwebcomics.com était un site web permettant de publier des œuvres de fiction érotiques.                 \u000A                 Le site a été développé avec Angular pour le frontend et Spring Boot pour le backend.\u000A                 Il comportait un système de gestion de contenu complet permettant à l\u0027administrateur (moi) de publier, modifier et supprimer les bandes dessinées affichées.\u000A                 Il disposait également d\u0027un système de connexion utilisant la méthode d\u0027authentification standard par nom d\u0027utilisateur et mot de passe.\u000A                 Le site était hébergé sur un droplet DigitalOcean, configuré manuellement par mes soins.\u000A                 Le serveur web utilisé était Nginx, configuré avec le chiffrement TLS, aussi connu sous le nom de HTTPS. \u000A                '},
+var $author$project$Data$Project$adultWebcomicWebsite = {
+	description: {en: '\u000A                 waifuwebcomics.com was a website to publish some erotic work of fiction.\u000A                 The website was written in Javascript using Angular for its frontend and in Java with Spring Boot for its backend.\u000A                 It had a full content management system enabling the admin (me) to publish, modify and delete the displayed comics.\u000A                 It also had a login system using the standard username/password authentication method.\u000A                 The website was hosted on a DigitalOcean dropplet and configured manually by me.\u000A                 The webserver was Nginx and was configured with tls encryption also known as https.\u000A                ', fr: '\u000A                 waifuwebcomics.com était un site web permettant de publier des œuvres de fiction érotiques.                 \u000A                 Le site a été développé avec Angular pour le frontend et Spring Boot pour le backend.\u000A                 Il comportait un système de gestion de contenu complet permettant à l\u0027administrateur (moi) de publier, modifier et supprimer les bandes dessinées affichées.\u000A                 Il disposait également d\u0027un système de connexion utilisant la méthode d\u0027authentification standard par nom d\u0027utilisateur et mot de passe.\u000A                 Le site était hébergé sur un droplet DigitalOcean, configuré manuellement par mes soins.\u000A                 Le serveur web utilisé était Nginx, configuré avec le chiffrement TLS, aussi connu sous le nom de HTTPS. \u000A                '},
 	title: {en: 'Adult Webcomic Website (does not exist anymore)', fr: 'Site Web de bande dessinée pour public averti (n\u0027existe plus)'}
 };
-var $author$project$Data$Model$laVoute = {
-	content: {en: '\u000A                 For those who are familiar with Google Drive, OneDrive and others. This website is an implementation of those type of services. It was a final project for my last year of College.\u000A                 This project was made with a team of 3 developpers, I was lead backend in charge of security, backend architecture and the implementation of file downloads.\u000A                 The website is still available as of 2026-07-19. As it was my teammate who was in charge of devops and frontend, I do not have access to the servers or the deployment which means it could be closed at any moment.\u000A                 The frontend was written in Javascript using the VueJS framework and the backend in Spring Boot.\u000A                 It featured a standard login system using username/password authentication and web sessions as authentication management all using Spring Security.                 \u000A                 \u000A                 ', fr: '\u000A                 Pour ceux qui connaissent Google Drive, OneDrive et autres. Ce site web est une implémentation de ce type de services. C\u0027était un projet final pour ma dernière session de Cégep.\u000A                 Ce projet a été réalisé avec une équipe de 3 développeurs; j\u0027étais le lead backend, en charge de la sécurité, de l\u0027architecture backend et de l\u0027implémentation des téléchargements de fichiers.\u000A                 Le site est toujours disponible en date du 2026-07-19. Comme c\u0027était mon coéquipier qui était en charge du devops et du frontend, je n\u0027ai pas accès aux serveurs ni au déploiement, ce qui veut dire qu\u0027il pourrait être fermé à tout moment.\u000A                 Le frontend a été écrit en Javascript avec le framework VueJS, et le backend en Spring Boot.\u000A                 Il comportait un système de connexion standard utilisant l\u0027authentification par nom d\u0027utilisateur/mot de passe et des sessions web comme gestion de l\u0027authentification, le tout via Spring Security.\u000A                 '},
+var $author$project$Data$Project$laVoute = {
+	description: {en: '\u000A                 For those who are familiar with Google Drive, OneDrive and others. This website is an implementation of those type of services. It was a final project for my last year of College.\u000A                 This project was made with a team of 3 developpers, I was lead backend in charge of security, backend architecture and the implementation of file downloads.\u000A                 The website is still available as of 2026-07-19. As it was my teammate who was in charge of devops and frontend, I do not have access to the servers or the deployment which means it could be closed at any moment.\u000A                 The frontend was written in Javascript using the VueJS framework and the backend in Spring Boot.\u000A                 It featured a standard login system using username/password authentication and web sessions as authentication management all using Spring Security.                 \u000A                 \u000A                 ', fr: '\u000A                 Pour ceux qui connaissent Google Drive, OneDrive et autres. Ce site web est une implémentation de ce type de services. C\u0027était un projet final pour ma dernière session de Cégep.\u000A                 Ce projet a été réalisé avec une équipe de 3 développeurs; j\u0027étais le lead backend, en charge de la sécurité, de l\u0027architecture backend et de l\u0027implémentation des téléchargements de fichiers.\u000A                 Le site est toujours disponible en date du 2026-07-19. Comme c\u0027était mon coéquipier qui était en charge du devops et du frontend, je n\u0027ai pas accès aux serveurs ni au déploiement, ce qui veut dire qu\u0027il pourrait être fermé à tout moment.\u000A                 Le frontend a été écrit en Javascript avec le framework VueJS, et le backend en Spring Boot.\u000A                 Il comportait un système de connexion standard utilisant l\u0027authentification par nom d\u0027utilisateur/mot de passe et des sessions web comme gestion de l\u0027authentification, le tout via Spring Security.\u000A                 '},
 	title: {en: 'Lavoute.xyz - A Personal Cloud Storage', fr: 'Lavoute.xyz - Un stockage nuagique personnel'}
 };
-var $author$project$Data$Model$portfolio2023 = {
-	content: {en: '\u000A                 My old portfolio is frontend only. Meaning that there is no business logic, databases or servers in the background.\u000A                 For simple static websites like these, interactions with data are not needed.\u000A                 Like all portfolios, the website was meant to display my technical skills, talk a little bit about who I am, my experience ,etc.\u000A                 The website is written in Javascript using the React frontend framework. The portfolio features a 3d cube with a mapped texture of my face spinning in the background with a parallax scrolling effect.\u000A                 It is more meant as a joke but also to show my capabilities with the Three.js library which enables a web page to render these 3d scenes.                 \u000A                ', fr: '\u000A                 Mon ancien portfolio est uniquement en frontend. Cela signifie qu\u0027il n\u0027y a pas de logique d\u0027affaires, de bases de données ou de serveurs en arrière-plan.\u000A                 Pour des sites web statiques simples comme celui-ci, les interactions avec des données ne sont pas nécessaires.\u000A                 Comme tous les portfolios, ce site avait pour but de présenter mes compétences techniques, de parler un peu de qui je suis, de mon expérience, etc.\u000A                 Le site est écrit en Javascript avec le framework frontend React. Le portfolio met en vedette un cube 3D avec une texture de mon visage qui tourne en arrière-plan, accompagné d\u0027un effet de défilement en parallaxe.\u000A                 C\u0027est surtout pensé comme une blague, mais aussi pour démontrer mes compétences avec la librairie Three.js, qui permet à une page web de faire le rendu de ces scènes 3D.\u000A                '},
+var $author$project$Data$Project$portfolio2023 = {
+	description: {en: '\u000A                 My old portfolio is frontend only. Meaning that there is no business logic, databases or servers in the background.\u000A                 For simple static websites like these, interactions with data are not needed.\u000A                 Like all portfolios, the website was meant to display my technical skills, talk a little bit about who I am, my experience ,etc.\u000A                 The website is written in Javascript using the React frontend framework. The portfolio features a 3d cube with a mapped texture of my face spinning in the background with a parallax scrolling effect.\u000A                 It is more meant as a joke but also to show my capabilities with the Three.js library which enables a web page to render these 3d scenes.                 \u000A                ', fr: '\u000A                 Mon ancien portfolio est uniquement en frontend. Cela signifie qu\u0027il n\u0027y a pas de logique d\u0027affaires, de bases de données ou de serveurs en arrière-plan.\u000A                 Pour des sites web statiques simples comme celui-ci, les interactions avec des données ne sont pas nécessaires.\u000A                 Comme tous les portfolios, ce site avait pour but de présenter mes compétences techniques, de parler un peu de qui je suis, de mon expérience, etc.\u000A                 Le site est écrit en Javascript avec le framework frontend React. Le portfolio met en vedette un cube 3D avec une texture de mon visage qui tourne en arrière-plan, accompagné d\u0027un effet de défilement en parallaxe.\u000A                 C\u0027est surtout pensé comme une blague, mais aussi pour démontrer mes compétences avec la librairie Three.js, qui permet à une page web de faire le rendu de ces scènes 3D.\u000A                '},
 	title: {en: 'Portfolio (2023)', fr: 'Portfolio (2023)'}
 };
-var $author$project$Data$Model$projects = _List_fromArray(
-	[$author$project$Data$Model$adultWebcomicWebsite, $author$project$Data$Model$portfolio2023, $author$project$Data$Model$laVoute]);
-var $author$project$Data$Model$LibraryFramework = {$: 'LibraryFramework'};
-var $author$project$Data$Model$angular = {category: $author$project$Data$Model$LibraryFramework, title: 'Angular'};
-var $author$project$Data$Model$Language = {$: 'Language'};
-var $author$project$Data$Model$css = {category: $author$project$Data$Model$Language, title: 'CSS'};
-var $author$project$Data$Model$elm = {category: $author$project$Data$Model$Language, title: 'Elm'};
-var $author$project$Data$Model$haskell = {category: $author$project$Data$Model$Language, title: 'Haskell'};
-var $author$project$Data$Model$html = {category: $author$project$Data$Model$Language, title: 'Html'};
-var $author$project$Data$Model$java = {category: $author$project$Data$Model$Language, title: 'Java'};
-var $author$project$Data$Model$javascript = {category: $author$project$Data$Model$Language, title: 'Javascript'};
-var $author$project$Data$Model$php = {category: $author$project$Data$Model$Language, title: 'Php'};
-var $author$project$Data$Model$react = {category: $author$project$Data$Model$LibraryFramework, title: 'React'};
-var $author$project$Data$Model$scotty = {category: $author$project$Data$Model$LibraryFramework, title: 'Scotty'};
-var $author$project$Data$Model$servant = {category: $author$project$Data$Model$LibraryFramework, title: 'Servant'};
-var $author$project$Data$Model$springBoot = {category: $author$project$Data$Model$LibraryFramework, title: 'SpringBoot'};
-var $author$project$Data$Model$typescript = {category: $author$project$Data$Model$Language, title: 'Typescript'};
-var $author$project$Data$Model$skills = _List_fromArray(
-	[$author$project$Data$Model$haskell, $author$project$Data$Model$java, $author$project$Data$Model$elm, $author$project$Data$Model$php, $author$project$Data$Model$javascript, $author$project$Data$Model$typescript, $author$project$Data$Model$html, $author$project$Data$Model$css, $author$project$Data$Model$springBoot, $author$project$Data$Model$scotty, $author$project$Data$Model$servant, $author$project$Data$Model$react, $author$project$Data$Model$angular]);
+var $author$project$Data$Project$projects = _List_fromArray(
+	[$author$project$Data$Project$adultWebcomicWebsite, $author$project$Data$Project$portfolio2023, $author$project$Data$Project$laVoute]);
+var $author$project$Data$Skill$LibraryFramework = {$: 'LibraryFramework'};
+var $author$project$Data$Skill$angular = {category: $author$project$Data$Skill$LibraryFramework, title: 'Angular'};
+var $author$project$Data$Skill$Language = {$: 'Language'};
+var $author$project$Data$Skill$css = {category: $author$project$Data$Skill$Language, title: 'CSS'};
+var $author$project$Data$Skill$elm = {category: $author$project$Data$Skill$Language, title: 'Elm'};
+var $author$project$Data$Skill$haskell = {category: $author$project$Data$Skill$Language, title: 'Haskell'};
+var $author$project$Data$Skill$html = {category: $author$project$Data$Skill$Language, title: 'Html'};
+var $author$project$Data$Skill$java = {category: $author$project$Data$Skill$Language, title: 'Java'};
+var $author$project$Data$Skill$javascript = {category: $author$project$Data$Skill$Language, title: 'Javascript'};
+var $author$project$Data$Skill$php = {category: $author$project$Data$Skill$Language, title: 'Php'};
+var $author$project$Data$Skill$react = {category: $author$project$Data$Skill$LibraryFramework, title: 'React'};
+var $author$project$Data$Skill$scotty = {category: $author$project$Data$Skill$LibraryFramework, title: 'Scotty'};
+var $author$project$Data$Skill$servant = {category: $author$project$Data$Skill$LibraryFramework, title: 'Servant'};
+var $author$project$Data$Skill$springBoot = {category: $author$project$Data$Skill$LibraryFramework, title: 'SpringBoot'};
+var $author$project$Data$Skill$typescript = {category: $author$project$Data$Skill$Language, title: 'Typescript'};
+var $author$project$Data$Skill$skills = _List_fromArray(
+	[$author$project$Data$Skill$haskell, $author$project$Data$Skill$java, $author$project$Data$Skill$elm, $author$project$Data$Skill$php, $author$project$Data$Skill$javascript, $author$project$Data$Skill$typescript, $author$project$Data$Skill$html, $author$project$Data$Skill$css, $author$project$Data$Skill$springBoot, $author$project$Data$Skill$scotty, $author$project$Data$Skill$servant, $author$project$Data$Skill$react, $author$project$Data$Skill$angular]);
 var $author$project$Main$init = function (flags) {
-	var windowSize = {height: flags.height, width: flags.width};
-	var language = A2($elm$core$String$startsWith, 'fr', flags.language) ? $author$project$Data$Translation$FR : $author$project$Data$Translation$EN;
+	var height = flags.height;
+	var width = flags.width;
+	var language = flags.language;
+	var windowSize = {height: height, width: width};
 	var device = $mdgriffith$elm_ui$Element$classifyDevice(windowSize);
+	var chosenLanguage = A2($elm$core$String$startsWith, 'fr', language) ? $author$project$Data$Translation$FR : $author$project$Data$Translation$EN;
 	var _v0 = A2($elm$core$Debug$log, 'flags', flags);
 	var _v1 = A2($elm$core$Debug$log, 'device', device);
 	return _Utils_Tuple2(
-		{device: device, language: language, projects: $author$project$Data$Model$projects, skills: $author$project$Data$Model$skills, theme: $author$project$Theme$Light, toggledDropdowns: _List_Nil},
+		{
+			config: {device: device, language: chosenLanguage, theme: $author$project$Theme$Light},
+			data: {projects: $author$project$Data$Project$projects, skills: $author$project$Data$Skill$skills},
+			toggledDropdowns: _List_Nil
+		},
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$json$Json$Decode$int = _Json_decodeInt;
@@ -5746,6 +5753,36 @@ var $elm$core$List$member = F2(
 			xs);
 	});
 var $elm$core$Basics$neq = _Utils_notEqual;
+var $author$project$Data$Model$updateDevice = F2(
+	function (model, device) {
+		var modelConfig = model.config;
+		var modifiedConfig = _Utils_update(
+			modelConfig,
+			{device: device});
+		return _Utils_update(
+			model,
+			{config: modifiedConfig});
+	});
+var $author$project$Data$Model$updateLanguage = F2(
+	function (model, language) {
+		var modelConfig = model.config;
+		var modifiedConfig = _Utils_update(
+			modelConfig,
+			{language: language});
+		return _Utils_update(
+			model,
+			{config: modifiedConfig});
+	});
+var $author$project$Data$Model$updateTheme = F2(
+	function (model, theme) {
+		var modelConfig = model.config;
+		var modifiedConfig = _Utils_update(
+			modelConfig,
+			{theme: theme});
+		return _Utils_update(
+			model,
+			{config: modifiedConfig});
+	});
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
@@ -5772,17 +5809,13 @@ var $author$project$Main$update = F2(
 				var isChecked = msg.a;
 				var language = isChecked ? $author$project$Data$Translation$FR : $author$project$Data$Translation$EN;
 				return _Utils_Tuple2(
-					_Utils_update(
-						model,
-						{language: language}),
+					A2($author$project$Data$Model$updateLanguage, model, language),
 					$elm$core$Platform$Cmd$none);
 			case 'ThemeSwitch':
 				var isChecked = msg.a;
 				var theme = $author$project$Theme$fromBool(isChecked);
 				return _Utils_Tuple2(
-					_Utils_update(
-						model,
-						{theme: theme}),
+					A2($author$project$Data$Model$updateTheme, model, theme),
 					$elm$core$Platform$Cmd$none);
 			default:
 				var windowSize = msg.a;
@@ -5790,9 +5823,7 @@ var $author$project$Main$update = F2(
 				var _v1 = A2($elm$core$Debug$log, 'sizes', windowSize);
 				var _v2 = A2($elm$core$Debug$log, 'device', device);
 				return _Utils_Tuple2(
-					_Utils_update(
-						model,
-						{device: device}),
+					A2($author$project$Data$Model$updateDevice, model, device),
 					$elm$core$Platform$Cmd$none);
 		}
 	});
@@ -11355,6 +11386,12 @@ var $mdgriffith$elm_ui$Element$Font$color = function (fontColor) {
 			'color',
 			fontColor));
 };
+var $author$project$Theme$evalTheme = F3(
+	function (left, _v0, theme) {
+		var defaultTheme = _v0.a;
+		var right = _v0.b;
+		return _Utils_eq(theme, defaultTheme) ? right : left;
+	});
 var $author$project$Themes$GruvboxDark$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
 var $author$project$Themes$GruvboxLight$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 40, 40, 40);
 var $mdgriffith$elm_ui$Internal$Model$Fill = function (a) {
@@ -11395,8 +11432,12 @@ var $mdgriffith$elm_ui$Internal$Model$Text = function (a) {
 var $mdgriffith$elm_ui$Element$text = function (content) {
 	return $mdgriffith$elm_ui$Internal$Model$Text(content);
 };
-var $author$project$Components$Footer$element = function (model) {
-	var footerColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg1 : $author$project$Themes$GruvboxDark$bg1;
+var $author$project$Components$Footer$element = function (theme) {
+	var footerColor = A3(
+		$author$project$Theme$evalTheme,
+		$author$project$Themes$GruvboxDark$bg1,
+		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$bg1),
+		theme);
 	var style = _List_fromArray(
 		[
 			$mdgriffith$elm_ui$Element$padding(20),
@@ -11404,7 +11445,11 @@ var $author$project$Components$Footer$element = function (model) {
 			$mdgriffith$elm_ui$Element$alignBottom,
 			$mdgriffith$elm_ui$Element$Background$color(footerColor)
 		]);
-	var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
+	var fontColor = A3(
+		$author$project$Theme$evalTheme,
+		$author$project$Themes$GruvboxDark$fg0,
+		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$fg0),
+		theme);
 	var copyright = A2(
 		$mdgriffith$elm_ui$Element$el,
 		_List_fromArray(
@@ -11424,12 +11469,6 @@ var $mdgriffith$elm_ui$Internal$Model$Class = F2(
 	});
 var $mdgriffith$elm_ui$Internal$Flag$fontAlignment = $mdgriffith$elm_ui$Internal$Flag$flag(12);
 var $mdgriffith$elm_ui$Element$Font$center = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontAlignment, $mdgriffith$elm_ui$Internal$Style$classes.textCenter);
-var $author$project$Theme$evalTheme = F3(
-	function (left, _v0, theme) {
-		var defaultTheme = _v0.a;
-		var right = _v0.b;
-		return _Utils_eq(theme, defaultTheme) ? right : left;
-	});
 var $mdgriffith$elm_ui$Internal$Model$FontFamily = F2(
 	function (a, b) {
 		return {$: 'FontFamily', a: a, b: b};
@@ -11573,54 +11612,63 @@ var $author$project$Data$Translation$translate = F2(
 	});
 var $author$project$Themes$GruvboxLight$yellowDark = A3($mdgriffith$elm_ui$Element$rgb255, 181, 118, 20);
 var $author$project$Themes$GruvboxDark$yellowLight = A3($mdgriffith$elm_ui$Element$rgb255, 250, 189, 47);
-var $author$project$Components$HeroText$subHeroTitle = F2(
-	function (theme, language) {
-		var text3 = A2(
-			$mdgriffith$elm_ui$Element$el,
-			_List_fromArray(
-				[$mdgriffith$elm_ui$Element$centerX]),
-			$mdgriffith$elm_ui$Element$text(
-				A2($author$project$Data$Translation$translate, $author$project$Data$Translation$subHeroTitle3, language)));
-		var text2 = A2(
-			$mdgriffith$elm_ui$Element$el,
-			_List_fromArray(
-				[$mdgriffith$elm_ui$Element$centerX]),
-			$mdgriffith$elm_ui$Element$text(
-				A2($author$project$Data$Translation$translate, $author$project$Data$Translation$subHeroTitle2, language)));
-		var text1 = A2(
-			$mdgriffith$elm_ui$Element$el,
-			_List_fromArray(
-				[$mdgriffith$elm_ui$Element$centerX]),
-			$mdgriffith$elm_ui$Element$text(
-				A2($author$project$Data$Translation$translate, $author$project$Data$Translation$subHeroTitle1, language)));
-		var fontColor = A3(
-			$author$project$Theme$evalTheme,
-			$author$project$Themes$GruvboxDark$yellowLight,
-			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$yellowDark),
-			theme);
-		return A2(
-			$mdgriffith$elm_ui$Element$column,
-			_List_fromArray(
-				[
-					A2($mdgriffith$elm_ui$Element$paddingXY, 10, 0),
-					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-					$mdgriffith$elm_ui$Element$Font$size(15),
-					$mdgriffith$elm_ui$Element$Font$center,
-					$mdgriffith$elm_ui$Element$Font$color(fontColor),
-					$mdgriffith$elm_ui$Element$Font$semiBold,
-					$mdgriffith$elm_ui$Element$Font$family(
-					_List_fromArray(
-						[$mdgriffith$elm_ui$Element$Font$serif]))
-				]),
-			_List_fromArray(
-				[text1, text2, text3]));
-	});
+var $author$project$Components$HeroText$subHeroTitle = function (_v0) {
+	var language = _v0.language;
+	var theme = _v0.theme;
+	var text3 = A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[$mdgriffith$elm_ui$Element$centerX]),
+		$mdgriffith$elm_ui$Element$text(
+			A2($author$project$Data$Translation$translate, $author$project$Data$Translation$subHeroTitle3, language)));
+	var text2 = A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[$mdgriffith$elm_ui$Element$centerX]),
+		$mdgriffith$elm_ui$Element$text(
+			A2($author$project$Data$Translation$translate, $author$project$Data$Translation$subHeroTitle2, language)));
+	var text1 = A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[$mdgriffith$elm_ui$Element$centerX]),
+		$mdgriffith$elm_ui$Element$text(
+			A2($author$project$Data$Translation$translate, $author$project$Data$Translation$subHeroTitle1, language)));
+	var fontColor = A3(
+		$author$project$Theme$evalTheme,
+		$author$project$Themes$GruvboxDark$yellowLight,
+		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$yellowDark),
+		theme);
+	return A2(
+		$mdgriffith$elm_ui$Element$column,
+		_List_fromArray(
+			[
+				A2($mdgriffith$elm_ui$Element$paddingXY, 10, 0),
+				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
+				$mdgriffith$elm_ui$Element$Font$size(15),
+				$mdgriffith$elm_ui$Element$Font$center,
+				$mdgriffith$elm_ui$Element$Font$color(fontColor),
+				$mdgriffith$elm_ui$Element$Font$semiBold,
+				$mdgriffith$elm_ui$Element$Font$family(
+				_List_fromArray(
+					[$mdgriffith$elm_ui$Element$Font$serif]))
+			]),
+		_List_fromArray(
+			[text1, text2, text3]));
+};
 var $mdgriffith$elm_ui$Internal$Model$Typeface = function (a) {
 	return {$: 'Typeface', a: a};
 };
 var $mdgriffith$elm_ui$Element$Font$typeface = $mdgriffith$elm_ui$Internal$Model$Typeface;
-var $author$project$Components$HeroText$element = F3(
-	function (theme, language, device) {
+var $author$project$Components$HeroText$element = function (config) {
+	var device = config.device;
+	var language = config.language;
+	var theme = config.theme;
+	var spacingStyle = _List_fromArray(
+		[
+			$mdgriffith$elm_ui$Element$padding(10),
+			$mdgriffith$elm_ui$Element$spacing(20)
+		]);
+	var paragraphStyle = function () {
 		var themeStyle = A3(
 			$author$project$Theme$evalTheme,
 			_List_fromArray(
@@ -11634,40 +11682,6 @@ var $author$project$Components$HeroText$element = F3(
 						$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$fg0)
 					])),
 			theme);
-		var spacingStyle = _List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$padding(10),
-				$mdgriffith$elm_ui$Element$spacing(20)
-			]);
-		var name = function () {
-			var style = A3(
-				$author$project$Theme$evalTheme,
-				$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$blueLight),
-				_Utils_Tuple2(
-					$author$project$Theme$Light,
-					$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$blueDark)),
-				theme);
-			return A2(
-				$mdgriffith$elm_ui$Element$el,
-				_List_fromArray(
-					[style]),
-				$mdgriffith$elm_ui$Element$text('Samuel Nguyen-Phok'));
-		}();
-		var heroText = function () {
-			var style = A3(
-				$author$project$Theme$evalTheme,
-				$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$greenLight),
-				_Utils_Tuple2(
-					$author$project$Theme$Light,
-					$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$greenDark)),
-				theme);
-			return A2(
-				$mdgriffith$elm_ui$Element$el,
-				_List_fromArray(
-					[style]),
-				$mdgriffith$elm_ui$Element$text(
-					A2($author$project$Data$Translation$translate, $author$project$Data$Translation$lastThirdHeroTitle, language)));
-		}();
 		var fontStyle = _List_fromArray(
 			[
 				$mdgriffith$elm_ui$Element$Font$family(
@@ -11690,29 +11704,57 @@ var $author$project$Components$HeroText$element = F3(
 					[$mdgriffith$elm_ui$Element$Font$strike]);
 			}
 		}();
-		var paragraphStyle = _Utils_ap(
+		return _Utils_ap(
 			fontStyle,
 			_Utils_ap(deviceStyle, themeStyle));
-		return A2(
-			$mdgriffith$elm_ui$Element$column,
-			spacingStyle,
-			_List_fromArray(
-				[
-					A2(
-					$mdgriffith$elm_ui$Element$paragraph,
-					paragraphStyle,
-					_List_fromArray(
-						[
-							$mdgriffith$elm_ui$Element$text(
-							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$firstThirdHeroTitle, language)),
-							name,
-							$mdgriffith$elm_ui$Element$text(
-							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$secondThirdHeroTitle, language)),
-							heroText
-						])),
-					A2($author$project$Components$HeroText$subHeroTitle, theme, language)
-				]));
-	});
+	}();
+	var name = A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[
+				A3(
+				$author$project$Theme$evalTheme,
+				$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$blueLight),
+				_Utils_Tuple2(
+					$author$project$Theme$Light,
+					$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$blueDark)),
+				theme)
+			]),
+		$mdgriffith$elm_ui$Element$text('Samuel Nguyen-Phok'));
+	var heroText = A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[
+				A3(
+				$author$project$Theme$evalTheme,
+				$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$greenLight),
+				_Utils_Tuple2(
+					$author$project$Theme$Light,
+					$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$greenDark)),
+				theme)
+			]),
+		$mdgriffith$elm_ui$Element$text(
+			A2($author$project$Data$Translation$translate, $author$project$Data$Translation$lastThirdHeroTitle, language)));
+	return A2(
+		$mdgriffith$elm_ui$Element$column,
+		spacingStyle,
+		_List_fromArray(
+			[
+				A2(
+				$mdgriffith$elm_ui$Element$paragraph,
+				paragraphStyle,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$text(
+						A2($author$project$Data$Translation$translate, $author$project$Data$Translation$firstThirdHeroTitle, language)),
+						name,
+						$mdgriffith$elm_ui$Element$text(
+						A2($author$project$Data$Translation$translate, $author$project$Data$Translation$secondThirdHeroTitle, language)),
+						heroText
+					])),
+				$author$project$Components$HeroText$subHeroTitle(config)
+			]));
+};
 var $author$project$Data$Message$LanguageSwitch = function (a) {
 	return {$: 'LanguageSwitch', a: a};
 };
@@ -11950,28 +11992,6 @@ var $mdgriffith$elm_ui$Element$Input$checkbox = F2(
 							icon(checked)
 						]))));
 	});
-var $mdgriffith$elm_ui$Element$Input$HiddenLabel = function (a) {
-	return {$: 'HiddenLabel', a: a};
-};
-var $mdgriffith$elm_ui$Element$Input$labelHidden = $mdgriffith$elm_ui$Element$Input$HiddenLabel;
-var $mdgriffith$elm_ui$Element$row = F2(
-	function (attrs, children) {
-		return A4(
-			$mdgriffith$elm_ui$Internal$Model$element,
-			$mdgriffith$elm_ui$Internal$Model$asRow,
-			$mdgriffith$elm_ui$Internal$Model$div,
-			A2(
-				$elm$core$List$cons,
-				$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.contentLeft + (' ' + $mdgriffith$elm_ui$Internal$Style$classes.contentCenterY)),
-				A2(
-					$elm$core$List$cons,
-					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink),
-					A2(
-						$elm$core$List$cons,
-						$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink),
-						attrs))),
-			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
-	});
 var $author$project$Component$addIf = F3(
 	function (condition, attribute, baseAttributes) {
 		return condition ? A2($elm$core$List$cons, attribute, baseAttributes) : baseAttributes;
@@ -12032,20 +12052,24 @@ var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
 			'border-radius',
 			$elm$core$String$fromInt(radius) + 'px'));
 };
-var $author$project$Component$slider = F2(
-	function (model, isSwitchedOn) {
+var $author$project$Components$Patterns$Slider$element = F2(
+	function (theme, isSwitchedOn) {
 		var knobPosition = isSwitchedOn ? $mdgriffith$elm_ui$Element$moveLeft(5) : $mdgriffith$elm_ui$Element$moveRight(5);
-		var knobColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg : $author$project$Themes$GruvboxDark$fg;
+		var knobColor = A3(
+			$author$project$Theme$evalTheme,
+			$author$project$Themes$GruvboxDark$fg,
+			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$fg),
+			theme);
 		var defaultKnobAttributes = _List_fromArray(
 			[
 				$mdgriffith$elm_ui$Element$Border$rounded(20),
+				$mdgriffith$elm_ui$Element$Background$color(knobColor),
 				$mdgriffith$elm_ui$Element$centerY,
-				knobPosition,
 				$mdgriffith$elm_ui$Element$width(
 				$mdgriffith$elm_ui$Element$px(20)),
 				$mdgriffith$elm_ui$Element$height(
 				$mdgriffith$elm_ui$Element$px(20)),
-				$mdgriffith$elm_ui$Element$Background$color(knobColor)
+				knobPosition
 			]);
 		var knobAttributes = A3($author$project$Component$addIf, isSwitchedOn, $mdgriffith$elm_ui$Element$alignRight, defaultKnobAttributes);
 		var knob = A2($mdgriffith$elm_ui$Element$el, knobAttributes, $mdgriffith$elm_ui$Element$none);
@@ -12054,21 +12078,76 @@ var $author$project$Component$slider = F2(
 			_List_fromArray(
 				[
 					$mdgriffith$elm_ui$Element$Border$rounded(15),
+					$mdgriffith$elm_ui$Element$Background$color($author$project$Themes$GruvboxLight$grayLight),
 					$mdgriffith$elm_ui$Element$moveRight(5),
 					$mdgriffith$elm_ui$Element$width(
 					$mdgriffith$elm_ui$Element$px(50)),
 					$mdgriffith$elm_ui$Element$height(
 					$mdgriffith$elm_ui$Element$px(30)),
-					$mdgriffith$elm_ui$Element$Background$color($author$project$Themes$GruvboxLight$grayLight),
 					$mdgriffith$elm_ui$Element$inFront(knob)
 				]),
 			$mdgriffith$elm_ui$Element$none);
 	});
-var $author$project$Components$LanguageSlider$element = function (model) {
-	var sliderOn = A2($author$project$Component$slider, model, true);
-	var sliderOff = A2($author$project$Component$slider, model, false);
-	var fontColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$fg0 : $author$project$Themes$GruvboxDark$fg0;
-	var checked = _Utils_eq(model.language, $author$project$Data$Translation$EN) ? false : true;
+var $mdgriffith$elm_ui$Element$Input$HiddenLabel = function (a) {
+	return {$: 'HiddenLabel', a: a};
+};
+var $mdgriffith$elm_ui$Element$Input$labelHidden = $mdgriffith$elm_ui$Element$Input$HiddenLabel;
+var $mdgriffith$elm_ui$Element$row = F2(
+	function (attrs, children) {
+		return A4(
+			$mdgriffith$elm_ui$Internal$Model$element,
+			$mdgriffith$elm_ui$Internal$Model$asRow,
+			$mdgriffith$elm_ui$Internal$Model$div,
+			A2(
+				$elm$core$List$cons,
+				$mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.contentLeft + (' ' + $mdgriffith$elm_ui$Internal$Style$classes.contentCenterY)),
+				A2(
+					$elm$core$List$cons,
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$shrink),
+					A2(
+						$elm$core$List$cons,
+						$mdgriffith$elm_ui$Element$height($mdgriffith$elm_ui$Element$shrink),
+						attrs))),
+			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
+	});
+var $author$project$Components$LanguageSlider$element = function (_v0) {
+	var language = _v0.language;
+	var theme = _v0.theme;
+	var sliderOn = A2($author$project$Components$Patterns$Slider$element, theme, true);
+	var sliderOff = A2($author$project$Components$Patterns$Slider$element, theme, false);
+	var fontColor = A3(
+		$author$project$Theme$evalTheme,
+		$author$project$Themes$GruvboxDark$fg0,
+		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$fg0),
+		theme);
+	var frenchLabel = A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$padding(10),
+				$mdgriffith$elm_ui$Element$Font$color(fontColor)
+			]),
+		$mdgriffith$elm_ui$Element$text('FR'));
+	var englishLabel = A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$Font$color(fontColor)
+			]),
+		$mdgriffith$elm_ui$Element$text('EN'));
+	var checkbox = A2(
+		$mdgriffith$elm_ui$Element$Input$checkbox,
+		_List_Nil,
+		{
+			checked: _Utils_eq(language, $author$project$Data$Translation$FR),
+			icon: function (isChecked) {
+				return isChecked ? sliderOn : sliderOff;
+			},
+			label: $mdgriffith$elm_ui$Element$Input$labelHidden('Language switch'),
+			onChange: function (isChecked) {
+				return $author$project$Data$Message$LanguageSwitch(isChecked);
+			}
+		});
 	return A2(
 		$mdgriffith$elm_ui$Element$row,
 		_List_fromArray(
@@ -12076,36 +12155,7 @@ var $author$project$Components$LanguageSlider$element = function (model) {
 				$mdgriffith$elm_ui$Element$spacing(5)
 			]),
 		_List_fromArray(
-			[
-				A2(
-				$mdgriffith$elm_ui$Element$el,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$Font$color(fontColor)
-					]),
-				$mdgriffith$elm_ui$Element$text('EN')),
-				A2(
-				$mdgriffith$elm_ui$Element$Input$checkbox,
-				_List_Nil,
-				{
-					checked: checked,
-					icon: function (isChecked) {
-						return isChecked ? sliderOn : sliderOff;
-					},
-					label: $mdgriffith$elm_ui$Element$Input$labelHidden('Language switch'),
-					onChange: function (isChecked) {
-						return $author$project$Data$Message$LanguageSwitch(isChecked);
-					}
-				}),
-				A2(
-				$mdgriffith$elm_ui$Element$el,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$padding(10),
-						$mdgriffith$elm_ui$Element$Font$color(fontColor)
-					]),
-				$mdgriffith$elm_ui$Element$text('FR'))
-			]));
+			[englishLabel, checkbox, frenchLabel]));
 };
 var $author$project$Data$Translation$aboutContent1 = {en: 'Based in Quebec Canada, I have experience in web development in various programming languages and technologies.', fr: 'Basé au Québec, j\u0027ai de l\u0027expérience en développement d\u0027application web dans de nombreux language de programmation et technologies diverses.'};
 var $author$project$Data$Translation$aboutContent2 = {en: 'I specialize and prefer to work on the backend but I am fully capable to do fullstack development.', fr: 'Je suis spécialisé et préfère le développement backend cependant, j\u0027ai les aptitudes pour concevoir une application fullstack complète.'};
@@ -12774,7 +12824,7 @@ var $author$project$Components$MainContent$technologyContent = F2(
 				A2(
 					$elm$core$List$filter,
 					function (skill) {
-						return _Utils_eq(skill.category, $author$project$Data$Model$Language);
+						return _Utils_eq(skill.category, $author$project$Data$Skill$Language);
 					},
 					skills)));
 		var librariesAndFrameworks = A2(
@@ -12788,7 +12838,7 @@ var $author$project$Components$MainContent$technologyContent = F2(
 				A2(
 					$elm$core$List$filter,
 					function (skill) {
-						return _Utils_eq(skill.category, $author$project$Data$Model$LibraryFramework);
+						return _Utils_eq(skill.category, $author$project$Data$Skill$LibraryFramework);
 					},
 					skills)));
 		var contentStyle = _List_fromArray(
@@ -12830,8 +12880,10 @@ var $author$project$Components$MainContent$technologyContent = F2(
 				[languageSection, libraryFrameworkSection]));
 	});
 var $author$project$Data$Translation$technologyTitle = {en: 'Technologies', fr: 'Technologies'};
-var $author$project$Components$MainContent$element = F4(
-	function (theme, language, skills, dropdowns) {
+var $author$project$Components$MainContent$element = F3(
+	function (_v0, skills, dropdowns) {
+		var language = _v0.language;
+		var theme = _v0.theme;
 		var projectsContent = A2(
 			$mdgriffith$elm_ui$Element$column,
 			_List_fromArray(
@@ -12926,28 +12978,49 @@ var $mdgriffith$elm_ui$Element$link = F2(
 				_List_fromArray(
 					[label])));
 	});
-var $author$project$Components$Socials$social = F3(
-	function (url, imgSrc, imgDesc) {
-		return A2(
-			$mdgriffith$elm_ui$Element$link,
-			_List_Nil,
-			{
-				label: A2(
-					$mdgriffith$elm_ui$Element$image,
-					_List_fromArray(
-						[
-							$mdgriffith$elm_ui$Element$width(
-							$mdgriffith$elm_ui$Element$px(80)),
-							$mdgriffith$elm_ui$Element$height(
-							$mdgriffith$elm_ui$Element$px(80))
-						]),
-					{description: imgDesc, src: imgSrc}),
-				url: url
-			});
-	});
-var $author$project$Components$Socials$element = function (model) {
-	var linkedinLogo = _Utils_eq(model.theme, $author$project$Theme$Light) ? 'LI-In-Bug.png' : 'InBug-White.png';
-	var githubLogo = _Utils_eq(model.theme, $author$project$Theme$Light) ? 'GitHub_Invertocat_Black.svg' : 'GitHub_Invertocat_White.svg';
+var $author$project$Components$Socials$social = function (_v0) {
+	var imgDesc = _v0.imgDesc;
+	var imgSrc = _v0.imgSrc;
+	var url = _v0.url;
+	return A2(
+		$mdgriffith$elm_ui$Element$link,
+		_List_Nil,
+		{
+			label: A2(
+				$mdgriffith$elm_ui$Element$image,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$width(
+						$mdgriffith$elm_ui$Element$px(80)),
+						$mdgriffith$elm_ui$Element$height(
+						$mdgriffith$elm_ui$Element$px(80))
+					]),
+				{description: imgDesc, src: imgSrc}),
+			url: url
+		});
+};
+var $author$project$Components$Socials$element = function (theme) {
+	var linkedinLogo = A3(
+		$author$project$Theme$evalTheme,
+		'InBug-White.png',
+		_Utils_Tuple2($author$project$Theme$Light, 'LI-In-Bug.png'),
+		theme);
+	var linkedInImage = {
+		imgDesc: 'Clickable LinkedIn Logo',
+		imgSrc: _Utils_ap($author$project$Components$Socials$iconsPath, linkedinLogo),
+		url: 'https://www.linkedin.com/in/samuel-nguyen-phok-99424225b/'
+	};
+	var gmailImage = {imgDesc: 'Clickable Gmail Logo', imgSrc: $author$project$Components$Socials$iconsPath + 'google_mail_gmail_logo_icon.svg', url: 'mailto:samuelnguyenphok@gmail.com'};
+	var githubLogo = A3(
+		$author$project$Theme$evalTheme,
+		'GitHub_Invertocat_White.svg',
+		_Utils_Tuple2($author$project$Theme$Light, 'GitHub_Invertocat_Black.svg'),
+		theme);
+	var githubImage = {
+		imgDesc: 'Clickable GitHub Invertocat Black Logo',
+		imgSrc: _Utils_ap($author$project$Components$Socials$iconsPath, githubLogo),
+		url: 'https://github.com/WildSource'
+	};
 	return A2(
 		$mdgriffith$elm_ui$Element$row,
 		_List_fromArray(
@@ -12958,17 +13031,9 @@ var $author$project$Components$Socials$element = function (model) {
 			]),
 		_List_fromArray(
 			[
-				A3(
-				$author$project$Components$Socials$social,
-				'https://github.com/WildSource',
-				_Utils_ap($author$project$Components$Socials$iconsPath, githubLogo),
-				'Clickable GitHub Invertocat Black Logo'),
-				A3($author$project$Components$Socials$social, 'mailto:samuelnguyenphok@gmail.com', $author$project$Components$Socials$iconsPath + 'google_mail_gmail_logo_icon.svg', 'Clickable Gmail Logo'),
-				A3(
-				$author$project$Components$Socials$social,
-				'https://www.linkedin.com/in/samuel-nguyen-phok-99424225b/',
-				_Utils_ap($author$project$Components$Socials$iconsPath, linkedinLogo),
-				'Clickable LinkedIn Logo')
+				$author$project$Components$Socials$social(githubImage),
+				$author$project$Components$Socials$social(gmailImage),
+				$author$project$Components$Socials$social(linkedInImage)
 			]));
 };
 var $author$project$Data$Message$ThemeSwitch = function (a) {
@@ -12989,8 +13054,14 @@ var $mdgriffith$elm_ui$Element$html = $mdgriffith$elm_ui$Internal$Model$unstyled
 var $elm$svg$Svg$Attributes$r = _VirtualDom_attribute('r');
 var $elm$svg$Svg$svg = $elm$svg$Svg$trustedNode('svg');
 var $elm$svg$Svg$Attributes$width = _VirtualDom_attribute('width');
-var $author$project$Icons$moon = function (model) {
-	var illusionColor = _Utils_eq(model.theme, $author$project$Theme$Light) ? $elm$svg$Svg$Attributes$fill('rgb(251, 241, 199)') : $elm$svg$Svg$Attributes$fill('rgb(40, 40, 40)');
+var $author$project$Icons$moon = function (theme) {
+	var illusionColor = A3(
+		$author$project$Theme$evalTheme,
+		$elm$svg$Svg$Attributes$fill('rgb(40, 40, 40)'),
+		_Utils_Tuple2(
+			$author$project$Theme$Light,
+			$elm$svg$Svg$Attributes$fill('rgb(251, 241, 199)')),
+		theme);
 	var svg = A2(
 		$elm$svg$Svg$svg,
 		_List_fromArray(
@@ -13160,46 +13231,34 @@ var $author$project$Icons$sun = function () {
 var $author$project$Theme$toBool = function (theme) {
 	return _Utils_eq(theme, $author$project$Theme$Light) ? false : true;
 };
-var $author$project$Components$ThemeSlider$element = function (model) {
-	var sliderOn = A2(
-		$author$project$Component$slider,
-		_Utils_update(
-			model,
-			{theme: $author$project$Theme$Dark}),
-		true);
-	var sliderOff = A2(
-		$author$project$Component$slider,
-		_Utils_update(
-			model,
-			{theme: $author$project$Theme$Light}),
-		false);
+var $author$project$Components$ThemeSlider$element = function (theme) {
+	var sliderOn = A2($author$project$Components$Patterns$Slider$element, $author$project$Theme$Dark, true);
+	var sliderOff = A2($author$project$Components$Patterns$Slider$element, $author$project$Theme$Light, false);
+	var moonIcon = A2(
+		$mdgriffith$elm_ui$Element$el,
+		_List_fromArray(
+			[
+				$mdgriffith$elm_ui$Element$padding(5)
+			]),
+		$author$project$Icons$moon(theme));
+	var checkbox = A2(
+		$mdgriffith$elm_ui$Element$Input$checkbox,
+		_List_Nil,
+		{
+			checked: $author$project$Theme$toBool(theme),
+			icon: function (isChecked) {
+				return isChecked ? sliderOn : sliderOff;
+			},
+			label: $mdgriffith$elm_ui$Element$Input$labelHidden('Theme switch'),
+			onChange: function (isChecked) {
+				return $author$project$Data$Message$ThemeSwitch(isChecked);
+			}
+		});
 	return A2(
 		$mdgriffith$elm_ui$Element$row,
 		_List_Nil,
 		_List_fromArray(
-			[
-				$author$project$Icons$sun,
-				A2(
-				$mdgriffith$elm_ui$Element$Input$checkbox,
-				_List_Nil,
-				{
-					checked: $author$project$Theme$toBool(model.theme),
-					icon: function (isChecked) {
-						return isChecked ? sliderOn : sliderOff;
-					},
-					label: $mdgriffith$elm_ui$Element$Input$labelHidden('Theme switch'),
-					onChange: function (isChecked) {
-						return $author$project$Data$Message$ThemeSwitch(isChecked);
-					}
-				}),
-				A2(
-				$mdgriffith$elm_ui$Element$el,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$padding(5)
-					]),
-				$author$project$Icons$moon(model))
-			]));
+			[$author$project$Icons$sun, checkbox, moonIcon]));
 };
 var $mdgriffith$elm_ui$Internal$Model$FocusStyleOption = function (a) {
 	return {$: 'FocusStyleOption', a: a};
@@ -13409,11 +13468,15 @@ var $mdgriffith$elm_ui$Element$layoutWith = F3(
 			child);
 	});
 var $author$project$Main$view = function (model) {
+	var toggledDropdowns = model.toggledDropdowns;
+	var data = model.data;
+	var config = model.config;
 	var theme = A3(
 		$author$project$Theme$evalTheme,
 		$author$project$Themes$GruvboxDark$bg,
 		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$bg),
-		model.theme);
+		config.theme);
+	var socialMedias = $author$project$Components$Socials$element(config.theme);
 	var sliders = A2(
 		$mdgriffith$elm_ui$Element$row,
 		_List_fromArray(
@@ -13423,13 +13486,14 @@ var $author$project$Main$view = function (model) {
 			]),
 		_List_fromArray(
 			[
-				$author$project$Components$ThemeSlider$element(model),
+				$author$project$Components$ThemeSlider$element(config.theme),
 				A2(
 				$mdgriffith$elm_ui$Element$el,
 				_List_fromArray(
 					[$mdgriffith$elm_ui$Element$alignRight]),
-				$author$project$Components$LanguageSlider$element(model))
+				$author$project$Components$LanguageSlider$element(config))
 			]));
+	var heroText = $author$project$Components$HeroText$element(config);
 	return {
 		body: _List_fromArray(
 			[
@@ -13457,10 +13521,10 @@ var $author$project$Main$view = function (model) {
 					_List_fromArray(
 						[
 							sliders,
-							A3($author$project$Components$HeroText$element, model.theme, model.language, model.device),
-							$author$project$Components$Socials$element(model),
-							A4($author$project$Components$MainContent$element, model.theme, model.language, model.skills, model.toggledDropdowns),
-							$author$project$Components$Footer$element(model)
+							heroText,
+							socialMedias,
+							A3($author$project$Components$MainContent$element, config, $author$project$Data$Skill$skills, model.toggledDropdowns),
+							$author$project$Components$Footer$element(config.theme)
 						])))
 			]),
 		title: 'Samuel Nguyen-Phok'

@@ -5,9 +5,11 @@ import Element exposing
     , fill
     )
 import Data.Message exposing (Msg)
-import Component exposing (debugBorder)
 import Data.Model exposing (Model)
-import Theme exposing (Theme (..))
+import Theme exposing
+    ( Theme (..)
+    , evalTheme
+    )
 
 import Element.Background as Background
 import Element.Font as Font
@@ -15,20 +17,20 @@ import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
 
-element : Model -> Element Msg
-element model =
+element : Theme -> Element Msg
+element theme =
     let
         footerColor =
-            if model.theme == Light then
-                GLight.bg1
-            else
+            evalTheme
                 GDark.bg1
+                (Light, GLight.bg1)
+                theme
 
         fontColor =
-            if model.theme == Light then
-                GLight.fg0
-            else
+            evalTheme
                 GDark.fg0
+                (Light, GLight.fg0)
+                theme
                     
         style =
             [ Element.padding 20

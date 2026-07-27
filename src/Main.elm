@@ -11,8 +11,8 @@ import Components.MainContent as MainContent
 import Browser.Events as E
 import Data.Translation as Translation
 import Data.Message as Message
+import Data.Model as Model
 
-import Utils exposing (debugBorder)
 import Element exposing
     ( width
     , fill
@@ -60,14 +60,14 @@ init ({ language, width, height } as flags) =
             , height = height                
             }
             
-        language =
-            if String.startsWith "fr" flags.language then
+        chosenLanguage =
+            if String.startsWith "fr" language then
                 Translation.FR
             else
                 Translation.EN                
     in
         ( { config =
-                { language = language
+                { language = chosenLanguage
                 , theme = Light
                 , device = device
                 }
@@ -136,11 +136,10 @@ view ({config, data, toggledDropdowns} as model) =
                           , heroText
                           , socialMedias
                           , MainContent.element
-                              model.theme
-                              model.language
-                              model.skills
+                              config
+                              skills
                               model.toggledDropdowns
-                          , Footer.element model
+                          , Footer.element config.theme
                           ]
                     )             
               ]
@@ -177,7 +176,7 @@ update msg model =
                     else
                         EN
             in
-                ( { model | language = language }
+                ( Model.updateLanguage model language
                 , Cmd.none
                 )
 
@@ -185,7 +184,7 @@ update msg model =
             let
                 theme = Theme.fromBool isChecked
             in
-                ( { model | theme = theme }
+                ( Model.updateTheme model theme
                 , Cmd.none
                 )
 
@@ -195,10 +194,11 @@ update msg model =
                 _ = Debug.log "sizes" windowSize
                 _ = Debug.log "device" device
             in
-                ( { model | device = device }
+                ( Model.updateDevice model device
                 , Cmd.none
                 )    
-                 
+
+                
 subscriptions : Model -> Sub Msg
 subscriptions _ =
     E.onResize (\ width height -> Message.WindowResize {width = width, height = height})

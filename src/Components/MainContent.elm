@@ -5,9 +5,13 @@ import Element exposing
     , fill
     )
 import Data.Message exposing (Msg)
-import Data.Model exposing (Skill)
+import Data.Skill exposing
+    ( Skill
+    , SkillCategory (..)
+    )
+import Data.Model exposing (Config)
 import Data.Translation exposing (translate)
-import Utils exposing (debugBorder)
+
 import Theme exposing
     ( Theme (..)
     , evalTheme
@@ -22,8 +26,9 @@ import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 import Data.Model as M
 
-element : Theme -> T.Language -> List Skill -> List String -> Element Msg
-element theme language skills dropdowns =
+
+element : Config -> List Skill -> List String -> Element Msg
+element { theme, language } skills dropdowns =
     let
         fontColor =
             evalTheme
@@ -134,7 +139,7 @@ technologyContent theme skills =
             List.map
                 (Highlight.element theme) 
                 (List.filter
-                     (\ skill -> skill.category == M.Language)
+                     (\ skill -> skill.category == Language)
                      skills
                 |>
                   List.map
@@ -146,7 +151,7 @@ technologyContent theme skills =
             List.map
                 (Highlight.element theme)
                 (List.filter
-                     (\ skill -> skill.category == M.LibraryFramework)
+                     (\ skill -> skill.category == LibraryFramework)
                      skills
                 |>
                   List.map
