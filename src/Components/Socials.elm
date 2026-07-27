@@ -1,54 +1,63 @@
 module Components.Socials exposing (element)
 
-import Component
-
 import Element exposing
     ( Element
     , fill
     )
 import Data.Message exposing (Msg)
-import Data.Model exposing (Model)
-import Theme exposing (Theme (..))
+import Theme exposing
+    ( Theme (..)
+    , evalTheme
+    )
 
 iconsPath : String
 iconsPath = "/assets/icons/"            
 
-element : Model -> Element Msg
-element model =
+element : Theme -> Element Msg
+element theme =
     let
         githubLogo =
-            if model.theme == Light then
-                "GitHub_Invertocat_Black.svg"
-            else
+            evalTheme
                 "GitHub_Invertocat_White.svg"
+                (Light, "GitHub_Invertocat_Black.svg")
+                (theme)
                     
         linkedinLogo =
-            if model.theme == Light then
-                "LI-In-Bug.png"
-            else
+            evalTheme
                 "InBug-White.png"
+                (Light, "LI-In-Bug.png")
+                theme
+
+        githubImage =
+            { url = "https://github.com/WildSource"
+            , imgSrc = iconsPath ++ githubLogo
+            , imgDesc = "Clickable GitHub Invertocat Black Logo"
+            }
+
+        gmailImage =
+            { url = "mailto:samuelnguyenphok@gmail.com"
+            , imgSrc = iconsPath ++ "google_mail_gmail_logo_icon.svg"
+            , imgDesc = "Clickable Gmail Logo"
+            }
+
+        linkedInImage =
+            { url = "https://www.linkedin.com/in/samuel-nguyen-phok-99424225b/"
+            , imgSrc = iconsPath ++ linkedinLogo
+            , imgDesc = "Clickable LinkedIn Logo"
+            }
     in
         Element.row
             [ Element.width fill
             , Element.spacing 40
             , Element.paddingXY 30 10
             ]
-            [ social
-                  "https://github.com/WildSource"
-                  (iconsPath ++ githubLogo)
-                  "Clickable GitHub Invertocat Black Logo"
-            , social
-                  "mailto:samuelnguyenphok@gmail.com"
-                  (iconsPath ++ "google_mail_gmail_logo_icon.svg")
-                  "Clickable Gmail Logo"
-            , social
-                  "https://www.linkedin.com/in/samuel-nguyen-phok-99424225b/"
-                  (iconsPath ++ linkedinLogo)
-                  "Clickable LinkedIn Logo"
+            [ social githubImage
+            , social gmailImage
+            , social linkedInImage
             ]
 
-social : String -> String -> String -> Element Msg
-social url imgSrc imgDesc=
+social : { url : String, imgSrc : String, imgDesc : String } -> Element Msg
+social { url, imgSrc, imgDesc } =
     Element.link
         []
         { url = url

@@ -102,12 +102,18 @@ view ({config, data, toggledDropdowns} as model) =
                 [ width fill
                 , Element.padding 10
                 ]
-                [ ThemeSlider.element model
+                [ ThemeSlider.element config.theme
                 , Element.el
                       [alignRight]
-                      (LanguageSlider.element model)
+                      (LanguageSlider.element config)
                 ]
-                
+
+        heroText =
+            HeroText.element config
+
+        socialMedias =
+            Socials.element config.theme
+                            
     in
         { title = "Samuel Nguyen-Phok"
         , body =
@@ -127,11 +133,8 @@ view ({config, data, toggledDropdowns} as model) =
                           , Element.spacing 10
                           ]
                           [ sliders
-                          , HeroText.element
-                              model.theme
-                              model.language
-                              model.device
-                          , Socials.element model
+                          , heroText
+                          , socialMedias
                           , MainContent.element
                               model.theme
                               model.language

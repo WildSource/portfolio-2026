@@ -1,57 +1,64 @@
 module Components.LanguageSlider exposing (element)
 
-import Component
-import Data.Model exposing (Model)
+import Data.Model exposing (Config)
 import Data.Message exposing (Msg (..))
 import Element exposing (Element)
-import Theme exposing (Theme (..))
+import Theme exposing
+    ( Theme (..)
+    , evalTheme
+    )
 
 import Element.Input as Input
 import Element.Font as Font
 import Data.Translation as T
-
+import Components.Patterns.Slider as Slider
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
 
-element : Model -> Element Msg
-element model =
+element : Config -> Element Msg
+element { theme, language } =
     let
         fontColor =
-            if model.theme == Light then
-                GLight.fg0
-            else
+            evalTheme
                 GDark.fg0
-        
-        checked =
-            if model.language == T.EN then
-                False
-            else
-                True
+                (Light, GLight.fg0)
+                theme    
 
+        checkbox =
+            Input.checkbox
+                []
+                { onChange =
+                      (\ isChecked -> LanguageSwitch isChecked)
+                , icon =
+                      (\ isChecked -> if isChecked then sliderOn else sliderOff)
+                , checked = language == T.FR
+                , label = Input.labelHidden "Language switch"
+                }
+                    
         sliderOn =
-            Component.slider model True
+            Slider.element theme True
 
         sliderOff =
-            Component.slider model False                
+            Slider.element theme False
+
+        englishLabel =
+            Element.el
+                [Font.color fontColor]
+                (Element.text "EN")
+                    
+        frenchLabel =
+            Element.el
+                [ Element.padding 10
+                , Font.color fontColor
+                ]
+                ( Element.text "FR" )
     in
         Element.row
             [ Element.spacing 5 ]
-            [ Element.el
-                  [ Font.color fontColor]
-                  (Element.text "EN")
-            , Input.checkbox
-                []
-                { onChange = (\ isChecked -> LanguageSwitch isChecked)
-                , icon = (\ isChecked -> if isChecked then sliderOn else sliderOff)
-                , checked = checked
-                , label = Input.labelHidden "Language switch"
-                }
-            , Element.el
-                  [ Element.padding 10
-                  , Font.color fontColor
-                  ]
-                  (Element.text "FR")
+            [ englishLabel
+            , checkbox
+            , frenchLabel
             ]
 
             

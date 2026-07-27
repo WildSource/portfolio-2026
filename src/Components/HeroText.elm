@@ -1,12 +1,11 @@
 module Components.HeroText exposing (element)
 
-import Utils exposing (debugBorder)
+import Data.Model exposing (Config)
 import Data.Message exposing (Msg (..))
 import Theme exposing (Theme (..))
 import Data.Translation exposing (Language)
 import Element exposing
     ( Element
-    , Device
     , DeviceClass (..)
     )
 
@@ -16,51 +15,28 @@ import Element.Font as Font
 import Data.Translation as T
 
 
-element : Theme -> Language -> Device -> Element Msg
-element theme language device =
+element : Config -> Element Msg
+element ({ theme, language, device } as config) =
     let
         name =
-            let
-                style =
-                    Theme.evalTheme
+            Element.el
+                [ Theme.evalTheme
                         (Font.color GDark.blueLight)
                         (Light, Font.color GLight.blueDark)
-                        theme
-            in
-                Element.el [style] (Element.text "Samuel Nguyen-Phok")
+                        theme                 
+                ]
+                (Element.text "Samuel Nguyen-Phok")
+                
 
         heroText =
-            let
-                style =
-                    Theme.evalTheme
-                        (Font.color GDark.greenLight)
-                        (Light, Font.color GLight.greenDark)
-                        theme
-            in
-                Element.el
-                [ style ]
-                ( Element.text
-                      (T.translate T.lastThirdHeroTitle language)
-                )
-                    
-        fontStyle =
-            [ Font.family [Font.typeface "Josefin Sans"]
-            , Font.heavy
-            , Font.center
-            ]
+            Element.el
+                [ Theme.evalTheme
+                      (Font.color GDark.greenLight)
+                      (Light, Font.color GLight.greenDark)
+                      theme
+                ]
+                (Element.text (T.translate T.lastThirdHeroTitle language))
             
-        themeStyle =
-            Theme.evalTheme
-                [Font.color GDark.fg0]
-                (Light, [Font.color GLight.fg0])
-                theme
-            
-        deviceStyle =
-            case device.class of
-                Phone ->
-                    [Font.size 20]
-                _ ->
-                    [Font.strike]
 
         spacingStyle =
             [ Element.padding 10
@@ -68,7 +44,27 @@ element theme language device =
             ]
 
         paragraphStyle =
-            fontStyle ++ deviceStyle ++ themeStyle
+            let
+                fontStyle =
+                    [ Font.family [Font.typeface "Josefin Sans"]
+                    , Font.heavy
+                    , Font.center
+                    ]
+                    
+                themeStyle =
+                    Theme.evalTheme
+                    [Font.color GDark.fg0]
+                    (Light, [Font.color GLight.fg0])
+                    theme
+                                
+                deviceStyle =
+                    case device.class of
+                        Phone ->
+                            [Font.size 20]
+                        _ ->
+                            [Font.strike]
+            in
+                fontStyle ++ deviceStyle ++ themeStyle
     in
         Element.column
             spacingStyle
@@ -81,12 +77,13 @@ element theme language device =
                         (T.translate T.secondThirdHeroTitle language)
                   , heroText
                   ]
-            , subHeroTitle theme language
+            , subHeroTitle config
             ]
 
 
-subHeroTitle : Theme -> Language -> Element Msg
-subHeroTitle theme language=
+-- TODO regroup subHeroTitles into a single exportable list
+subHeroTitle : Config -> Element Msg
+subHeroTitle { theme, language } =
     let
         fontColor =
             Theme.evalTheme
