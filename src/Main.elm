@@ -27,22 +27,13 @@ import Theme exposing (Theme (..))
 
 import Data.Translation exposing (Language (..))
 
-import Data.Model exposing
-    ( Model
-    , SkillCategory (..)
-    , skills
-    , projects
-    )
+import Data.Model exposing (Model)
 
 import Data.Message exposing (Msg)
 
-{-
-Notes on what to refactor.
-+ pass either data as arguments to component if 2-3 arguments or less
-otherwise switch to a record instead of passing whole model.
+import Data.Skill exposing (skills) 
 
-+ refactor model to include the static text as data in the model instead of hardcoded string literals
- -}
+import Data.Project exposing (projects) 
 
 
 main : Program Flags Model Msg
@@ -52,52 +43,59 @@ main =
        , view = view
        , update = update
        , subscriptions = subscriptions
-       }
-
-    
-type alias Flags =
-    { language : String
-    , width : Int
-    , height : Int        
-    }
+       }    
     
     
 init : Flags -> (Model, Cmd Msg)
-init flags =
+init ({ language, width, height } as flags) =
     let
+        -- debug to remove
         _ = Debug.log "flags" flags
         _ = Debug.log "device" device
             
         device = Element.classifyDevice windowSize
+                 
         windowSize =
-            { width = flags.width
-            , height = flags.height                
+            { width = width
+            , height = height                
             }
+            
         language =
             if String.startsWith "fr" flags.language then
                 Translation.FR
             else
                 Translation.EN                
     in
-        ( { language = language
-          , theme = Light
-          , device = device
-          , projects = projects
-          , skills = skills
+        ( { config =
+                { language = language
+                , theme = Light
+                , device = device
+                }
+          , data =
+              { skills = skills
+              , projects = projects
+              }
           , toggledDropdowns = []
           }
         , Cmd.none
         )
 
-            
+
+type alias Flags =
+    { language : String
+    , width : Int
+    , height : Int        
+    }
+
+    
 view : Model -> Document Msg
-view model =
+view ({config, data, toggledDropdowns} as model) =
     let
         theme =
             Theme.evalTheme
                 GDark.bg
                 (Light, GLight.bg)
-                model.theme
+                config.theme
 
         sliders =
             Element.row
@@ -105,7 +103,9 @@ view model =
                 , Element.padding 10
                 ]
                 [ ThemeSlider.element model
-                , Element.el [alignRight] (LanguageSlider.element model)
+                , Element.el
+                      [alignRight]
+                      (LanguageSlider.element model)
                 ]
                 
     in

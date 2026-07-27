@@ -20,22 +20,22 @@ import Svg.Attributes exposing
     )
 
 import Data.Message exposing (Msg)
-
 import Element exposing (Element)
+import Theme exposing
+    ( Theme (..)
+    , evalTheme
+    )
 
-import Theme exposing (Theme (..))
 
-import Data.Model exposing (Model)
-
-
-moon : Model -> Element Msg
-moon model =
+moon : Theme -> Element Msg
+moon theme =
     let
         illusionColor =
-            if model.theme == Light then
-                fill "rgb(251, 241, 199)"
-            else
-                fill "rgb(40, 40, 40)"
+            evalTheme
+                (fill "rgb(40, 40, 40)")
+                (Light, fill "rgb(251, 241, 199)")
+                theme
+
         svg =
             Svg.svg
             [ width "30"
