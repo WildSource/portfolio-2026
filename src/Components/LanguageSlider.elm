@@ -26,8 +26,7 @@ element { theme, language } =
                 theme    
 
         checkbox =
-            Input.checkbox
-                []
+            Input.checkbox []
                 { onChange =
                       (\ isChecked -> LanguageSwitch isChecked)
                 , icon =
@@ -43,8 +42,7 @@ element { theme, language } =
             Slider.element theme False
 
         englishLabel =
-            Element.el
-                [Font.color fontColor]
+            Element.el [Font.color fontColor]
                 (Element.text "EN")
                     
         frenchLabel =
@@ -54,8 +52,7 @@ element { theme, language } =
                 ]
                 ( Element.text "FR" )
     in
-        Element.row
-            [ Element.spacing 5 ]
+        Element.row [ Element.spacing 5 ]
             [ englishLabel
             , checkbox
             , frenchLabel

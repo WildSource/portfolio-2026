@@ -45,8 +45,7 @@ element theme isSwitchedOn =
                 defaultKnobAttributes            
             
         knob =
-            Element.el
-                knobAttributes
+            Element.el knobAttributes
                 (Element.none)
     in
         Element.el

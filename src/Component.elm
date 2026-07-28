@@ -11,7 +11,11 @@ import Element exposing
 import Element.Border as Border
 
 -- Conditional styling
-addIf : Bool -> Attribute msg -> List (Attribute msg) -> List (Attribute msg)
+addIf
+    :  Bool
+    -> Attribute msg
+    -> List (Attribute msg)
+    -> List (Attribute msg)
 addIf condition attribute baseAttributes  =
     if condition then
         attribute :: baseAttributes

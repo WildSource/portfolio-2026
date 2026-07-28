@@ -58,8 +58,7 @@ element theme =
 
 social : { url : String, imgSrc : String, imgDesc : String } -> Element Msg
 social { url, imgSrc, imgDesc } =
-    Element.link
-        []
+    Element.link []
         { url = url
         , label =
             Element.image

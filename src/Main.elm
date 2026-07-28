@@ -103,8 +103,7 @@ view ({config, data, toggledDropdowns} as model) =
                 , Element.padding 10
                 ]
                 [ ThemeSlider.element config.theme
-                , Element.el
-                      [alignRight]
+                , Element.el [ alignRight ]
                       (LanguageSlider.element config)
                 ]
 

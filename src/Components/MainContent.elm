@@ -63,9 +63,7 @@ element { theme, language } skills dropdowns =
             , Element.spacing 20
             , Font.size 15
             , Font.color fontColor
-            , Font.family
-                [ Font.serif                 
-                ]                
+            , Font.family [ Font.serif ]                
             ]
             [ Card.element
                   theme
@@ -159,14 +157,11 @@ technologyContent theme skills =
                 )
                 
         languageSection =
-            Element.column
-                []
-                [ Element.el
-                      subTitleStyle
+            Element.column []
+                [ Element.el subTitleStyle
                       (Element.text "Programming Languages")
 
-                , Element.wrappedRow
-                    contentStyle
+                , Element.wrappedRow contentStyle
                     programmingLanguages                        
                 ]
                 
@@ -204,10 +199,8 @@ experiencesContent theme language  =
                 (Light, GLight.greenDark)
                 theme
     in
-        Element.paragraph
-            [ Element.width fill ]
-            [ Element.column
-                  [ Element.spacing 10 ]
+        Element.paragraph [ Element.width fill ]
+            [ Element.column [ Element.spacing 10 ]
                   [ Element.el
                         [ Font.semiBold
                         , Font.color titleColor

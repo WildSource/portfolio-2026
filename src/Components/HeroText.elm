@@ -92,18 +92,15 @@ subHeroTitle { theme, language } =
                 theme                
                     
         text1 =
-            Element.el
-                [Element.centerX]
+            Element.el [Element.centerX]
                 (Element.text (T.translate T.subHeroTitle1 language))
                     
         text2 =
-            Element.el
-                [Element.centerX]
+            Element.el [Element.centerX]
                 (Element.text (T.translate T.subHeroTitle2 language))
                     
         text3 =
-            Element.el
-                [Element.centerX]
+            Element.el [Element.centerX]
                 (Element.text (T.translate T.subHeroTitle3 language))
     in
         Element.column
@@ -113,8 +110,7 @@ subHeroTitle { theme, language } =
             , Font.center
             , Font.color fontColor
             , Font.semiBold
-            , Font.family
-                [Font.serif]
+            , Font.family [Font.serif]
             ]
         [ text1
         , text2

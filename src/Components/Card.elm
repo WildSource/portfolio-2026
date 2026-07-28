@@ -59,7 +59,6 @@ titleText theme language title =
             [ Font.color fontColor
             , Font.bold
             , Font.size 20
-            , Font.family
-                  [Font.typeface "Josefin Sans"]
+            , Font.family [Font.typeface "Josefin Sans"]
             ]
         (Element.text text)    

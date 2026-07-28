@@ -20,8 +20,7 @@ element theme =
             Slider.element Light False
 
         checkbox =
-            Input.checkbox
-                []
+            Input.checkbox []
                 { onChange =
                       (\ isChecked -> ThemeSwitch isChecked)
                 , icon =
@@ -31,12 +30,10 @@ element theme =
                 }
 
         moonIcon =
-            Element.el
-                [Element.padding 5]
+            Element.el [ Element.padding 5 ]
                 (Icons.moon theme)
     in
-        Element.row
-            []
+        Element.row []
             [ Icons.sun 
             , checkbox
             , moonIcon
