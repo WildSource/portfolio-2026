@@ -1,5 +1,7 @@
 module Components.Dropdown exposing (element)
 
+import Utils
+
 import Element exposing
     ( Element
     , fill
@@ -79,18 +81,32 @@ element { theme, language } { title, description } isToggled =
                 else
                     []
 
+        sentenceElements =
+            let
+                translatedText =
+                    translate description language
+
+                sentences
+                    =  String.split "\n" translatedText
+                    |> List.map String.trim
+                    |> List.filter ((/=) "")
+                    |> Utils.intersperse ""
+            in
+                List.map (Element.text) sentences
+
         content =
             if isToggled then                
-                [Element.el
-                    [ Element.width fill
-                    , Border.color borderColor
-                    , Border.width 1
-                    , Element.padding 10
-                    , Font.size 12
-                    ]
-                (Element.paragraph []
-                     [Element.text (translate description language)]
-                )]
+                [ Element.el
+                     [ Element.width fill
+                     , Border.color borderColor
+                     , Border.width 1
+                     , Element.padding 10
+                     , Font.size 12
+                     ]
+                     ( Element.paragraph [ Element.padding 5 ]
+                          sentenceElements
+                     )
+                ]
             else
                 []
     in
@@ -117,9 +133,9 @@ element { theme, language } { title, description } isToggled =
                               , Element.height (px 15)
                               ]
                             chevron
-                      ]
+                        ]
                   }
             :: content 
-           )
+            )
             
             

@@ -5233,7 +5233,7 @@ var $elm$core$Debug$log = _Debug_log;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Data$Project$adultWebcomicWebsite = {
-	description: {en: '\u000A                 waifuwebcomics.com was a website to publish some erotic work of fiction.\u000A                 The website was written in Javascript using Angular for its frontend and in Java with Spring Boot for its backend.\u000A                 It had a full content management system enabling the admin (me) to publish, modify and delete the displayed comics.\u000A                 It also had a login system using the standard username/password authentication method.\u000A                 The website was hosted on a DigitalOcean dropplet and configured manually by me.\u000A                 The webserver was Nginx and was configured with tls encryption also known as https.\u000A                 The project does not exist anymore.\u000A                ', fr: '\u000A                 waifuwebcomics.com était un site web permettant de publier des œuvres de fiction érotiques.                 \u000A                 Le site a été développé avec Angular pour le frontend et Spring Boot pour le backend.\u000A                 Il comportait un système de gestion de contenu complet permettant à l\u0027administrateur (moi) de publier, modifier et supprimer les bandes dessinées affichées.\u000A                 Il disposait également d\u0027un système de connexion utilisant la méthode d\u0027authentification standard par nom d\u0027utilisateur et mot de passe.\u000A                 Le site était hébergé sur un droplet DigitalOcean, configuré manuellement par mes soins.\u000A                 Le serveur web utilisé était Nginx, configuré avec le chiffrement TLS, aussi connu sous le nom de HTTPS.\u000A                 Le projet n\u0027existe plus.\u000A                '},
+	description: {en: '\u000A                 waifuwebcomics.com was a website to publish some erotic work of fiction.\u000A\u000A                 The website was written in Javascript using Angular for its frontend and in Java with Spring Boot for its backend.\u000A\u000A                 It had a full content management system enabling the admin (me) to publish, modify and delete the displayed comics.\u000A\u000A                 It also had a login system using the standard username/password authentication method.\u000A\u000A                 The website was hosted on a DigitalOcean dropplet and configured manually by me.\u000A\u000A                 The webserver was Nginx and was configured with tls encryption also known as https.\u000A\u000A                 The project does not exist anymore.\u000A\u000A                ', fr: '\u000A                 waifuwebcomics.com était un site web permettant de publier des œuvres de fiction érotiques.                 \u000A                 Le site a été développé avec Angular pour le frontend et Spring Boot pour le backend.\u000A                 Il comportait un système de gestion de contenu complet permettant à l\u0027administrateur (moi) de publier, modifier et supprimer les bandes dessinées affichées.\u000A                 Il disposait également d\u0027un système de connexion utilisant la méthode d\u0027authentification standard par nom d\u0027utilisateur et mot de passe.\u000A                 Le site était hébergé sur un droplet DigitalOcean, configuré manuellement par mes soins.\u000A                 Le serveur web utilisé était Nginx, configuré avec le chiffrement TLS, aussi connu sous le nom de HTTPS.\u000A                 Le projet n\u0027existe plus.\u000A                '},
 	title: {en: 'Adult Webcomic Website', fr: 'Site Web de bande dessinée pour public averti'}
 };
 var $author$project$Data$Project$laVoute = {
@@ -12403,7 +12403,27 @@ var $mdgriffith$elm_ui$Element$Border$innerShadow = function (almostShade) {
 			'box-shadow',
 			$mdgriffith$elm_ui$Internal$Model$formatBoxShadow(shade)));
 };
+var $author$project$Utils$intersperse = F2(
+	function (element, elements) {
+		var _v0 = _Utils_Tuple2(element, elements);
+		if (!_v0.b.b) {
+			return _List_Nil;
+		} else {
+			var el = _v0.a;
+			var _v1 = _v0.b;
+			var x = _v1.a;
+			var xs = _v1.b;
+			return A2(
+				$elm$core$List$cons,
+				x,
+				A2(
+					$elm$core$List$cons,
+					el,
+					A2($author$project$Utils$intersperse, element, xs)));
+		}
+	});
 var $mdgriffith$elm_ui$Element$spaceEvenly = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$spacing, $mdgriffith$elm_ui$Internal$Style$classes.spaceEvenly);
+var $elm$core$String$trim = _String_trim;
 var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
 	function (a, b, c, d, e) {
 		return {$: 'BorderWidth', a: a, b: b, c: c, d: d, e: e};
@@ -12426,6 +12446,20 @@ var $author$project$Components$Dropdown$element = F3(
 		var theme = _v0.theme;
 		var description = _v1.description;
 		var title = _v1.title;
+		var sentenceElements = function () {
+			var translatedText = A2($author$project$Data$Translation$translate, description, language);
+			var sentences = A2(
+				$author$project$Utils$intersperse,
+				'',
+				A2(
+					$elm$core$List$filter,
+					$elm$core$Basics$neq(''),
+					A2(
+						$elm$core$List$map,
+						$elm$core$String$trim,
+						A2($elm$core$String$split, '\u000A', translatedText))));
+			return A2($elm$core$List$map, $mdgriffith$elm_ui$Element$text, sentences);
+		}();
 		var chevron = function () {
 			var _v5 = function () {
 				var _v6 = _Utils_Tuple2(isToggled, theme);
@@ -12499,12 +12533,11 @@ var $author$project$Components$Dropdown$element = F3(
 					]),
 				A2(
 					$mdgriffith$elm_ui$Element$paragraph,
-					_List_Nil,
 					_List_fromArray(
 						[
-							$mdgriffith$elm_ui$Element$text(
-							A2($author$project$Data$Translation$translate, description, language))
-						])))
+							$mdgriffith$elm_ui$Element$padding(5)
+						]),
+					sentenceElements))
 			]) : _List_Nil;
 		return A2(
 			$mdgriffith$elm_ui$Element$column,

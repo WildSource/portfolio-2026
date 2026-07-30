@@ -26,13 +26,13 @@ adultWebcomicWebsite =
     , description =
           { en =
                 """
-                 waifuwebcomics.com was a website to publish some erotic work of fiction.
-                 The website was written in Javascript using Angular for its frontend and in Java with Spring Boot for its backend.
-                 It had a full content management system enabling the admin (me) to publish, modify and delete the displayed comics.
-                 It also had a login system using the standard username/password authentication method.
-                 The website was hosted on a DigitalOcean dropplet and configured manually by me.
-                 The webserver was Nginx and was configured with tls encryption also known as https.
-                 The project does not exist anymore.
+                 waifuwebcomics.com was a website to publish some erotic work of fiction.\n
+                 The website was written in Javascript using Angular for its frontend and in Java with Spring Boot for its backend.\n
+                 It had a full content management system enabling the admin (me) to publish, modify and delete the displayed comics.\n
+                 It also had a login system using the standard username/password authentication method.\n
+                 The website was hosted on a DigitalOcean dropplet and configured manually by me.\n
+                 The webserver was Nginx and was configured with tls encryption also known as https.\n
+                 The project does not exist anymore.\n
                 """
           , fr =
                 """

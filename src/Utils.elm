@@ -12,4 +12,12 @@ debugBorder attributes =
             ]
     in
         attributes ++ debugBorderStyle
-            
+
+intersperse : a -> List a -> List a
+intersperse element elements =
+    case (element, elements) of
+        ( _, [] ) ->
+            []
+        (el, (x :: xs)) ->
+            x :: el :: intersperse element xs
+        
