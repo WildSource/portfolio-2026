@@ -6,8 +6,10 @@ import Element exposing
     , px
     )
 import Data.Message exposing (Msg)
-import Data.Model exposing (Model)
+import Data.Project exposing (Project)
+import Data.Model exposing (Config)
 import Theme exposing (Theme (..))
+import Data.Translation exposing (translate)
 
 import Data.Message as Message
 import Element.Border as Border
@@ -23,17 +25,14 @@ iconsPath =
     "/assets/icons/"
 
         
-element : Theme -> List String -> String -> Element Msg
-element theme toggledDropdowns skillName =
-    let
-        isToggled =
-            List.member skillName toggledDropdowns
-            
+element : Config -> Project -> Bool -> Element Msg
+element { theme, language } { title, description } isToggled =
+    let            
         borderColor =
-            if theme == Light then
-                GLight.aquaDark
-            else
-                GDark.aquaLight
+            case theme of
+                Light -> GLight.aquaDark
+
+                Dark -> GDark.aquaLight
 
         chevron =
             let
@@ -57,16 +56,16 @@ element theme toggledDropdowns skillName =
         buttonColor =
             let
                 bgColor =
-                    if theme == Light then
-                        GLight.bg2
-                    else
-                        GDark.bg0Hard
+                    case theme of
+                        Light -> GLight.bg2
+                                 
+                        Dark  -> GDark.bg0Hard
                             
                 shadowColor =
-                    if theme == Light then
-                        GLight.bg4
-                    else
-                        Element.rgb255 20 20 20
+                    case theme of
+                        Light -> GLight.bg4
+
+                        Dark -> Element.rgb255 20 20 20             
             in
                 if isToggled then
                     [ Background.color bgColor
@@ -89,9 +88,8 @@ element theme toggledDropdowns skillName =
                     , Element.padding 10
                     , Font.size 12
                     ]
-                (Element.paragraph
-                     []
-                     [Element.text "Hello Content !"]
+                (Element.paragraph []
+                     [Element.text (translate description language)]
                 )]
             else
                 []
@@ -106,14 +104,14 @@ element theme toggledDropdowns skillName =
                     ] ++ buttonColor             
                   )
                   { onPress =
-                        Just (Message.ToggleDropdown skillName)
+                        Just (Message.ToggleDropdown title.en)
                   , label =
                       Element.row
                         [ Element.padding 5
                         , Element.width fill
                         , Element.spaceEvenly
                         ]
-                        [ Element.text (skillName)
+                        [ Element.text (translate title language)
                         , Element.image
                               [ Element.width (px 15)
                               , Element.height (px 15)

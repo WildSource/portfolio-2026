@@ -20,8 +20,8 @@ projects =
 adultWebcomicWebsite : Project
 adultWebcomicWebsite =
     { title =
-          { en = "Adult Webcomic Website (does not exist anymore)"
-          , fr = "Site Web de bande dessinée pour public averti (n'existe plus)"
+          { en = "Adult Webcomic Website"
+          , fr = "Site Web de bande dessinée pour public averti"
           }
     , description =
           { en =
@@ -32,6 +32,7 @@ adultWebcomicWebsite =
                  It also had a login system using the standard username/password authentication method.
                  The website was hosted on a DigitalOcean dropplet and configured manually by me.
                  The webserver was Nginx and was configured with tls encryption also known as https.
+                 The project does not exist anymore.
                 """
           , fr =
                 """
@@ -40,7 +41,8 @@ adultWebcomicWebsite =
                  Il comportait un système de gestion de contenu complet permettant à l'administrateur (moi) de publier, modifier et supprimer les bandes dessinées affichées.
                  Il disposait également d'un système de connexion utilisant la méthode d'authentification standard par nom d'utilisateur et mot de passe.
                  Le site était hébergé sur un droplet DigitalOcean, configuré manuellement par mes soins.
-                 Le serveur web utilisé était Nginx, configuré avec le chiffrement TLS, aussi connu sous le nom de HTTPS. 
+                 Le serveur web utilisé était Nginx, configuré avec le chiffrement TLS, aussi connu sous le nom de HTTPS.
+                 Le projet n'existe plus.
                 """
           }
     }

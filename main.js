@@ -5233,8 +5233,8 @@ var $elm$core$Debug$log = _Debug_log;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Data$Project$adultWebcomicWebsite = {
-	description: {en: '\u000A                 waifuwebcomics.com was a website to publish some erotic work of fiction.\u000A                 The website was written in Javascript using Angular for its frontend and in Java with Spring Boot for its backend.\u000A                 It had a full content management system enabling the admin (me) to publish, modify and delete the displayed comics.\u000A                 It also had a login system using the standard username/password authentication method.\u000A                 The website was hosted on a DigitalOcean dropplet and configured manually by me.\u000A                 The webserver was Nginx and was configured with tls encryption also known as https.\u000A                ', fr: '\u000A                 waifuwebcomics.com était un site web permettant de publier des œuvres de fiction érotiques.                 \u000A                 Le site a été développé avec Angular pour le frontend et Spring Boot pour le backend.\u000A                 Il comportait un système de gestion de contenu complet permettant à l\u0027administrateur (moi) de publier, modifier et supprimer les bandes dessinées affichées.\u000A                 Il disposait également d\u0027un système de connexion utilisant la méthode d\u0027authentification standard par nom d\u0027utilisateur et mot de passe.\u000A                 Le site était hébergé sur un droplet DigitalOcean, configuré manuellement par mes soins.\u000A                 Le serveur web utilisé était Nginx, configuré avec le chiffrement TLS, aussi connu sous le nom de HTTPS. \u000A                '},
-	title: {en: 'Adult Webcomic Website (does not exist anymore)', fr: 'Site Web de bande dessinée pour public averti (n\u0027existe plus)'}
+	description: {en: '\u000A                 waifuwebcomics.com was a website to publish some erotic work of fiction.\u000A                 The website was written in Javascript using Angular for its frontend and in Java with Spring Boot for its backend.\u000A                 It had a full content management system enabling the admin (me) to publish, modify and delete the displayed comics.\u000A                 It also had a login system using the standard username/password authentication method.\u000A                 The website was hosted on a DigitalOcean dropplet and configured manually by me.\u000A                 The webserver was Nginx and was configured with tls encryption also known as https.\u000A                 The project does not exist anymore.\u000A                ', fr: '\u000A                 waifuwebcomics.com était un site web permettant de publier des œuvres de fiction érotiques.                 \u000A                 Le site a été développé avec Angular pour le frontend et Spring Boot pour le backend.\u000A                 Il comportait un système de gestion de contenu complet permettant à l\u0027administrateur (moi) de publier, modifier et supprimer les bandes dessinées affichées.\u000A                 Il disposait également d\u0027un système de connexion utilisant la méthode d\u0027authentification standard par nom d\u0027utilisateur et mot de passe.\u000A                 Le site était hébergé sur un droplet DigitalOcean, configuré manuellement par mes soins.\u000A                 Le serveur web utilisé était Nginx, configuré avec le chiffrement TLS, aussi connu sous le nom de HTTPS.\u000A                 Le projet n\u0027existe plus.\u000A                '},
+	title: {en: 'Adult Webcomic Website', fr: 'Site Web de bande dessinée pour public averti'}
 };
 var $author$project$Data$Project$laVoute = {
 	description: {en: '\u000A                 For those who are familiar with Google Drive, OneDrive and others. This website is an implementation of those type of services. It was a final project for my last year of College.\u000A                 This project was made with a team of 3 developpers, I was lead backend in charge of security, backend architecture and the implementation of file downloads.\u000A                 The website is still available as of 2026-07-19. As it was my teammate who was in charge of devops and frontend, I do not have access to the servers or the deployment which means it could be closed at any moment.\u000A                 The frontend was written in Javascript using the VueJS framework and the backend in Spring Boot.\u000A                 It featured a standard login system using username/password authentication and web sessions as authentication management all using Spring Security.                 \u000A                 \u000A                 ', fr: '\u000A                 Pour ceux qui connaissent Google Drive, OneDrive et autres. Ce site web est une implémentation de ce type de services. C\u0027était un projet final pour ma dernière session de Cégep.\u000A                 Ce projet a été réalisé avec une équipe de 3 développeurs; j\u0027étais le lead backend, en charge de la sécurité, de l\u0027architecture backend et de l\u0027implémentation des téléchargements de fichiers.\u000A                 Le site est toujours disponible en date du 2026-07-19. Comme c\u0027était mon coéquipier qui était en charge du devops et du frontend, je n\u0027ai pas accès aux serveurs ni au déploiement, ce qui veut dire qu\u0027il pourrait être fermé à tout moment.\u000A                 Le frontend a été écrit en Javascript avec le framework VueJS, et le backend en Spring Boot.\u000A                 Il comportait un système de connexion standard utilisant l\u0027authentification par nom d\u0027utilisateur/mot de passe et des sessions web comme gestion de l\u0027authentification, le tout via Spring Security.\u000A                 '},
@@ -12421,36 +12421,51 @@ var $mdgriffith$elm_ui$Element$Border$width = function (v) {
 			v));
 };
 var $author$project$Components$Dropdown$element = F3(
-	function (theme, toggledDropdowns, skillName) {
-		var isToggled = A2($elm$core$List$member, skillName, toggledDropdowns);
+	function (_v0, _v1, isToggled) {
+		var language = _v0.language;
+		var theme = _v0.theme;
+		var description = _v1.description;
+		var title = _v1.title;
 		var chevron = function () {
-			var _v0 = function () {
-				var _v1 = _Utils_Tuple2(isToggled, theme);
-				if (_v1.a) {
-					if (_v1.b.$ === 'Light') {
-						var _v2 = _v1.b;
+			var _v5 = function () {
+				var _v6 = _Utils_Tuple2(isToggled, theme);
+				if (_v6.a) {
+					if (_v6.b.$ === 'Light') {
+						var _v7 = _v6.b;
 						return _Utils_Tuple2('up', '');
 					} else {
-						var _v3 = _v1.b;
+						var _v8 = _v6.b;
 						return _Utils_Tuple2('up', '-dark');
 					}
 				} else {
-					if (_v1.b.$ === 'Light') {
-						var _v4 = _v1.b;
+					if (_v6.b.$ === 'Light') {
+						var _v9 = _v6.b;
 						return _Utils_Tuple2('down', '');
 					} else {
-						var _v5 = _v1.b;
+						var _v10 = _v6.b;
 						return _Utils_Tuple2('down', '-dark');
 					}
 				}
 			}();
-			var direction = _v0.a;
-			var chevronTheme = _v0.b;
+			var direction = _v5.a;
+			var chevronTheme = _v5.b;
 			return {description: 'chevron ' + direction, src: $author$project$Components$Dropdown$iconsPath + ('chevron-' + (direction + (chevronTheme + '-svgrepo-com.svg')))};
 		}();
 		var buttonColor = function () {
-			var shadowColor = _Utils_eq(theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg4 : A3($mdgriffith$elm_ui$Element$rgb255, 20, 20, 20);
-			var bgColor = _Utils_eq(theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$bg2 : $author$project$Themes$GruvboxDark$bg0Hard;
+			var shadowColor = function () {
+				if (theme.$ === 'Light') {
+					return $author$project$Themes$GruvboxLight$bg4;
+				} else {
+					return A3($mdgriffith$elm_ui$Element$rgb255, 20, 20, 20);
+				}
+			}();
+			var bgColor = function () {
+				if (theme.$ === 'Light') {
+					return $author$project$Themes$GruvboxLight$bg2;
+				} else {
+					return $author$project$Themes$GruvboxDark$bg0Hard;
+				}
+			}();
 			return isToggled ? _List_fromArray(
 				[
 					$mdgriffith$elm_ui$Element$Background$color(bgColor),
@@ -12463,7 +12478,13 @@ var $author$project$Components$Dropdown$element = F3(
 					})
 				]) : _List_Nil;
 		}();
-		var borderColor = _Utils_eq(theme, $author$project$Theme$Light) ? $author$project$Themes$GruvboxLight$aquaDark : $author$project$Themes$GruvboxDark$aquaLight;
+		var borderColor = function () {
+			if (theme.$ === 'Light') {
+				return $author$project$Themes$GruvboxLight$aquaDark;
+			} else {
+				return $author$project$Themes$GruvboxDark$aquaLight;
+			}
+		}();
 		var content = isToggled ? _List_fromArray(
 			[
 				A2(
@@ -12481,7 +12502,8 @@ var $author$project$Components$Dropdown$element = F3(
 					_List_Nil,
 					_List_fromArray(
 						[
-							$mdgriffith$elm_ui$Element$text('Hello Content !')
+							$mdgriffith$elm_ui$Element$text(
+							A2($author$project$Data$Translation$translate, description, language))
 						])))
 			]) : _List_Nil;
 		return A2(
@@ -12514,7 +12536,8 @@ var $author$project$Components$Dropdown$element = F3(
 								]),
 							_List_fromArray(
 								[
-									$mdgriffith$elm_ui$Element$text(skillName),
+									$mdgriffith$elm_ui$Element$text(
+									A2($author$project$Data$Translation$translate, title, language)),
 									A2(
 									$mdgriffith$elm_ui$Element$image,
 									_List_fromArray(
@@ -12527,15 +12550,15 @@ var $author$project$Components$Dropdown$element = F3(
 									chevron)
 								])),
 						onPress: $elm$core$Maybe$Just(
-							$author$project$Data$Message$ToggleDropdown(skillName))
+							$author$project$Data$Message$ToggleDropdown(title.en))
 					}),
 				content));
 	});
-var $author$project$Data$Translation$experienceContentP1 = {en: 'During my internship at RMAAQ, I developed fullstack internal web applications in PHP using the Laravel framework, used daily by Board Members and administrative staff.', fr: ''};
-var $author$project$Data$Translation$experienceContentP2 = {en: 'I designed and implemented a document synchronization system that transferred legal documents from NextCloud to the server\u0027s file system and website database, later adapting it to integrate with Microsoft SharePoint via the Microsoft Graph API.', fr: ''};
-var $author$project$Data$Translation$experienceContentP3 = {en: 'I implemented automated PDF generation using the DomPDF library, enabling documents to be emailed directly to relevant parties.', fr: ''};
-var $author$project$Data$Translation$experienceContentP4 = {en: 'I also built the intake system for legal requests submitted through RMAAQ\u0027s public website, allowing agricultural workers to file requests on various regulatory matters, and synchronized the incoming data across NextCloud, SharePoint, and the internal database.', fr: ''};
-var $author$project$Data$Translation$experienceContentP5 = {en: 'Originally planned as a standard 3–4 month internship, I was retained for a full year due to strong performance and ongoing project needs.', fr: ''};
+var $author$project$Data$Translation$experienceContentP1 = {en: 'During my internship at RMAAQ, I developed fullstack internal web applications in PHP using the Laravel framework, used daily by Board Members and administrative staff.', fr: 'Dans le cadre de mon stage à la RMAAQ, j\u0027ai développé des applications web internes complètes en PHP avec le framework Laravel, utilisées quotidiennement par les membres du conseil d\u0027administration et le personnel administratif.'};
+var $author$project$Data$Translation$experienceContentP2 = {en: 'I designed and implemented a document synchronization system that transferred legal documents from NextCloud to the server\u0027s file system and website database, later adapting it to integrate with Microsoft SharePoint via the Microsoft Graph API.', fr: 'J\u0027ai conçu et implémenté un système de synchronisation de documents permettant le transfert de documents légaux de NextCloud vers le système de fichiers du serveur et la base de données du site web, système que j\u0027ai ensuite adapté pour l\u0027intégrer à Microsoft SharePoint via l\u0027API Microsoft Graph.'};
+var $author$project$Data$Translation$experienceContentP3 = {en: 'I implemented automated PDF generation using the DomPDF library, enabling documents to be emailed directly to relevant parties.', fr: 'J\u0027ai mis en place la génération automatisée de documents PDF à l\u0027aide de la librairie DomPDF, permettant l\u0027envoi direct des documents par courriel aux parties concernées.'};
+var $author$project$Data$Translation$experienceContentP4 = {en: 'I also built the intake system for legal requests submitted through RMAAQ\u0027s public website, allowing agricultural workers to file requests on various regulatory matters, and synchronized the incoming data across NextCloud, SharePoint, and the internal database.', fr: 'J\u0027ai également conçu le système de prise en charge des demandes légales soumises via le site web public de la RMAAQ, permettant aux travailleurs agricoles de déposer des demandes sur divers enjeux réglementaires, tout en synchronisant les données entrantes entre NextCloud, SharePoint et la base de données interne.'};
+var $author$project$Data$Translation$experienceContentP5 = {en: 'Originally planned as a standard 3–4 month internship, I was retained for a full year due to strong performance and ongoing project needs.', fr: 'Initialement prévu pour une durée de 3 à 4 mois, mon stage a été prolongé sur une pleine année en raison de mon rendement et des besoins continus des projets en cours.'};
 var $author$project$Data$Translation$experienceJobTitle = {en: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\u000A', fr: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\u000A'};
 var $author$project$Components$MainContent$experiencesContent = F2(
 	function (theme, language) {
@@ -12881,9 +12904,19 @@ var $author$project$Components$MainContent$technologyContent = F2(
 	});
 var $author$project$Data$Translation$technologyTitle = {en: 'Technologies', fr: 'Technologies'};
 var $author$project$Components$MainContent$element = F3(
-	function (_v0, skills, dropdowns) {
-		var language = _v0.language;
-		var theme = _v0.theme;
+	function (config, _v0, dropdowns) {
+		var language = config.language;
+		var theme = config.theme;
+		var projects = _v0.projects;
+		var skills = _v0.skills;
+		var projectDropdowns = A2(
+			$elm$core$List$map,
+			function (project) {
+				var title = project.title;
+				var isToggled = A2($elm$core$List$member, title.en, dropdowns);
+				return A3($author$project$Components$Dropdown$element, config, project, isToggled);
+			},
+			projects);
 		var projectsContent = A2(
 			$mdgriffith$elm_ui$Element$column,
 			_List_fromArray(
@@ -12891,12 +12924,7 @@ var $author$project$Components$MainContent$element = F3(
 					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
 					$mdgriffith$elm_ui$Element$spacing(10)
 				]),
-			_List_fromArray(
-				[
-					A3($author$project$Components$Dropdown$element, theme, dropdowns, 'Adult Webcomic Website'),
-					A3($author$project$Components$Dropdown$element, theme, dropdowns, 'Portfolio (2023)'),
-					A3($author$project$Components$Dropdown$element, theme, dropdowns, 'La Voûte')
-				]));
+			projectDropdowns);
 		var fontColor = A3(
 			$author$project$Theme$evalTheme,
 			$author$project$Themes$GruvboxDark$fg0,
@@ -13523,7 +13551,7 @@ var $author$project$Main$view = function (model) {
 							sliders,
 							heroText,
 							socialMedias,
-							A3($author$project$Components$MainContent$element, config, $author$project$Data$Skill$skills, model.toggledDropdowns),
+							A3($author$project$Components$MainContent$element, config, data, model.toggledDropdowns),
 							$author$project$Components$Footer$element(config.theme)
 						])))
 			]),

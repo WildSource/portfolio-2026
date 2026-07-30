@@ -9,7 +9,10 @@ import Data.Skill exposing
     ( Skill
     , SkillCategory (..)
     )
-import Data.Model exposing (Config)
+import Data.Model exposing
+    ( Config
+    , Data
+    )
 import Data.Translation exposing (translate)
 
 import Theme exposing
@@ -24,11 +27,10 @@ import Data.Translation as T
 import Element.Font as Font
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
-import Data.Model as M
 
 
-element : Config -> List Skill -> List String -> Element Msg
-element { theme, language } skills dropdowns =
+element : Config -> Data -> List String -> Element Msg
+element ({ theme, language } as config) { skills, projects } dropdowns =
     let
         fontColor =
             evalTheme
@@ -36,24 +38,24 @@ element { theme, language } skills dropdowns =
                 (Light, GLight.fg0)
                 theme
 
+        projectDropdowns : List (Element Msg)
+        projectDropdowns =            
+            List.map
+                (\ ({ title } as project) ->
+                     let
+                         isToggled =
+                             List.member title.en dropdowns
+                     in
+                         Dropdown.element config project isToggled
+                )
+                projects
+
         projectsContent =
             Element.column
                 [ Element.width fill
                 , Element.spacing 10
                 ]
-                [ Dropdown.element
-                    theme
-                    dropdowns                      
-                    "Adult Webcomic Website"
-                , Dropdown.element
-                    theme
-                    dropdowns
-                    "Portfolio (2023)"
-                , Dropdown.element
-                    theme
-                    dropdowns
-                    "La Voûte"
-                ]
+                projectDropdowns
     in
         Element.column
             [ Element.centerX

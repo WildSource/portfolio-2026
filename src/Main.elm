@@ -136,7 +136,7 @@ view ({config, data, toggledDropdowns} as model) =
                           , socialMedias
                           , MainContent.element
                               config
-                              skills
+                              data
                               model.toggledDropdowns
                           , Footer.element config.theme
                           ]
