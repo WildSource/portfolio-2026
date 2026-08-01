@@ -108,8 +108,7 @@ aboutContent language =
     in
         Element.paragraph
             [ Element.width fill ]
-            [ Element.column
-                  [Element.spacing 10]
+            [ Element.column [ Element.spacing 10 ]
                   content
             ]
 

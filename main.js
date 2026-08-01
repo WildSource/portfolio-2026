@@ -12403,25 +12403,6 @@ var $mdgriffith$elm_ui$Element$Border$innerShadow = function (almostShade) {
 			'box-shadow',
 			$mdgriffith$elm_ui$Internal$Model$formatBoxShadow(shade)));
 };
-var $author$project$Utils$intersperse = F2(
-	function (element, elements) {
-		var _v0 = _Utils_Tuple2(element, elements);
-		if (!_v0.b.b) {
-			return _List_Nil;
-		} else {
-			var el = _v0.a;
-			var _v1 = _v0.b;
-			var x = _v1.a;
-			var xs = _v1.b;
-			return A2(
-				$elm$core$List$cons,
-				x,
-				A2(
-					$elm$core$List$cons,
-					el,
-					A2($author$project$Utils$intersperse, element, xs)));
-		}
-	});
 var $mdgriffith$elm_ui$Element$spaceEvenly = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$spacing, $mdgriffith$elm_ui$Internal$Style$classes.spaceEvenly);
 var $elm$core$String$trim = _String_trim;
 var $mdgriffith$elm_ui$Internal$Model$BorderWidth = F5(
@@ -12449,8 +12430,8 @@ var $author$project$Components$Dropdown$element = F3(
 		var sentenceElements = function () {
 			var translatedText = A2($author$project$Data$Translation$translate, description, language);
 			var sentences = A2(
-				$author$project$Utils$intersperse,
-				'',
+				$elm$core$List$map,
+				$elm$core$Basics$append('\u000A'),
 				A2(
 					$elm$core$List$filter,
 					$elm$core$Basics$neq(''),

@@ -90,7 +90,7 @@ element { theme, language } { title, description } isToggled =
                     =  String.split "\n" translatedText
                     |> List.map String.trim
                     |> List.filter ((/=) "")
-                    |> Utils.intersperse ""
+                    |> List.map ((++) "\n")
             in
                 List.map (Element.text) sentences
 
