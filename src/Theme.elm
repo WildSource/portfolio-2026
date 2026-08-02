@@ -6,14 +6,6 @@ import Element exposing (Color)
 type Theme
     = Light
     | Dark 
-
-      
-evalTheme : a -> (Theme, a) -> Theme -> a
-evalTheme left (defaultTheme, right) theme =
-    if theme == defaultTheme then
-        right
-    else
-        left
             
             
 toBool : Theme -> Bool

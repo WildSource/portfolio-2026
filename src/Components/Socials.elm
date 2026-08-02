@@ -5,10 +5,7 @@ import Element exposing
     , fill
     )
 import Data.Message exposing (Msg)
-import Theme exposing
-    ( Theme (..)
-    , evalTheme
-    )
+import Theme exposing (Theme (..))
 
 iconsPath : String
 iconsPath = "/assets/icons/"            
@@ -17,16 +14,17 @@ element : Theme -> Element Msg
 element theme =
     let
         githubLogo =
-            evalTheme
-                "GitHub_Invertocat_White.svg"
-                (Light, "GitHub_Invertocat_Black.svg")
-                (theme)
+            case theme of
+                Dark  -> "GitHub_Invertocat_White.svg"
+
+
+                Light -> "GitHub_Invertocat_Black.svg"
                     
         linkedinLogo =
-            evalTheme
-                "InBug-White.png"
-                (Light, "LI-In-Bug.png")
-                theme
+            case theme of
+                Dark  -> "InBug-White.png"
+
+                Light -> "LI-In-Bug.png"
 
         githubImage =
             { url = "https://github.com/WildSource"

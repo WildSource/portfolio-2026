@@ -4,10 +4,7 @@ import Component
 
 import Data.Message exposing (Msg)
 import Element exposing (Element)
-import Theme exposing
-    ( Theme (..)
-    , evalTheme
-    )
+import Theme exposing (Theme (..))
 
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
@@ -18,10 +15,11 @@ element : Theme -> Bool -> Element Msg
 element theme isSwitchedOn =
     let
         knobColor =
-            evalTheme
-                GDark.fg
-                (Light, GLight.fg)
-                theme
+            case theme of
+                Dark  -> GDark.fg
+
+
+                Light -> GLight.fg
                     
         knobPosition =
             if isSwitchedOn then
@@ -39,10 +37,10 @@ element theme isSwitchedOn =
             ]
 
         knobAttributes =
-            Component.addIf
-                isSwitchedOn
-                Element.alignRight
-                defaultKnobAttributes            
+            if isSwitchedOn then
+                Element.alignRight :: defaultKnobAttributes
+            else
+                defaultKnobAttributes
             
         knob =
             Element.el knobAttributes

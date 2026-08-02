@@ -12,29 +12,24 @@ import Browser.Events as E
 import Data.Translation as Translation
 import Data.Message as Message
 import Data.Model as Model
-
-import Element exposing
-    ( width
-    , fill
-    , alignRight
-    )
 import Element.Background as Background
-
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
 import Theme exposing (Theme (..))
-
 import Data.Translation exposing (Language (..))
-
 import Data.Model exposing (Model)
-
 import Data.Message exposing (Msg)
-
 import Data.Skill exposing (skills) 
-
 import Data.Project exposing (projects) 
-
+import Element exposing
+    ( width
+    , height
+    , fill
+    , alignRight
+    , padding
+    , spacing
+    )
 
 main : Program Flags Model Msg
 main =
@@ -51,9 +46,9 @@ init ({ language, width, height } as flags) =
     let
         -- debug to remove
         _ = Debug.log "flags" flags
-        _ = Debug.log "device" device
             
-        device = Element.classifyDevice windowSize
+        device =
+            Element.classifyDevice windowSize
                  
         windowSize =
             { width = width
@@ -89,18 +84,19 @@ type alias Flags =
 
     
 view : Model -> Document Msg
-view ({config, data, toggledDropdowns} as model) =
+view ({ config, data, toggledDropdowns } as model) =
     let
         theme =
-            Theme.evalTheme
-                GDark.bg
-                (Light, GLight.bg)
-                config.theme
+            case config.theme of
+                Dark  -> GDark.bg
+
+                         
+                Light -> GLight.bg 
 
         sliders =
             Element.row
                 [ width fill
-                , Element.padding 10
+                , padding 10
                 ]
                 [ ThemeSlider.element config.theme
                 , Element.el [ alignRight ]
@@ -127,9 +123,9 @@ view ({config, data, toggledDropdowns} as model) =
                     }
                     [ Background.color theme ]
                     ( Element.column
-                          [ Element.width fill
-                          , Element.height fill
-                          , Element.spacing 10
+                          [ width fill
+                          , height fill
+                          , spacing 10
                           ]
                           [ sliders
                           , heroText
@@ -137,7 +133,7 @@ view ({config, data, toggledDropdowns} as model) =
                           , MainContent.element
                               config
                               data
-                              model.toggledDropdowns
+                              toggledDropdowns
                           , Footer.element config.theme
                           ]
                     )             

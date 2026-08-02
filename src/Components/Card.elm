@@ -2,10 +2,7 @@ module Components.Card exposing (element)
 
 import Data.Message exposing (Msg)
 import Utils exposing (debugBorder)
-import Theme exposing
-    ( Theme (..)
-    , evalTheme
-    )
+import Theme exposing ( Theme (..))
 import Data.Translation exposing
     ( Translation
     , translate
@@ -13,6 +10,8 @@ import Data.Translation exposing
     )
 import Element exposing
     ( Element
+    , width
+    , spacing
     , fill
     )
 
@@ -29,13 +28,12 @@ element
     -> Element Msg    
 element theme language title content =
     Element.column
-        [ Element.spacing 10
-        , Element.width fill
+        [ spacing 10
+        , width fill
+        ]        
+        [ titleText theme language title
+        , content
         ]
-        
-    [ titleText theme language title
-    , content
-    ]
     
 titleText
     :  Theme
@@ -46,14 +44,15 @@ titleText theme language title =
     let
         text =
             translate
-                title
                 language
+                title
                         
         fontColor =
-            evalTheme
-                GDark.blueLight
-                (Light, GLight.blueDark)
-                theme                                
+            case theme of
+                Dark -> GDark.blueLight
+
+                        
+                Light -> GLight.blueDark                                
     in
         Element.el
             [ Font.color fontColor

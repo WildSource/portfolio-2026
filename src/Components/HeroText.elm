@@ -7,6 +7,10 @@ import Data.Translation exposing (Language)
 import Element exposing
     ( Element
     , DeviceClass (..)
+    , padding
+    , spacing
+    , width
+    , fill
     )
 
 import Themes.GruvboxLight as GLight
@@ -18,26 +22,6 @@ import Data.Translation as T
 element : Config -> Element Msg
 element ({ theme, language, device } as config) =
     let
-        name =
-            Element.el
-                [ Theme.evalTheme
-                        (Font.color GDark.blueLight)
-                        (Light, Font.color GLight.blueDark)
-                        theme                 
-                ]
-                (Element.text "Samuel Nguyen-Phok")
-                
-
-        heroText =
-            Element.el
-                [ Theme.evalTheme
-                      (Font.color GDark.greenLight)
-                      (Light, Font.color GLight.greenDark)
-                      theme
-                ]
-                (Element.text (T.translate T.lastThirdHeroTitle language))
-            
-
         spacingStyle =
             [ Element.padding 10
             , Element.spacing 20
@@ -52,56 +36,75 @@ element ({ theme, language, device } as config) =
                     ]
                     
                 themeStyle =
-                    Theme.evalTheme
-                    [Font.color GDark.fg0]
-                    (Light, [Font.color GLight.fg0])
-                    theme
+                    case theme of
+                        Dark  -> [Font.color GDark.fg0]
+
+                                 
+                        Light -> [Font.color GLight.fg0]
                                 
                 deviceStyle =
                     case device.class of
                         Phone ->
                             [Font.size 20]
-                        _ ->
+
+                                
+                        _     ->
                             [Font.strike]
             in
                 fontStyle ++ deviceStyle ++ themeStyle
+
+        heroTitle =
+            let
+                name =
+                    Element.el
+                        [ case theme of
+                              Dark  -> Font.color GDark.blueLight
+                              
+                              
+                              Light -> Font.color GLight.blueDark         
+                        ]
+                        (Element.text "Samuel Nguyen-Phok")
+                
+                heroText =
+                    Element.el
+                        [ case theme of
+                              Dark  -> Font.color GDark.greenLight
+                              
+                              
+                              Light -> Font.color GLight.greenDark 
+                        ]
+                        (Element.text (T.translate language T.lastHeroTitle))
+                    
+            in
+                Element.paragraph paragraphStyle
+                    [ Element.text
+                          (T.translate language T.firstHeroTitle)
+                    , name
+                    , Element.text
+                          (T.translate language T.secondHeroTitle)
+                    , heroText
+                    ]
     in
-        Element.column
-            spacingStyle
-            [ Element.paragraph
-                  paragraphStyle
-                  [ Element.text
-                        (T.translate T.firstThirdHeroTitle language)
-                  , name
-                  , Element.text
-                        (T.translate T.secondThirdHeroTitle language)
-                  , heroText
-                  ]
+        Element.column spacingStyle
+            [ heroTitle
             , subHeroTitle config
             ]
 
 
--- TODO regroup subHeroTitles into a single exportable list
 subHeroTitle : Config -> Element Msg
 subHeroTitle { theme, language } =
     let
         fontColor =
-            Theme.evalTheme
-                GDark.yellowLight
-                (Light, GLight.yellowDark)
-                theme                
-                    
-        text1 =
-            Element.el [Element.centerX]
-                (Element.text (T.translate T.subHeroTitle1 language))
-                    
-        text2 =
-            Element.el [Element.centerX]
-                (Element.text (T.translate T.subHeroTitle2 language))
-                    
-        text3 =
-            Element.el [Element.centerX]
-                (Element.text (T.translate T.subHeroTitle3 language))
+            case theme of
+                Dark  -> GDark.yellowLight
+
+                         
+                Light -> GLight.yellowDark
+
+        content =  T.subHeroTitle
+                |> List.map (T.translate language)
+                |> List.map (Element.text)
+                |> List.map (Element.el [ Element.centerX ])           
     in
         Element.column
             [ Element.paddingXY 10 0
@@ -112,9 +115,6 @@ subHeroTitle { theme, language } =
             , Font.semiBold
             , Font.family [Font.serif]
             ]
-        [ text1
-        , text2
-        , text3
-        ]
+        content
     
     

@@ -5271,7 +5271,6 @@ var $author$project$Main$init = function (flags) {
 	var device = $mdgriffith$elm_ui$Element$classifyDevice(windowSize);
 	var chosenLanguage = A2($elm$core$String$startsWith, 'fr', language) ? $author$project$Data$Translation$FR : $author$project$Data$Translation$EN;
 	var _v0 = A2($elm$core$Debug$log, 'flags', flags);
-	var _v1 = A2($elm$core$Debug$log, 'device', device);
 	return _Utils_Tuple2(
 		{
 			config: {device: device, language: chosenLanguage, theme: $author$project$Theme$Light},
@@ -11386,12 +11385,6 @@ var $mdgriffith$elm_ui$Element$Font$color = function (fontColor) {
 			'color',
 			fontColor));
 };
-var $author$project$Theme$evalTheme = F3(
-	function (left, _v0, theme) {
-		var defaultTheme = _v0.a;
-		var right = _v0.b;
-		return _Utils_eq(theme, defaultTheme) ? right : left;
-	});
 var $author$project$Themes$GruvboxDark$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 251, 241, 199);
 var $author$project$Themes$GruvboxLight$fg0 = A3($mdgriffith$elm_ui$Element$rgb255, 40, 40, 40);
 var $mdgriffith$elm_ui$Internal$Model$Fill = function (a) {
@@ -11433,11 +11426,13 @@ var $mdgriffith$elm_ui$Element$text = function (content) {
 	return $mdgriffith$elm_ui$Internal$Model$Text(content);
 };
 var $author$project$Components$Footer$element = function (theme) {
-	var footerColor = A3(
-		$author$project$Theme$evalTheme,
-		$author$project$Themes$GruvboxDark$bg1,
-		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$bg1),
-		theme);
+	var footerColor = function () {
+		if (theme.$ === 'Dark') {
+			return $author$project$Themes$GruvboxDark$bg1;
+		} else {
+			return $author$project$Themes$GruvboxLight$bg1;
+		}
+	}();
 	var style = _List_fromArray(
 		[
 			$mdgriffith$elm_ui$Element$padding(20),
@@ -11445,11 +11440,13 @@ var $author$project$Components$Footer$element = function (theme) {
 			$mdgriffith$elm_ui$Element$alignBottom,
 			$mdgriffith$elm_ui$Element$Background$color(footerColor)
 		]);
-	var fontColor = A3(
-		$author$project$Theme$evalTheme,
-		$author$project$Themes$GruvboxDark$fg0,
-		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$fg0),
-		theme);
+	var fontColor = function () {
+		if (theme.$ === 'Dark') {
+			return $author$project$Themes$GruvboxDark$fg0;
+		} else {
+			return $author$project$Themes$GruvboxLight$fg0;
+		}
+	}();
 	var copyright = A2(
 		$mdgriffith$elm_ui$Element$el,
 		_List_fromArray(
@@ -11522,12 +11519,12 @@ var $mdgriffith$elm_ui$Element$Font$family = function (families) {
 			A3($elm$core$List$foldl, $mdgriffith$elm_ui$Internal$Model$renderFontClassName, 'ff-', families),
 			families));
 };
-var $author$project$Data$Translation$firstThirdHeroTitle = {en: 'Hi, I\u0027m ', fr: 'Bonjour, je m\u0027appelle '};
+var $author$project$Data$Translation$firstHeroTitle = {en: 'Hi, I\u0027m ', fr: 'Bonjour, je m\u0027appelle '};
 var $author$project$Themes$GruvboxLight$greenDark = A3($mdgriffith$elm_ui$Element$rgb255, 121, 116, 14);
 var $author$project$Themes$GruvboxDark$greenLight = A3($mdgriffith$elm_ui$Element$rgb255, 184, 187, 38);
 var $mdgriffith$elm_ui$Internal$Flag$fontWeight = $mdgriffith$elm_ui$Internal$Flag$flag(13);
 var $mdgriffith$elm_ui$Element$Font$heavy = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.textHeavy);
-var $author$project$Data$Translation$lastThirdHeroTitle = {en: 'websites\u000A', fr: 'sites webs\u000A'};
+var $author$project$Data$Translation$lastHeroTitle = {en: 'websites\u000A', fr: 'sites webs\u000A'};
 var $mdgriffith$elm_ui$Internal$Model$Describe = function (a) {
 	return {$: 'Describe', a: a};
 };
@@ -11569,7 +11566,7 @@ var $mdgriffith$elm_ui$Element$paragraph = F2(
 						attrs))),
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
-var $author$project$Data$Translation$secondThirdHeroTitle = {en: ' and I make ', fr: ' et je fais des '};
+var $author$project$Data$Translation$secondHeroTitle = {en: ' and I make ', fr: ' et je fais des '};
 var $mdgriffith$elm_ui$Element$Font$strike = $mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.strike);
 var $mdgriffith$elm_ui$Element$paddingXY = F2(
 	function (x, y) {
@@ -11606,8 +11603,10 @@ var $mdgriffith$elm_ui$Element$Font$serif = $mdgriffith$elm_ui$Internal$Model$Se
 var $author$project$Data$Translation$subHeroTitle1 = {en: 'I\u0027m a fullstack developer', fr: 'Je suis un dévelopeur fullstack'};
 var $author$project$Data$Translation$subHeroTitle2 = {en: ' a.k.a. ', fr: ' c\u0027est-à-dire '};
 var $author$project$Data$Translation$subHeroTitle3 = {en: 'backend dev that can do frontend dev', fr: 'un dev backend qui peut faire du frontend'};
+var $author$project$Data$Translation$subHeroTitle = _List_fromArray(
+	[$author$project$Data$Translation$subHeroTitle1, $author$project$Data$Translation$subHeroTitle2, $author$project$Data$Translation$subHeroTitle3]);
 var $author$project$Data$Translation$translate = F2(
-	function (translation, language) {
+	function (language, translation) {
 		return _Utils_eq(language, $author$project$Data$Translation$FR) ? translation.fr : translation.en;
 	});
 var $author$project$Themes$GruvboxLight$yellowDark = A3($mdgriffith$elm_ui$Element$rgb255, 181, 118, 20);
@@ -11615,29 +11614,25 @@ var $author$project$Themes$GruvboxDark$yellowLight = A3($mdgriffith$elm_ui$Eleme
 var $author$project$Components$HeroText$subHeroTitle = function (_v0) {
 	var language = _v0.language;
 	var theme = _v0.theme;
-	var text3 = A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[$mdgriffith$elm_ui$Element$centerX]),
-		$mdgriffith$elm_ui$Element$text(
-			A2($author$project$Data$Translation$translate, $author$project$Data$Translation$subHeroTitle3, language)));
-	var text2 = A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[$mdgriffith$elm_ui$Element$centerX]),
-		$mdgriffith$elm_ui$Element$text(
-			A2($author$project$Data$Translation$translate, $author$project$Data$Translation$subHeroTitle2, language)));
-	var text1 = A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[$mdgriffith$elm_ui$Element$centerX]),
-		$mdgriffith$elm_ui$Element$text(
-			A2($author$project$Data$Translation$translate, $author$project$Data$Translation$subHeroTitle1, language)));
-	var fontColor = A3(
-		$author$project$Theme$evalTheme,
-		$author$project$Themes$GruvboxDark$yellowLight,
-		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$yellowDark),
-		theme);
+	var fontColor = function () {
+		if (theme.$ === 'Dark') {
+			return $author$project$Themes$GruvboxDark$yellowLight;
+		} else {
+			return $author$project$Themes$GruvboxLight$yellowDark;
+		}
+	}();
+	var content = A2(
+		$elm$core$List$map,
+		$mdgriffith$elm_ui$Element$el(
+			_List_fromArray(
+				[$mdgriffith$elm_ui$Element$centerX])),
+		A2(
+			$elm$core$List$map,
+			$mdgriffith$elm_ui$Element$text,
+			A2(
+				$elm$core$List$map,
+				$author$project$Data$Translation$translate(language),
+				$author$project$Data$Translation$subHeroTitle)));
 	return A2(
 		$mdgriffith$elm_ui$Element$column,
 		_List_fromArray(
@@ -11652,8 +11647,7 @@ var $author$project$Components$HeroText$subHeroTitle = function (_v0) {
 				_List_fromArray(
 					[$mdgriffith$elm_ui$Element$Font$serif]))
 			]),
-		_List_fromArray(
-			[text1, text2, text3]));
+		content);
 };
 var $mdgriffith$elm_ui$Internal$Model$Typeface = function (a) {
 	return {$: 'Typeface', a: a};
@@ -11669,19 +11663,19 @@ var $author$project$Components$HeroText$element = function (config) {
 			$mdgriffith$elm_ui$Element$spacing(20)
 		]);
 	var paragraphStyle = function () {
-		var themeStyle = A3(
-			$author$project$Theme$evalTheme,
-			_List_fromArray(
-				[
-					$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$fg0)
-				]),
-			_Utils_Tuple2(
-				$author$project$Theme$Light,
-				_List_fromArray(
+		var themeStyle = function () {
+			if (theme.$ === 'Dark') {
+				return _List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$fg0)
+					]);
+			} else {
+				return _List_fromArray(
 					[
 						$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$fg0)
-					])),
-			theme);
+					]);
+			}
+		}();
 		var fontStyle = _List_fromArray(
 			[
 				$mdgriffith$elm_ui$Element$Font$family(
@@ -11693,8 +11687,8 @@ var $author$project$Components$HeroText$element = function (config) {
 				$mdgriffith$elm_ui$Element$Font$center
 			]);
 		var deviceStyle = function () {
-			var _v0 = device._class;
-			if (_v0.$ === 'Phone') {
+			var _v2 = device._class;
+			if (_v2.$ === 'Phone') {
 				return _List_fromArray(
 					[
 						$mdgriffith$elm_ui$Element$Font$size(20)
@@ -11708,50 +11702,53 @@ var $author$project$Components$HeroText$element = function (config) {
 			fontStyle,
 			_Utils_ap(deviceStyle, themeStyle));
 	}();
-	var name = A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[
-				A3(
-				$author$project$Theme$evalTheme,
-				$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$blueLight),
-				_Utils_Tuple2(
-					$author$project$Theme$Light,
-					$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$blueDark)),
-				theme)
-			]),
-		$mdgriffith$elm_ui$Element$text('Samuel Nguyen-Phok'));
-	var heroText = A2(
-		$mdgriffith$elm_ui$Element$el,
-		_List_fromArray(
-			[
-				A3(
-				$author$project$Theme$evalTheme,
-				$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$greenLight),
-				_Utils_Tuple2(
-					$author$project$Theme$Light,
-					$mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$greenDark)),
-				theme)
-			]),
-		$mdgriffith$elm_ui$Element$text(
-			A2($author$project$Data$Translation$translate, $author$project$Data$Translation$lastThirdHeroTitle, language)));
+	var heroTitle = function () {
+		var name = A2(
+			$mdgriffith$elm_ui$Element$el,
+			_List_fromArray(
+				[
+					function () {
+					if (theme.$ === 'Dark') {
+						return $mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$blueLight);
+					} else {
+						return $mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$blueDark);
+					}
+				}()
+				]),
+			$mdgriffith$elm_ui$Element$text('Samuel Nguyen-Phok'));
+		var heroText = A2(
+			$mdgriffith$elm_ui$Element$el,
+			_List_fromArray(
+				[
+					function () {
+					if (theme.$ === 'Dark') {
+						return $mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxDark$greenLight);
+					} else {
+						return $mdgriffith$elm_ui$Element$Font$color($author$project$Themes$GruvboxLight$greenDark);
+					}
+				}()
+				]),
+			$mdgriffith$elm_ui$Element$text(
+				A2($author$project$Data$Translation$translate, language, $author$project$Data$Translation$lastHeroTitle)));
+		return A2(
+			$mdgriffith$elm_ui$Element$paragraph,
+			paragraphStyle,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$text(
+					A2($author$project$Data$Translation$translate, language, $author$project$Data$Translation$firstHeroTitle)),
+					name,
+					$mdgriffith$elm_ui$Element$text(
+					A2($author$project$Data$Translation$translate, language, $author$project$Data$Translation$secondHeroTitle)),
+					heroText
+				]));
+	}();
 	return A2(
 		$mdgriffith$elm_ui$Element$column,
 		spacingStyle,
 		_List_fromArray(
 			[
-				A2(
-				$mdgriffith$elm_ui$Element$paragraph,
-				paragraphStyle,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$text(
-						A2($author$project$Data$Translation$translate, $author$project$Data$Translation$firstThirdHeroTitle, language)),
-						name,
-						$mdgriffith$elm_ui$Element$text(
-						A2($author$project$Data$Translation$translate, $author$project$Data$Translation$secondThirdHeroTitle, language)),
-						heroText
-					])),
+				heroTitle,
 				$author$project$Components$HeroText$subHeroTitle(config)
 			]));
 };
@@ -11992,10 +11989,6 @@ var $mdgriffith$elm_ui$Element$Input$checkbox = F2(
 							icon(checked)
 						]))));
 	});
-var $author$project$Component$addIf = F3(
-	function (condition, attribute, baseAttributes) {
-		return condition ? A2($elm$core$List$cons, attribute, baseAttributes) : baseAttributes;
-	});
 var $author$project$Themes$GruvboxDark$fg = A3($mdgriffith$elm_ui$Element$rgb255, 235, 219, 178);
 var $author$project$Themes$GruvboxLight$fg = A3($mdgriffith$elm_ui$Element$rgb255, 60, 56, 54);
 var $author$project$Themes$GruvboxLight$grayLight = A3($mdgriffith$elm_ui$Element$rgb255, 146, 131, 116);
@@ -12055,11 +12048,13 @@ var $mdgriffith$elm_ui$Element$Border$rounded = function (radius) {
 var $author$project$Components$Patterns$Slider$element = F2(
 	function (theme, isSwitchedOn) {
 		var knobPosition = isSwitchedOn ? $mdgriffith$elm_ui$Element$moveLeft(5) : $mdgriffith$elm_ui$Element$moveRight(5);
-		var knobColor = A3(
-			$author$project$Theme$evalTheme,
-			$author$project$Themes$GruvboxDark$fg,
-			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$fg),
-			theme);
+		var knobColor = function () {
+			if (theme.$ === 'Dark') {
+				return $author$project$Themes$GruvboxDark$fg;
+			} else {
+				return $author$project$Themes$GruvboxLight$fg;
+			}
+		}();
 		var defaultKnobAttributes = _List_fromArray(
 			[
 				$mdgriffith$elm_ui$Element$Border$rounded(20),
@@ -12071,7 +12066,7 @@ var $author$project$Components$Patterns$Slider$element = F2(
 				$mdgriffith$elm_ui$Element$px(20)),
 				knobPosition
 			]);
-		var knobAttributes = A3($author$project$Component$addIf, isSwitchedOn, $mdgriffith$elm_ui$Element$alignRight, defaultKnobAttributes);
+		var knobAttributes = isSwitchedOn ? A2($elm$core$List$cons, $mdgriffith$elm_ui$Element$alignRight, defaultKnobAttributes) : defaultKnobAttributes;
 		var knob = A2($mdgriffith$elm_ui$Element$el, knobAttributes, $mdgriffith$elm_ui$Element$none);
 		return A2(
 			$mdgriffith$elm_ui$Element$el,
@@ -12115,11 +12110,13 @@ var $author$project$Components$LanguageSlider$element = function (_v0) {
 	var theme = _v0.theme;
 	var sliderOn = A2($author$project$Components$Patterns$Slider$element, theme, true);
 	var sliderOff = A2($author$project$Components$Patterns$Slider$element, theme, false);
-	var fontColor = A3(
-		$author$project$Theme$evalTheme,
-		$author$project$Themes$GruvboxDark$fg0,
-		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$fg0),
-		theme);
+	var fontColor = function () {
+		if (theme.$ === 'Dark') {
+			return $author$project$Themes$GruvboxDark$fg0;
+		} else {
+			return $author$project$Themes$GruvboxLight$fg0;
+		}
+	}();
 	var frenchLabel = A2(
 		$mdgriffith$elm_ui$Element$el,
 		_List_fromArray(
@@ -12161,9 +12158,9 @@ var $author$project$Data$Translation$aboutContent1 = {en: 'Based in Quebec Canad
 var $author$project$Data$Translation$aboutContent2 = {en: 'I specialize and prefer to work on the backend but I am fully capable to do fullstack development.', fr: 'Je suis spécialisé et préfère le développement backend cependant, j\u0027ai les aptitudes pour concevoir une application fullstack complète.'};
 var $author$project$Data$Translation$aboutContent3 = {en: 'I am bilingual and able to speak both french and english fluently.', fr: 'Je suis bilingue et je suis capable de parler le français et l\u0027anglais couramment.'};
 var $author$project$Data$Translation$aboutContent4 = {en: 'I am open to work remotely.', fr: 'Ma localisation géographique ne m\u0027empêche pas de travailler à distance, donc je suis ouvert au télétravail.'};
+var $author$project$Data$Translation$aboutContent = _List_fromArray(
+	[$author$project$Data$Translation$aboutContent1, $author$project$Data$Translation$aboutContent2, $author$project$Data$Translation$aboutContent3, $author$project$Data$Translation$aboutContent4]);
 var $author$project$Components$MainContent$aboutContent = function (language) {
-	var translations = _List_fromArray(
-		[$author$project$Data$Translation$aboutContent1, $author$project$Data$Translation$aboutContent2, $author$project$Data$Translation$aboutContent3, $author$project$Data$Translation$aboutContent4]);
 	var content = A2(
 		$elm$core$List$map,
 		$mdgriffith$elm_ui$Element$text,
@@ -12172,7 +12169,7 @@ var $author$project$Components$MainContent$aboutContent = function (language) {
 			function (translation) {
 				return _Utils_eq(language, $author$project$Data$Translation$EN) ? translation.en : translation.fr;
 			},
-			translations));
+			$author$project$Data$Translation$aboutContent));
 	return A2(
 		$mdgriffith$elm_ui$Element$paragraph,
 		_List_fromArray(
@@ -12190,16 +12187,17 @@ var $author$project$Components$MainContent$aboutContent = function (language) {
 				content)
 			]));
 };
-var $author$project$Data$Translation$aboutTitle = {en: 'About me', fr: 'À propos de moi'};
 var $mdgriffith$elm_ui$Element$Font$bold = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.bold);
 var $author$project$Components$Card$titleText = F3(
 	function (theme, language, title) {
-		var text = A2($author$project$Data$Translation$translate, title, language);
-		var fontColor = A3(
-			$author$project$Theme$evalTheme,
-			$author$project$Themes$GruvboxDark$blueLight,
-			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$blueDark),
-			theme);
+		var text = A2($author$project$Data$Translation$translate, language, title);
+		var fontColor = function () {
+			if (theme.$ === 'Dark') {
+				return $author$project$Themes$GruvboxDark$blueLight;
+			} else {
+				return $author$project$Themes$GruvboxLight$blueDark;
+			}
+		}();
 		return A2(
 			$mdgriffith$elm_ui$Element$el,
 			_List_fromArray(
@@ -12428,7 +12426,7 @@ var $author$project$Components$Dropdown$element = F3(
 		var description = _v1.description;
 		var title = _v1.title;
 		var sentenceElements = function () {
-			var translatedText = A2($author$project$Data$Translation$translate, description, language);
+			var translatedText = A2($author$project$Data$Translation$translate, language, description);
 			var sentences = A2(
 				$elm$core$List$map,
 				$elm$core$Basics$append('\u000A'),
@@ -12551,7 +12549,7 @@ var $author$project$Components$Dropdown$element = F3(
 							_List_fromArray(
 								[
 									$mdgriffith$elm_ui$Element$text(
-									A2($author$project$Data$Translation$translate, title, language)),
+									A2($author$project$Data$Translation$translate, language, title)),
 									A2(
 									$mdgriffith$elm_ui$Element$image,
 									_List_fromArray(
@@ -12568,20 +12566,41 @@ var $author$project$Components$Dropdown$element = F3(
 					}),
 				content));
 	});
-var $author$project$Data$Translation$experienceContentP1 = {en: 'During my internship at RMAAQ, I developed fullstack internal web applications in PHP using the Laravel framework, used daily by Board Members and administrative staff.', fr: 'Dans le cadre de mon stage à la RMAAQ, j\u0027ai développé des applications web internes complètes en PHP avec le framework Laravel, utilisées quotidiennement par les membres du conseil d\u0027administration et le personnel administratif.'};
-var $author$project$Data$Translation$experienceContentP2 = {en: 'I designed and implemented a document synchronization system that transferred legal documents from NextCloud to the server\u0027s file system and website database, later adapting it to integrate with Microsoft SharePoint via the Microsoft Graph API.', fr: 'J\u0027ai conçu et implémenté un système de synchronisation de documents permettant le transfert de documents légaux de NextCloud vers le système de fichiers du serveur et la base de données du site web, système que j\u0027ai ensuite adapté pour l\u0027intégrer à Microsoft SharePoint via l\u0027API Microsoft Graph.'};
-var $author$project$Data$Translation$experienceContentP3 = {en: 'I implemented automated PDF generation using the DomPDF library, enabling documents to be emailed directly to relevant parties.', fr: 'J\u0027ai mis en place la génération automatisée de documents PDF à l\u0027aide de la librairie DomPDF, permettant l\u0027envoi direct des documents par courriel aux parties concernées.'};
-var $author$project$Data$Translation$experienceContentP4 = {en: 'I also built the intake system for legal requests submitted through RMAAQ\u0027s public website, allowing agricultural workers to file requests on various regulatory matters, and synchronized the incoming data across NextCloud, SharePoint, and the internal database.', fr: 'J\u0027ai également conçu le système de prise en charge des demandes légales soumises via le site web public de la RMAAQ, permettant aux travailleurs agricoles de déposer des demandes sur divers enjeux réglementaires, tout en synchronisant les données entrantes entre NextCloud, SharePoint et la base de données interne.'};
-var $author$project$Data$Translation$experienceContentP5 = {en: 'Originally planned as a standard 3–4 month internship, I was retained for a full year due to strong performance and ongoing project needs.', fr: 'Initialement prévu pour une durée de 3 à 4 mois, mon stage a été prolongé sur une pleine année en raison de mon rendement et des besoins continus des projets en cours.'};
+var $author$project$Data$Translation$experienceContent1 = {en: 'During my internship at RMAAQ, I developed fullstack internal web applications in PHP using the Laravel framework, used daily by Board Members and administrative staff.', fr: 'Dans le cadre de mon stage à la RMAAQ, j\u0027ai développé des applications web internes complètes en PHP avec le framework Laravel, utilisées quotidiennement par les membres du conseil d\u0027administration et le personnel administratif.'};
+var $author$project$Data$Translation$experienceContent2 = {en: 'I designed and implemented a document synchronization system that transferred legal documents from NextCloud to the server\u0027s file system and website database, later adapting it to integrate with Microsoft SharePoint via the Microsoft Graph API.', fr: 'J\u0027ai conçu et implémenté un système de synchronisation de documents permettant le transfert de documents légaux de NextCloud vers le système de fichiers du serveur et la base de données du site web, système que j\u0027ai ensuite adapté pour l\u0027intégrer à Microsoft SharePoint via l\u0027API Microsoft Graph.'};
+var $author$project$Data$Translation$experienceContent3 = {en: 'I implemented automated PDF generation using the DomPDF library, enabling documents to be emailed directly to relevant parties.', fr: 'J\u0027ai mis en place la génération automatisée de documents PDF à l\u0027aide de la librairie DomPDF, permettant l\u0027envoi direct des documents par courriel aux parties concernées.'};
+var $author$project$Data$Translation$experienceContent4 = {en: 'I also built the intake system for legal requests submitted through RMAAQ\u0027s public website, allowing agricultural workers to file requests on various regulatory matters, and synchronized the incoming data across NextCloud, SharePoint, and the internal database.', fr: 'J\u0027ai également conçu le système de prise en charge des demandes légales soumises via le site web public de la RMAAQ, permettant aux travailleurs agricoles de déposer des demandes sur divers enjeux réglementaires, tout en synchronisant les données entrantes entre NextCloud, SharePoint et la base de données interne.'};
+var $author$project$Data$Translation$experienceContent5 = {en: 'Originally planned as a standard 3–4 month internship, I was retained for a full year due to strong performance and ongoing project needs.', fr: 'Initialement prévu pour une durée de 3 à 4 mois, mon stage a été prolongé sur une pleine année en raison de mon rendement et des besoins continus des projets en cours.'};
+var $author$project$Data$Translation$experienceContent = _List_fromArray(
+	[$author$project$Data$Translation$experienceContent1, $author$project$Data$Translation$experienceContent2, $author$project$Data$Translation$experienceContent3, $author$project$Data$Translation$experienceContent4, $author$project$Data$Translation$experienceContent5]);
 var $author$project$Data$Translation$experienceJobTitle = {en: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\u000A', fr: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\u000A'};
 var $author$project$Components$MainContent$experiencesContent = F2(
 	function (theme, language) {
-		var titleText = A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceJobTitle, language);
-		var titleColor = A3(
-			$author$project$Theme$evalTheme,
-			$author$project$Themes$GruvboxDark$greenLight,
-			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$greenDark),
-			theme);
+		var titleColor = function () {
+			if (theme.$ === 'Dark') {
+				return $author$project$Themes$GruvboxDark$greenLight;
+			} else {
+				return $author$project$Themes$GruvboxLight$greenDark;
+			}
+		}();
+		var experienceTitle = function () {
+			var titleText = A2($author$project$Data$Translation$translate, language, $author$project$Data$Translation$experienceJobTitle);
+			return A2(
+				$mdgriffith$elm_ui$Element$el,
+				_List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$Font$semiBold,
+						$mdgriffith$elm_ui$Element$Font$color(titleColor)
+					]),
+				$mdgriffith$elm_ui$Element$text(titleText));
+		}();
+		var content = A2(
+			$elm$core$List$map,
+			$mdgriffith$elm_ui$Element$text,
+			A2(
+				$elm$core$List$map,
+				$author$project$Data$Translation$translate(language),
+				$author$project$Data$Translation$experienceContent));
 		return A2(
 			$mdgriffith$elm_ui$Element$paragraph,
 			_List_fromArray(
@@ -12596,45 +12615,27 @@ var $author$project$Components$MainContent$experiencesContent = F2(
 						[
 							$mdgriffith$elm_ui$Element$spacing(10)
 						]),
-					_List_fromArray(
-						[
-							A2(
-							$mdgriffith$elm_ui$Element$el,
-							_List_fromArray(
-								[
-									$mdgriffith$elm_ui$Element$Font$semiBold,
-									$mdgriffith$elm_ui$Element$Font$color(titleColor)
-								]),
-							$mdgriffith$elm_ui$Element$text(titleText)),
-							$mdgriffith$elm_ui$Element$text(
-							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP1, language)),
-							$mdgriffith$elm_ui$Element$text(
-							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP2, language)),
-							$mdgriffith$elm_ui$Element$text(
-							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP3, language)),
-							$mdgriffith$elm_ui$Element$text(
-							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP4, language)),
-							$mdgriffith$elm_ui$Element$text(
-							A2($author$project$Data$Translation$translate, $author$project$Data$Translation$experienceContentP5, language))
-						]))
+					A2($elm$core$List$cons, experienceTitle, content))
 				]));
 	});
-var $author$project$Data$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
-var $author$project$Data$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
 var $author$project$Themes$GruvboxDark$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 254, 128, 25);
 var $author$project$Themes$GruvboxLight$orangeLight = A3($mdgriffith$elm_ui$Element$rgb255, 214, 93, 14);
 var $author$project$Components$Highlight$element = F2(
 	function (theme, content) {
-		var borderColor = A3(
-			$author$project$Theme$evalTheme,
-			$author$project$Themes$GruvboxDark$orangeLight,
-			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$orangeLight),
-			theme);
-		var backgroundColor = A3(
-			$author$project$Theme$evalTheme,
-			$author$project$Themes$GruvboxDark$bg1,
-			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$bg1),
-			theme);
+		var borderColor = function () {
+			if (theme.$ === 'Dark') {
+				return $author$project$Themes$GruvboxDark$orangeLight;
+			} else {
+				return $author$project$Themes$GruvboxLight$orangeLight;
+			}
+		}();
+		var backgroundColor = function () {
+			if (theme.$ === 'Dark') {
+				return $author$project$Themes$GruvboxDark$bg1;
+			} else {
+				return $author$project$Themes$GruvboxLight$bg1;
+			}
+		}();
 		return A2(
 			$mdgriffith$elm_ui$Element$el,
 			_List_fromArray(
@@ -12841,14 +12842,16 @@ var $author$project$Components$MainContent$technologyContent = F2(
 	function (theme, skills) {
 		var subTitleStyle = _List_fromArray(
 			[
-				$mdgriffith$elm_ui$Element$Font$size(20),
 				$mdgriffith$elm_ui$Element$padding(10),
+				$mdgriffith$elm_ui$Element$Font$size(20),
 				$mdgriffith$elm_ui$Element$Font$color(
-				A3(
-					$author$project$Theme$evalTheme,
-					$author$project$Themes$GruvboxDark$greenLight,
-					_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$greenDark),
-					theme))
+				function () {
+					if (theme.$ === 'Dark') {
+						return $author$project$Themes$GruvboxDark$greenLight;
+					} else {
+						return $author$project$Themes$GruvboxLight$greenDark;
+					}
+				}())
 			]);
 		var programmingLanguages = A2(
 			$elm$core$List$map,
@@ -12916,7 +12919,12 @@ var $author$project$Components$MainContent$technologyContent = F2(
 			_List_fromArray(
 				[languageSection, libraryFrameworkSection]));
 	});
+var $author$project$Data$Translation$aboutTitle = {en: 'About me', fr: 'À propos de moi'};
+var $author$project$Data$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
+var $author$project$Data$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
 var $author$project$Data$Translation$technologyTitle = {en: 'Technologies', fr: 'Technologies'};
+var $author$project$Data$Translation$titles = _List_fromArray(
+	[$author$project$Data$Translation$aboutTitle, $author$project$Data$Translation$experiencesTitle, $author$project$Data$Translation$technologyTitle, $author$project$Data$Translation$projectsTitle]);
 var $author$project$Components$MainContent$element = F3(
 	function (config, _v0, dropdowns) {
 		var language = config.language;
@@ -12939,11 +12947,35 @@ var $author$project$Components$MainContent$element = F3(
 					$mdgriffith$elm_ui$Element$spacing(10)
 				]),
 			projectDropdowns);
-		var fontColor = A3(
-			$author$project$Theme$evalTheme,
-			$author$project$Themes$GruvboxDark$fg0,
-			_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$fg0),
-			theme);
+		var fontColor = function () {
+			if (theme.$ === 'Dark') {
+				return $author$project$Themes$GruvboxDark$fg0;
+			} else {
+				return $author$project$Themes$GruvboxLight$fg0;
+			}
+		}();
+		var content = function () {
+			var titles = $author$project$Data$Translation$titles;
+			var curriedComponents = A2(
+				$elm$core$List$map,
+				A2($author$project$Components$Card$element, theme, language),
+				titles);
+			var contentTexts = _List_fromArray(
+				[
+					$author$project$Components$MainContent$aboutContent(language),
+					A2($author$project$Components$MainContent$experiencesContent, theme, language),
+					A2($author$project$Components$MainContent$technologyContent, theme, skills),
+					projectsContent
+				]);
+			return A3(
+				$elm$core$List$map2,
+				F2(
+					function (component, text) {
+						return component(text);
+					}),
+				curriedComponents,
+				contentTexts);
+		}();
 		return A2(
 			$mdgriffith$elm_ui$Element$column,
 			_List_fromArray(
@@ -12959,28 +12991,7 @@ var $author$project$Components$MainContent$element = F3(
 					_List_fromArray(
 						[$mdgriffith$elm_ui$Element$Font$serif]))
 				]),
-			_List_fromArray(
-				[
-					A4(
-					$author$project$Components$Card$element,
-					theme,
-					language,
-					$author$project$Data$Translation$aboutTitle,
-					$author$project$Components$MainContent$aboutContent(language)),
-					A4(
-					$author$project$Components$Card$element,
-					theme,
-					language,
-					$author$project$Data$Translation$experiencesTitle,
-					A2($author$project$Components$MainContent$experiencesContent, theme, language)),
-					A4(
-					$author$project$Components$Card$element,
-					theme,
-					language,
-					$author$project$Data$Translation$technologyTitle,
-					A2($author$project$Components$MainContent$technologyContent, theme, skills)),
-					A4($author$project$Components$Card$element, theme, language, $author$project$Data$Translation$projectsTitle, projectsContent)
-				]));
+			content);
 	});
 var $author$project$Components$Socials$iconsPath = '/assets/icons/';
 var $elm$html$Html$Attributes$href = function (url) {
@@ -13042,22 +13053,26 @@ var $author$project$Components$Socials$social = function (_v0) {
 		});
 };
 var $author$project$Components$Socials$element = function (theme) {
-	var linkedinLogo = A3(
-		$author$project$Theme$evalTheme,
-		'InBug-White.png',
-		_Utils_Tuple2($author$project$Theme$Light, 'LI-In-Bug.png'),
-		theme);
+	var linkedinLogo = function () {
+		if (theme.$ === 'Dark') {
+			return 'InBug-White.png';
+		} else {
+			return 'LI-In-Bug.png';
+		}
+	}();
 	var linkedInImage = {
 		imgDesc: 'Clickable LinkedIn Logo',
 		imgSrc: _Utils_ap($author$project$Components$Socials$iconsPath, linkedinLogo),
 		url: 'https://www.linkedin.com/in/samuel-nguyen-phok-99424225b/'
 	};
 	var gmailImage = {imgDesc: 'Clickable Gmail Logo', imgSrc: $author$project$Components$Socials$iconsPath + 'google_mail_gmail_logo_icon.svg', url: 'mailto:samuelnguyenphok@gmail.com'};
-	var githubLogo = A3(
-		$author$project$Theme$evalTheme,
-		'GitHub_Invertocat_White.svg',
-		_Utils_Tuple2($author$project$Theme$Light, 'GitHub_Invertocat_Black.svg'),
-		theme);
+	var githubLogo = function () {
+		if (theme.$ === 'Dark') {
+			return 'GitHub_Invertocat_White.svg';
+		} else {
+			return 'GitHub_Invertocat_Black.svg';
+		}
+	}();
 	var githubImage = {
 		imgDesc: 'Clickable GitHub Invertocat Black Logo',
 		imgSrc: _Utils_ap($author$project$Components$Socials$iconsPath, githubLogo),
@@ -13097,13 +13112,13 @@ var $elm$svg$Svg$Attributes$r = _VirtualDom_attribute('r');
 var $elm$svg$Svg$svg = $elm$svg$Svg$trustedNode('svg');
 var $elm$svg$Svg$Attributes$width = _VirtualDom_attribute('width');
 var $author$project$Icons$moon = function (theme) {
-	var illusionColor = A3(
-		$author$project$Theme$evalTheme,
-		$elm$svg$Svg$Attributes$fill('rgb(40, 40, 40)'),
-		_Utils_Tuple2(
-			$author$project$Theme$Light,
-			$elm$svg$Svg$Attributes$fill('rgb(251, 241, 199)')),
-		theme);
+	var illusionColor = function () {
+		if (theme.$ === 'Dark') {
+			return $elm$svg$Svg$Attributes$fill('rgb(40, 40, 40)');
+		} else {
+			return $elm$svg$Svg$Attributes$fill('rgb(251, 241, 199)');
+		}
+	}();
 	var svg = A2(
 		$elm$svg$Svg$svg,
 		_List_fromArray(
@@ -13513,11 +13528,14 @@ var $author$project$Main$view = function (model) {
 	var toggledDropdowns = model.toggledDropdowns;
 	var data = model.data;
 	var config = model.config;
-	var theme = A3(
-		$author$project$Theme$evalTheme,
-		$author$project$Themes$GruvboxDark$bg,
-		_Utils_Tuple2($author$project$Theme$Light, $author$project$Themes$GruvboxLight$bg),
-		config.theme);
+	var theme = function () {
+		var _v0 = config.theme;
+		if (_v0.$ === 'Dark') {
+			return $author$project$Themes$GruvboxDark$bg;
+		} else {
+			return $author$project$Themes$GruvboxLight$bg;
+		}
+	}();
 	var socialMedias = $author$project$Components$Socials$element(config.theme);
 	var sliders = A2(
 		$mdgriffith$elm_ui$Element$row,
@@ -13565,7 +13583,7 @@ var $author$project$Main$view = function (model) {
 							sliders,
 							heroText,
 							socialMedias,
-							A3($author$project$Components$MainContent$element, config, data, model.toggledDropdowns),
+							A3($author$project$Components$MainContent$element, config, data, toggledDropdowns),
 							$author$project$Components$Footer$element(config.theme)
 						])))
 			]),

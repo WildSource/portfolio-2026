@@ -7,21 +7,7 @@ import Element exposing
     , DeviceClass (..)
     )
 
-
 import Element.Border as Border
-
--- Conditional styling
-addIf
-    :  Bool
-    -> Attribute msg
-    -> List (Attribute msg)
-    -> List (Attribute msg)
-addIf condition attribute baseAttributes  =
-    if condition then
-        attribute :: baseAttributes
-    else
-        baseAttributes
-
             
 debugBorder : List (Attribute msg) -> List (Attribute msg)
 debugBorder attributes =

@@ -2,10 +2,7 @@ module Components.Highlight exposing (element)
 
 import Data.Message exposing (Msg)
 import Element exposing (Element)
-import Theme exposing
-    ( Theme (..)
-    , evalTheme
-    )
+import Theme exposing (Theme (..))
 
 import Element.Border as Border
 import Element.Background as Background
@@ -16,17 +13,19 @@ element : Theme -> String -> Element Msg
 element theme content =
     let
         borderColor =
-            evalTheme
-                GDark.orangeLight
-                (Light, GLight.orangeLight)
-                theme
+            case theme of
+                Dark  -> GDark.orangeLight
+
+
+                Light -> GLight.orangeLight
 
         backgroundColor =
-            evalTheme
-                GDark.bg1
-                (Light, GLight.bg1)
-                theme
-            
+            case theme of
+                Dark  -> GDark.bg1
+
+                         
+                Light -> GLight.bg1
+
     in
         Element.el
             [ Border.width 3

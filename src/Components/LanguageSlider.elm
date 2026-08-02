@@ -3,10 +3,7 @@ module Components.LanguageSlider exposing (element)
 import Data.Model exposing (Config)
 import Data.Message exposing (Msg (..))
 import Element exposing (Element)
-import Theme exposing
-    ( Theme (..)
-    , evalTheme
-    )
+import Theme exposing (Theme (..))
 
 import Element.Input as Input
 import Element.Font as Font
@@ -20,10 +17,11 @@ element : Config -> Element Msg
 element { theme, language } =
     let
         fontColor =
-            evalTheme
-                GDark.fg0
-                (Light, GLight.fg0)
-                theme    
+            case theme of
+                Dark  -> GDark.fg0
+
+
+                Light -> GLight.fg0    
 
         checkbox =
             Input.checkbox []

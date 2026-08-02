@@ -6,10 +6,7 @@ import Element exposing
     )
 import Data.Message exposing (Msg)
 import Data.Model exposing (Model)
-import Theme exposing
-    ( Theme (..)
-    , evalTheme
-    )
+import Theme exposing (Theme (..))
 
 import Element.Background as Background
 import Element.Font as Font
@@ -21,16 +18,18 @@ element : Theme -> Element Msg
 element theme =
     let
         footerColor =
-            evalTheme
-                GDark.bg1
-                (Light, GLight.bg1)
-                theme
+            case theme of
+                Dark  -> GDark.bg1
+
+                         
+                Light -> GLight.bg1
 
         fontColor =
-            evalTheme
-                GDark.fg0
-                (Light, GLight.fg0)
-                theme
+            case theme of
+                Dark  -> GDark.fg0
+
+                         
+                Light -> GLight.fg0
                     
         style =
             [ Element.padding 20

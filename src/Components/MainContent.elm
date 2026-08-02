@@ -1,9 +1,7 @@
 module Components.MainContent exposing (element)
 
-import Element exposing
-    ( Element
-    , fill
-    )
+import Data.Translation exposing (translate)
+import Theme exposing (Theme (..)) 
 import Data.Message exposing (Msg)
 import Data.Skill exposing
     ( Skill
@@ -13,12 +11,15 @@ import Data.Model exposing
     ( Config
     , Data
     )
-import Data.Translation exposing (translate)
-
-import Theme exposing
-    ( Theme (..)
-    , evalTheme
-    ) 
+import Element exposing
+    ( Element
+    , fill
+    , width
+    , height
+    , padding
+    , spacing
+    , centerX
+    )
 
 import Components.Card as Card
 import Components.Dropdown as Dropdown
@@ -33,18 +34,18 @@ element : Config -> Data -> List String -> Element Msg
 element ({ theme, language } as config) { skills, projects } dropdowns =
     let
         fontColor =
-            evalTheme
-                GDark.fg0
-                (Light, GLight.fg0)
-                theme
+            case theme of
+                Dark  -> GDark.fg0
+
+                         
+                Light -> GLight.fg0
 
         projectDropdowns : List (Element Msg)
         projectDropdowns =            
             List.map
                 (\ ({ title } as project) ->
                      let
-                         isToggled =
-                             List.member title.en dropdowns
+                         isToggled = List.member title.en dropdowns
                      in
                          Dropdown.element config project isToggled
                 )
@@ -52,51 +53,48 @@ element ({ theme, language } as config) { skills, projects } dropdowns =
 
         projectsContent =
             Element.column
-                [ Element.width fill
-                , Element.spacing 10
+                [ width fill
+                , spacing 10
                 ]
                 projectDropdowns
+
+        content =
+            let
+                titles =
+                    T.titles
+                         
+                curriedComponents =
+                    List.map (Card.element theme language) titles
+
+                contentTexts =
+                    [ aboutContent language
+                    , experiencesContent theme language
+                    , technologyContent theme skills
+                    , projectsContent
+                    ]
+            in
+                List.map2
+                    (\ component text -> component text)
+                    curriedComponents
+                    contentTexts
+                    
     in
         Element.column
-            [ Element.centerX
-            , Element.width Element.fill
-            , Element.height Element.fill
-            , Element.padding 10
-            , Element.spacing 20
+            [ centerX
+            , width fill
+            , height fill
+            , padding 10
+            , spacing 20
             , Font.size 15
             , Font.color fontColor
             , Font.family [ Font.serif ]                
             ]
-            [ Card.element
-                  theme
-                  language
-                  T.aboutTitle (aboutContent language)
-            , Card.element
-                  theme
-                  language
-                  T.experiencesTitle (experiencesContent theme language)
-            , Card.element
-                  theme
-                  language
-                  T.technologyTitle (technologyContent theme skills)
-            , Card.element
-                  theme
-                  language
-                  T.projectsTitle projectsContent
-            ]
+            content
 
 aboutContent : T.Language -> Element Msg
 aboutContent language =
     let
-        translations =
-            [ T.aboutContent1
-            , T.aboutContent2
-            , T.aboutContent3
-            , T.aboutContent4
-            ]
-
-        content =
-            translations
+        content = T.aboutContent
             |> List.map
                ( \ translation ->
                      if language == T.EN then
@@ -107,8 +105,8 @@ aboutContent language =
             |> List.map Element.text
     in
         Element.paragraph
-            [ Element.width fill ]
-            [ Element.column [ Element.spacing 10 ]
+            [ width fill ]
+            [ Element.column [ spacing 10 ]
                   content
             ]
 
@@ -117,20 +115,21 @@ technologyContent : Theme -> List Skill -> Element Msg
 technologyContent theme skills =
     let
         subTitleStyle =
-            [ Font.size 20
-            , Element.padding 10
+            [ padding 10
+            , Font.size 20
             , Font.color
-                  ( evalTheme
-                       GDark.greenLight
-                       (Light, GLight.greenDark)
-                       theme
+                  ( case theme of
+                        Dark  -> GDark.greenLight
+
+
+                        Light -> GLight.greenDark
                   )
             ]                       
 
         contentStyle =
-            [ Element.width fill
-            , Element.padding 5
-            , Element.spacing 5
+            [ width fill
+            , padding 5
+            , spacing 5
             ]
             
         programmingLanguages : List (Element Msg)
@@ -167,19 +166,16 @@ technologyContent theme skills =
                 ]
                 
         libraryFrameworkSection =
-            Element.column
-                []
-                [ Element.el
-                      subTitleStyle
+            Element.column []
+                [ Element.el subTitleStyle
                       (Element.text "Libraries and/or Frameworks")
-                , Element.wrappedRow
-                      contentStyle
+                , Element.wrappedRow contentStyle
                       librariesAndFrameworks
                 ]
     in
         Element.column
-            [ Element.padding 5
-            , Element.spacing 5
+            [ padding 5
+            , spacing 5
             ]
             [ languageSection
             , libraryFrameworkSection
@@ -187,52 +183,36 @@ technologyContent theme skills =
         
 
 experiencesContent : Theme -> T.Language -> Element Msg
-experiencesContent theme language  =   
+experiencesContent theme language =   
     let
-        titleText =
-            translate
-                T.experienceJobTitle
-                language
-
-        titleColor =
-            evalTheme
-                GDark.greenLight
-                (Light, GLight.greenDark)
-                theme
-    in
-        Element.paragraph [ Element.width fill ]
-            [ Element.column [ Element.spacing 10 ]
-                  [ Element.el
+        experienceTitle =
+            let
+                titleText =
+                    translate
+                        language
+                        T.experienceJobTitle
+            in
+                Element.el
                         [ Font.semiBold
                         , Font.color titleColor
                         ]
                         (Element.text titleText)
-                  , Element.text
-                      (translate
-                           T.experienceContentP1
-                           language
-                      )
-                  , Element.text
-                        (translate
-                           T.experienceContentP2
-                           language
-                        )
-                  , Element.text
-                        (translate
-                             T.experienceContentP3
-                             language
-                        )
-                  , Element.text
-                        (translate
-                             T.experienceContentP4
-                             language
-                        )
-                  , Element.text
-                        (translate
-                             T.experienceContentP5
-                             language
-                        )
-                  ]
+
+        titleColor =
+            case theme of
+                Dark  -> GDark.greenLight
+
+
+                Light -> GLight.greenDark
+
+        content =  T.experienceContent
+                |> List.map (translate language)
+                |> List.map (Element.text)
+                         
+    in
+        Element.paragraph [ width fill ]
+            [ Element.column [ spacing 10 ]
+                  (experienceTitle :: content)
             ]                     
             
 

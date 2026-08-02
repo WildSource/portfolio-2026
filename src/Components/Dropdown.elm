@@ -1,10 +1,12 @@
 module Components.Dropdown exposing (element)
 
-import Utils
-
 import Element exposing
     ( Element
+    , width
+    , height
+    , padding
     , fill
+    , spaceEvenly
     , px
     )
 import Data.Message exposing (Msg)
@@ -34,6 +36,7 @@ element { theme, language } { title, description } isToggled =
             case theme of
                 Light -> GLight.aquaDark
 
+                         
                 Dark -> GDark.aquaLight
 
         chevron =
@@ -42,10 +45,16 @@ element { theme, language } { title, description } isToggled =
                     case (isToggled, theme) of
                         (True, Light) ->
                             ("up", "")
+
+                                
                         (True, Dark) ->
                             ("up", "-dark")
+
+                                
                         (False, Light) ->
                             ("down", "")
+
+                                
                         (False, Dark) ->                        
                             ("down", "-dark")
             in
@@ -60,6 +69,7 @@ element { theme, language } { title, description } isToggled =
                 bgColor =
                     case theme of
                         Light -> GLight.bg2
+
                                  
                         Dark  -> GDark.bg0Hard
                             
@@ -67,6 +77,7 @@ element { theme, language } { title, description } isToggled =
                     case theme of
                         Light -> GLight.bg4
 
+                                 
                         Dark -> Element.rgb255 20 20 20             
             in
                 if isToggled then
@@ -84,7 +95,7 @@ element { theme, language } { title, description } isToggled =
         sentenceElements =
             let
                 translatedText =
-                    translate description language
+                    translate language description 
 
                 sentences
                     =  String.split "\n" translatedText
@@ -97,24 +108,23 @@ element { theme, language } { title, description } isToggled =
         content =
             if isToggled then                
                 [ Element.el
-                     [ Element.width fill
+                     [ width fill
                      , Border.color borderColor
                      , Border.width 1
-                     , Element.padding 10
+                     , padding 10
                      , Font.size 12
                      ]
-                     ( Element.paragraph [ Element.padding 5 ]
+                     ( Element.paragraph [ padding 5 ]
                           sentenceElements
                      )
                 ]
             else
                 []
     in
-        Element.column
-            [ Element.width fill ]
+        Element.column [ width fill ]
             ( Input.button
-                  ( [ Element.padding 10
-                    , Element.width fill
+                  ( [ padding 10
+                    , width fill
                     , Border.width 2
                     , Border.color borderColor
                     ] ++ buttonColor             
@@ -123,16 +133,16 @@ element { theme, language } { title, description } isToggled =
                         Just (Message.ToggleDropdown title.en)
                   , label =
                       Element.row
-                        [ Element.padding 5
-                        , Element.width fill
-                        , Element.spaceEvenly
+                        [ padding 5
+                        , width fill
+                        , spaceEvenly
                         ]
-                        [ Element.text (translate title language)
+                        [ Element.text (translate language title)
                         , Element.image
-                              [ Element.width (px 15)
-                              , Element.height (px 15)
+                              [ width (px 15)
+                              , height (px 15)
                               ]
-                            chevron
+                              chevron
                         ]
                   }
             :: content 
