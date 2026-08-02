@@ -4,7 +4,10 @@ import Element exposing (Device)
 import Theme exposing (Theme)
 import Data.Skill exposing (Skill)
 import Data.Project exposing (Project)
-import Data.Translation exposing (Language)
+import Data.Translation exposing
+    ( Language
+    , Translation
+    )
 
 
 type alias Model =
@@ -20,7 +23,10 @@ type alias Config =
     }
 
 type alias Data =
-    { skills : List Skill
+    { titles : List Translation
+    , about : List Translation
+    , experience : { title : Translation, body : List Translation }
+    , skills : List Skill
     , projects : List Project
     }
 

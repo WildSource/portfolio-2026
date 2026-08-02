@@ -5209,6 +5209,12 @@ var $elm$json$Json$Decode$field = _Json_decodeField;
 var $author$project$Data$Translation$EN = {$: 'EN'};
 var $author$project$Data$Translation$FR = {$: 'FR'};
 var $author$project$Theme$Light = {$: 'Light'};
+var $author$project$Data$Translation$aboutContent1 = {en: 'Based in Quebec Canada, I have experience in web development in various programming languages and technologies.', fr: 'Basé au Québec, j\u0027ai de l\u0027expérience en développement d\u0027application web dans de nombreux language de programmation et technologies diverses.'};
+var $author$project$Data$Translation$aboutContent2 = {en: 'I specialize and prefer to work on the backend but I am fully capable to do fullstack development.', fr: 'Je suis spécialisé et préfère le développement backend cependant, j\u0027ai les aptitudes pour concevoir une application fullstack complète.'};
+var $author$project$Data$Translation$aboutContent3 = {en: 'I am bilingual and able to speak both french and english fluently.', fr: 'Je suis bilingue et je suis capable de parler le français et l\u0027anglais couramment.'};
+var $author$project$Data$Translation$aboutContent4 = {en: 'I am open to work remotely.', fr: 'Ma localisation géographique ne m\u0027empêche pas de travailler à distance, donc je suis ouvert au télétravail.'};
+var $author$project$Data$Translation$aboutContent = _List_fromArray(
+	[$author$project$Data$Translation$aboutContent1, $author$project$Data$Translation$aboutContent2, $author$project$Data$Translation$aboutContent3, $author$project$Data$Translation$aboutContent4]);
 var $mdgriffith$elm_ui$Element$BigDesktop = {$: 'BigDesktop'};
 var $mdgriffith$elm_ui$Element$Desktop = {$: 'Desktop'};
 var $mdgriffith$elm_ui$Element$Landscape = {$: 'Landscape'};
@@ -5229,6 +5235,14 @@ var $mdgriffith$elm_ui$Element$classifyDevice = function (window) {
 		orientation: (_Utils_cmp(window.width, window.height) < 0) ? $mdgriffith$elm_ui$Element$Portrait : $mdgriffith$elm_ui$Element$Landscape
 	};
 };
+var $author$project$Data$Translation$experienceContent1 = {en: 'During my internship at RMAAQ, I developed fullstack internal web applications in PHP using the Laravel framework, used daily by Board Members and administrative staff.', fr: 'Dans le cadre de mon stage à la RMAAQ, j\u0027ai développé des applications web internes complètes en PHP avec le framework Laravel, utilisées quotidiennement par les membres du conseil d\u0027administration et le personnel administratif.'};
+var $author$project$Data$Translation$experienceContent2 = {en: 'I designed and implemented a document synchronization system that transferred legal documents from NextCloud to the server\u0027s file system and website database, later adapting it to integrate with Microsoft SharePoint via the Microsoft Graph API.', fr: 'J\u0027ai conçu et implémenté un système de synchronisation de documents permettant le transfert de documents légaux de NextCloud vers le système de fichiers du serveur et la base de données du site web, système que j\u0027ai ensuite adapté pour l\u0027intégrer à Microsoft SharePoint via l\u0027API Microsoft Graph.'};
+var $author$project$Data$Translation$experienceContent3 = {en: 'I implemented automated PDF generation using the DomPDF library, enabling documents to be emailed directly to relevant parties.', fr: 'J\u0027ai mis en place la génération automatisée de documents PDF à l\u0027aide de la librairie DomPDF, permettant l\u0027envoi direct des documents par courriel aux parties concernées.'};
+var $author$project$Data$Translation$experienceContent4 = {en: 'I also built the intake system for legal requests submitted through RMAAQ\u0027s public website, allowing agricultural workers to file requests on various regulatory matters, and synchronized the incoming data across NextCloud, SharePoint, and the internal database.', fr: 'J\u0027ai également conçu le système de prise en charge des demandes légales soumises via le site web public de la RMAAQ, permettant aux travailleurs agricoles de déposer des demandes sur divers enjeux réglementaires, tout en synchronisant les données entrantes entre NextCloud, SharePoint et la base de données interne.'};
+var $author$project$Data$Translation$experienceContent5 = {en: 'Originally planned as a standard 3–4 month internship, I was retained for a full year due to strong performance and ongoing project needs.', fr: 'Initialement prévu pour une durée de 3 à 4 mois, mon stage a été prolongé sur une pleine année en raison de mon rendement et des besoins continus des projets en cours.'};
+var $author$project$Data$Translation$experienceContent = _List_fromArray(
+	[$author$project$Data$Translation$experienceContent1, $author$project$Data$Translation$experienceContent2, $author$project$Data$Translation$experienceContent3, $author$project$Data$Translation$experienceContent4, $author$project$Data$Translation$experienceContent5]);
+var $author$project$Data$Translation$experienceJobTitle = {en: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\u000A', fr: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\u000A'};
 var $elm$core$Debug$log = _Debug_log;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
@@ -5263,6 +5277,12 @@ var $author$project$Data$Skill$springBoot = {category: $author$project$Data$Skil
 var $author$project$Data$Skill$typescript = {category: $author$project$Data$Skill$Language, title: 'Typescript'};
 var $author$project$Data$Skill$skills = _List_fromArray(
 	[$author$project$Data$Skill$haskell, $author$project$Data$Skill$java, $author$project$Data$Skill$elm, $author$project$Data$Skill$php, $author$project$Data$Skill$javascript, $author$project$Data$Skill$typescript, $author$project$Data$Skill$html, $author$project$Data$Skill$css, $author$project$Data$Skill$springBoot, $author$project$Data$Skill$scotty, $author$project$Data$Skill$servant, $author$project$Data$Skill$react, $author$project$Data$Skill$angular]);
+var $author$project$Data$Translation$aboutTitle = {en: 'About me', fr: 'À propos de moi'};
+var $author$project$Data$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
+var $author$project$Data$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
+var $author$project$Data$Translation$technologyTitle = {en: 'Technologies', fr: 'Technologies'};
+var $author$project$Data$Translation$titles = _List_fromArray(
+	[$author$project$Data$Translation$aboutTitle, $author$project$Data$Translation$experiencesTitle, $author$project$Data$Translation$technologyTitle, $author$project$Data$Translation$projectsTitle]);
 var $author$project$Main$init = function (flags) {
 	var height = flags.height;
 	var width = flags.width;
@@ -5274,7 +5294,13 @@ var $author$project$Main$init = function (flags) {
 	return _Utils_Tuple2(
 		{
 			config: {device: device, language: chosenLanguage, theme: $author$project$Theme$Light},
-			data: {projects: $author$project$Data$Project$projects, skills: $author$project$Data$Skill$skills},
+			data: {
+				about: $author$project$Data$Translation$aboutContent,
+				experience: {body: $author$project$Data$Translation$experienceContent, title: $author$project$Data$Translation$experienceJobTitle},
+				projects: $author$project$Data$Project$projects,
+				skills: $author$project$Data$Skill$skills,
+				titles: $author$project$Data$Translation$titles
+			},
 			toggledDropdowns: _List_Nil
 		},
 		$elm$core$Platform$Cmd$none);
@@ -12154,39 +12180,34 @@ var $author$project$Components$LanguageSlider$element = function (_v0) {
 		_List_fromArray(
 			[englishLabel, checkbox, frenchLabel]));
 };
-var $author$project$Data$Translation$aboutContent1 = {en: 'Based in Quebec Canada, I have experience in web development in various programming languages and technologies.', fr: 'Basé au Québec, j\u0027ai de l\u0027expérience en développement d\u0027application web dans de nombreux language de programmation et technologies diverses.'};
-var $author$project$Data$Translation$aboutContent2 = {en: 'I specialize and prefer to work on the backend but I am fully capable to do fullstack development.', fr: 'Je suis spécialisé et préfère le développement backend cependant, j\u0027ai les aptitudes pour concevoir une application fullstack complète.'};
-var $author$project$Data$Translation$aboutContent3 = {en: 'I am bilingual and able to speak both french and english fluently.', fr: 'Je suis bilingue et je suis capable de parler le français et l\u0027anglais couramment.'};
-var $author$project$Data$Translation$aboutContent4 = {en: 'I am open to work remotely.', fr: 'Ma localisation géographique ne m\u0027empêche pas de travailler à distance, donc je suis ouvert au télétravail.'};
-var $author$project$Data$Translation$aboutContent = _List_fromArray(
-	[$author$project$Data$Translation$aboutContent1, $author$project$Data$Translation$aboutContent2, $author$project$Data$Translation$aboutContent3, $author$project$Data$Translation$aboutContent4]);
-var $author$project$Components$MainContent$aboutContent = function (language) {
-	var content = A2(
-		$elm$core$List$map,
-		$mdgriffith$elm_ui$Element$text,
-		A2(
+var $author$project$Components$MainContent$aboutContent = F2(
+	function (language, aboutText) {
+		var content = A2(
 			$elm$core$List$map,
-			function (translation) {
-				return _Utils_eq(language, $author$project$Data$Translation$EN) ? translation.en : translation.fr;
-			},
-			$author$project$Data$Translation$aboutContent));
-	return A2(
-		$mdgriffith$elm_ui$Element$paragraph,
-		_List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$mdgriffith$elm_ui$Element$column,
-				_List_fromArray(
-					[
-						$mdgriffith$elm_ui$Element$spacing(10)
-					]),
-				content)
-			]));
-};
+			$mdgriffith$elm_ui$Element$text,
+			A2(
+				$elm$core$List$map,
+				function (translation) {
+					return _Utils_eq(language, $author$project$Data$Translation$EN) ? translation.en : translation.fr;
+				},
+				aboutText));
+		return A2(
+			$mdgriffith$elm_ui$Element$paragraph,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill)
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$mdgriffith$elm_ui$Element$column,
+					_List_fromArray(
+						[
+							$mdgriffith$elm_ui$Element$spacing(10)
+						]),
+					content)
+				]));
+	});
 var $mdgriffith$elm_ui$Element$Font$bold = A2($mdgriffith$elm_ui$Internal$Model$Class, $mdgriffith$elm_ui$Internal$Flag$fontWeight, $mdgriffith$elm_ui$Internal$Style$classes.bold);
 var $author$project$Components$Card$titleText = F3(
 	function (theme, language, title) {
@@ -12566,16 +12587,8 @@ var $author$project$Components$Dropdown$element = F3(
 					}),
 				content));
 	});
-var $author$project$Data$Translation$experienceContent1 = {en: 'During my internship at RMAAQ, I developed fullstack internal web applications in PHP using the Laravel framework, used daily by Board Members and administrative staff.', fr: 'Dans le cadre de mon stage à la RMAAQ, j\u0027ai développé des applications web internes complètes en PHP avec le framework Laravel, utilisées quotidiennement par les membres du conseil d\u0027administration et le personnel administratif.'};
-var $author$project$Data$Translation$experienceContent2 = {en: 'I designed and implemented a document synchronization system that transferred legal documents from NextCloud to the server\u0027s file system and website database, later adapting it to integrate with Microsoft SharePoint via the Microsoft Graph API.', fr: 'J\u0027ai conçu et implémenté un système de synchronisation de documents permettant le transfert de documents légaux de NextCloud vers le système de fichiers du serveur et la base de données du site web, système que j\u0027ai ensuite adapté pour l\u0027intégrer à Microsoft SharePoint via l\u0027API Microsoft Graph.'};
-var $author$project$Data$Translation$experienceContent3 = {en: 'I implemented automated PDF generation using the DomPDF library, enabling documents to be emailed directly to relevant parties.', fr: 'J\u0027ai mis en place la génération automatisée de documents PDF à l\u0027aide de la librairie DomPDF, permettant l\u0027envoi direct des documents par courriel aux parties concernées.'};
-var $author$project$Data$Translation$experienceContent4 = {en: 'I also built the intake system for legal requests submitted through RMAAQ\u0027s public website, allowing agricultural workers to file requests on various regulatory matters, and synchronized the incoming data across NextCloud, SharePoint, and the internal database.', fr: 'J\u0027ai également conçu le système de prise en charge des demandes légales soumises via le site web public de la RMAAQ, permettant aux travailleurs agricoles de déposer des demandes sur divers enjeux réglementaires, tout en synchronisant les données entrantes entre NextCloud, SharePoint et la base de données interne.'};
-var $author$project$Data$Translation$experienceContent5 = {en: 'Originally planned as a standard 3–4 month internship, I was retained for a full year due to strong performance and ongoing project needs.', fr: 'Initialement prévu pour une durée de 3 à 4 mois, mon stage a été prolongé sur une pleine année en raison de mon rendement et des besoins continus des projets en cours.'};
-var $author$project$Data$Translation$experienceContent = _List_fromArray(
-	[$author$project$Data$Translation$experienceContent1, $author$project$Data$Translation$experienceContent2, $author$project$Data$Translation$experienceContent3, $author$project$Data$Translation$experienceContent4, $author$project$Data$Translation$experienceContent5]);
-var $author$project$Data$Translation$experienceJobTitle = {en: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2023-2026)\u000A', fr: 'Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2023-2026)\u000A'};
-var $author$project$Components$MainContent$experiencesContent = F2(
-	function (theme, language) {
+var $author$project$Components$MainContent$experiencesContent = F4(
+	function (theme, language, title, experienceText) {
 		var titleColor = function () {
 			if (theme.$ === 'Dark') {
 				return $author$project$Themes$GruvboxDark$greenLight;
@@ -12584,7 +12597,7 @@ var $author$project$Components$MainContent$experiencesContent = F2(
 			}
 		}();
 		var experienceTitle = function () {
-			var titleText = A2($author$project$Data$Translation$translate, language, $author$project$Data$Translation$experienceJobTitle);
+			var titleText = A2($author$project$Data$Translation$translate, language, title);
 			return A2(
 				$mdgriffith$elm_ui$Element$el,
 				_List_fromArray(
@@ -12600,7 +12613,7 @@ var $author$project$Components$MainContent$experiencesContent = F2(
 			A2(
 				$elm$core$List$map,
 				$author$project$Data$Translation$translate(language),
-				$author$project$Data$Translation$experienceContent));
+				experienceText));
 		return A2(
 			$mdgriffith$elm_ui$Element$paragraph,
 			_List_fromArray(
@@ -12919,18 +12932,15 @@ var $author$project$Components$MainContent$technologyContent = F2(
 			_List_fromArray(
 				[languageSection, libraryFrameworkSection]));
 	});
-var $author$project$Data$Translation$aboutTitle = {en: 'About me', fr: 'À propos de moi'};
-var $author$project$Data$Translation$experiencesTitle = {en: 'My experiences', fr: 'Mes expériences'};
-var $author$project$Data$Translation$projectsTitle = {en: 'Projects', fr: 'Projets'};
-var $author$project$Data$Translation$technologyTitle = {en: 'Technologies', fr: 'Technologies'};
-var $author$project$Data$Translation$titles = _List_fromArray(
-	[$author$project$Data$Translation$aboutTitle, $author$project$Data$Translation$experiencesTitle, $author$project$Data$Translation$technologyTitle, $author$project$Data$Translation$projectsTitle]);
 var $author$project$Components$MainContent$element = F3(
 	function (config, _v0, dropdowns) {
 		var language = config.language;
 		var theme = config.theme;
 		var projects = _v0.projects;
 		var skills = _v0.skills;
+		var experience = _v0.experience;
+		var about = _v0.about;
+		var titles = _v0.titles;
 		var projectDropdowns = A2(
 			$elm$core$List$map,
 			function (project) {
@@ -12955,15 +12965,14 @@ var $author$project$Components$MainContent$element = F3(
 			}
 		}();
 		var content = function () {
-			var titles = $author$project$Data$Translation$titles;
 			var curriedComponents = A2(
 				$elm$core$List$map,
 				A2($author$project$Components$Card$element, theme, language),
 				titles);
 			var contentTexts = _List_fromArray(
 				[
-					$author$project$Components$MainContent$aboutContent(language),
-					A2($author$project$Components$MainContent$experiencesContent, theme, language),
+					A2($author$project$Components$MainContent$aboutContent, language, about),
+					A4($author$project$Components$MainContent$experiencesContent, theme, language, experience.title, experience.body),
 					A2($author$project$Components$MainContent$technologyContent, theme, skills),
 					projectsContent
 				]);
@@ -13524,13 +13533,13 @@ var $mdgriffith$elm_ui$Element$layoutWith = F3(
 				_Utils_ap($mdgriffith$elm_ui$Internal$Model$rootStyle, attrs)),
 			child);
 	});
-var $author$project$Main$view = function (model) {
-	var toggledDropdowns = model.toggledDropdowns;
-	var data = model.data;
-	var config = model.config;
+var $author$project$Main$view = function (_v0) {
+	var toggledDropdowns = _v0.toggledDropdowns;
+	var data = _v0.data;
+	var config = _v0.config;
 	var theme = function () {
-		var _v0 = config.theme;
-		if (_v0.$ === 'Dark') {
+		var _v1 = config.theme;
+		if (_v1.$ === 'Dark') {
 			return $author$project$Themes$GruvboxDark$bg;
 		} else {
 			return $author$project$Themes$GruvboxLight$bg;

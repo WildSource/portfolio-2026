@@ -1,6 +1,9 @@
 module Components.MainContent exposing (element)
 
-import Data.Translation exposing (translate)
+import Data.Translation exposing
+    ( Translation
+    , translate
+    )
 import Theme exposing (Theme (..)) 
 import Data.Message exposing (Msg)
 import Data.Skill exposing
@@ -31,7 +34,7 @@ import Themes.GruvboxDark as GDark
 
 
 element : Config -> Data -> List String -> Element Msg
-element ({ theme, language } as config) { skills, projects } dropdowns =
+element ({ theme, language } as config) { titles, about, experience, skills, projects } dropdowns =
     let
         fontColor =
             case theme of
@@ -59,16 +62,13 @@ element ({ theme, language } as config) { skills, projects } dropdowns =
                 projectDropdowns
 
         content =
-            let
-                titles =
-                    T.titles
-                         
+            let                         
                 curriedComponents =
                     List.map (Card.element theme language) titles
 
                 contentTexts =
-                    [ aboutContent language
-                    , experiencesContent theme language
+                    [ aboutContent language about
+                    , experiencesContent theme language experience.title experience.body
                     , technologyContent theme skills
                     , projectsContent
                     ]
@@ -91,10 +91,11 @@ element ({ theme, language } as config) { skills, projects } dropdowns =
             ]
             content
 
-aboutContent : T.Language -> Element Msg
-aboutContent language =
+                
+aboutContent : T.Language -> List Translation -> Element Msg
+aboutContent language aboutText =
     let
-        content = T.aboutContent
+        content = aboutText
             |> List.map
                ( \ translation ->
                      if language == T.EN then
@@ -134,28 +135,25 @@ technologyContent theme skills =
             
         programmingLanguages : List (Element Msg)
         programmingLanguages =
-            List.map
-                (Highlight.element theme) 
-                (List.filter
+            skills
+                |> List.filter
                      (\ skill -> skill.category == Language)
-                     skills
-                |>
-                  List.map
+                |> List.map
                      (\ skill -> skill.title)
-                )
+                |> List.map
+                     (Highlight.element theme) 
+
 
         librariesAndFrameworks : List (Element Msg)
         librariesAndFrameworks =
-            List.map
-                (Highlight.element theme)
-                (List.filter
+            skills
+                |> List.filter
                      (\ skill -> skill.category == LibraryFramework)
-                     skills
-                |>
-                  List.map
+                |> List.map
                      (\ skill -> skill.title)
-                )
-                
+                |> List.map
+                     (Highlight.element theme)
+
         languageSection =
             Element.column []
                 [ Element.el subTitleStyle
@@ -182,15 +180,20 @@ technologyContent theme skills =
             ]
         
 
-experiencesContent : Theme -> T.Language -> Element Msg
-experiencesContent theme language =   
+experiencesContent
+    :  Theme
+    -> T.Language
+    -> Translation
+    -> List Translation
+    -> Element Msg
+experiencesContent theme language title experienceText =   
     let
         experienceTitle =
             let
                 titleText =
                     translate
                         language
-                        T.experienceJobTitle
+                        title
             in
                 Element.el
                         [ Font.semiBold
@@ -205,7 +208,7 @@ experiencesContent theme language =
 
                 Light -> GLight.greenDark
 
-        content =  T.experienceContent
+        content =  experienceText
                 |> List.map (translate language)
                 |> List.map (Element.text)
                          

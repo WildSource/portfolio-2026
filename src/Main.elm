@@ -9,7 +9,7 @@ import Components.Socials as Socials
 import Components.Footer as Footer
 import Components.MainContent as MainContent
 import Browser.Events as E
-import Data.Translation as Translation
+import Data.Translation as T
 import Data.Message as Message
 import Data.Model as Model
 import Element.Background as Background
@@ -21,7 +21,7 @@ import Data.Translation exposing (Language (..))
 import Data.Model exposing (Model)
 import Data.Message exposing (Msg)
 import Data.Skill exposing (skills) 
-import Data.Project exposing (projects) 
+import Data.Project exposing (projects)
 import Element exposing
     ( width
     , height
@@ -57,9 +57,9 @@ init ({ language, width, height } as flags) =
             
         chosenLanguage =
             if String.startsWith "fr" language then
-                Translation.FR
+                T.FR
             else
-                Translation.EN                
+                T.EN                
     in
         ( { config =
                 { language = chosenLanguage
@@ -67,7 +67,15 @@ init ({ language, width, height } as flags) =
                 , device = device
                 }
           , data =
-              { skills = skills
+              { titles = T.titles
+              , about = T.aboutContent
+              , experience =                  
+                  { title =
+                        T.experienceJobTitle
+                  , body =
+                        T.experienceContent
+                  }
+              , skills = skills
               , projects = projects
               }
           , toggledDropdowns = []
@@ -84,7 +92,7 @@ type alias Flags =
 
     
 view : Model -> Document Msg
-view ({ config, data, toggledDropdowns } as model) =
+view { config, data, toggledDropdowns } =
     let
         theme =
             case config.theme of
