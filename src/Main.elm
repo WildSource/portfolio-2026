@@ -136,7 +136,7 @@ view { config, data, toggledDropdowns } =
                           ]
                           [ sliders
                           , heroText
-                          , socialMedias
+                          , socialMedias config.device
                           , MainContent.element
                               config
                               data

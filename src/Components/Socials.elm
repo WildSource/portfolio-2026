@@ -2,16 +2,18 @@ module Components.Socials exposing (element)
 
 import Element exposing
     ( Element
+    , Device
     , fill
     )
 import Data.Message exposing (Msg)
 import Theme exposing (Theme (..))
+import Utils exposing (debugBorder)
 
 iconsPath : String
 iconsPath = "/assets/icons/"            
 
-element : Theme -> Element Msg
-element theme =
+element : Theme -> Device -> Element Msg
+element theme _ =
     let
         githubLogo =
             case theme of
@@ -45,9 +47,9 @@ element theme =
             }
     in
         Element.row
-            [ Element.width fill
-            , Element.spacing 40
+            [ Element.spacing 40
             , Element.paddingXY 30 10
+            , Element.centerX
             ]
             [ social githubImage
             , social gmailImage

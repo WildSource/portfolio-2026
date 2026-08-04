@@ -13084,47 +13084,48 @@ var $author$project$Components$Socials$social = function (_v0) {
 			url: url
 		});
 };
-var $author$project$Components$Socials$element = function (theme) {
-	var linkedinLogo = function () {
-		if (theme.$ === 'Dark') {
-			return 'InBug-White.png';
-		} else {
-			return 'LI-In-Bug.png';
-		}
-	}();
-	var linkedInImage = {
-		imgDesc: 'Clickable LinkedIn Logo',
-		imgSrc: _Utils_ap($author$project$Components$Socials$iconsPath, linkedinLogo),
-		url: 'https://www.linkedin.com/in/samuel-nguyen-phok-99424225b/'
-	};
-	var gmailImage = {imgDesc: 'Clickable Gmail Logo', imgSrc: $author$project$Components$Socials$iconsPath + 'google_mail_gmail_logo_icon.svg', url: 'mailto:samuelnguyenphok@gmail.com'};
-	var githubLogo = function () {
-		if (theme.$ === 'Dark') {
-			return 'GitHub_Invertocat_White.svg';
-		} else {
-			return 'GitHub_Invertocat_Black.svg';
-		}
-	}();
-	var githubImage = {
-		imgDesc: 'Clickable GitHub Invertocat Black Logo',
-		imgSrc: _Utils_ap($author$project$Components$Socials$iconsPath, githubLogo),
-		url: 'https://github.com/WildSource'
-	};
-	return A2(
-		$mdgriffith$elm_ui$Element$row,
-		_List_fromArray(
-			[
-				$mdgriffith$elm_ui$Element$width($mdgriffith$elm_ui$Element$fill),
-				$mdgriffith$elm_ui$Element$spacing(40),
-				A2($mdgriffith$elm_ui$Element$paddingXY, 30, 10)
-			]),
-		_List_fromArray(
-			[
-				$author$project$Components$Socials$social(githubImage),
-				$author$project$Components$Socials$social(gmailImage),
-				$author$project$Components$Socials$social(linkedInImage)
-			]));
-};
+var $author$project$Components$Socials$element = F2(
+	function (theme, _v0) {
+		var linkedinLogo = function () {
+			if (theme.$ === 'Dark') {
+				return 'InBug-White.png';
+			} else {
+				return 'LI-In-Bug.png';
+			}
+		}();
+		var linkedInImage = {
+			imgDesc: 'Clickable LinkedIn Logo',
+			imgSrc: _Utils_ap($author$project$Components$Socials$iconsPath, linkedinLogo),
+			url: 'https://www.linkedin.com/in/samuel-nguyen-phok-99424225b/'
+		};
+		var gmailImage = {imgDesc: 'Clickable Gmail Logo', imgSrc: $author$project$Components$Socials$iconsPath + 'google_mail_gmail_logo_icon.svg', url: 'mailto:samuelnguyenphok@gmail.com'};
+		var githubLogo = function () {
+			if (theme.$ === 'Dark') {
+				return 'GitHub_Invertocat_White.svg';
+			} else {
+				return 'GitHub_Invertocat_Black.svg';
+			}
+		}();
+		var githubImage = {
+			imgDesc: 'Clickable GitHub Invertocat Black Logo',
+			imgSrc: _Utils_ap($author$project$Components$Socials$iconsPath, githubLogo),
+			url: 'https://github.com/WildSource'
+		};
+		return A2(
+			$mdgriffith$elm_ui$Element$row,
+			_List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$spacing(40),
+					A2($mdgriffith$elm_ui$Element$paddingXY, 30, 10),
+					$mdgriffith$elm_ui$Element$centerX
+				]),
+			_List_fromArray(
+				[
+					$author$project$Components$Socials$social(githubImage),
+					$author$project$Components$Socials$social(gmailImage),
+					$author$project$Components$Socials$social(linkedInImage)
+				]));
+	});
 var $author$project$Data$Message$ThemeSwitch = function (a) {
 	return {$: 'ThemeSwitch', a: a};
 };
@@ -13614,7 +13615,7 @@ var $author$project$Main$view = function (_v0) {
 						[
 							sliders,
 							heroText,
-							socialMedias,
+							socialMedias(config.device),
 							A3($author$project$Components$MainContent$element, config, data, toggledDropdowns),
 							$author$project$Components$Footer$element(config.theme)
 						])))
