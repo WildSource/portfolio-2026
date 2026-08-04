@@ -1,7 +1,5 @@
 module Main exposing (..)
 
-import Browser exposing (Document)
-
 import Components.ThemeSlider as ThemeSlider
 import Components.LanguageSlider as LanguageSlider
 import Components.HeroText as HeroText
@@ -16,6 +14,7 @@ import Element.Background as Background
 import Themes.GruvboxLight as GLight
 import Themes.GruvboxDark as GDark
 
+import Browser exposing (Document)
 import Theme exposing (Theme (..))
 import Data.Translation exposing (Language (..))
 import Data.Model exposing (Model)

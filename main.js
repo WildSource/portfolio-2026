@@ -11593,7 +11593,6 @@ var $mdgriffith$elm_ui$Element$paragraph = F2(
 			$mdgriffith$elm_ui$Internal$Model$Unkeyed(children));
 	});
 var $author$project$Data$Translation$secondHeroTitle = {en: ' and I make ', fr: ' et je fais des '};
-var $mdgriffith$elm_ui$Element$Font$strike = $mdgriffith$elm_ui$Internal$Model$htmlClass($mdgriffith$elm_ui$Internal$Style$classes.strike);
 var $mdgriffith$elm_ui$Element$paddingXY = F2(
 	function (x, y) {
 		if (_Utils_eq(x, y)) {
@@ -11683,11 +11682,34 @@ var $author$project$Components$HeroText$element = function (config) {
 	var device = config.device;
 	var language = config.language;
 	var theme = config.theme;
-	var spacingStyle = _List_fromArray(
-		[
-			$mdgriffith$elm_ui$Element$padding(10),
-			$mdgriffith$elm_ui$Element$spacing(20)
-		]);
+	var spacingStyle = function () {
+		var _v6 = _Utils_Tuple2(device._class, device.orientation);
+		if (_v6.a.$ === 'Phone') {
+			if (_v6.b.$ === 'Landscape') {
+				var _v7 = _v6.a;
+				var _v8 = _v6.b;
+				return _List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$padding(10),
+						$mdgriffith$elm_ui$Element$spacing(20),
+						$mdgriffith$elm_ui$Element$centerX
+					]);
+			} else {
+				var _v9 = _v6.a;
+				return _List_fromArray(
+					[
+						$mdgriffith$elm_ui$Element$padding(10),
+						$mdgriffith$elm_ui$Element$spacing(20)
+					]);
+			}
+		} else {
+			return _List_fromArray(
+				[
+					$mdgriffith$elm_ui$Element$padding(10),
+					$mdgriffith$elm_ui$Element$spacing(20)
+				]);
+		}
+	}();
 	var paragraphStyle = function () {
 		var themeStyle = function () {
 			if (theme.$ === 'Dark') {
@@ -11713,15 +11735,16 @@ var $author$project$Components$HeroText$element = function (config) {
 				$mdgriffith$elm_ui$Element$Font$center
 			]);
 		var deviceStyle = function () {
-			var _v2 = device._class;
-			if (_v2.$ === 'Phone') {
+			var _v2 = _Utils_Tuple2(device._class, device.orientation);
+			if ((_v2.a.$ === 'Phone') && (_v2.b.$ === 'Portrait')) {
+				var _v3 = _v2.a;
+				var _v4 = _v2.b;
 				return _List_fromArray(
 					[
 						$mdgriffith$elm_ui$Element$Font$size(20)
 					]);
 			} else {
-				return _List_fromArray(
-					[$mdgriffith$elm_ui$Element$Font$strike]);
+				return _List_Nil;
 			}
 		}();
 		return _Utils_ap(

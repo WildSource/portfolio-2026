@@ -1,16 +1,15 @@
 module Components.HeroText exposing (element)
 
+import Utils exposing (debugBorder)
+
 import Data.Model exposing (Config)
 import Data.Message exposing (Msg (..))
 import Theme exposing (Theme (..))
-import Data.Translation exposing (Language)
 import Element exposing
     ( Element
     , DeviceClass (..)
-    , padding
-    , spacing
-    , width
-    , fill
+    , Orientation (..)
+    , centerX
     )
 
 import Themes.GruvboxLight as GLight
@@ -23,9 +22,20 @@ element : Config -> Element Msg
 element ({ theme, language, device } as config) =
     let
         spacingStyle =
-            [ Element.padding 10
-            , Element.spacing 20
-            ]
+            case (device.class, device.orientation) of
+                (Phone , Landscape) ->
+                    [ Element.padding 10
+                    , Element.spacing 20
+                    , Element.centerX
+                    ]
+                (Phone , _) ->
+                    [ Element.padding 10
+                    , Element.spacing 20
+                    ]
+                _ ->
+                    [ Element.padding 10
+                    , Element.spacing 20
+                    ]
 
         paragraphStyle =
             let
@@ -43,13 +53,13 @@ element ({ theme, language, device } as config) =
                         Light -> [Font.color GLight.fg0]
                                 
                 deviceStyle =
-                    case device.class of
-                        Phone ->
-                            [Font.size 20]
+                    case (device.class, device.orientation) of
+                        (Phone, Portrait) ->
+                            [ Font.size 20 ]
 
                                 
                         _     ->
-                            [Font.strike]
+                            []
             in
                 fontStyle ++ deviceStyle ++ themeStyle
 
