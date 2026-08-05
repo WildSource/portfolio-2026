@@ -21,8 +21,18 @@ import Data.Translation as T
 element : Config -> Element Msg
 element ({ theme, language, device } as config) =
     let
+        responsivePadding =
+            case device.class of
+                Desktop -> 50
+
+                           
+                BigDesktop -> 100
+
+                              
+                _ -> 10
+                     
         spacingStyle =
-            [ Element.padding 10
+            [ Element.padding responsivePadding
             , Element.spacing 20
             , Element.centerX
             ]
