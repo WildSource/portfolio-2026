@@ -17,7 +17,7 @@ element theme deviceClass =
     let
         responsiveSpacing =
             case deviceClass of
-                Desktop -> 200
+                Desktop -> 150
 
                            
                 BigDesktop -> 400
