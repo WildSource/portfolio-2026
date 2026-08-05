@@ -22,20 +22,20 @@ element : Config -> Element Msg
 element ({ theme, language, device } as config) =
     let
         spacingStyle =
+            [ Element.padding 10
+            , Element.spacing 20
+            , Element.centerX
+            ]
+
+        scalingStyle =
             case (device.class, device.orientation) of
-                (Phone , Landscape) ->
-                    [ Element.padding 10
-                    , Element.spacing 20
-                    , Element.centerX
-                    ]
-                (Phone , _) ->
-                    [ Element.padding 10
-                    , Element.spacing 20
-                    ]
-                _ ->
-                    [ Element.padding 10
-                    , Element.spacing 20
-                    ]
+                (Tablet, Portrait) -> [ Font.size 30 ]
+                    
+                    
+                (Tablet, Landscape) -> [ Font.size 30]
+
+                                       
+                _ -> []
 
         paragraphStyle =
             let
@@ -54,12 +54,23 @@ element ({ theme, language, device } as config) =
                                 
                 deviceStyle =
                     case (device.class, device.orientation) of
-                        (Phone, Portrait) ->
-                            [ Font.size 20 ]
+                        (Phone, Portrait) -> [ Font.size 20 ]
 
-                                
-                        _     ->
-                            []
+                                             
+                        (Phone, Landscape) -> [ Font.size 30 ]
+
+                                              
+                        (Tablet, Portrait) -> [ Font.size 30 ]
+
+                                               
+                        (Tablet, Landscape) -> [ Font.size 40 ]
+
+                                               
+                        (Desktop, _) -> [ Font.size 60 ]
+
+                                        
+                        (BigDesktop, _) -> [ Font.size 100 ]
+                                           
             in
                 fontStyle ++ deviceStyle ++ themeStyle
 
@@ -95,14 +106,14 @@ element ({ theme, language, device } as config) =
                     , heroText
                     ]
     in
-        Element.column spacingStyle
+        Element.column (spacingStyle ++ scalingStyle)
             [ heroTitle
             , subHeroTitle config
             ]
 
 
 subHeroTitle : Config -> Element Msg
-subHeroTitle { theme, language } =
+subHeroTitle { theme, language, device } =
     let
         fontColor =
             case theme of
@@ -110,6 +121,25 @@ subHeroTitle { theme, language } =
 
                          
                 Light -> GLight.yellowDark
+
+        fontScale =
+            case (device.class, device.orientation) of
+                (Phone, Portrait) -> 15
+
+                                     
+                (Phone, Landscape) -> 25
+
+                                      
+                (Tablet, Portrait) -> 22
+
+                                      
+                (Tablet, Landscape) -> 30
+
+                                       
+                (Desktop, _) -> 40
+
+                                        
+                (BigDesktop, _) -> 50
 
         content =  T.subHeroTitle
                 |> List.map (T.translate language)
@@ -119,7 +149,7 @@ subHeroTitle { theme, language } =
         Element.column
             [ Element.paddingXY 10 0
             , Element.width Element.fill
-            , Font.size 15
+            , Font.size fontScale
             , Font.center
             , Font.color fontColor
             , Font.semiBold
