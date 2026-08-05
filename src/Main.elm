@@ -1,5 +1,7 @@
 module Main exposing (..)
 
+import Utils
+
 import Components.ThemeSlider as ThemeSlider
 import Components.LanguageSlider as LanguageSlider
 import Components.HeroText as HeroText
@@ -45,6 +47,8 @@ init ({ language, width, height } as flags) =
     let
         -- debug to remove
         _ = Debug.log "flags" flags
+
+        _ = Debug.log "extract site name: " (Utils.getNameFromLink "https://www.lavoute.xyz/")
             
         device =
             Element.classifyDevice windowSize

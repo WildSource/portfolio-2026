@@ -6,6 +6,7 @@ import Data.Translation exposing (Translation)
 type alias Project =
     { title : Translation
     , description : Translation
+    , link : Maybe String
     }
 
     
@@ -21,7 +22,7 @@ adultWebcomicWebsite : Project
 adultWebcomicWebsite =
     { title =
           { en = "Adult Webcomic Website"
-          , fr = "Site Web de bande dessinée pour public averti"
+          , fr = "Site de bande dessinée pour public averti"
           }
     , description =
           { en =
@@ -45,6 +46,7 @@ adultWebcomicWebsite =
                  Le projet n'existe plus.
                 """
           }
+    , link = Nothing
     }
 
     
@@ -73,15 +75,16 @@ portfolio2023 =
                  C'est surtout pensé comme une blague, mais aussi pour démontrer mes compétences avec la librairie Three.js, qui permet à une page web de faire le rendu de ces scènes 3D.
                 """
           }
+    , link = Nothing
     }
 
     
 laVoute : Project
 laVoute =
     { title =
-          { en = "Lavoute.xyz - A Personal Cloud Storage"
+          { en = "Personal Cloud Storage"
           , fr =
-                "Lavoute.xyz - Un stockage nuagique personnel"
+                "Stockage nuagique personnel"
           }
     , description =
           { en =
@@ -101,6 +104,7 @@ laVoute =
                  Le frontend a été écrit en Javascript avec le framework VueJS, et le backend en Spring Boot.
                  Il comportait un système de connexion standard utilisant l'authentification par nom d'utilisateur/mot de passe et des sessions web comme gestion de l'authentification, le tout via Spring Security.
                  """
-          }    
+          }
+    , link = Just "https://www.lavoute.xyz/"
     }
     

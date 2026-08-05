@@ -46,11 +46,19 @@ element ({ theme, language } as config) { titles, about, experience, skills, pro
         projectDropdowns : List (Element Msg)
         projectDropdowns =            
             List.map
-                (\ ({ title } as project) ->
+                (\ ({ title, link } as project) ->
                      let
                          isToggled = List.member title.en dropdowns
+                         linkElement =
+                             Maybe.map
+                                 (\ linkStr ->
+                                      Element.link []
+                                          { url = linkStr
+                                          , label = Element.text ""}
+                                 )
+                                 link
                      in
-                         Dropdown.element config project isToggled
+                         Dropdown.element config project linkElement isToggled
                 )
                 projects
 

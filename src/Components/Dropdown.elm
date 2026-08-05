@@ -29,8 +29,8 @@ iconsPath =
     "/assets/icons/"
 
         
-element : Config -> Project -> Bool -> Element Msg
-element { theme, language } { title, description } isToggled =
+element : Config -> Project -> Maybe (Element Msg) -> Bool -> Element Msg
+element { theme, language } { title, description } link isToggled =
     let            
         borderColor =
             case theme of
@@ -57,6 +57,7 @@ element { theme, language } { title, description } isToggled =
                                 
                         (False, Dark) ->                        
                             ("down", "-dark")
+                                
             in
                 { src =
                       iconsPath ++ "chevron-" ++ direction ++ chevronTheme ++ "-svgrepo-com.svg"
@@ -115,7 +116,12 @@ element { theme, language } { title, description } isToggled =
                      , Font.size 12
                      ]
                      ( Element.paragraph [ padding 5 ]
-                          sentenceElements
+                           (case link of
+                                Nothing ->
+                                    sentenceElements
+                                Just linkElement ->
+                                    linkElement :: sentenceElements
+                           )
                      )
                 ]
             else
