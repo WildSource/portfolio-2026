@@ -34,7 +34,7 @@ import Themes.GruvboxDark as GDark
 
 
 element : Config -> Data -> List String -> Element Msg
-element ({ theme, language } as config) { titles, about, experience, skills, projects } dropdowns =
+element ({ theme, language, device } as config) { titles, about, experience, skills, projects } dropdowns =
     let
         fontColor =
             case theme of
@@ -72,7 +72,7 @@ element ({ theme, language } as config) { titles, about, experience, skills, pro
         content =
             let                         
                 curriedComponents =
-                    List.map (Card.element theme language) titles
+                    List.map (Card.element config) titles
 
                 contentTexts =
                     [ aboutContent language about
