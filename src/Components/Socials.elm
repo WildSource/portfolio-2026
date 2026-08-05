@@ -2,18 +2,49 @@ module Components.Socials exposing (element)
 
 import Element exposing
     ( Element
-    , Device
+    , Device 
+    , DeviceClass (..)
     , fill
     )
 import Data.Message exposing (Msg)
 import Theme exposing (Theme (..))
-import Utils exposing (debugBorder)
 
 iconsPath : String
 iconsPath = "/assets/icons/"            
 
-element : Theme -> Device -> Element Msg
-element theme _ =
+element : Theme -> DeviceClass -> Element Msg
+element theme deviceClass =
+    let
+        responsiveSpacing =
+            case deviceClass of
+                Desktop -> 200
+
+                           
+                BigDesktop -> 400
+
+                              
+                _ -> 40
+
+        responsivePaddingY =
+            case deviceClass of
+                Desktop -> 50
+
+                           
+                BigDesktop -> 100
+
+                              
+                _ -> 10
+
+    in
+        Element.row
+            [ Element.spacing responsiveSpacing
+            , Element.paddingXY 30 responsivePaddingY 
+            , Element.centerX
+            ]
+            (loadImages theme deviceClass)
+
+loadImages : Theme -> DeviceClass -> List (Element Msg)
+loadImages theme deviceClass =
     let
         githubLogo =
             case theme of
@@ -26,6 +57,7 @@ element theme _ =
             case theme of
                 Dark  -> "InBug-White.png"
 
+                         
                 Light -> "LI-In-Bug.png"
 
         githubImage =
@@ -45,27 +77,37 @@ element theme _ =
             , imgSrc = iconsPath ++ linkedinLogo
             , imgDesc = "Clickable LinkedIn Logo"
             }
-    in
-        Element.row
-            [ Element.spacing 40
-            , Element.paddingXY 30 10
-            , Element.centerX
-            ]
-            [ social githubImage
-            , social gmailImage
-            , social linkedInImage
-            ]
 
-social : { url : String, imgSrc : String, imgDesc : String } -> Element Msg
-social { url, imgSrc, imgDesc } =
-    Element.link []
-        { url = url
-        , label =
-            Element.image
-                [ Element.width (Element.px 80)
-                , Element.height (Element.px 80)
-                ]
+        logos =
+            [ githubImage
+            , gmailImage
+            , linkedInImage
+            ]
+    in
+        List.map (social deviceClass) logos
+    
+
+social : DeviceClass -> { url : String, imgSrc : String, imgDesc : String } ->  Element Msg
+social deviceClass { url, imgSrc, imgDesc }  =
+    let
+        imgSize =
+            case deviceClass of
+                Desktop -> Element.px 150
+
+                           
+                BigDesktop -> Element.px 200
+
+                              
+                _ -> Element.px 80
+    in
+        Element.link []
+            { url = url
+            , label =
+                Element.image
+                    [ Element.width imgSize
+                    , Element.height imgSize
+                    ]
                 { src = imgSrc
                 , description = imgDesc
                 }
-        }
+            }

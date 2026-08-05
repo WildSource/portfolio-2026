@@ -47,8 +47,6 @@ init ({ language, width, height } as flags) =
     let
         -- debug to remove
         _ = Debug.log "flags" flags
-
-        _ = Debug.log "extract site name: " (Utils.getNameFromLink "https://www.lavoute.xyz/")
             
         device =
             Element.classifyDevice windowSize
@@ -140,7 +138,7 @@ view { config, data, toggledDropdowns } =
                           ]
                           [ sliders
                           , heroText
-                          , socialMedias config.device
+                          , socialMedias config.device.class
                           , MainContent.element
                               config
                               data
