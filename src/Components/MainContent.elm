@@ -169,7 +169,7 @@ technologyContent theme deviceClass skills =
         contentStyle =
             [ width fill
             , padding 5
-            , spacing 5
+            , spacing 15
             ]
             
         programmingLanguages : List (Element Msg)
@@ -194,7 +194,7 @@ technologyContent theme deviceClass skills =
                      (Highlight.element theme)
 
         languageSection =
-            Element.column []
+            Element.column [ spacing 10 ]
                 [ Element.el subTitleStyle
                       (Element.text "Programming Languages")
 
@@ -203,7 +203,7 @@ technologyContent theme deviceClass skills =
                 ]
                 
         libraryFrameworkSection =
-            Element.column []
+            Element.column [ spacing 10 ]
                 [ Element.el subTitleStyle
                       (Element.text "Libraries and/or Frameworks")
                 , Element.wrappedRow contentStyle
@@ -212,7 +212,7 @@ technologyContent theme deviceClass skills =
     in
         Element.column
             [ padding 5
-            , spacing 5
+            , spacing 20
             ]
             [ languageSection
             , libraryFrameworkSection
