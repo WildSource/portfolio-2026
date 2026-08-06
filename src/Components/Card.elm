@@ -2,7 +2,6 @@ module Components.Card exposing (element)
 
 import Data.Model exposing (Config)
 import Data.Message exposing (Msg)
-import Utils exposing (debugBorder)
 import Theme exposing ( Theme (..))
 import Data.Translation exposing
     ( Translation
@@ -31,16 +30,24 @@ element ({ device } as config) title content =
     let
         responsiveFontSize =
             case device.class of
-                Desktop -> [ Font.size 25 ]
-                BigDesktop -> [ Font.size 30 ]
-                _ -> [ Font.size 15 ]
+                Desktop -> Font.size 25
+
+                           
+                BigDesktop -> Font.size 30
+
+                              
+                _ -> Font.size 15
     in
         Element.column
             [ spacing 10
             , width fill
-            ]        
+            ]
             [ titleText config title
-            , Element.el responsiveFontSize content
+            , Element.el
+                [ responsiveFontSize
+                , width fill
+                ]
+                content
             ]
     
 titleText

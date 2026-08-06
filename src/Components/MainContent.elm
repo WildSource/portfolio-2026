@@ -16,6 +16,7 @@ import Data.Model exposing
     )
 import Element exposing
     ( Element
+    , DeviceClass (..)
     , fill
     , width
     , height
@@ -36,6 +37,26 @@ import Themes.GruvboxDark as GDark
 element : Config -> Data -> List String -> Element Msg
 element ({ theme, language, device } as config) { titles, about, experience, skills, projects } dropdowns =
     let
+        responsivePadding =
+            case device.class of
+                Desktop -> padding 80
+
+                           
+                BigDesktop -> padding 150
+
+                              
+                _ -> padding 10
+
+        responsiveSpacing =
+            case device.class of
+                Desktop -> spacing 50
+
+                           
+                BigDesktop -> spacing 80
+
+                              
+                _ -> spacing 20
+                     
         fontColor =
             case theme of
                 Dark  -> GDark.fg0
@@ -65,7 +86,7 @@ element ({ theme, language, device } as config) { titles, about, experience, ski
         projectsContent =
             Element.column
                 [ width fill
-                , spacing 10
+                , spacing 20
                 ]
                 projectDropdowns
 
@@ -77,7 +98,7 @@ element ({ theme, language, device } as config) { titles, about, experience, ski
                 contentTexts =
                     [ aboutContent language about
                     , experiencesContent theme language experience.title experience.body
-                    , technologyContent theme skills
+                    , technologyContent theme device.class skills
                     , projectsContent
                     ]
             in
@@ -91,8 +112,8 @@ element ({ theme, language, device } as config) { titles, about, experience, ski
             [ centerX
             , width fill
             , height fill
-            , padding 10
-            , spacing 20
+            , responsivePadding
+            , responsiveSpacing
             , Font.size 15
             , Font.color fontColor
             , Font.family [ Font.serif ]                
@@ -120,12 +141,22 @@ aboutContent language aboutText =
             ]
 
                 
-technologyContent : Theme -> List Skill -> Element Msg
-technologyContent theme skills =
+technologyContent : Theme ->  DeviceClass -> List Skill -> Element Msg
+technologyContent theme deviceClass skills =
     let
+        responsiveSubTitleFontSize =
+            case deviceClass of
+                Desktop -> 30
+
+                           
+                BigDesktop -> 50
+
+                              
+                _ -> 20
+            
         subTitleStyle =
             [ padding 10
-            , Font.size 20
+            , Font.size responsiveSubTitleFontSize
             , Font.color
                   ( case theme of
                         Dark  -> GDark.greenLight
