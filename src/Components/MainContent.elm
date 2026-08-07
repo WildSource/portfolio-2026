@@ -1,5 +1,7 @@
 module Components.MainContent exposing (element)
 
+import Utils exposing (getNameFromLink)
+
 import Data.Translation exposing
     ( Translation
     , translate
@@ -73,9 +75,17 @@ element ({ theme, language, device } as config) { titles, about, experience, ski
                          linkElement =
                              Maybe.map
                                  (\ linkStr ->
-                                      Element.link []
+                                      let
+                                          linkLabel =
+                                              case getNameFromLink linkStr of
+                                                  Nothing -> ""
+
+                                      
+                                                  Just siteName -> siteName
+                                      in
+                                      Element.link [ ]
                                           { url = linkStr
-                                          , label = Element.text ""}
+                                          , label = Element.text linkLabel}
                                  )
                                  link
                      in
