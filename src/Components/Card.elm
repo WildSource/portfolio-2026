@@ -12,6 +12,7 @@ import Element exposing
     ( Element
     , DeviceClass (..)
     , width
+    , paddingXY
     , spacing
     , fill
     )
@@ -80,7 +81,8 @@ titleText { theme, language, device } title =
 
     in
         Element.el
-            [ Font.color fontColor
+            [ paddingXY 0 15
+            , Font.color fontColor
             , Font.bold
             , responsiveFont
             , Font.family [Font.typeface "Josefin Sans"]

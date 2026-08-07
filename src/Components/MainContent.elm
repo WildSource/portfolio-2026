@@ -23,6 +23,7 @@ import Element exposing
     , width
     , height
     , padding
+    , paddingXY
     , spacing
     , centerX
     )
@@ -83,9 +84,14 @@ element ({ theme, language, device } as config) { titles, about, experience, ski
                                       
                                                   Just siteName -> siteName
                                       in
-                                      Element.link [ ]
+                                      Element.link
+                                          [ paddingXY 10 0
+                                          , Font.color GLight.blueDark
+                                          , Font.underline
+                                          ]
                                           { url = linkStr
-                                          , label = Element.text linkLabel}
+                                          , label = Element.text linkLabel
+                                          }
                                  )
                                  link
                      in
