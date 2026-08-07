@@ -2,12 +2,14 @@ module Components.Socials exposing (element)
 
 import Element exposing
     ( Element
-    , Device 
     , DeviceClass (..)
-    , fill
     )
 import Data.Message exposing (Msg)
 import Theme exposing (Theme (..))
+
+import Element.Border as Border
+import Themes.GruvboxDark as GDark
+import Themes.GruvboxLight as GLight
 
 iconsPath : String
 iconsPath = "/assets/icons/"            
@@ -106,6 +108,8 @@ social deviceClass { url, imgSrc, imgDesc }  =
                 Element.image
                     [ Element.width imgSize
                     , Element.height imgSize
+                    , Element.mouseOver
+                          [ Element.scale 1.5 ]
                     ]
                 { src = imgSrc
                 , description = imgDesc
