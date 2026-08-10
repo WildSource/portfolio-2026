@@ -67,8 +67,8 @@ element ({ theme, language, device } as config) { titles, about, experience, ski
                          
                 Light -> GLight.fg0
 
-        projectDropdowns : List (Element Msg)
-        projectDropdowns =            
+        projectDropdowns : Theme -> List (Element Msg)
+        projectDropdowns siteTheme =            
             List.map
                 (\ ({ title, link } as project) ->
                      let
@@ -86,7 +86,13 @@ element ({ theme, language, device } as config) { titles, about, experience, ski
                                       in
                                       Element.link
                                           [ paddingXY 10 0
-                                          , Font.color GLight.blueDark
+                                          , Font.color
+                                              (case siteTheme of
+                                                   Light -> GLight.blueDark
+
+
+                                                   Dark -> GDark.blueLight
+                                              )
                                           , Font.underline
                                           ]
                                           { url = linkStr
@@ -104,7 +110,7 @@ element ({ theme, language, device } as config) { titles, about, experience, ski
                 [ width fill
                 , spacing 20
                 ]
-                projectDropdowns
+                (projectDropdowns theme)
 
         content =
             let                         
