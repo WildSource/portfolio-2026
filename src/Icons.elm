@@ -20,9 +20,20 @@ import Svg.Attributes exposing
     )
 
 import Data.Message exposing (Msg)
-import Element exposing (Element)
+import Element exposing
+    ( Element
+    , Device
+    , px
+    )
 import Theme exposing (Theme (..))
 
+import Element.Border as Border
+import Themes.GruvboxLight as GLight
+import Themes.GruvboxDark as GDark
+
+iconsPath : String
+iconsPath =
+    "/assets/icons/"
 
 moon : Theme -> Element Msg
 moon theme =
@@ -173,3 +184,41 @@ sun =
     in
         Element.html svg
 
+            
+chevron : { r | theme : Theme , device : Device } -> Bool -> Element Msg
+chevron { theme, device } isToggled=
+    let
+        (direction, chevronTheme) =
+            case (isToggled, theme) of
+                (True, Light) ->
+                    ("up", "")
+                        
+                        
+                (True, Dark) ->
+                    ("up", "-dark")
+                            
+                            
+                (False, Light) ->
+                    ("down", "")
+                                
+                                
+                (False, Dark) ->                        
+                    ("down", "-dark")
+
+        data =
+            { src =
+                  iconsPath ++ "chevron-" ++ direction ++ chevronTheme ++ "-svgrepo-com.svg"
+            , description =
+                  "chevron " ++ direction
+            }
+
+        responsiveSize =
+            case device.class of
+                _ -> px 30
+    in
+        Element.image
+            [ Element.width responsiveSize
+            , Element.height responsiveSize
+            ]
+            data
+        

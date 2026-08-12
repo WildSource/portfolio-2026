@@ -1,7 +1,5 @@
 module Main exposing (..)
 
-import Utils
-
 import Components.BackToTopButton as BackTopButton
 import Components.ThemeSlider as ThemeSlider
 import Components.LanguageSlider as LanguageSlider
@@ -137,7 +135,7 @@ view { config, data, toggledDropdowns } =
                           , height fill
                           , spacing 10
                           ]
-                          [ BackTopButton.element
+                          [ BackTopButton.element config
                           , sliders
                           , heroText
                           , socialMedias config.device.class
