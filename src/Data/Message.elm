@@ -11,4 +11,5 @@ type Msg
     | ThemeSwitch Bool
     | LanguageSwitch Bool
     | ToggleDropdown String
+    | ScrollToTop 
       

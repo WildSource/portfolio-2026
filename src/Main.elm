@@ -1,5 +1,8 @@
 module Main exposing (..)
 
+import Task
+
+
 import Components.BackToTopButton as BackTopButton
 import Components.ThemeSlider as ThemeSlider
 import Components.LanguageSlider as LanguageSlider
@@ -8,6 +11,7 @@ import Components.Socials as Socials
 import Components.Footer as Footer
 import Components.MainContent as MainContent
 import Browser.Events as E
+import Browser.Dom as Dom
 import Data.Translation as T
 import Data.Message as Message
 import Data.Model as Model
@@ -23,7 +27,9 @@ import Data.Message exposing (Msg)
 import Data.Skill exposing (skills) 
 import Data.Project exposing (projects)
 import Element exposing
-    ( width
+    ( DeviceClass (..)
+    , Orientation (..)
+    , width
     , height
     , fill
     , alignRight
@@ -116,7 +122,30 @@ view { config, data, toggledDropdowns } =
 
         socialMedias =
             Socials.element config.theme
-                            
+
+        backToTopButton =
+            let
+                deviceClass = config.device.class
+
+                deviceOrientation = config.device.orientation
+                               
+            in
+                Element.el []
+                    (case (deviceClass, deviceOrientation) of
+                         (Phone, _) -> Element.none
+                         
+
+                         (Tablet, _) -> Element.none
+
+                         
+                         (Desktop, Portrait) -> Element.none
+
+                         
+                         (BigDesktop, Portrait) -> Element.none
+                         
+                         
+                         _ -> BackTopButton.element config
+                    )  
     in
         { title = "Samuel Nguyen-Phok"
         , body =
@@ -135,7 +164,7 @@ view { config, data, toggledDropdowns } =
                           , height fill
                           , spacing 10
                           ]
-                          [ BackTopButton.element config
+                          [ backToTopButton
                           , sliders
                           , heroText
                           , socialMedias config.device.class
@@ -155,6 +184,13 @@ update msg model =
     case msg of
         Message.None -> 
             (model, Cmd.none)
+
+        Message.ScrollToTop ->
+            ( model
+            , Task.perform
+                  (\ _ -> Message.None)
+                  (Dom.setViewport 0 0)
+            )
 
         Message.ToggleDropdown skillName ->
             ({ model |
