@@ -2,7 +2,9 @@ module Main exposing (..)
 
 import Task
 
-
+import SimpleAnimation as SA
+import Simple.Animation as Animation
+import Simple.Animation.Property as AnimationProperty
 import Components.BackToTopButton as BackTopButton
 import Components.ThemeSlider as ThemeSlider
 import Components.LanguageSlider as LanguageSlider
@@ -26,6 +28,7 @@ import Data.Model exposing (Model)
 import Data.Message exposing (Msg)
 import Data.Skill exposing (skills) 
 import Data.Project exposing (projects)
+import Simple.Animation exposing (Animation)
 import Element exposing
     ( DeviceClass (..)
     , Orientation (..)
@@ -96,6 +99,19 @@ type alias Flags =
     , height : Int        
     }
 
+floatingAnimation : Animation
+floatingAnimation =
+    Animation.fromTo
+        { duration = 2000
+        , options =
+              [ Animation.loop
+              , Animation.yoyo
+              , Animation.easeInOut
+              ]
+        }
+        [AnimationProperty.y 15]
+        [AnimationProperty.y -15]
+
     
 view : Model -> Document Msg
 view { config, data, toggledDropdowns } =
@@ -119,6 +135,25 @@ view { config, data, toggledDropdowns } =
 
         heroText =
             HeroText.element config
+
+        animatedHeroText =
+            SA.animatedElementWrapper
+                floatingAnimation
+                [ Element.centerX ]
+                heroText
+
+        heroElement =
+            case config.device.class of
+                Phone -> heroText
+
+                         
+                Tablet -> heroText
+
+                          
+                Desktop -> animatedHeroText
+
+                           
+                BigDesktop -> animatedHeroText
 
         socialMedias =
             Socials.element config.theme
@@ -166,7 +201,7 @@ view { config, data, toggledDropdowns } =
                           ]
                           [ backToTopButton
                           , sliders
-                          , heroText
+                          , heroElement
                           , socialMedias config.device.class
                           , MainContent.element
                               config
