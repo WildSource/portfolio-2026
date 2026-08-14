@@ -75,7 +75,7 @@ portfolio2023 =
                  C'est surtout pensé comme une blague, mais aussi pour démontrer mes compétences avec la librairie Three.js, qui permet à une page web de faire le rendu de ces scènes 3D.
                 """
           }
-    , link = Nothing
+    , link = Just "https://old.samuelnguyenphok.dev/"
     }
 
     
