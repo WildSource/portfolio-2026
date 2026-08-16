@@ -85,7 +85,7 @@ secondHeroTitle =
 lastHeroTitle : Translation
 lastHeroTitle =
     { en = "websites\n"
-    , fr = "sites webs\n"
+    , fr = "sites web\n"
     }
 
 
@@ -100,7 +100,7 @@ subHeroTitle =
 subHeroTitle1 : Translation
 subHeroTitle1 =
     { en = "I'm a fullstack developer"
-    , fr = "Je suis un dévelopeur fullstack"
+    , fr = "Je suis un développeur fullstack"
     }
 
     
@@ -129,7 +129,7 @@ aboutContent =
 aboutContent1 : Translation
 aboutContent1 =
     { en = "Based in Quebec Canada, I have experience in web development in various programming languages and technologies."
-    , fr = "Basé au Québec, j'ai de l'expérience en développement d'application web dans de nombreux language de programmation et technologies diverses."
+    , fr = "Basé à Québec, j'ai de l'expérience en développement d'applications web dans de nombreux languages de programmation et diverses technologies."
     }
 
 
@@ -142,7 +142,7 @@ aboutContent2 =
 aboutContent3 : Translation
 aboutContent3 =
     { en = "I am bilingual and able to speak both french and english fluently."
-    , fr = "Je suis bilingue et je suis capable de parler le français et l'anglais couramment."
+    , fr = "Je suis bilingue et capable de parler le français et l'anglais couramment."
     }    
 
 
@@ -155,8 +155,8 @@ aboutContent4 =
 
 experienceJobTitle : Translation
 experienceJobTitle =                     
-    { en = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Internship (2025-2026)\n"
-    , fr = "Régie des marchés agricoles et alimentaires du Québec (RMMAQ) - Stage (2025-2026)\n"
+    { en = "Régie des marchés agricoles et alimentaires du Québec (RMAAQ) - Internship (2025-2026)\n"
+    , fr = "Régie des marchés agricoles et alimentaires du Québec (RMAAQ) - Stage (2025-2026)\n"
     }                     
 
 
@@ -187,7 +187,7 @@ experienceContent2 =
 experienceContent3 : Translation
 experienceContent3 =
     { en = "I implemented automated PDF generation using the DomPDF library, enabling documents to be emailed directly to relevant parties."
-    , fr = "J'ai mis en place la génération automatisée de documents PDF à l'aide de la librairie DomPDF, permettant l'envoi direct des documents par courriel aux parties concernées."
+    , fr = "J'ai mis en place la génération automatisée de documents PDF à l'aide de la bibliothèque DomPDF, permettant l'envoi direct des documents par courriel aux parties concernées."
     }
 
 
@@ -201,7 +201,7 @@ experienceContent4 =
 experienceContent5 : Translation
 experienceContent5 =
     { en = "Originally planned as a standard 3–4 month internship, I was retained for a full year due to strong performance and ongoing project needs."
-    , fr = "Initialement prévu pour une durée de 3 à 4 mois, mon stage a été prolongé sur une pleine année en raison de mon rendement et des besoins continus des projets en cours."
+    , fr = "Initialement prévu pour une durée de 3 à 4 mois, mon stage a été prolongé pour une année complète en raison de mon rendement et des besoins continus des projets en cours."
     }    
    
     
@@ -209,5 +209,17 @@ projectAdultComicTitle : Translation
 projectAdultComicTitle =
     { en = "Webcomic Website"
     , fr = "Site Web de Webcomique"
+    }
+    
+languageSectionSubtitle : Translation
+languageSectionSubtitle =
+    { en = "Programming Languages"
+    , fr = "Languages de programmation"
+    }
+
+librariesFrameworkSubtitle : Translation
+librariesFrameworkSubtitle =
+    { en = "Libraries and Frameworks"
+    , fr = "Biliothèques et cadriciels"
     }
     

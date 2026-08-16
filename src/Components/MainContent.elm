@@ -120,7 +120,7 @@ element ({ theme, language, device } as config) { titles, about, experience, ski
                 contentTexts =
                     [ aboutContent language about
                     , experiencesContent theme language experience.title experience.body
-                    , technologyContent theme device.class skills
+                    , technologyContent config skills
                     , projectsContent
                     ]
             in
@@ -163,11 +163,11 @@ aboutContent language aboutText =
             ]
 
                 
-technologyContent : Theme ->  DeviceClass -> List Skill -> Element Msg
-technologyContent theme deviceClass skills =
+technologyContent : Config -> List Skill -> Element Msg
+technologyContent { theme, language, device } skills =
     let
         responsiveSubTitleFontSize =
-            case deviceClass of
+            case device.class of
                 Desktop -> 30
 
                            
@@ -215,19 +215,25 @@ technologyContent theme deviceClass skills =
                 |> List.map
                      (Highlight.element theme)
 
+        languageSubtitle =
+            T.translate language T.languageSectionSubtitle
+
         languageSection =
             Element.column [ spacing 10 ]
                 [ Element.el subTitleStyle
-                      (Element.text "Programming Languages")
+                      (Element.text languageSubtitle)
 
                 , Element.wrappedRow contentStyle
                     programmingLanguages                        
                 ]
+
+        libraryFrameworkSubtitle =
+            T.translate language T.librariesFrameworkSubtitle
                 
         libraryFrameworkSection =
             Element.column [ spacing 10 ]
                 [ Element.el subTitleStyle
-                      (Element.text "Libraries and/or Frameworks")
+                      (Element.text libraryFrameworkSubtitle)
                 , Element.wrappedRow contentStyle
                       librariesAndFrameworks
                 ]

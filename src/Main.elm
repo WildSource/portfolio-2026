@@ -53,9 +53,6 @@ main =
 init : Flags -> (Model, Cmd Msg)
 init ({ language, width, height } as flags) =
     let
-        -- debug to remove
-        _ = Debug.log "flags" flags
-            
         device =
             Element.classifyDevice windowSize
                  
@@ -266,8 +263,6 @@ update msg model =
         Message.WindowResize windowSize ->
             let
                 device = Element.classifyDevice windowSize
-                _ = Debug.log "sizes" windowSize
-                _ = Debug.log "device" device
             in
                 ( Model.updateDevice model device
                 , Cmd.none
