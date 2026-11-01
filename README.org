@@ -2,7 +2,15 @@
 
 My portfolio 2026 edition written in Elm.
 
-## Run
+* Run
 
-`elm-live src/Main.elm --start-page=index.html -- --output=main.js`
+First build npm dependencies with
+#+BEGIN_SRC
+npm install
+#+END_SRC
+
+Then run the web server with elm-live
+#+BEGIN_SRC
+elm-live src/Main.elm --start-page=index.html -- --output=main.js
+#+END_SRC
 
