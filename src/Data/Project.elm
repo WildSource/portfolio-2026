@@ -12,11 +12,24 @@ type alias Project =
     
 projects : List Project
 projects =
-    [ adultWebcomicWebsite
+    [ migrationSystem
+    , adultWebcomicWebsite
     , portfolio2023
     , laVoute
     ]
-    
+
+migrationSystem : Project
+migrationSystem =
+    { title =
+          { en = "Migration System"
+          , fr = "Système de migration"
+          }
+    , description = 
+        { en = "Parmenides is a command line tool that manages database migrations for developers. Written in Haskell, it's designed to be simple, easy and minimalist. It has a single job (track migrations) does it's job well and gets out of the developer's way."
+        , fr = "Parmenides est un outil en ligne de commande qui gère les migrations de bases de données pour les développeurs. Écrit en Haskell, il est conçu pour être simple, facile à utiliser et minimaliste. Il a une seule tâche (suivre les migrations), l’accomplit bien et ne se met pas dans les jambes du développeur."
+        }
+    , link = Just "https://github.com/WildSource/parmenides"
+    }
     
 adultWebcomicWebsite : Project
 adultWebcomicWebsite =
