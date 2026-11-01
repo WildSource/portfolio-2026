@@ -5,3 +5,4 @@ repl-temp-*
 # emacs
 *~
 main.js
+node_modules/
