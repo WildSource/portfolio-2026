@@ -1,0 +1,8 @@
+# elm-package generated files
+elm-stuff
+# elm-repl generated files
+repl-temp-*
+# emacs
+*~
+main.js
+node_modules/
